@@ -1,9 +1,9 @@
 # IDS Integrations
 
 
-[ConfigServer Security & Firewall (CSF) integration](/csf/)
-[ConfigServer eXploit Scanner (CXS) integration](/cxs/)
-[Cloudflare support](/cloudflare_support/)
+[ConfigServer Security & Firewall (CSF) integration](/ids_integration/#csf-integration)
+[ConfigServer eXploit Scanner (CXS) integration](/ids_integration/#cxs-integration)
+[Cloudflare support](/ids_integration/#cloudflare-support)
 
 ## CSF Integration
 
@@ -44,7 +44,7 @@ In this case, Imunify360 will block IPs only by mod_security events with high se
 ## CXS Integration
 
 
-[ConfigServer eXploit Scanner](https://configserver.com/cp/cxs.html) (CXS) has different types of malware scanning, which affects Imunify360 Malware Scanner functionality. Below we describe how to make Imunify360 Malware Scanner work properly. These functionalities can be configured at [Malware Scanner settings](/settings/) page, but CXS itself must be configured  as follows:
+[ConfigServer eXploit Scanner](https://configserver.com/cp/cxs.html) (CXS) has different types of malware scanning, which affects Imunify360 Malware Scanner functionality. Below we describe how to make Imunify360 Malware Scanner work properly. These functionalities can be configured at [Malware Scanner settings](/dashboard/#settings) page, but CXS itself must be configured  as follows:
 
 _Automatically scan all modified files_
 

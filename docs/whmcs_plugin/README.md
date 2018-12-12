@@ -1,23 +1,23 @@
 # Imunify360 WHMCS Plugin
 
 
-[Overview](/overview1/)
-[Installation and Configuration](/installation_and_configuration/)
-`o` [Installation and Update](/installation_update/)
-`o` [Configuration of Product](/configuration_of_product/)
-`o` [Configuration of Add-on](/configuration_of_addon/)
-[Management](/management/)
-`o` [Link Via Add-on – Optional License](/link_via_addon__optional_licen/)
-`o` [Link Products Directly](/link_products_directly/)
-`o` [Link Via Configurable Options](/link_via_configurable_options/)
-`o` [Link Add-ons Directly](/link_addons_directly/) (for WHMCS 7.2.x and later)
-`o` [Imunify360 Key Licenses](/imunify360_key_licenses2/)
-`o` [Order](/order/)
-`o` [Admin Area](/admin_area/)
-`o` [Client Area](/client_area/)
-`o` [Licenses List](/licenses_list/)
-`o` [Add-on Licenses List](/_addon_licenses_list/) (for WHMCS 7.2.x and later)
-[Common Problems](/common_problems/)
+[Overview](/whmcs_plugin/#overview)
+[Installation and Configuration](/whmcs_plugin/#installation-and-configuration)
+`o` [Installation and Update](/whmcs_plugin/#installation-and-update)
+`o` [Configuration of Product](/whmcs_plugin/#configuration-of-product)
+`o` [Configuration of Add-on](/whmcs_plugin/#configuration-of-add-on)
+[Management](/whmcs_plugin/#management)
+`o` [Link Via Add-on – Optional License](/whmcs_plugin/#link-via-add-on-optional-license)
+`o` [Link Products Directly](/whmcs_plugin/#link-products-directly)
+`o` [Link Via Configurable Options](/whmcs_plugin/#link-via-configurable-options)
+`o` [Link Add-ons Directly](/whmcs_plugin/#link-add-ons-directly) (for WHMCS 7.2.x and later)
+`o` [Imunify360 Key Licenses](/whmcs_plugin/#imunify360-key-licenses)
+`o` [Order](/whmcs_plugin/#)
+`o` [Admin Area](/whmcs_plugin/#admin-area)
+`o` [Client Area](/whmcs_plugin/#client-area)
+`o` [Licenses List](/whmcs_plugin/#licenses-list)
+`o` [Add-on Licenses List](/whmcs_plugin/#add-on-licenses-list) (for WHMCS 7.2.x and later)
+[Common Problems](/whmcs_plugin/#common-problems)
 
 
 ## Overview
@@ -60,11 +60,11 @@ Supports WHMCS V6 and later
 
 In this section we will show you how to set up our products.
 
-[Installation and Update](/installation_update/)
+[Installation and Update](/whmcs_plugin/#installation-and-update)
 
-[Configuration of Product](/configuration_of_product/)
+[Configuration of Product](/whmcs_plugin/#configuration-of-product)
 
-[Configuration of Add-on](/configuration_of_addon/)
+[Configuration of Add-on](/whmcs_plugin/#configuration-of-add-on)
 
 
 
@@ -127,16 +127,16 @@ _Fig 2: Imunify360 License For WHMCS add-on module main page._
 
 In this section you can find two ways of linking license product with your server product as well as other possibilities of the module.
 
-[Link Via Add-on – Optional License](/link_via_addon__optional_licen/)
-[Link Products Directly](/link_products_directly/)
-[Link Via Configurable Options](/link_via_configurable_options/)
-[Link Add-ons Directly](/link_addons_directly/)
-[Imunify360 Key Licenses](/imunify360_key_licenses2/)
-[Order](/order/)
-[Admin Area](/admin_area/)
-[Client Area](/client_area/)
-[Licenses List](/licenses_list/)
-[Add-on Licenses List](/_addon_licenses_list/)
+[Link Via Add-on – Optional License](/whmcs_plugin/#link-via-add-on-optional-license)
+[Link Products Directly](/whmcs_plugin/#link-products-directly)
+[Link Via Configurable Options](/whmcs_plugin/#link-via-configurable-options)
+[Link Add-ons Directly](/whmcs_plugin/#link-add-ons-directly)
+[Imunify360 Key Licenses](/whmcs_plugin/#imunify360-key-licenses)
+[Order](/whmcs_plugin/#)
+[Admin Area](/whmcs_plugin/#admin-area)
+[Client Area](/whmcs_plugin/#client-area)
+[Licenses List](/whmcs_plugin/#licenses-list)
+[Add-on Licenses List](/whmcs_plugin/#add-on-licenses-list)
 
 ### Link Via Add-on – Optional License
 
@@ -167,7 +167,7 @@ If you want to offer server along with the license, perform the following steps.
 
 **Note.** _ Please do not set up pricing for license provisioning product. In exchange, you can increase a price for server provisioning product._
 
-Prepare license provisioning product as described in the [Configuration of Product](/configuration_of_product/) section of this documentation.
+Prepare license provisioning product as described in the [Configuration of Product](/whmcs_plugin/#configuration-of-product) section of this documentation.
 Go to _Add-ons → CloudLinux Licenses Add-on → Products Relations_ and click _Add Relation_ .
 Select server provisioning product from the Main product drop-down list and license provisioning product from the Linked _ Product With License_ and click _Add Relation_ .
 
@@ -182,7 +182,7 @@ _Fig 5: Creating relations directly between server and license provisioning modu
 In order to allow your client to decide whether he wants to order server with or without license we can use _Configurable Options_ ( [https://docs.whmcs.com/Addons_and_Configurable_Options](https://docs.whmcs.com/Addons_and_Configurable_Options) ).
 
 Below we will show what steps to proceed to prepare such connection:
-Configure _CloudLinuxLicenses_ product as described [here](/configuration_of_product/) .
+Configure _CloudLinuxLicenses_ product as described [here](/whmcs_plugin/#configuration-of-product) .
 Go to _Setup → Products/Services → Configurable Options_ and click _Create a New Group_ .
 Fill group name and add _New Configurable Option_ , set up billing cycle, price and option type. Then save changes.
 Go to _Add-ons → CloudLinux Licenses Add-on → Configurable Options Relations_ and click _ Add Relation_ .
@@ -334,7 +334,5 @@ After activating the server provisioning product, license provisioning product b
 
 **Reason** : License IP address may be already taken.
 **Solution** : Change server IP address.
-
-**_Note_** _. Currently, only key-based licenses are available for Imunify360. Support of IP-based licenses will be added soon._
 
 

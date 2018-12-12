@@ -1,5 +1,6 @@
 # Captcha
 
+
 The CAPTCHA is a feature intended to distinguish human from machine input and protect websites from the spam and different types of automated abuse. Imunify360 uses [reCAPTCHA](https://www.google.com/recaptcha/intro/invisible.html) service.
 
 There are two layers in CAPTCHA behavior:
@@ -11,7 +12,7 @@ There are two layers in CAPTCHA behavior:
 
 If successful, a user is redirected to the website, which means that the access is unblocked and the IP address of this user is removed from the Grey List.
 
-It is also possible to enable the invisible reCAPTCHA via the Imunify360 [Settings page](/settings/) . With the invisible reCAPTCHA enabled, a human user is not required to go through human confirmation - the process will pass under the hood and a user will be redirected to the website. In case if invisible reCAPTCHA failed to detect if a user is a human or not, then visible reCAPTCHA appears.
+It is also possible to enable the invisible reCAPTCHA via the Imunify360 [Settings page](/dashboard/#settings) . With the invisible reCAPTCHA enabled, a human user is not required to go through human confirmation - the process will pass under the hood and a user will be redirected to the website. In case if invisible reCAPTCHA failed to detect if a user is a human or not, then visible reCAPTCHA appears.
 
 2. The CAPTCHA is always on guard of the websites and checks the activity of each IP. With the help of reCAPTCHA it blocks bots and protects websites from spam and abuse. To learn more about reCAPTCHA follow the [link](https://www.google.com/recaptcha/intro/) .
 
@@ -31,7 +32,7 @@ _head.tpl_ - this file goes inside <head></head> tags. So you can add JavaScript
 
 _body.tpl_ - main template file, modify it as you wish. CAPTCHA goes above all the layers.
 
-_static_ : here you can place images, CSS, JavaScript, etc. and access these files as _/static/<\filename\>._
+_static_ : here you can place images, CSS, JavaScript, etc. and access these files as _/static/\<filename>._
 
 To find information on supported browsers follow the link - [https://support.google.com/recaptcha/answer/6223828](https://support.google.com/recaptcha/answer/6223828) .
 

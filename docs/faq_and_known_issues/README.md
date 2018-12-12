@@ -7,17 +7,17 @@
 
 **End user IP is blocked and I do not know why.**
 
-If you use CSF, then try to find the IP in [CSF](/csf/) Allow/Deny lists using their [documentation and support](https://support.configserver.com/knowledgebase/category/support%20) . If not, then do the following:
+If you use CSF, then try to find the IP in [CSF](/ids_integration/#csf-integration) Allow/Deny lists using their [documentation and support](https://support.configserver.com/knowledgebase/category/support%20) . If not, then do the following:
 
 Go to cPanel Plugins section, choose Imunify360 and enter the Incidents page.
 
 Make sure that the IP checkbox at the top of the table is ticked. Enter proper IP or part of IP in the input field and click _Enter_ .
 
-2.1 If the IP was found, then follow this instructions of [Incidents page](/incidents/) and perform the actions you need like: add IP to the Whitelist or disable the security rule that has detected this incident.
+2.1 If the IP was found, then follow this instructions of [Incidents page](/dashboard/#incidents) and perform the actions you need like: add IP to the Whitelist or disable the security rule that has detected this incident.
 
 If the IP was not found on the Incidents page, then go to Firewall page and using the same way as in step 2 try to find proper IP in Black list or Grey list.
 
-3.1 If the IP was found then follow this instruction for [Grey list](/firewall/) or [Black list](/firewall/) and move the IP to the White List or just remove from the Black or Grey lists.
+3.1 If the IP was found then follow this instruction for [Grey list](/dashboard/#firewall) or [Black list](/dashboard/#firewall) and move the IP to the White List or just remove from the Black or Grey lists.
 
 If nothing helps, then [contact our support team](https://cloudlinux.zendesk.com/hc/en-us/requests/new) .
 

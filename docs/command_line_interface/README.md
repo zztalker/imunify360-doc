@@ -12,7 +12,6 @@ Optional arguments:
 | | |
 |-|-|
 | | Returns the help message|
-| | IP address for adding it to the whitelist|
 | | Level of logging input to the console|
 ```
  
@@ -607,7 +606,7 @@ Optional arguments:
 
 | | |
 |-|-|
-| | Start on-demand scanner for the path specified after the `start` command, for example: _ imunify360-agent malware on-demand start --path /home/\<username\>/public_html/_|
+| | Start on-demand scanner for the path specified after the `start` command, for example: _ imunify360-agent malware on-demand start --path /home/\<username>/public_html/_|
 | | Returns a list of all on-demand scanner session results.|
 | | Show current status for on-demand scanner.|
 | | Stop current scanning.|

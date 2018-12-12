@@ -33,11 +33,10 @@ _ISPManager, non-panel - soon after._
 
 Web interface supports the following browsers:
 
-Safari version 9.1 or later;
-Chrome version 39 or later;
-Firefox version 28 or later;
-Edge version 17 or later;
-Internet Explorer version 11 or later.
+Safari version 10 or later
+Chrome version 39 or later
+Firefox version 28 or later
+Edge version 17 or later
 
 ## Side by side install with another IDS
 
@@ -51,12 +50,12 @@ _Compatible:_
 |LiteSpeed | Integrates with version 5.1 or higher.|
 |EasyApache 3 | Works only in cPanel.|
 |EasyApache 4 | Works only in cPanel.|
-|CSF | Integrated with CSF, more details [here](/csf/) .|
+|CSF | Integrated with CSF, more details [here](/ids_integration/#csf-integration) .|
 |CWAF Agent | No problems detected.|
 |Patchman | No problems detected.|
 |Suhosin | We are ignoring alerts by Suhosin.|
 |Cloudflare | We are whitelisting all traffic by Cloudflare.|
-|CXS | [Special actions required](/cxs/) to use Imunify360 with CXS installed|
+|CXS | [Special actions required](/ids_integration/#cxs-integration) to use Imunify360 with CXS installed|
 |cPHulk | Imunify360 disables cPHulk during installation. However in case of enabling it back, Imunify360 integrates with it and shows cPHulk events in the incident screen.|
 |OpenVZ | Works for Virtuozzo 7 with kernel 3.10.0-327.10.1.vz7.12.8 or later.|
 |_UptimeRobot_ | No problems detected.|

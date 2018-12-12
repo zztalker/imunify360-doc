@@ -8,21 +8,21 @@ Imunify360 dashboard is available directly within your control panel*. It displa
 Log in to WHM as an admin and go to Plugins, choose Imunify360 to get to the Imunify360 user interface.
 
 It allows to access:
-[Support](/support/) - allows you to contact our support team directly from your Imunify360 User Interface
+[Support](/dashboard/#support) - allows you to contact our support team directly from your Imunify360 User Interface
 
-[Incidents](/incidents/) - the list of all suspicious activity on the server.
+[Incidents](/dashboard/#incidents) - the list of all suspicious activity on the server.
 
-[Firewall](/firewall/) - a dashboard of Black, White, Gray lists and Blocked ports with the ability to manage them.
+[Firewall](/dashboard/#firewall) - a dashboard of Black, White, Gray lists and Blocked ports with the ability to manage them.
 
-[Malware Scanner](/malware_scanner/) - real-time file scanner.
+[Malware Scanner](/dashboard/#malware-scanner) - real-time file scanner.
 
-[Proactive Defense](/proactive_defense/) -  a unique Imunify360 feature that can prevent malicious activity through PHP scripts
+[Proactive Defense](/dashboard/#proactive-defense) -  a unique Imunify360 feature that can prevent malicious activity through PHP scripts
 
-[Reputation Management](/reputation_management/) -  analyzing and notifying tool intended to inform about websites blocking and blacklisting.
+[Reputation Management](/dashboard/#reputation-management) -  analyzing and notifying tool intended to inform about websites blocking and blacklisting.
 
-[KernelCare](/kernelcare_integration/) - KernelCare current state.
+[KernelCare](/dashboard/#kernelcare-integration) - KernelCare current state.
 
-[Imunify360 Settings](/settings/) - configuring and controlling Imunify360 options.
+[Imunify360 Settings](/dashboard/#settings) - configuring and controlling Imunify360 options.
 
 
 ## Support
@@ -398,7 +398,7 @@ _Malicious_ - the number of files where Malware Scanner has detected a malicious
 `o` Move to quarantine;
 `o` Try to restore from backup;
 `o` Display in dashboard.
-Please find more details in the [Malware Scanner settings](/malware/) section.
+Please find more details in the [Malware Scanner settings](/dashboard/#malware) section.
 _Quarantined_ - the number of quarantined files that are not available for the user.
 _Restored from quarantine_ - the list of the files restored from the quarantine manually.
 
@@ -696,7 +696,7 @@ Actions — allows to view details and perform actions on the file.
 2. Create a file with the following content:
 
 ```
-\<?php system('wget -V');?\>  
+<?php system('wget -V');?>  
 ```
 ```
  
@@ -745,7 +745,7 @@ Click on a link icon in the Action column to copy the URL to the clipboard.
 ## KernelCare Integration
 
 
-Imunify360 has [KernelCare](https://www.cloudlinux.com/all-products/product-overview/kernelcare) KernelCare integration. To install KernelCare go to the [Settings](/settings/) tab and click _ Install KernelCare_ .
+Imunify360 has [KernelCare](https://www.cloudlinux.com/all-products/product-overview/kernelcare) KernelCare integration. To install KernelCare go to the [Settings](/dashboard/#settings) tab and click _ Install KernelCare_ .
 
 ![](/images/kc_int.jpg)
 
@@ -775,11 +775,11 @@ Read more about KernelCare [on the link](https://www.cloudlinux.com/all-products
 Choose _ Settings_ in the main menu to get to the Imunify360 settings page.
 The following tabs are available:
 
-[General](/general/)
-[Malware](/malware/)
-[Backups](/backups/)
-[Disables Rules](/disabled_rules/)
-[Attributions](/attributions/)
+[General](/dashboard/#general)
+[Malware](/dashboard/#malware)
+[Backups](/dashboard/#backups)
+[Disables Rules](/dashboard/#disabled-rules)
+[Attributions](/dashboard/#attributions)
 
 ### General
 
@@ -876,7 +876,7 @@ Click _Save changes_ button on the bottom of the section to save changes.
 
 
  
-In this section it is possible to control what kind of incidents will be shown in the [Incidents page](/incidents/) .
+In this section it is possible to control what kind of incidents will be shown in the [Incidents page](/dashboard/#incidents) .
 Move the slider to change your preferences.
 
 
@@ -932,7 +932,7 @@ _Automatically scan all modified files_ - enables real-time scanning for modifie
 _Automatically scan any file uploaded using web_ - enables real-time scanning of all the files that were uploaded via http/https. **Note** . It requires [ModSecurity](https://modsecurity.org/) to be installed.
 _Automatically scan any file uploaded using ftp_ - enables real-time scanning of all the files that were uploaded via ftp. **Note** . It requires [Pure-FTPd](https://www.pureftpd.org/project/pure-ftpd) to be used as FTP service.
 _Automatically send suspicious and malicious files for analysis_ —  malicious and suspicious files will be sent to the Imunify360 Team for analysis automatically.
-_Try to restore from backup first_ - allows to restore file as soon as it was detected as malicious from backup if a clean copy exists. If a clean copy does not exist or it is outdated, default action will be applied. See also [CloudLinux Backup](/backups/) .
+_Try to restore from backup first_ - allows to restore file as soon as it was detected as malicious from backup if a clean copy exists. If a clean copy does not exist or it is outdated, default action will be applied. See also [CloudLinux Backup](/dashboard/#backups) .
 _Use backups not older than (days)_ - allows to set the a maximum age of a clean file.
 _Default action on detect_ - configure Malware Scanner actions when detecting malicious activity.
 Delete permanently.
@@ -959,9 +959,9 @@ Click _Save changes_ button to apply all changes.
 
 
 
-[Overview](/overview/)
+[Overview](/dashboard/#overview)
 1.1. Requirements
-[User Interface](/user_interface/)
+[User Interface](/dashboard/#user-interface)
 2.1. How to enable backups
 CloudLinux Backup
 Acronis Backup
@@ -1061,7 +1061,7 @@ To disable backups do the following:
 Go to _Imunify360 → Settings → Backups_ .
 Move the slider to _Disabled_ .
 Imunify360 returns confirmation window.
-Click on _Yes, disable backup_ to disable backups or press Cancel to close the window. Note, that if you use CloudLinux Backup your backup will be still active in CloudLinux Network (CLN). To disable backup totally and terminate billing, please log in to [CLN](https://cln.cloudlinux.com/clweb/login.xhtml) and deactivate CloudLinux Backup manually on the current server.
+Click on _Yes, disable backup_ to disable backups or press Cancel to close the window. Note, that if you use CloudLinux Backup your backup will be still active in CloudLinux Network (CLN). To disable backup totally and terminate billing, please log in to [CLN](https://cln.cloudlinux.com/console/auth/login) and deactivate CloudLinux Backup manually on the current server.
 
 ![](/images/disablebackup.png)
 
@@ -1099,7 +1099,7 @@ Go to _ Imunify360 → Malware Scanner._
 Find the file to restore in the table and click on _cog_ icon then click _Try to restore clean version from backup_ .
 In the pop-up confirm the action by clicking _Yes, restore from backup_ or click _Cancel_ .
 
-You can configure the automatic restore. Please find more details [here](/malware/) .
+You can configure the automatic restore. Please find more details [here](/dashboard/#malware) .
 
 
 ### Disabled Rules

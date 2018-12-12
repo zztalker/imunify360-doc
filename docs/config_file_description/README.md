@@ -56,7 +56,7 @@ MOD_SEC_BLOCK_BY_SEVERITY:
 | | # set a number of repeats of the ModSecurity incident from the same IP for adding it to GrayList|
 | | # set a number of repeats of the ModSecurity incidents that got Access Denied error from the same IP for adding it to GrayList|
 | | # set a period in seconds during which incident from the same IP will be recorded as a repeat|
-| | # set a level of severity for DOS detection sensitivity. Read more [here](/settings/) about severity levels|
+| | # set a level of severity for DOS detection sensitivity. Read more [here](/dashboard/#settings) about severity levels|
 
 ```
 MOD_SEC_BLOCK_BY_CUSTOM_RULE:         

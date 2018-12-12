@@ -13,5 +13,5 @@
 
 **Incident** - a detected event on the server that is qualified as suspicious activity.
 
-**Ignore list** - the list of files and folders that [Malware Scanner](/malware_scanner/) will ignore during automatic and manual scan processes.
+**Ignore list** - the list of files and folders that [Malware Scanner](/dashboard/#malware-scanner) will ignore during automatic and manual scan processes.
 

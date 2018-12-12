@@ -1,3 +1,5 @@
+const urls = require("./urls-mapping.js");
+
 module.exports = {
   base: "/",
   locales: {
@@ -16,9 +18,11 @@ module.exports = {
     // }
   },
   theme: "cloudlinux",
-  // theme: '/Users/prefer/src/cloudlinux-doc-theme', # local path
+  // theme: '/Users/prefer/src/cloudlinux-doc-theme', // local path
 
   themeConfig: {
+    defaultURL: "/introduction/",
+    redirectionMapping: urls,
     sidebarDepth: 2,
     logo: "/logo.svg",
     try_free: "https://www.imunify360.com/trial",

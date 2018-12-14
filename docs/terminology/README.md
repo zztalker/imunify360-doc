@@ -7,11 +7,11 @@
 
 **White List** is a list of IPs that will not be blocked in any case.
 
-**Sensor - ** 3rd party applications and services that serve as agents to detect the suspicious activity of different types. Imunify360 central server also serves as one of the sensors.
+**Sensor** – 3rd party applications and services that serve as agents to detect the suspicious activity of different types. Imunify360 central server also serves as one of the sensors.
 
-**IDS** - the Intrusion Detection System ( [IDS](https://en.wikipedia.org/wiki/Intrusion_detection_system) ) is a software application that monitors a network or systems for malicious activity or policy violations.
+**IDS** – the Intrusion Detection System ([IDS](https://en.wikipedia.org/wiki/Intrusion_detection_system)) is a software application that monitors a network or systems for malicious activity or policy violations.
 
-**Incident** - a detected event on the server that is qualified as suspicious activity.
+**Incident** – a detected event on the server that is qualified as suspicious activity.
 
-**Ignore list** - the list of files and folders that [Malware Scanner](/dashboard/#malware-scanner) will ignore during automatic and manual scan processes.
+**Ignore list** – the list of files and folders that [Malware Scanner](/dashboard/#malware-scanner) will ignore during automatic and manual scan processes.
 

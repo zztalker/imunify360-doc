@@ -76,7 +76,6 @@ MALWARE_SCANNING:
 |-|-|
 | | # allows to enable (true) or disable (false) automatic malicious file restore from backup if a clean copy exists, otherwise `default_action` is applied|
 | | # default action on malicious file detected. Available options: `quarantine` - do not delete and move to quarantine,  `notify` - do not delete and send email notification, `delete` - delete malicious file|
-| | #  allows to enable (true) or disable (false) email notification if file is detected as infected|
 | | # enable (true) or disable (false) real-time scanning for modified files using [inotify](https://en.wikipedia.org/wiki/Inotify) library|
 | | _# enable (true) or disable (false) real-time scanning for files uploaded through PureFTPd_|
 | | _#  enable (true) or disable (false) real-time scanning of all the files_  _that were uploaded via http/https. Note it requires _|

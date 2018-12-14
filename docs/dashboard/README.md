@@ -1,28 +1,29 @@
 # Imunify360 User Interface
 
+Imunify360 dashboard is available directly within your control panel. It displays all the security events and the latest incidents updated every 30 seconds. It allows filtering and selecting events based on various parameters, reviewing the details of the incidents, managing White, Gray, and Black lists, Blocked ports and configuring settings.
 
-Imunify360 dashboard is available directly within your control panel*. It displays all the security events and the latest incidents updated every 30 seconds. It allows filtering and selecting events based on various parameters, reviewing the details of the incidents, managing White, Gray, and Black lists, Blocked ports and configuring settings.
-
-***Note.** _ cPanel, Plesk, and DirectAdmin are supported at the moment. Standalone version are coming soon._
+::: tip Note
+cPanel, Plesk, and DirectAdmin are supported at the moment. Standalone version are coming soon.
+:::
 
 Log in to WHM as an admin and go to Plugins, choose Imunify360 to get to the Imunify360 user interface.
 
 It allows to access:
-[Support](/dashboard/#support) - allows you to contact our support team directly from your Imunify360 User Interface
+* [Support](/dashboard/#support) – allows you to contact our support team directly from your Imunify360 User Interface
 
-[Incidents](/dashboard/#incidents) - the list of all suspicious activity on the server.
+* [Incidents](/dashboard/#incidents) – the list of all suspicious activity on the server.
 
-[Firewall](/dashboard/#firewall) - a dashboard of Black, White, Gray lists and Blocked ports with the ability to manage them.
+* [Firewall](/dashboard/#firewall) – a dashboard of Black, White, Gray lists and Blocked ports with the ability to manage them.
 
-[Malware Scanner](/dashboard/#malware-scanner) - real-time file scanner.
+* [Malware Scanner](/dashboard/#malware-scanner) – real-time file scanner.
 
-[Proactive Defense](/dashboard/#proactive-defense) -  a unique Imunify360 feature that can prevent malicious activity through PHP scripts
+* [Proactive Defense](/dashboard/#proactive-defense) – a unique Imunify360 feature that can prevent malicious activity through PHP scripts
 
-[Reputation Management](/dashboard/#reputation-management) -  analyzing and notifying tool intended to inform about websites blocking and blacklisting.
+* [Reputation Management](/dashboard/#reputation-management) – analyzing and notifying tool intended to inform about websites blocking and blacklisting.
 
-[KernelCare](/dashboard/#kernelcare-integration) - KernelCare current state.
+* [KernelCare](/dashboard/#kernelcare-integration) – KernelCare current state.
 
-[Imunify360 Settings](/dashboard/#settings) - configuring and controlling Imunify360 options.
+* [Imunify360 Settings](/dashboard/#settings) – configuring and controlling Imunify360 options.
 
 
 ## Support
@@ -30,7 +31,7 @@ It allows to access:
 
 This tab allows you to contact our support team directly from your Imunify360 User Interface. You can create a request and attach some files to it.
 
-To contact our support team in Imunify360 User Interface, please click the _Call_ icon in the top right corner of the page.
+To contact our support team in Imunify360 User Interface, please click the _Call_ icon at the top right corner of the page.
 
 ![](/images/contactsupport_zoom70.png)
 
@@ -40,54 +41,54 @@ A support ticket will be created and an email will be sent to a specified email 
 ## Incidents
 
 
-Choose _Incidents_ tab to view and manage the list of all the [incidents](/terminology/) . The table displays a list of detected incidents with all the information about the incidents reasons.
+Choose _Incidents_ tab to view and manage the list of all the [incidents](/terminology/). The table displays a list of detected incidents with all the information about the incidents reasons.
 
 Use filters to show the exact list of incidents:
 
-_Timeframe_ - allows filtering incidents by different time periods.
-_List_ - allows filtering incidents by White, Black, or Gray lists, or showing the incidents from all lists.
-_IP_ - allows showing all the incidents of a proper IP address. Tick _ Description/IP_ checkbox to enable input field where you can enter a proper IP or a part of it and filter the list by clicking on magnifier or pressing Enter.
-_Country _ - allows filtering the incidents by abusers country. Tick _Country_ checkbox to enable input field with auto-complete where you can enter a proper country and  filter the incidents by clicking magnifier or pressing Enter.
+* _Timeframe_ – allows filtering incidents by different time periods.
+* _List_ – allows filtering incidents by White, Black, or Gray lists, or showing the incidents from all lists.
+* _IP_ – allows showing all the incidents of a proper IP address. Tick _Description/IP_ checkbox to enable input field where you can enter a proper IP or a part of it and filter the list by clicking on magnifier or pressing Enter.
+* _Country_ – allows filtering the incidents by abusers country. Tick _Country_ checkbox to enable input field with auto-complete where you can enter a proper country and  filter the incidents by clicking magnifier or _Enter_.
 
 ![](/images/tloi_zoom86.png)
 
-Switch _Auto-refresh_ to enable or disable automatic refresh of the incidents in the table without reloading the web-page.
+Slide _Auto-refresh_ to enable or disable automatic refresh of the incidents in the table without reloading the web page.
 Set the number of incidents to be shown on a page by choosing the number of items per page in the bottom right of the page.
 
 ![](/images/auto_refresh_zoom92.png)
 
 The list of incidents contains the following information:
 
-_Date_ - the time when the incident happened.
+* _Date_ – the time when the incident happened.
 _IP_ - the IP address of the abuser.
 There is a color indication for IP address.
-`o` A gray bubble means that this IP address is currently in the gray list (so, every connection from this IP address will redirect to the CAPTCHA).
-`o` A blue bubble means that this IP address is currently in no one list (white list/gray list/black list). IP is not blocked.
-`o` A white bubble means that this IP address is currently in the white list. IP will never be blocked by Imunify360.
-`o` A black bubble means that this IP address is currently in the black list. And access from this IP is totally blocked without ability to unblock by the CAPTCHA.
-`o` No bubble is shown when this incident doesn’t contain IP address.
-_Country_ - country origin of the abuser IP address.
-_№ of Times_ - the number of times the abuser tried to repeat the action.
-_Event _ - description of the event or suspicious activity (as it is described by OSSEC and Mod_Security sensors).
-_Severity_ - severity level of the incidents (as it is estimated in [OSSEC severity levels](http://ossec-docs.readthedocs.io/en/latest/manual/rules-decoders/rule-levels.html) and [Mod_Security severity levels](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual#severity) ). The color of severity means:
+  * A gray bubble means that this IP address is currently in the gray list (so, every connection from this IP address will redirect to the CAPTCHA).
+  * A blue bubble means that this IP address is currently in no one list (white list/gray list/black list). IP is not blocked.
+  * A white bubble means that this IP address is currently in the white list. IP will never be blocked by Imunify360.
+  * A black bubble means that this IP address is currently in the black list. And access from this IP is totally blocked without ability to unblock by the CAPTCHA.
+  * No bubble is shown when this incident doesn’t contain IP address.
+* _Country_ – country origin of the abuser IP address.
+* _# of Times_ – the number of times the abuser tried to repeat the action.
+* _Event_ – description of the event or suspicious activity (as it is described by OSSEC and Mod_Security sensors).
+* _Severity_ – severity level of the incidents (as it is estimated in [OSSEC severity levels](http://ossec-docs.readthedocs.io/en/latest/manual/rules-decoders/rule-levels.html) and [Mod_Security severity levels](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual#severity)). The color of severity means:
 
-`o` Green - Mod_Security levels 7-5, OSSEC levels 00-03;
-`o` Orange - Mod_Security level 4, OSSEC levels 04-10;
-`o` Red - Mod_Security levels 3-0, OSSEC levels 11-15.
+  * Green – Mod_Security levels 7-5, OSSEC levels 00-03
+  * Orange – Mod_Security level 4, OSSEC levels 04-10
+  * Red – Mod_Security levels 3-0, OSSEC levels 11-15
 
 ![](/images/list.jpg)
 
-Click on an Incident to expand the detailed information.
+Click an incident to expand the detailed information.
 
 ![](/images/expand.jpg)
 
-Actions available for the Incidents:
+**Actions available for the Incidents:**
 
-Disabling the rule of the incident and add it to the list of Disabled rules. Click ban icon in a proper incident row and confirm the action:
+* Disabling the rule of the incident and add it to the list of Disabled rules. Click _Ban_ icon in a proper incident row and confirm the action.
 
 ![](/images/disable_ossec_zoom85.png)
 
-Adding an IP to the Black or White list, click cog icon and choose the action:
+* Adding IP to the Black or White list. Click _Cog_ icon and choose the action.
 
 ![](/images/move_button_zoom94.png)
 
@@ -134,7 +135,7 @@ _1. Enter IP_ - add IP or subnet in [CIDR notation](https://en.wikipedia.org/wik
 
 _2. Enter a comment_ - add a comment to the IP or subnet (optional).
 
-3. Choose where to add the IP or subnet to the Black or to White List.
+1. Choose where to add the IP or subnet to the Black or to White List.
 
 3.1 For White list it is possible to tick _Full Access_ checkbox to make this IP or subnet ignore the rules in Blocked ports. The IPs with full access have a crown icon in the IP column. Note that it is possible to grant or remove full access afterwards in the table, just click cog icon and choose _Grant Full Access_ to grant or _Remove Full Access_ to remove it.
 

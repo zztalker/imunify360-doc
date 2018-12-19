@@ -1,9 +1,6 @@
 const urls = require("./urls-mapping.js");
 
 module.exports = {
-  configureWebpack: {
-    devtool: 'source-map'
-  },
   base: "/",
   locales: {
     // The key is the path for the locale to be nested under.

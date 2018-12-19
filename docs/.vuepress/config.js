@@ -17,7 +17,7 @@ module.exports = {
     // "/ru/": {
     //   lang: "ru",
     //   title: "Документация",
-    //   description: "Документация Kernelcare"
+    //   description: "Документация Imunify360"
     // }
   },
   theme: "cloudlinux",
@@ -35,8 +35,8 @@ module.exports = {
     logo: "/logo.svg",
     try_free: "https://www.imunify360.com/trial",
     bottomLinks: [
-      { text: "How to", url: "#" },
-      { text: "Getting started", url: "#" },
+      { text: "How to", url: "https://cloudlinux.zendesk.com/hc/sections/115001344329-How-do-I" },
+      { text: "Getting started", url: "https://imunify360.com/getting-started" },
       {
         text: "Contact support",
         url: "https://cloudlinux.zendesk.com/hc/en-us/requests/new"
@@ -90,8 +90,7 @@ module.exports = {
               "/command_line_interface/",
               "/uninstall/",
               "/faq_and_known_issues/",
-              "/whmcs_plugin/",
-              "/downloading_documentation/"
+              "/whmcs_plugin/"
             ]
           }
         ]

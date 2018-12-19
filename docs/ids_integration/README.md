@@ -57,7 +57,7 @@ In this case, Imunify360 will block IPs only by mod_security events with high se
 
    This type of scanning can be always run by Imunify360 and CXS separately. No special actions required.
 
-::: warning Note
+::: tip Note
 Imunify360 doesn’t make any imports from CXS.
 :::
 

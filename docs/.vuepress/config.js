@@ -1,6 +1,9 @@
 const urls = require("./urls-mapping.js");
 
 module.exports = {
+  configureWebpack: {
+    devtool: 'source-map'
+  },
   base: "/",
   locales: {
     // The key is the path for the locale to be nested under.
@@ -9,7 +12,7 @@ module.exports = {
       lang: "en-US", // this will be set as the lang attribute on <html>
       title: "Documentation",
       description: "Kernelcare documentation"
-    },
+    }
     // TODO: temporary!
     // "/ru/": {
     //   lang: "ru",
@@ -21,6 +24,11 @@ module.exports = {
   // theme: '/Users/prefer/src/cloudlinux-doc-theme', // local path
 
   themeConfig: {
+    repo: 'cloudlinux/imunify360-doc',
+    editLinks: true,
+    docsBranch: 'dev',
+    docsDir: 'docs',
+
     defaultURL: "/introduction/",
     redirectionMapping: urls,
     sidebarDepth: 2,
@@ -126,4 +134,4 @@ module.exports = {
       }
     }
   }
-};
+}

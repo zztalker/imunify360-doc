@@ -1,4 +1,4 @@
-# Hosting Panels Firewall Rulsets Specific Settings
+# Hosting Panels Firewall Rulesets Specific Settings
 
 
 This section includes specific settings for each hosting panel that Imunify360 supports. It is important to follow these instructions to setup Imunify360 plugin properly.

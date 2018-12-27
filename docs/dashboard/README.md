@@ -693,7 +693,15 @@ The _Ignore List_ table includes the following columns:
 2. Create a file with the following content:
 
 ``` PHP
-<?php system('wget -V');?>
+<?php
+$i=0;
+$a=base64_decode("t".$i);
+$b=str_replace("a","b", $a);
+print "Step 1<br>\n";
+$i++;
+$data = @curl_exec($handle);
+print "Step 2<br>\n";
+?>
 ```
 3. Place this file on the server.
 4. Call a test page with the script from the point 2.

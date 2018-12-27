@@ -46,6 +46,8 @@ Available commands:
 |`version`|Show version|
 |`whitelist`|Return/Edit operator for IP and domain white list|
 |`proactive`<sup>3.7.0+</sup>|Allows to manage Proactive Defense feature|
+|`check modsec directives `<sup>Beta 3.9.0+ cPanel</sup>|Allows to check whether the global ModSecurity<br>directives have values recommended by Imunify360|
+|`fix modsec directives `<sup>Beta 3.9.0+ cPanel</sup>|Fixes the non-recommended values (sets them to ones<br>recommended by Imunify360)|
 
 Optional arguments for the commands:
 
@@ -220,7 +222,7 @@ Optional arguments:
 |`-h, --help`|show this help message|
 |`--json`|return data in JSON format|
 |`--days`|cleanups incidents from database, if there are more than specified days quantity<br>Example: `--days 5`.<br>this option will cause deletion of all incidents that are older than 5 days from today|
-|`--limi|`|leaves only limited number of the incidents in the database and deletes the others<br>Example: `--limit 5000`.<br>this option will leave only 5000 new incidents and delete the others|
+|`--limit`|leaves only limited number of the incidents in the database and deletes the others<br>Example: `--limit 5000`.<br>this option will leave only 5000 new incidents and delete the others|
 
 ## Checkdb
 
@@ -883,7 +885,52 @@ It means that Proactive Defense will not analyze this file according to this rul
    ```
    imunify360-agent proactive ignore delete path <path to file 1> <path to file 2>
    ```
+## Check modsec directives
 
+::: tip Note
+Beta Imunify360 version 3.9.0+ cPanel only
+:::
+
+Allows to check whether the global ModSecurity directives have values recommended by Imunify360. 
+
+
+Usage:
+
+```
+imunify360-agent check modsec directives [--optional arguments]
+```
+
+Optional arguments:
+
+| | |
+|-|-|
+|`-h, --help`|Show this help message.|
+|`--json`|Return data in JSON format.|
+|`--verbose, -v`|Allows to return data in good-looking view if option `--json` is used.|
+
+## Fix modsec directives
+
+::: tip Note
+Beta Imunify360 version 3.9.0+ cPanel only
+:::
+
+Fixes the non-recommended values (sets them to ones
+recommended by Imunify360)
+
+
+Usage:
+
+```
+imunify360-agent fix modsec directives [--optional arguments]
+```
+
+Optional arguments:
+
+| | |
+|-|-|
+|`-h, --help`|Show this help message.|
+|`--json`|Return data in JSON format.|
+|`--verbose, -v`|Allows to return data in good-looking view if option `--json` is used.|
 
 
 

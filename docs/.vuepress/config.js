@@ -8,7 +8,7 @@ module.exports = {
     "/": {
       lang: "en-US", // this will be set as the lang attribute on <html>
       title: "Documentation",
-      description: "Kernelcare documentation"
+      description: "Imunify360 documentation"
     }
     // TODO: temporary!
     // "/ru/": {
@@ -78,9 +78,9 @@ module.exports = {
               "/billing/",
               "/installation/",
               "/ids_integration/",
+              "/webshield/",
               "/backup_providers_integration/",
               "/localization/",
-              "/captcha/",
               "/dashboard/",
               "/hosting_panels_specific_settin/",
               "/config_file_description/",
@@ -95,7 +95,7 @@ module.exports = {
       "/ru/": {
         selectText: "Выберите язык",
         label: "Русский",
-        editLinkText: "Отредактировать на GitHub",
+        editLinkText: "Редактировать",
         serviceWorker: {
           updatePopup: {
             message: "Новый контент доступен",
@@ -113,17 +113,16 @@ module.exports = {
               "/ru/billing/",
               "/ru/installation/",
               "/ru/ids_integration/",
+              "/ru/webshield/",
               "/ru/backup_providers_integration/",
               "/ru/localization/",
-              "/ru/captcha/",
               "/ru/dashboard/",
               "/ru/hosting_panels_specific_settin/",
               "/ru/config_file_description/",
               "/ru/command_line_interface/",
               "/ru/uninstall/",
               "/ru/faq_and_known_issues/",
-              "/ru/whmcs_plugin/",
-              "/ru/downloading_documentation/"
+              "/ru/whmcs_plugin/"
             ]
           }
         ]

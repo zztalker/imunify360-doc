@@ -109,6 +109,14 @@ OK
 imunify360-full-apache
 ```
  
+::: tip Note
+Please make sure that _Update rule sets_ option is disabled in your Plesk _Web Application Firewall_ interface on the _Settings_ tab.
+:::
+::: tip Note 
+Note that in the current version of Plesk, _Update rule sets_ option is available if one of the _Atomic Basic ModSecurity/Advanced ModSecurity Rules by Atomicorp/Comodo ModSecurity_ Rule Set is enabled.
+:::
+
+
 ## DirectAdmin
 
 

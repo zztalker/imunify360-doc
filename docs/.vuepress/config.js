@@ -8,7 +8,7 @@ module.exports = {
     "/": {
       lang: "en-US", // this will be set as the lang attribute on <html>
       title: "Documentation",
-      description: "Kernelcare documentation"
+      description: "Imunify360 documentation"
     }
     // TODO: temporary!
     // "/ru/": {
@@ -122,8 +122,7 @@ module.exports = {
               "/ru/command_line_interface/",
               "/ru/uninstall/",
               "/ru/faq_and_known_issues/",
-              "/ru/whmcs_plugin/",
-              "/ru/downloading_documentation/"
+              "/ru/whmcs_plugin/"
             ]
           }
         ]

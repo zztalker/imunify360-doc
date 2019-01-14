@@ -9,31 +9,37 @@ module.exports = {
       lang: "en-US", // this will be set as the lang attribute on <html>
       title: "Documentation",
       description: "Imunify360 documentation"
+    },
+    "/ru/": {
+      lang: "ru",
+      title: "Документация",
+      description: "Документация Imunify360"
     }
-    // TODO: temporary!
-    // "/ru/": {
-    //   lang: "ru",
-    //   title: "Документация",
-    //   description: "Документация Imunify360"
-    // }
   },
   theme: "cloudlinux",
   // theme: '/Users/prefer/src/cloudlinux-doc-theme', // local path
 
   themeConfig: {
-    repo: 'cloudlinux/imunify360-doc',
+    repo: "cloudlinux/imunify360-doc",
     editLinks: true,
-    docsBranch: 'dev',
-    docsDir: 'docs',
+    docsBranch: "dev",
+    docsDir: "docs",
 
+    translationSource: 'docs.imunify360.com',
     defaultURL: "/introduction/",
     redirectionMapping: urls,
     sidebarDepth: 2,
     logo: "/logo.svg",
     try_free: "https://www.imunify360.com/trial",
     bottomLinks: [
-      { text: "How to", url: "https://cloudlinux.zendesk.com/hc/sections/115001344329-How-do-I" },
-      { text: "Getting started", url: "https://imunify360.com/getting-started" },
+      {
+        text: "How to",
+        url: "https://cloudlinux.zendesk.com/hc/sections/115001344329-How-do-I"
+      },
+      {
+        text: "Getting started",
+        url: "https://imunify360.com/getting-started"
+      },
       {
         text: "Contact support",
         url: "https://cloudlinux.zendesk.com/hc/en-us/requests/new"
@@ -129,4 +135,4 @@ module.exports = {
       }
     }
   }
-}
+};

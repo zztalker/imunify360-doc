@@ -78,9 +78,9 @@ module.exports = {
               "/billing/",
               "/installation/",
               "/ids_integration/",
+              "/webshield/",
               "/backup_providers_integration/",
               "/localization/",
-              "/captcha/",
               "/dashboard/",
               "/hosting_panels_specific_settin/",
               "/config_file_description/",
@@ -95,7 +95,7 @@ module.exports = {
       "/ru/": {
         selectText: "Выберите язык",
         label: "Русский",
-        editLinkText: "Отредактировать на GitHub",
+        editLinkText: "Редактировать",
         serviceWorker: {
           updatePopup: {
             message: "Новый контент доступен",
@@ -113,9 +113,9 @@ module.exports = {
               "/ru/billing/",
               "/ru/installation/",
               "/ru/ids_integration/",
+              "/ru/webshield/",
               "/ru/backup_providers_integration/",
               "/ru/localization/",
-              "/ru/captcha/",
               "/ru/dashboard/",
               "/ru/hosting_panels_specific_settin/",
               "/ru/config_file_description/",

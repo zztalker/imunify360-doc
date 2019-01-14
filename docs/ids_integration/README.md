@@ -60,18 +60,3 @@ In this case, Imunify360 will block IPs only by mod_security events with high se
 ::: tip Note
 Imunify360 doesn’t make any imports from CXS.
 :::
-
-## Cloudflare support <sup>3.8+</sup>
-
-**_Starting from version 3.8, Imunify360 supports graylisting IP addresses behind Cloudflare._**
-
-This is implemented by using Imunify360 WebShield reverse proxy. All traffic from Cloudflare IP addresses is redirected to the WebShield using iptables rules.
-WebShield detects real visitor's IP address using CF-Connecting-IP and X-Forwarded-For headers, then forwards request to the backend for the valid IP addresses and shows captcha to graylisted IP addresses.
-
-Cloudflare support is disabled by default. To enable it, add the following section to the Imunify360 config file (_/etc/sysconfig/imunify360/imunify360.config_):
-
-```
-WEBSHIELD:
-  known_proxies_support: true
-```
-

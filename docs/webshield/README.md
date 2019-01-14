@@ -1,5 +1,6 @@
-# Captcha
+# WebShield
 
+## Captcha
 
 The CAPTCHA is a feature intended to distinguish human from machine input and protect websites from the spam and different types of automated abuse. Imunify360 uses [reCAPTCHA](https://www.google.com/recaptcha/intro/invisible.html) service.
 
@@ -23,7 +24,7 @@ The reCaptcha supports localization. Depending on user’s browser settings, reC
 
 ![](/images/local.jpg)
 
-## Captcha page customization
+### Captcha page customization
 
 To modify footer, header or body of the CAPTCHA use the templates in `/usr/share/imunify360-webshield/captcha/templates/`.
 
@@ -37,7 +38,7 @@ There are three files:
 
 To find information on supported browsers follow this link [https://support.google.com/recaptcha/answer/6223828](https://support.google.com/recaptcha/answer/6223828).
 
-## Update Captcha localizations
+### Update Captcha localizations
 ::: tip Note
 Custom Captcha localization is available starting from Imunify360 version 2.6.0 and later.
 :::
@@ -77,6 +78,43 @@ service imunify360-webshield restart
 ```
 
 6. Block yourself (remove your IP from Imunify360 White List and try to log in to the server via ssh with wrong password until it blocks you). Then go to website and log in. Captcha should appear. Set Polish language and assert that new text is displayed.
+
+## CDN Support <sup>3.8+</sup>
+	
+Starting from version 3.8 Imunify360 correctly graylists and blocks IPs behind Cloudflare and other CDNs (see [here](/webshield/#supported-cdn-providers) for the full list).
+	
+Imunify360 passes all requests from CDN through WebShield, and uses CF-Connecting-IP and X-Forwarded-For headers to identify real IPs.
+	
+The feature is disabled by default in Imunify360 version 3.8 but will be enabled in the future versions.
+	
+To enable it now, add the following section to the Imunify360 config file (_/etc/sysconfig/imunify360/imunify360.config_):
+	
+```
+WEBSHIELD:
+ known_proxies_support: true
+```
+And restart WebShield
+For EL6:
+```
+service imunify360-webshield restart
+```
+For other systems:
+```
+systemctl restart imunify360-webshield
+```
+	
+::: tip Note
+If you are using cPanel/EasyApache3, Imunify360 will not automatically deploy _mod_remoteip_, and log files will show local server IP for visitors coming from CDN. EasyApache 3 is EOL in December 2018, and we don't plan to add automated _mod_remoteip_ setup and configuration for it.
+:::
+:::tip Note
+For cPanel/EasyApache 4, Plesk, DirectAdmin and LiteSpeed _mod_remoteip_ will be automatically installed and configured.
+:::
+	
+#### Supported CDN providers:
+
+* Cloudflare: December 2018
+* MaxCDN: December 2018
+* KeyCDN is not supported at the moment, ETA is not yet available.
 
 
 

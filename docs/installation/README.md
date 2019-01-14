@@ -4,7 +4,8 @@
 * CentOS
 * RHEL
 * CloudLinux OS 6 and 7
-* Ubuntu 16.04 LTS only <sup>Imunify360 v. 3.6+</sup>. Ubuntu 18.04 will be added soon.
+* Ubuntu 16.04 LTS only <sup>3.6+</sup>.
+* Ubuntu 18.04 <sup>Beta 3.9+</sup>.
 
 **Virtualization**
 
@@ -38,7 +39,7 @@ _ISPManager, non-panel - soon after._
 |-|-|
 |**IDS name**| **Comment**|
 |LiteSpeed | Integrates with version 5.1 or higher.|
-|EasyApach3 | Works only in cPanel.|
+|EasyApache3 | Works only in cPanel.|
 |EasyApache4 | Works only in cPanel.|
 |CSF | Integrated with CSF, more details [here](/ids_integration/#csf-integration).|
 |CWAF Agent | No problems detected.|

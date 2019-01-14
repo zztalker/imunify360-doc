@@ -412,14 +412,20 @@ It is possible to scan a specific directory for malware. Go to _Malware Scanner_
 
    * _Filename mask_. It allows to set file type for scanning (for example, `*.php` – all the files with extension php). Default setting is `*` which means all files without restriction.
    * _Ignore mask_ . It allows to set file type to ignore (for example, `*.html` – will ignore all file with extension html).
-
-2. Click _Start_.
+   * _Intensity_. Defines the priority and resources consumption for scanning without decreasing efficiency:
+	     * Low – low priority and resources consumption
+	     * Moderate – moderate priority and resources consumption
+	     * High – high priority and resources consumption
+	* _Follow symlinks<sup> 3.9.0+</sup>_. Follow all symlinks within the folder to scan. 
 
 ![](/images/malwarescannerondemandscan_zoom70.png)
+
+2. Click _Start_.
 
 At the top right corner Malware Scanner progress and status are displayed:
 * Scanner is stopped – means that there is no scanning process running.
 * Scanning…% – means that the scanner is working at the moment. A percentage displays the scanning progress. You can also see the scanning status beneath the _Mask_ or _Advanced options_.
+  
 ![](/images/ondemandscannerprogressbar_zoom70.png)
 
 After Malware Scanner stops on-demand scanning you will see the results in the table below with the following information:
@@ -512,7 +518,7 @@ To do mass action tick several checkboxes or one in the table header to perform 
 
 ![](/images/malwarescannerrestorefrombackupmass_zoom70.png)
 
-#### Cleanup files from malicious code<sup> 3.7.1+ Beta</sup>
+#### Cleanup files from malicious code<sup> 3.7.1+</sup>
 
 This feature allows users to cleanup infected files from malicious code or to remove malicious files.
 Click _Cleanup_ icon in the file line. Cleanup confirmation pop-up opens.
@@ -800,6 +806,7 @@ Go to _Imunify360 → Settings → General_. The following sections are availabl
 * [DoS Protection](/dashboard/#dos-protection)
 * [Auto White List](/dashboard/#auto-white-list)
 * [Incidents Logging](/dashboard/#incidents-logging)
+* [WebShield](/dashboard/#webshield)
 * [Error Reporting](/dashboard/#error-reporting)
 
 #### Installation
@@ -861,11 +868,14 @@ Click _Save changes_ button on the bottom of the section to save changes.
 
 #### DoS Protection
 
-DoS Protection section allows to enable or disable DoS protection. Tick checkbox _Enable Dos Protection_ .
+DoS Protection section allows to enable or disable DoS protection. DoS protection works by counting connections from each remote IP address per local port separately.
+Tick checkbox _Enable Dos Protection_.
 It is possible to configure how Imunify360 will behave:
 
-* _Max Connections_ – allows to setup the number of simultaneous connections allowed before IP will be blocked.
-* _Check delay_ – allows to setup period in seconds between each DoS detection system will be activated and will check a server for DoS attack.
+* _Max Connections_ – allows to setup the number of simultaneous connections allowed before IP will be blocked. Cannot be set lower than 100.
+* _Check delay_ – allows to setup period in seconds between each DoS detection system activation that will check a server for DoS attack. Also, it is possible to set different limits for different local ports by editing the configuration file directly.
+	
+![](/images/DosProtection.png)
 
 Click _Save changes_ button on the bottom of the section to save changes.
 
@@ -878,6 +888,7 @@ In _Timeout_ field enter the number of minutes – the IP will be removed from t
 0 means adding IP to the White List permanently.
 :::
 
+![](/images/auto-whitelist.png)
 
 Click _Save changes_ button on the bottom of the section to save changes.
 
@@ -913,11 +924,23 @@ Autocleanup configuration allows to keep the Incidents page clean by default. Th
 * _Keep maximum incidents count_ – set maximum quantity of the incidents to keep on the server
 * _Auto-refresh time for Incidents page_ – set Incidents page auto-refresh time in seconds
 
+![](/images/incidents-logging.png)
+	
+Click _Save changes_ button on the bottom of the section to save changes.
+	
+#### WebShield
+
+Tick _Detect IPs behind CDN_ checkbox to allow to recognize and block IPs with suspicious activity behind Cloudflare and MaxCDN.
+	
+![](/images/webshield.png)
+
 Click _Save changes_ button on the bottom of the section to save changes.
 
 #### Error Reporting
  
 Tick _Enable Sentry error reporting_ checkbox to send reports to Imunify360 error reports server.
+
+![](/images/error-reporting.png)
 
 Click _Save changes_ button on the bottom of the section to save changes.
 

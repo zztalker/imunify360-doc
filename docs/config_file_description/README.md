@@ -20,8 +20,16 @@ In the config file it is possible to set up Imunify360 configuration. The follow
 </tr>
 <tr>
 <td width="250px;">enabled: false</td><td># allows to enable (true) or disable (false) DOS detection</td></tr>
-<tr><td>timeout: 30</td><td># set in minutes how often DOS detection should be launched</td></tr>
-<tr><td>max_connections: 250</td><td># set the maximum simultaneous connections before IP will be blocked</td></tr>
+<tr><td>interval: 30</td><td># interval in seconds between DoS detection system activation</td></tr>
+<tr><td>default_limit: 250</td><td># maximum default limit of connections from remote IP to local port before DoS protection will be triggered. Cannot be set lower than 100</td></tr>
+<tr>
+<td>port_limits:
+</td><td># allows to set limits per local port</td>
+</tr>
+<tr>
+<td>80: 150
+</td><td># limit on port 80 is set to 150 connections</td>
+</tr>
 <tr>
 <th colspan="2" align="left">INCIDENT_LOGGING:</th>
 </tr>
@@ -114,5 +122,8 @@ to request CAPTCHA again</td></tr>
 <th colspan="2" align="left">BLOCKED_PORTS:</th></tr>
 <tr><td>default_mode: allowed</td>
 <td># defines the default state of ports which is not explicitly set by user (<em>denied</em> by default or <em>allowed</em> by default). Currently only <em>allowed</em> is supported</td></tr>
- 
+<tr>
+<th colspan="2" align="left">WEBSHIELD:</th></tr>
+<tr><td>known_proxies_support: true</td>
+<td># enable CDN support, treat IPs behind CDN as any other IPs</td></tr>
  </table>

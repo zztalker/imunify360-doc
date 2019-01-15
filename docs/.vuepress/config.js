@@ -78,7 +78,6 @@ module.exports = {
             buttonText: "Refresh"
           }
         },
-        // algolia docsearch options for current locale
         algolia: {},
 
         sidebar: [

@@ -968,7 +968,7 @@ Read [CXS integration](/ids_integration/#cxs-integration) documentation carefull
   It requires [Pure-FTPd](https://www.pureftpd.org/project/pure-ftpd) to be used as FTP service.
   :::
 * _Automatically send suspicious and malicious files for analysis_ – malicious and suspicious files will be sent to the Imunify360 Team for analysis automatically.
-* _Show ClamAV scanning results_ – shoiw ClamAV scanning results in _Malware → Users/Files_ tab.
+* _Show ClamAV scanning results_ – show ClamAV scanning results in _Users/Files_ tab.
 * _Try to restore from backup first_ – allows to restore file as soon as it was detected as malicious from backup if a clean copy exists. If a clean copy does not exist or it is outdated, default action will be applied. See also [CloudLinux Backup](/dashboard/#backups).
 * _Use backups not older than (days)_ – allows to set the a maximum age of a clean file.
 * _Default action on detect_ – configure Malware Scanner actions when detecting malicious activity:

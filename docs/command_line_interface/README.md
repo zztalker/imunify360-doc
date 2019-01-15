@@ -892,7 +892,7 @@ It means that Proactive Defense will not analyze this file according to this rul
 Beta Imunify360 version 3.9.0+ cPanel only
 :::
 	
-Allows to check whether the global ModSecurity directives have values recommended by Imunify360. 
+Allows to check whether the global [ModSecurity directives](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual-%28v2.x%29#Configuration_Directives) have values recommended by Imunify360. 
 	
 Usage:
 	

@@ -1,6 +1,6 @@
 ---
-title: FAQ and Known Issues
+title: ЧАВО и часто задаваемые вопросы
 ---
-
+<gtranslate-io>
 # FAQ and Known Issues
-
+</gtranslate-io>

@@ -1,7 +1,7 @@
 ---
-title: Backup Providers Integration
+title: Интеграция с backup провайдерами
 ---
-
+<gtranslate-io>
 # Backup Providers Integration
 
 ## Overview
@@ -11,4 +11,4 @@ title: Backup Providers Integration
 ## Using as Library
 
 ## Creating Custom Backup Backend Plugin
-
+</gtranslate-io>

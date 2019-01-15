@@ -1,7 +1,7 @@
 ---
-title: Imunify360 User Interface
+title: Интерфейс пользователя
 ---
-
+<gtranslate-io>
 # Imunify360 User Interface
 
 ## Support
@@ -33,4 +33,4 @@ title: Imunify360 User Interface
 ### Disabled Rules
 
 ### Attributions
-
+</gtranslate-io>

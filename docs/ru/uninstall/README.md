@@ -1,6 +1,6 @@
 ---
-title: Uninstall
+title: Удаление
 ---
-
+<gtranslate-io>
 # Uninstall
-
+</gtranslate-io>

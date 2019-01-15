@@ -1,7 +1,7 @@
 ---
-title: Imunify360 WHMCS Plugin
+title: Imunify360 WHMCS Плагин
 ---
-
+<gtranslate-io>
 # Imunify360 WHMCS Plugin
 
 ## Overview
@@ -37,4 +37,4 @@ title: Imunify360 WHMCS Plugin
 ###  Add-on Licenses List
 
 ## Common Problems
-
+</gtranslate-io>

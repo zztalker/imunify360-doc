@@ -1,6 +1,13 @@
 const urls = require("./urls-mapping.js");
 
 module.exports = {
+  configureWebpack: {
+    resolve: {
+      alias: {
+        'vue$': 'vue/dist/vue.esm.js'
+      }
+    }
+  },
   base: "/",
   locales: {
     // The key is the path for the locale to be nested under.
@@ -101,7 +108,7 @@ module.exports = {
       "/ru/": {
         selectText: "Выберите язык",
         label: "Русский",
-        editLinkText: "Отредактировать на GitHub",
+        editLinkText: "Отредактировать",
         serviceWorker: {
           updatePopup: {
             message: "Новый контент доступен",

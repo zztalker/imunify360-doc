@@ -17,10 +17,10 @@ Imunify360 provides:
 
  * Web Applications Sandboxing (coming soon) - creating safety sandboxes around the applications, preventing a hacker from injecting malware, defacing a web-site, or escalating privileges.
 
-If a user violates Imunify360 security rules (trying to enter a wrong password, etc.), then Imunify360 will automatically block the access to this user IP-address, adding the IP-address to the Gray List.
+If a user violates Imunify360 security rules (trying to enter a wrong password, etc.), then Imunify360 will automatically block the access to this user IP-address, adding the IP-address to the <span class="notranslate">Gray List</span>.
 
-If, after that, a user will try to access the HTTP port (#80), he will see the [CAPTCHA](/captcha/). After entering the CAPTCHA correctly, Imunify360 will remove that user from the Gray List. In a case of repeated violation, the IP address will be automatically added to the Gray List again.
+If, after that, a user will try to access the HTTP port (#80), he will see the [CAPTCHA](/webshield/#captcha). After entering the CAPTCHA correctly, Imunify360 will remove that user from the <span class="notranslate">Gray List</span>. In a case of repeated violation, the IP address will be automatically added to the <span class="notranslate">Gray List</span> again.
 
-An administrator can remove any IP-address from the Gray List and add to the White List if needed. In this case, the user will not be blocked when attempting to violate Imunify360 security rules.
+An administrator can remove any IP-address from the <span class="notranslate">Gray List</span> and add to the <span class="notranslate">White List</span> if needed. In this case, the user will not be blocked when attempting to violate Imunify360 security rules.
 
 

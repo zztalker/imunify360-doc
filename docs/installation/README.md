@@ -141,6 +141,17 @@ imunify360-agent register YOUR_KEY
 
 Where <span class="notranslate">`YOUR_KEY`</span> is your activation key.
 
+
+If you have IP-based license, you can use the following command:
+
+<div class="notranslate">
+
+```
+imunify360-agent register IPL
+```
+
+</div>
+
 ## Update Instructions
 
 

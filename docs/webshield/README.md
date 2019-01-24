@@ -1,5 +1,4 @@
 # WebShield
-
 ## Captcha
 
 The CAPTCHA is a feature intended to distinguish human from machine input and protect websites from the spam and different types of automated abuse. Imunify360 uses [reCAPTCHA](https://www.google.com/recaptcha/intro/invisible.html) service.

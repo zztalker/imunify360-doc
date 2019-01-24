@@ -1,6 +1,6 @@
-# <span class="notranslate">IDS</span> Integrations
+# IDS Integrations
 
-## <span class="notranslate">CSF</span> Integration
+## CSF Integration
 
 
 <span class="notranslate">[ConfigServer Security & Firewall (CSF)](https://www.configserver.com/cp/csf.html)</span> integration is intended to allow to use <span class="notranslate">CSF</span> along with Imunify360.
@@ -36,7 +36,7 @@ In this case, Imunify360 will block IPs only by <span class="notranslate">mod_se
 
 
 
-## <span class="notranslate">CXS</span> Integration
+## CXS Integration
 
 
 <span class="notranslate">[ConfigServer eXploit Scanner](https://configserver.com/cp/cxs.html) (CXS)</span> has different types of malware scanning, which affects <span class="notranslate">Imunify360 Malware Scanner</span> functionality. Below we describe how to make <span class="notranslate">Imunify360 Malware Scanner</span> work properly. These functionalities can be configured at <span class="notranslate">[Malware Scanner settings](/dashboard/#settings)</span> page, but <span class="notranslate">CXS</span> itself must be configured  as follows:

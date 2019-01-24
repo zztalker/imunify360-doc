@@ -1,7 +1,9 @@
 # Localization
 
 
-Starting from version 3.8.0, Imunify360 supports the following languages in addition to default (en-US):
+Starting from version 3.8.0, Imunify360 supports the following languages in addition to default (<span class="notranslate">en-US</span>):
+
+<div class="notranslate">
 
 * de-DE
 * es-ES
@@ -13,6 +15,8 @@ Starting from version 3.8.0, Imunify360 supports the following languages in addi
 * ru-RU
 * pt-BR
 * zh-CN
+
+</div>
 
 ## How to perform a translation to your own language using our language file
 
@@ -31,6 +35,6 @@ You can use this tool to simplify the process: [https://translation-manager-86c3
 
 Send the translated version to us and we will gladly include it in one of the nearest releases of Imunify360.
 
-Captcha localization is described in the [Captcha](/captcha/) article.
+Captcha localization is described in the [Captcha](/webshield/#captcha) article.
 
 

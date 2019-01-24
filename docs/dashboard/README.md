@@ -404,7 +404,7 @@ Please find more details in the [Malware Scanner settings](/dashboard/#malware) 
 
 ### On-demand file scanner
 
-It is possible to scan a specific directory for malware. Go to _Malware Scanner_ page and choose _On-demand scan_ tab. Then proceed the following steps:
+It is possible to scan a specific directory for malware. Go to _Malware Scanner_ page and choose _Scan_ tab. Then proceed the following steps:
 
 1. Enter a folder name you need to scan in the _Folder to scan_ field. Start typing with the slash `/`.
 

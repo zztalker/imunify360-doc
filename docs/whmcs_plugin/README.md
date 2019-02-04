@@ -58,30 +58,34 @@ In this section we will show you how to set up our products.
 2. Upload archive to your WHMCS root folder and extract it. Files should automatically jump into their places.
 3. Run the following script:
 
+<div class="notranslate">
+
 ```
 php <whmcs_root>/clDeploy.php --migrate
 ```
 
+</div>
+
 ::: tip Note
-If your hosting requires specific files permissions, change them accordingly in the folder: `<whmcs_root>/modules/servers/CloudLinuxLicenses`
+If your hosting requires specific files permissions, change them accordingly in the folder: <span class="notranslate">`<whmcs_root>/modules/servers/CloudLinuxLicenses`</span>
 :::
 
 ### Configuration of Product
 
-1. Log into your WHMCS admin area and go to _Setup → Products/Services → Products/Services_ . Click _Create a New Group_
-2. Fill _Product Group Name_ (product group will be visible under that name in your WHMCS system) and click _Save Changes_
-3. Click _Create a New Product_. Choose _Other_ from _Product Type_ drop-down menu and previously created product group from Product Group drop-down menu.
-4. Fill _Product Name_ and click _Continue_.
-5. Set up this product as hidden through marking _Hidden_ checkbox at _Details_ tab. Do not set up pricing for this product, it will be done in another way.
-6. Go to the _Module Settings_ tab and select **_CloudLinux Licenses_** from _Module Name_ drop-down.
-7. Fill _Username_ and _Password_ with your CloudLinux API access details (you can find them on your CLN profile page, username is your login and password is API secret key) and select **_Imunify360_** from _Product_ drop-down, then choose desired _License Type._ If you'd like to use key based licenses, tick _Create Key based license_ checkbox.
-8. Click _Save Changes_ to confirm.
-9. Setup desired _Auto-setup_ options.
+1. Log into your WHMCS admin area and go to <span class="notranslate">_Setup → Products/Services → Products/Services_</span>. Click <span class="notranslate">_Create a New Group_</span>
+2. Fill <span class="notranslate">_Product Group Name_</span> (product group will be visible under that name in your WHMCS system) and click <span class="notranslate">_Save Changes_</span>
+3. Click <span class="notranslate">_Create a New Product_</span>. Choose <span class="notranslate">_Other_</span> from <span class="notranslate">_Product Type_</span> drop-down menu and previously created product group from <span class="notranslate">Product Group</span> drop-down menu.
+4. Fill <span class="notranslate">_Product Name_</span> and click <span class="notranslate">_Continue_</span>.
+5. Set up this product as hidden through marking <span class="notranslate">_Hidden_</span> checkbox at <span class="notranslate">_Details_</span> tab. Do not set up pricing for this product, it will be done in another way.
+6. Go to the <span class="notranslate">_Module Settings_</span> tab and select <span class="notranslate">**_CloudLinux Licenses_**</span> from <span class="notranslate">_Module Name_</span> drop-down.
+7. Fill <span class="notranslate">_Username_</span> and <span class="notranslate">_Password_</span> with your CloudLinux API access details (you can find them on your CLN profile page, username is your login and password is API secret key) and select <span class="notranslate">**_Imunify360_**</span> from <span class="notranslate">_Product_</span> drop-down, then choose desired <span class="notranslate">_License Type_</span>. If you'd like to use key based licenses, tick <span class="notranslate">_Create Key based license_</span> checkbox.
+8. Click <span class="notranslate">_Save Changes_</span> to confirm.
+9. Setup desired <span class="notranslate">_Auto-setup_</span> options.
 
 ### Configuration of Add-on
 
-1. Go to _Setup → Add-on Modules_, find _CloudLinux Licenses Add-on_ and click _Activate_ next to it.
-2. The next step is permitting access to this module. Click _Configure_, select admin roles and confirm by clicking _Save Changes_.
+1. Go to <span class="notranslate">_Setup → Add-on Modules_</span>, find <span class="notranslate">_CloudLinux Licenses Add-on_</span> and click <span class="notranslate">_Activate_</span> next to it.
+2. The next step is permitting access to this module. Click <span class="notranslate">_Configure_</span>, select admin roles and confirm by clicking <span class="notranslate">_Save Changes_</span>.
 
 ![](/images/whmcsfig1imunify360licenseforwhmcs_zoom70.png)
 
@@ -114,8 +118,8 @@ In order to allow your client to decide whether he wants to order a server with 
 
 The following steps must be performed to prepare such connection:
 
-1. Go to _Setup → Products/Services → Products Add-ons_ and click _Add New Add-on_.
-2. Fill addon name, set up billing cycle and price. Then tick _Show on Order_ checkbox, assign add-on to the product and click _Save Changes_.
+1. Go to <span class="notranslate">_Setup → Products/Services → Products Add-ons_</span> and click <span class="notranslate">_Add New Add-on_</span>.
+2. Fill addon name, set up billing cycle and price. Then tick <span class="notranslate">_Show on Order_</span> checkbox, assign add-on to the product and click <span class="notranslate">_Save Changes_</span>.
 
 ![](/images/fig3configurationofproductaddon1_zoom50.png)
 
@@ -123,8 +127,8 @@ The following steps must be performed to prepare such connection:
 _Fig 3: Configuration of product add-on, which will trigger license product adding._
 
 
-3. Go to _Add-ons → CloudLinux Licenses Add-on → Add-on Relations_ and click _Add Relation_.
-4. Select previously created product add-on and license product as shown below and click _Add Relation_.
+1. Go to <span class="notranslate">_Add-ons → CloudLinux Licenses Add-on → Add-on Relations_</span> and click <span class="notranslate">_Add Relation_</span>.
+2. Select previously created product add-on and license product as shown below and click <span class="notranslate">_Add Relation_</span>.
 
 ![](/images/fig4creatingrelation_zoom70.png)
 _Fig 4: Creating relation between product add-on and provisioning module._
@@ -139,8 +143,8 @@ Please do not set up pricing for license provisioning product. In exchange, you 
 :::
 
 1. Prepare license provisioning product as described in the [Configuration of Product](/whmcs_plugin/#configuration-of-product) section of this documentation.
-2. Go to _Add-ons → CloudLinux Licenses Add-on → Products Relations_ and click _Add Relation_.
-3. Select server provisioning product from the Main product drop-down list and license provisioning product from the _Linked Product With License_ and click _Add Relation_.
+2. Go to <span class="notranslate">_Add-ons → CloudLinux Licenses Add-on → Products Relations_</span> and click <span class="notranslate">_Add Relation_</span>.
+3. Select server provisioning product from the Main product drop-down list and license provisioning product from the <span class="notranslate">_Linked Product With License_</span> and click <span class="notranslate">_Add Relation_</span>.
 
 ![](/images/fig5creatingrelationdirectly_zoom70.png)
 _Fig 5: Creating relations directly between server and license provisioning modules._
@@ -150,20 +154,20 @@ _Fig 5: Creating relations directly between server and license provisioning modu
 ### Link Via Configurable Options
 
 
-In order to allow your client to decide whether he wants to order server with or without license we can use _Configurable Options_ ( [https://docs.whmcs.com/Addons_and_Configurable_Options](https://docs.whmcs.com/Addons_and_Configurable_Options)).
+In order to allow your client to decide whether he wants to order server with or without license we can use <span class="notranslate">_Configurable Options_</span> ( [https://docs.whmcs.com/Addons_and_Configurable_Options](https://docs.whmcs.com/Addons_and_Configurable_Options)).
 
 Below we will show what steps to proceed to prepare such connection:
-1. Configure _CloudLinuxLicenses_ product as described [here](/whmcs_plugin/#configuration-of-product).
-2. Go to _Setup → Products/Services → Configurable Options_ and click _Create a New Group_.
-3. Fill group name and add _New Configurable Option_, set up billing cycle, price and option type. Then save changes.
-4. Go to _Add-ons → CloudLinux Licenses Add-on → Configurable Options Relations_ and click _Add Relation_.
-5. Choose appropriate configurable option and license product which it is assigned to and click _Add relation_.
+1. Configure <span class="notranslate">_CloudLinuxLicenses_</span> product as described [here](/whmcs_plugin/#configuration-of-product).
+2. Go to <span class="notranslate">_Setup → Products/Services → Configurable Options_</span> and click <span class="notranslate">_Create a New Group_</span>.
+3. Fill group name and add <span class="notranslate">_New Configurable Option_</span>, set up billing cycle, price and option type. Then save changes.
+4. Go to <span class="notranslate">_Add-ons → CloudLinux Licenses Add-on → Configurable Options Relations_</span> and click <span class="notranslate">_Add Relation_</span>.
+5. Choose appropriate configurable option and license product which it is assigned to and click <span class="notranslate">_Add relation_</span>.
 
 ::: tip Notes
 
-   * Plugin doesn’t support “quantity” type of Configurable Options
+   * Plugin doesn’t support <span class="notranslate">“quantity”</span> type of <span class="notranslate">Configurable Options</span>
    * A related product can’t contain two (or more) products with the same license type
-   * If you have changed Dedicated IP of the main product, then each related IP-based product will terminate an old IP license and create a new one for a new IP
+   * If you have changed <span class="notranslate">Dedicated IP</span> of the main product, then each related IP-based product will terminate an old IP license and create a new one for a new IP
 :::
 
 ![](/images/fig6creatingrelationdirectlybetweenserverandlicenseprovisioningmodules_zoom70.png)
@@ -172,14 +176,14 @@ _Fig 6: Creating relation directly between server and license provisioning modul
 
 ### Link Add-ons Directly<sup>WHMCS 7.2.x+</sup>
 
-WHMCS 7.2 introduces the ability to associate Product Add-ons with Provisioning Modules.
+WHMCS 7.2 introduces the ability to associate <span class="notranslate">Product Add-ons</span> with <span class="notranslate">Provisioning Modules</span>.
 
 In order to allow your client to decide whether he wants to order server with or without license we will use product addon. Below we will show you what steps to proceed to prepare such connection:
 
-1. Go to _Setup → Products/Services → Products Add-ons_ and click _Add New Add-on_.
-2. Fill add-on name, set up billing cycle and price. Then tick _Show on Order_ checkbox, assign add-on to product.
-3. Go to the _Module Settings_ tab and select _CloudLinux Licenses_ from _Module Name_ drop-down.
-4. Fill _Username_ and _Password_ with your CloudLinux API access (API secret key) details and select desired license type from _License Type_ drop-down. Click _Save Changes_ to confirm.
+1. Go to <span class="notranslate">_Setup → Products/Services → Products Add-ons_</span> and click <span class="notranslate">_Add New Add-on_</span>.
+2. Fill add-on name, set up billing cycle and price. Then tick <span class="notranslate">_Show on Order_</span> checkbox, assign add-on to product.
+3. Go to the <span class="notranslate">_Module Settings_</span> tab and select <span class="notranslate">_CloudLinux Licenses_</span> from <span class="notranslate">_Module Name_</span> drop-down.
+4. Fill <span class="notranslate">_Username_</span> and <span class="notranslate">_Password_</span> with your CloudLinux API access (API secret key) details and select desired license type from <span class="notranslate">_License Type_</span> drop-down. Click <span class="notranslate">_Save Changes_</span> to confirm.
 
 ![](/images/fig6configurationofproductaddon_zoom50.png)
 
@@ -188,34 +192,32 @@ _Fig 7: Configuration of product add-on with Provisioning Modules._
 ### Imunify360 Key Licenses
 
 
-1. To set Imunify360 Key license while adding service in Module Settings, do the following:
+1. To set Imunify360 Key license while adding service in <span class="notranslate">Module Settings</span>, do the following:
 
-   * choose **_Imunify360_** in _License Type_ drop-down
-   * mark _Use Key_ (instead of IP address) checkbox
-   * enter IP registration token (API secret key) from _Profile_ page in CLN
-   * in _Max Users_ field enter the number of users per server
-   * in _Key Limit_ field enter the number of servers and click _Save Changes_
+   * choose <span class="notranslate">**_Imunify360_**</span> in <span class="notranslate">_License Type_</span> drop-down
+   * mark <span class="notranslate">_Use Key_</span> (instead of IP address) checkbox
+   * enter IP registration token (API secret key) from <span class="notranslate">_Profile_</span> page in CLN
+   * in <span class="notranslate">_Max Users_</span> field enter the number of users per server
+   * in <span class="notranslate">_Key Limit_</span> field enter the number of servers and click <span class="notranslate">_Save Changes_</span>
 
 ![](/images/fig7imunify360productsettings_zoom50.png)
 _Fig 8: Imunify360 Product settings._
 
-   * the _License Key Custom Field_ will be automatically added
-   * the _License Key Custom Field_ is displayed while editing service
+   * the <span class="notranslate">_License Key Custom Field_</span> will be automatically added
+   * the <span class="notranslate">_License Key Custom Field_</span> is displayed while editing service
 
 2. To edit service do the following:
-     * when _Service Created Successfully_ message appears, you can edit _Service_
-     * enter information and settings and click _Save Changes_
+     * when <span class="notranslate">_Service Created Successfully_</span> message appears, you can edit <span class="notranslate">_Service_</span>
+     * enter information and settings and click <span class="notranslate">_Save Changes_</span>
 
 ![](/images/fig8imunify360servicesettings_zoom50.png)
 _Fig 9: Imunify360 Service settings._
 
 
-
-
 ### Order
 
 
-All the services registered in the account are displayed in _My Products & Services_ area. When you choose particular Product/Service and click _View Details_, you can view Product information, change license key, view Add-ons or make changes in Management Actions section.
+All the services registered in the account are displayed in <span class="notranslate">_My Products & Services_</span> area. When you choose a particular Product/Service and click <span class="notranslate">_View Details_</span>, you can view Product information, change license key, view Add-ons or make changes in <span class="notranslate">Management Actions</span> section.
 
 ![](/images/fig9clientproductslist_zoom50.png)
 _Fig 10: Client’s products list._
@@ -225,21 +227,21 @@ _Fig 10: Client’s products list._
 _Fig 11: Licenses details._
 
 To order and purchase a new service do the following:
-* choose _Category → Imunify360 Group_ and click _Order Now_ on a particular service
+* choose <span class="notranslate">_Category → Imunify360 Group_</span> and click <span class="notranslate">_Order Now_</span> on a particular service
 
 ![](/images/fig11orderproductsgroup_zoom50.png)
 _Fig 12: Order - Products group._
 
-* choose _Billing Cycle_ if possible
-* enter information in _Configure Server_ area
-* choose _Available Add-ons_ and click _Continue Shopping_ to proceed or _Checkout_ to view service details
+* choose <span class="notranslate">_Billing Cycle_</span> if possible
+* enter information in <span class="notranslate">_Configure Server_</span> area
+* choose <span class="notranslate">_Available Add-ons_</span> and click <span class="notranslate">_Continue Shopping_</span> to proceed or <span class="notranslate">_Checkout_</span> to view service details
 
 ![](/images/fig12orderconfigureproduct_zoom50.png)
 
 _Fig 13: Order - Configure product._
 
-* enter _Promotional Code_ in a specific field if you have one
-* choose _Payment Method_ and click _Continue Shopping_
+* enter <span class="notranslate">_Promotional Code_</span> in a specific field if you have one
+* choose <span class="notranslate">_Payment Method_</span> and click <span class="notranslate">_Continue Shopping_</span>
 
 ![](/images/fig13orderreviewandcheckout_zoom50.png)
 
@@ -269,7 +271,7 @@ The clients are also able to view their servers license details. And as well as 
 
 _Fig 16: Imunify360 Licenses For WHMCS Client Area._
 
-To change IP address, click _Change_ as shown on the screen above. Then specify IP address and click _Save_.
+To change IP address, click <span class="notranslate">_Change_</span> as shown on the screen above. Then specify IP address and click <span class="notranslate">_Save_</span>.
 ![](/images/fig16changinglicenseipaddress_zoom70.png)
 
 _Fig 17: Changing License IP Address._
@@ -278,7 +280,7 @@ _Fig 17: Changing License IP Address._
 ### Licenses List
 
 
-You can view the list of all licenses owned by your client at our add-on → _Licenses List_.
+You can view the list of all licenses owned by your client at our add-on → <span class="notranslate">_Licenses List_</span>.
 You can filter the list of licenses by client name, server provisioning products, license provisioning products and license IP address/Key.
 
 ![](/images/fig18licenseslist_zoom70.png)
@@ -287,7 +289,7 @@ _Fig 18: Licenses List._
 
 ###  Add-on Licenses List<sup>WHMCS 7.2.x+</sup>
 
-You can view list of all product add-on with Provisioning Modules licenses owned by your client at our addon → Licenses List.
+You can view list of all product add-on with <span class="notranslate">Provisioning Modules</span> licenses owned by your client at our addon → <span class="notranslate">Licenses List</span>.
 
 ![](/images/fig19addonlicenseslist_zoom70.png)
 _Fig 19: Add-on Licenses List._

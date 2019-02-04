@@ -9,9 +9,9 @@ jobs:
       - add_ssh_keys: # add SSH key with write access
           fingerprints:
             - "22:16:ff:36:4f:c9:89:7b:c4:de:4e:c8:41:16:d6:86"
-      - restore_cache:
-          keys:
-            - yarn-packages-{{ checksum "yarn.lock" }}
+      # - restore_cache:
+      #     keys:
+      #       - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Install dependencies
           command: yarn && yarn upgrade vuepress-theme-cloudlinux

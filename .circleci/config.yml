@@ -14,7 +14,7 @@ jobs:
             - yarn-packages-{{ checksum "yarn.lock" }}
       - run:
           name: Install dependencies
-          command: yarn
+          command: yarn && yarn upgrade vuepress-theme-cloudlinux
       - run:
           name: Publish update to GitHub
           command: bash ./deploy.sh

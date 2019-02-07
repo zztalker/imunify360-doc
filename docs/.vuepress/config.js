@@ -73,6 +73,7 @@ module.exports = {
         label: "English",
         // text for the edit-on-github link
         editLinkText: "Edit this page",
+        try_free: "Try Free",
         // config for Service Worker
         serviceWorker: {
           updatePopup: {
@@ -111,6 +112,7 @@ module.exports = {
         selectText: "Рус",
         label: "Русский",
         editLinkText: "Отредактировать",
+        try_free: "Попробовать бесплатно",
         serviceWorker: {
           updatePopup: {
             message: "Новый контент доступен",

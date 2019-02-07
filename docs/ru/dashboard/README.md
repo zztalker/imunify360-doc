@@ -16,9 +16,9 @@ title: Интерфейс пользователя
 
 ## Reputation Management
 
-## KernelCare Integration
+## Интеграция с KernelCare
 
-## Settings
+## Страница Settings
 
 ### General
 
@@ -26,9 +26,9 @@ title: Интерфейс пользователя
 
 ### Backups
 
-#### Overview
+#### Обзор
 
-#### User Interface
+#### Интерфейс пользователя
 
 ### Disabled Rules
 

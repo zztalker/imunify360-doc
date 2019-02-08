@@ -38,21 +38,6 @@ module.exports = {
     sidebarDepth: 2,
     logo: "/logo.svg",
     try_free: "https://www.imunify360.com/trial",
-    bottomLinks: [
-      {
-        text: "How to",
-        url: "https://cloudlinux.zendesk.com/hc/sections/115001344329-How-do-I"
-      },
-      {
-        text: "Getting started",
-        url: "https://imunify360.com/getting-started"
-      },
-      {
-        text: "Contact support",
-        url: "https://cloudlinux.zendesk.com/hc/en-us/requests/new"
-      },
-      { text: "Blog", url: "https://www.imunify360.com/blog" }
-    ],
     social: [
       { url: "https://www.facebook.com/imunify360/", logo: "/fb.png" },
       { url: "https://twitter.com/imunify360/", logo: "/tw.png" },
@@ -73,6 +58,8 @@ module.exports = {
         label: "English",
         // text for the edit-on-github link
         editLinkText: "Edit this page",
+        tryFree: "Try Free",
+        search: "Search",
         // config for Service Worker
         serviceWorker: {
           updatePopup: {
@@ -81,7 +68,22 @@ module.exports = {
           }
         },
         algolia: {},
-
+        stayInTouch: "Stay in touch",
+        bottomLinks: [
+            {
+                text: "How to",
+                url: "https://cloudlinux.zendesk.com/hc/sections/115001344329-How-do-I"
+            },
+            {
+                text: "Getting started",
+                url: "https://imunify360.com/getting-started"
+            },
+            {
+                text: "Contact support",
+                url: "https://cloudlinux.zendesk.com/hc/en-us/requests/new"
+            },
+            { text: "Blog", url: "https://www.imunify360.com/blog" }
+        ],
         sidebar: [
           {
             title: "Contents",
@@ -111,6 +113,8 @@ module.exports = {
         selectText: "Рус",
         label: "Русский",
         editLinkText: "Отредактировать",
+        tryFree: "Попробовать бесплатно",
+        search: "Поиск",
         serviceWorker: {
           updatePopup: {
             message: "Новый контент доступен",
@@ -118,6 +122,22 @@ module.exports = {
           }
         },
         algolia: {},
+        stayInTouch: "Будем на связи",
+        bottomLinks: [
+            {
+                text: "Инструкции",
+                url: "https://cloudlinux.zendesk.com/hc/sections/115001344329-How-do-I"
+            },
+            {
+                text: "С чего начать",
+                url: "https://imunify360.com/getting-started"
+            },
+            {
+                text: "Техподдержка",
+                url: "https://cloudlinux.zendesk.com/hc/en-us/requests/new"
+            },
+            { text: "Блог!", url: "https://www.imunify360.com/blog" }
+        ],
         sidebar: [
           {
             title: "Содержание",

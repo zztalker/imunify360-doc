@@ -1,40 +1,40 @@
 ---
-title: Imunify360 WHMCS Плагин
+title: Плагин WHMCS для Imunify360
 ---
 <gtranslate-io>
 # Imunify360 WHMCS Plugin
 
-## Overview
+## Обзор
 
-## Installation and Configuration
+## Установка и настройка
 
-### Installation and Update
+### Установка и обновление
 
-### Configuration of Product
+### Конфигурация продукта
 
-### Configuration of Add-on
+### Конфигурация надстройки
 
-## Management
+## Управление
 
-### Link Via Add-on – Optional License
+### Установление зависимости через надстройку – дополнительная лицензия
 
-### Link Products Directly
+### Установление зависимости напрямую
 
-### Link Via Configurable Options
+### Установление зависимости через настраиваемые параметры
 
-### Link Add-ons Directly
+### Установление зависимости между надстройками напрямую
 
 ### Imunify360 Key Licenses
 
-### 
+### Заказ
 
-### Admin Area
+### Интерфейс администратора
 
-### Client Area
+### Интерфейс клиента
 
-### Licenses List
+### Список лицензий
 
-###  Add-on Licenses List
+### Список лицензий надстроек
 
-## Common Problems
+## Типичные проблемы
 </gtranslate-io>

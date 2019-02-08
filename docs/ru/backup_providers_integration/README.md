@@ -4,11 +4,11 @@ title: Интеграция с backup провайдерами
 <gtranslate-io>
 # Backup Providers Integration
 
-## Overview
+## Обзор
 
-## Command Line Usage
+## Использование командной строки
 
-## Using as Library
+## Использование в качестве библиотеки
 
-## Creating Custom Backup Backend Plugin
+## Создание пользовательского плагина резервного копирования
 </gtranslate-io>

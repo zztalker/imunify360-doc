@@ -1,6 +1,9 @@
 ---
 title: WebShield
 ---
+
+<gtranslate-io>
+	
 ## Captcha
 
 ### Captcha page customization
@@ -11,7 +14,4 @@ title: WebShield
 		
 #### Supported CDN providers
 
-
-
-
-
+</gtranslate-io>

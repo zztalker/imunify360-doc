@@ -1,4 +1,6 @@
 const urls = require("./urls-mapping.js");
+const sidebarUrls = require("./sidebar-urls");
+const _slugify = require('vuepress/lib/markdown/slugify');
 
 module.exports = {
   configureWebpack: {
@@ -25,6 +27,14 @@ module.exports = {
   },
   theme: "cloudlinux",
   // theme: '/Users/prefer/src/cloudlinux-doc-theme', // local path
+  markdown: {
+      slugify: (s) => {
+        if (sidebarUrls[s]) {
+          return sidebarUrls[s];
+        }
+        return _slugify(s);
+      }
+  },
 
   themeConfig: {
     repo: "cloudlinux/imunify360-doc",

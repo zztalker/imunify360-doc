@@ -12,8 +12,3 @@ title: WebShield
 		
 #### Supported CDN providers
 </gtranslate-io>
-
-
-
-
-

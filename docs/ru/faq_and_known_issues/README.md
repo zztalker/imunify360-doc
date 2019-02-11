@@ -1,5 +1,5 @@
 ---
-title: ЧАВО и часто задаваемые вопросы
+title: Популярные вопросы и известные проблемы
 ---
 <gtranslate-io>
 # FAQ and Known Issues

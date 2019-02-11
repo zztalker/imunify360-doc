@@ -1,5 +1,5 @@
 ---
-title: Интерфейс коммандной строки
+title: Интерфейс командной строки
 ---
 <gtranslate-io>
 # Command-line Interface

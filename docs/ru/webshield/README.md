@@ -1,15 +1,17 @@
 ---
 title: WebShield
 ---
+<gtranslate-io>
 ## Captcha
 
-### Captcha page customization
+### Настройка отображения Captcha
 
-### Update Captcha localizations
+### Локализация для Captcha
 
-## CDN Support <sup>3.8+</sup>
+## Поддержка CDN
 		
 #### Supported CDN providers
+</gtranslate-io>
 
 
 

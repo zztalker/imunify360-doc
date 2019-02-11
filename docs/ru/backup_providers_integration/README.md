@@ -1,5 +1,5 @@
 ---
-title: Интеграция с backup провайдерами
+title: Интеграция с backup-провайдерами
 ---
 <gtranslate-io>
 # Backup Providers Integration

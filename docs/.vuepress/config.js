@@ -158,7 +158,7 @@ module.exports = {
               "/ru/billing/",
               "/ru/installation/",
               "/ru/ids_integration/",
-              // "/ru/webshield/",
+              "/ru/webshield/",
               "/ru/backup_providers_integration/",
               "/ru/localization/",
               "/ru/dashboard/",

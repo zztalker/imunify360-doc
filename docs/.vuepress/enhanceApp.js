@@ -5,15 +5,10 @@ export default ({
   siteData // site metadata
 }) => {
   router.beforeEach((to, from, next) => {
-    let nextValue = null;
-    for (const [path, locale] of Object.entries(siteData.themeConfig.locales)) {
-      if (to.path === path) {
-        nextValue = locale.defaultURL;
-      }
-    }
-
-    if (nextValue !== null) {
-      next(nextValue);
+    if (siteData.themeConfig.locales[to.path] &&
+        siteData.themeConfig.locales[to.path].defaultURL)
+    {
+      next(siteData.themeConfig.locales[to.path].defaultURL);
     } else {
       next();
     }

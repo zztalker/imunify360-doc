@@ -60,6 +60,7 @@ module.exports = {
     cloudlinuxSite: "https://cloudlinux.com",
     locales: {
       "/": {
+        defaultURL: "/introduction/",
         // text for the language dorpdown title
         title: "Language",
         // text for the language dropdown
@@ -119,6 +120,7 @@ module.exports = {
         ]
       },
       "/ru/": {
+        defaultURL: "/ru/introduction/",
         title: "Язык",
         selectText: "Рус",
         label: "Русский",

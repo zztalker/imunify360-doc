@@ -21,5 +21,8 @@ module.exports = {
     "Интерфейс клиента": "client-area",
     "Список лицензий": "licenses-list",
     "Список лицензий надстроек": "add-on-licenses-list-sup-whmcs-7-2-x-sup",
-    "Типичные проблемы": "common-problems"
+    "Типичные проблемы": "common-problems",
+    "Настройка отображения Captcha": "captcha-page-customization",
+    "Локализация для Captcha": "update-captcha-localizations",
+    "Поддержка CDN": "cdn-support-3-8"
 };

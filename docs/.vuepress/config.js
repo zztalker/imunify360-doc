@@ -122,7 +122,7 @@ module.exports = {
         title: "Язык",
         selectText: "Рус",
         label: "Русский",
-        editLinkText: "Отредактировать",
+        editLinkText: "Редактировать",
         tryFree: "Попробовать бесплатно",
         search: "Поиск",
         serviceWorker: {

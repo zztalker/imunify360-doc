@@ -983,12 +983,20 @@ Read [CXS integration](/ids_integration/#cxs-integration) documentation carefull
 
 Tick required checkboxes and click <span class="notranslate">_Save changes_</span> button.
 
-**Malware Cleanup<sup>3.7.1+</sup>**
+**Cleanup<sup>3.7.1+</sup>**
 
 * <span class="notranslate">_Trim file instead of removal_</span> — do not remove infected file during cleanup but make the file zero-size (for malwares like web-shells);
 * <span class="notranslate">_Keep original files for … days_</span> — the original infected file is available for restore within the defined period. Default is 14 days.
 
 ![](/images/malwarescannersettings_zoom70.png)
+
+
+**Proactive Defense<sup> 4.0+</sup>**
+
+* <span class="notranslate">_Enable Blamer_</span> — tick to allow Imunify360 to find a root cause of how infection got injected into the server through PHP. Blamer pinpoints exact URL, PHP script & PHP execution path that allowed a hacker to inject malware onto the server.
+Imunify360 security team will use that information to prevent future infections from happening.
+
+![](/images/SettingsBlamer.png)
 
 Click <span class="notranslate">_Save changes_</span> button at the page bottom to apply all changes.
 

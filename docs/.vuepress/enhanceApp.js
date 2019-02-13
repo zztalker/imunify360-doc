@@ -5,12 +5,10 @@ export default ({
   siteData // site metadata
 }) => {
   router.beforeEach((to, from, next) => {
-    if (siteData.themeConfig.locales[to.path] &&
-        siteData.themeConfig.locales[to.path].defaultURL)
-    {
-      next(siteData.themeConfig.locales[to.path].defaultURL);
+    if (to.path === "/") {
+        next(siteData.themeConfig.defaultURL);
     } else {
-      next();
+        next();
     }
   });
 };

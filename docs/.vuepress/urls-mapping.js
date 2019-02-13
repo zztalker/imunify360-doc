@@ -1,4 +1,5 @@
 module.exports = {
+  "/ru/": "/ru/introduction/",
   "/introduction.htm/": "/introduction/",
   "/index.html?introduction.htm": "/introduction/",
   "/terminology.htm/": "/terminology/",

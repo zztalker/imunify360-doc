@@ -1169,6 +1169,122 @@ To remove the rule from disabled list click <span class="notranslate">_Enable_</
 
 ![](/images/disabledrulesenablepopup_zoom60.png)
 
+### Features Management
+
+**Overview**
+
+<span class="notranslate">Features Management</span> allows hosters to enable/disable Imunify360 features for each customer. On <span class="notranslate">Feature Management</span> it is possible to manage <span class="notranslate">Proactive Defense</span> and <span class="notranslate">Malware Cleanup</span> for each customer account.
+If a feature is enabled for the user in hoster’s account, the user will be able to see and use it in his account.
+
+::: tip Note
+Default settings in <span class="notranslate">Features Management</span> are inherited by newly created user accounts only.
+:::
+
+:::tip Note
+Features are enabled/disabled account-wide.
+:::
+
+![](/images/FeaturesManagementGeneral.png)
+
+Below, there is a table with all users and their domains and features for each user.
+
+![](/images/FeaturesManagementTable.png)
+
+* <span class="notranslate">**Name**</span> — username or path to a user;
+* <span class="notranslate">**Domains**</span> — a list of user’s domains; 
+* <span class="notranslate">**Proactive Defense**</span> — a slider to enable/disable the feature for a specific user.
+  Move a slider in feature column to enable/disable that feature for a specific user. After that, this specific feature tab will be displayed/hid in that user’s account.
+* <span class="notranslate">**Malware Cleanup**</span> — a slider to enable/disable the feature for a specific user.
+  Move a slider in feature column to enable/disable that feature for a specific user. After that, the <span class="notranslate">Cleanup</span> button will be available in the Malicious files list in that user’s account.
+
+**Group Action**
+To perform a group action tick the users and move sliders for them.
+
+![](/images/FeaturesManagementGroupAction.png)
+
+**How to enable/disable <span class="notranslate">Proactive Defense</span>**
+
+The <span class="notranslate">Proactive Defense</span> feature is enabled by default account-wide. So, all newly created user accounts will have <span class="notranslate">Proactive Defence</span> tab in their Imunify360 Section. 
+
+![](/images/FeaturesManagementProactiveDefense.png)
+
+To disable <span class="notranslate">Proactive Defense</span> account-wide just move the slider to <span class="notranslate">_Turned Off_</span>. And confirm the action in the popup by clicking <span class="notranslate">_Yes, disable Proactive Defense for new users_</span> or click <span class="notranslate">_Cancel_</span> to close the popup.
+
+![](/images/FeaturesManagementProactiveDefenseConfirmation.png)
+
+**How to enable/disable <span class="notranslate">Malware Cleanup</span>**
+
+The <span class="notranslate">Malware Cleanup</span> feature is enabled by default account-wide. So, all newly created user accounts will have <span class="notranslate">Malware Cleanup</span> feature in their Imunify360. 
+
+![](/images/FeaturesManagementMalwareCleanup.png)
+
+To disable <span class="notranslate">Malware Cleanup</span> account-wide just move the slider to <span class="notranslate">_Turned Off_</span>. And confirm the action in the popup by clicking <span class="notranslate">_Yes, disable Malware Cleanup for new users_</span> or click <span class="notranslate">_Cancel_</span> to close the popup.
+
+![](/images/FeaturesManagementMalwareCleanupConfirmation.png)
+
+You can perform all these actions via [CLI](/command_line_interface/).
+
+______________________ Imunify360 v.4.0 _________________
+
+<div class="notranslate">
+
+### Native Features Management<sup> 4.0</sup>
+
+</div>
+
+<span class="notranslate">Native Features Management</span> allows a hoster to enable/disable different Imunify360 features for server users. Using this functionality, hosting companies may resell chosen Imunify360 features as a part of hosting packages to end users.
+
+
+### cPanel<sup> 4.0</sup>
+
+<span class="notranslate">Native Features Management</span> is now available under WHM's <span class="notranslate">Feature Management</span> as a <span class="notranslate">Package Extension</span> (PE).
+
+Using cPanel <span class="notranslate">Native Features Management</span> a hoster can enable/disable <span class="notranslate">Malware Scanner</span> and <span class="notranslate">Proactive Defense</span> for all users with the same package (service plan) instantly.
+
+::: tip Note
+When switched to <span class="notranslate">Native Features Management</span>, the same functionality will be disabled in the Imunify360 UI for cPanel. The previous Feature Management config becomes overridden by defaults.
+
+:::
+
+**How to switch to cPanel Native Features Managemet**
+
+Go to <span class="notranslate">Imunify360 → Settings → Features Management</span>. You will see the following.
+
+![](/images/NativeFeaturesManagement.png)
+
+Click <span class="notranslate">_Details_</span>. You will see the following pop-up.
+
+![](/images/SwitchToNativeFeaturesManagement.png)
+
+Click <span class="notranslate">_Agree and Switch_</span> to confirm the action or click <span class="notranslate">_Cancel_</span> to close the popup.
+
+When switched, you will see the following.
+
+![](/images/SwitchedFM.png)
+
+**How to configure Imunify360 Features using WHM/cPanel Package Extensions**
+
+Go to <span class="notranslate">WHM/cPanel → Add a Package → Package Extensions</span> and tick <span class="notranslate">Imunify360 Features</span>.
+
+![](/images/WHMPackageExtension.png)
+
+Choose an option for each feature.
+
+<span class="notranslate">**Malaware Scanner**</span>
+* <span class="notranslate">_View reports + Cleanup_</span> – a user can view scanning reports and cleanup found malware
+* <span class="notranslate">_View reports only_</span> – a user can view scanning reports but can't cleanup found malware
+* <span class="notranslate">_Not available_</span> – the <span class="notranslate">Malware Scanner</span> is not available for a user, and its tab is hidden on the Imunify360 main menu
+  
+<span class="notranslate">**Proactive Defense**</span>
+* <span class="notranslate">_Available_</span> – the <span class="notranslate">Proactive Defense</span> feature is available for a user
+* <span class="notranslate">_Not available_</span> – the <span class="notranslate">Proactive Defense</span> is deactivated for a user: the feature does not run and its UI is hidden from the Imunify360 main menu
+
+Click <span class="notranslate">_Add_</span> to apply changes.
+
+See also: [CLI](http://localhost:8080/command_line_interface/).
+ 
+__________________________
+
 ### Attributions
 
 Click <span class="notranslate">_Settings_</span> and choose <span class="notranslate">_Attributions_</span> tab to observe a list of [IDS](/terminology/) install on the server.

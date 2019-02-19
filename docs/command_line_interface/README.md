@@ -54,8 +54,11 @@ Available commands:
 |<span class="notranslate">`version`</span>|Show version|
 |<span class="notranslate">`whitelist`</span>|Return/Edit operator for IP and domain white list|
 |<span class="notranslate">`proactive`</span><sup>3.7.0+</sup>|Allows to manage Proactive Defense feature|
-|<span class="notranslate">`check modsec directives `</span><sup>Beta 3.9.0+ cPanel</sup>|Allows to check whether the global ModSecurity<br>directives have values recommended by Imunify360|
-|<span class="notranslate">`fix modsec directives `</span><sup>Beta 3.9.0+ cPanel</sup>|Fixes the non-recommended values (sets them to ones<br>recommended by Imunify360)|
+|<span class="notranslate">`check modsec directives `</span><sup> Beta 3.9.0+ cPanel</sup>|Allows to check whether the global ModSecurity<br>directives have values recommended by Imunify360|
+|<span class="notranslate">`fix modsec directives `</span><sup> Beta 3.9.0+ cPanel</sup>|Fixes the non-recommended values (sets them to ones<br>recommended by Imunify360)|
+|<span class="notranslate">`feature-management`</span>| manage Imunify360 features available for users|
+|<span class="notranslate">`feature-management native enable`<sup> Beta 4.0+ cPanel</sup></span>|activate the Native Features Management using WHM/cPanel package extensions.|
+|<span class="notranslate">`feature-management native disable`<sup> Beta 4.0+ cPanel</sup></span>|deactivate the Native Features Management using WHM/cPanel package extensions and return the original Imunify360 Features Management back.|
 
 Optional arguments for the commands:
 
@@ -1146,4 +1149,128 @@ Optional arguments:
 |<span class="notranslate">`--json`</span>|Return data in JSON format.|
 |<span class="notranslate">`--verbose, -v`</span>|Allows to return data in good-looking view if option <span class="notranslate">`--json`</span> is used.|
 
+<div class="notranslate">
 
+## Feature-management
+
+</div>
+
+Allows to manage Imunify360 features available for users.
+
+**Usage:**
+
+<div class="notranslate">
+
+```
+iimunify360-agent feature-management [command] [--optional argument]...
+```
+
+</div>
+
+<span class="notranslate">`Command`</span> can be one of the following:
+
+| | |
+|-|-|
+|<span class="notranslate">`defaults`</span>| show the default value for each feature that is applied for newly created user|
+|<span class="notranslate">`disable`</span>| disable a feature for some or all users|
+|<span class="notranslate">`enable`</span>| enable a feature for some or all users|
+|<span class="notranslate">`get`</span>| obtains the status of all available features for a <span class="notranslate">`USER`</span>|
+|<span class="notranslate">`list`</span>| list all available features|
+
+<span class="notranslate">`Optional argument`</span> for the <span class="notranslate">`enable/disable`</span> commands can be one of the following:
+
+| | |
+|-|-|
+|<span class="notranslate">`[--feature cleanup]`</span>|enable/disable <span class="notranslate">Malware Cleanup</span>|
+<span class="notranslate">`[--feature proactive]`</span>|enable/disable <span class="notranslate">Proactive Defense</span>|
+|<span class="notranslate">`[--users [USERS [USERS ...]]]`</span>| specifies the list of users which will be affected, otherwise the default value will be changed|
+
+The mandatory argument for the <span class="notranslate">`get`</span> command:
+
+| | |
+|-|-|
+|<span class="notranslate">`[--user USER]`</span>| specifies a user name to obtain the status of features for|
+
+**Example:**
+
+The following command enables <span class="notranslate">Malware Cleanup</span> feature for the <span class="notranslate">`user1`</span>:
+
+<div class="notranslate">
+
+```
+imunify360-agent feature-management enable --feature cleanup --users user1
+```
+
+</div>
+
+<div class="notranslate">
+
+## Feature-management native enable
+
+</div>
+
+Allows to activate the <span class="notranslate">Native Features Management</span> using WHM/cPanel package extensions.
+
+**Usage:**
+
+
+<div class="notranslate">
+
+```
+imunify360-agent feature-management native enable
+```
+
+</div>
+
+Once the command executed, the following default Imunify360 <span class="notranslate">Package Extension</span> settings will be applied to all Packages:
+* <span class="notranslate">Malware Scanner - View Reports Only</span>
+* <span class="notranslate">Proactive Defense - Available</span>
+
+Imunify360 <span class="notranslate">Package Extensions</span> will be auto-enabled for all packages disregarding the fact they have Imunify360 plugin enabled or not. 
+
+
+All existing <span class="notranslate">Features Management</span> settings will be overridden with the Imunify360 <span class="notranslate">Package Extensions</span> ones for all users.
+
+:::
+tip Note
+<span class="notranslate">Features Management</span> tab will be hidden on the User Interface.
+:::
+
+::: warning Warning
+`feature-management enable/disable --feature cleanup` and `feature-management enable/disable --feature proactive` commands will stop functioning.
+:::
+
+
+<div class="notranslate">
+
+## Feature-management native disable
+
+</div>
+
+Allows to deactivate the <span class="notranslate">Native Features Management</span> using WHM/cPanel package extensions and return the original Imunify360 <span class="notranslate">Features Management</span> back.
+
+**Usage:**
+
+
+<div class="notranslate">
+
+```
+imunify360-agent feature-management native disable
+```
+
+</div>
+
+Once the command executed:
+
+* The <span class="notranslate">Native Features Management</span> will be deactivated
+* The Imunify360 <span class="notranslate">Package Extensions</span> will be removed from all packages
+* The original Imunify360 <span class="notranslate">Features Management</span> will be activated
+
+
+::: tip Note
+Imunify360 will keep applying users <span class="notranslate">Features Management</span> settings stored in their data bases after switching to the original Imunify360 <span class="notranslate">Features Management</span>.
+:::
+
+::: warning Warning
+`feature-management enable/disable --feature cleanup` and `feature-management enable/disable --feature proactive` commands will start functioning.
+:::

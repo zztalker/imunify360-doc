@@ -40,7 +40,11 @@ To contact our support team in Imunify360 User Interface, please click the _Call
 A support ticket will be created and an email will be sent to a specified email address. When a status of your request will change you receive a notification to your email address. You will be able to track your request via [https://cloudlinux.zendesk.com/hc/](https://cloudlinux.zendesk.com/hc/) and email.
 
 
-## Dashboard<sup> Beta 4.0</sup>
+## Dashboard
+
+:::tip Note
+Beta 4.0
+:::
 
 Click <span class="notranslate">_Dashboard_</span> tab to display an overview of incidents recorded during the selected time interval, an estimate of the intensity of attacks, and correlate events across all sources.
 

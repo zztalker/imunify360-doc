@@ -10,6 +10,8 @@ Log in to WHM as an admin and go to <span class="notranslate">Plugins</span>, ch
 
 It allows to access:
 * <span class="notranslate">[Support](/dashboard/#support)</span> – allows you to contact our support team directly from your Imunify360 User Interface
+  
+* <span class="notranslate">[Dashboard](/dashboard/#dashboard)</span> – allows you to see retrospective data in form of charts/heatmaps in your Imunify360 User Interface
 
 * <span class="notranslate">[Incidents](/dashboard/#incidents)</span> – the list of all suspicious activity on the server.
 
@@ -37,6 +39,63 @@ To contact our support team in Imunify360 User Interface, please click the _Call
 
 A support ticket will be created and an email will be sent to a specified email address. When a status of your request will change you receive a notification to your email address. You will be able to track your request via [https://cloudlinux.zendesk.com/hc/](https://cloudlinux.zendesk.com/hc/) and email.
 
+
+## Dashboard<sup> Beta 4.0</sup>
+
+Click <span class="notranslate">_Dashboard_</span> tab to display an overview of incidents recorded during the selected time interval, an estimate of the intensity of attacks, and correlate events across all sources.
+
+![](/images/DashboardGeneral.png)
+
+The following time periods are available:
+
+* Last 24 hours
+* Last7 days
+* Last 30 days
+
+The following representation form is available:
+
+* Heatmap visualizes the geographical distribution of incidents
+* Histogram represents the numerical distribution of incidents
+
+![](/images/DashboardGeo.png)
+
+![](/images/DashboardNum.png)
+
+Hover mouse over the particular bar to check the accurate value.
+
+::: tip Note
+Charts may have gaps. This means that no incidents or alerts were recorded during that day/time period.
+:::
+
+The following charts are available.
+
+* **Alerts total**
+
+Security incidents recorded within the selected time interval. Data includes all ModSecurity incidents, Imunify360 DOS plugin alerts, cPanel Login Failure Daemon (for cPanel only) and OSSEC alerts. This is a summary of all major alert sources.
+
+* **CAPTCHA events**
+
+Recorded requests coming from detected attackers or bad bots that show the CAPTCHA challenge within the selected interval.
+
+* **WAF alerts**
+
+Web attacks recorded by ModSecurity within the selected time interval. It may include CMS brute-force and login attempts, websites hacking attempts, attempts to access “sensitive” files or restricted areas, and other malicious requests.
+
+* **Web-based Brute-force Attacks**
+
+Web-based brute-force attacks against the CMS and hosting panel, and incidents recorded by ModSecurity.
+
+* **OSSEC: Network Level Attacks**
+
+Attacks against network services, e.g. FTP, SSH, POP, IMAP, etc., recorded by OSSEC IDS  within the selected time interval. It includes authentication failures, requests from blocked IPs, break-in attempts alerts and more.
+
+* **Denied Requests from Bad Bots**
+
+Attacks detected by the Imunify360 Bot-Detector heuristics-based plugin. Bot-Detector is a part of Imunify360’s “herd immunity” feature that collects and analyzes a massive amount of information on new attacks on a global scale which it uses to prevent attacks across multiple servers.
+
+:::tip Note
+Some charts may be hidden if no alerts of a particular type were recorded within the selected time interval.
+:::
 
 ## Incidents
 

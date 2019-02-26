@@ -17,7 +17,7 @@ git config --global user.name "circle-ci"
 
 git init
 git add -A
-git commit -m 'deploy'
+git commit -m 'deploy [skip ci]'
 
 # if you are deploying to https://<USERNAME>.github.io/<REPO>
 git push -f git@github.com:cloudlinux/imunify360-doc.git master:gh-pages

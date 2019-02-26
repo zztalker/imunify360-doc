@@ -6,9 +6,9 @@ export default ({
 }) => {
   router.beforeEach((to, from, next) => {
     if (to.path === "/") {
-      next(siteData.themeConfig.defaultURL);
+        next(siteData.themeConfig.defaultURL);
     } else {
-      next();
+        next();
     }
   });
 };

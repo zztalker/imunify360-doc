@@ -146,13 +146,6 @@ For cPanel/EasyApache 4, Plesk, DirectAdmin and LiteSpeed _mod_remoteip_ will be
 * KeyCDN is not supported at the moment, ETA is not yet available.
 
 
-Useful links:
-
-[WebShield introduction for server administrators](https://www.imunify360.com/blog/webshield-introduction-for-server-administrators)
-
-
-
-
 
 
 

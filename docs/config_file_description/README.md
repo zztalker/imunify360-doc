@@ -126,4 +126,8 @@ to request CAPTCHA again</td></tr>
 <th colspan="2" align="left"><span class="notranslate">WEBSHIELD:</span></th></tr>
 <tr><td><span class="notranslate">known_proxies_support: true</span></td>
 <td># enable CDN support, treat IPs behind CDN as any other IPs</td></tr>
+<tr>
+<th colspan="2" align="left"><span class="notranslate">PROACTIVE_DEFENСE:</span></th></tr>
+<tr><td><span class="notranslate">blamer</span></td>
+<td># enable Blamer</td></tr>
  </table>

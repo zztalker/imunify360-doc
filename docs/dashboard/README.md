@@ -10,6 +10,8 @@ Log in to WHM as an admin and go to <span class="notranslate">Plugins</span>, ch
 
 It allows to access:
 * <span class="notranslate">[Support](/dashboard/#support)</span> – allows you to contact our support team directly from your Imunify360 User Interface
+  
+* <span class="notranslate">[Dashboard](/dashboard/#dashboard)</span> – allows you to see retrospective data in form of charts/heatmaps in your Imunify360 User Interface
 
 * <span class="notranslate">[Incidents](/dashboard/#incidents)</span> – the list of all suspicious activity on the server.
 
@@ -39,8 +41,71 @@ To contact our support team in Imunify360 User Interface, please click the _Call
 
 A support ticket will be created and an email will be sent to a specified email address. When a status of your request will change you receive a notification to your email address. You will be able to track your request via [https://cloudlinux.zendesk.com/hc/](https://cloudlinux.zendesk.com/hc/) and email.
 
-
 <div class="notranslate">
+
+## Dashboard
+
+</div>
+
+
+:::tip Note
+Beta 4.0
+:::
+
+Click <span class="notranslate">_Dashboard_</span> tab to display an overview of incidents recorded during the selected time interval, an estimate of the intensity of attacks, and correlate events across all sources.
+
+![](/images/DashboardGeneral.png)
+
+The following time periods are available:
+
+* Last 24 hours
+* Last7 days
+* Last 30 days
+
+The following representation form is available:
+
+* Heatmap visualizes the geographical distribution of incidents
+* Histogram represents the numerical distribution of incidents
+
+![](/images/DashboardGeo.png)
+
+![](/images/DashboardNum.png)
+
+Hover mouse over the particular bar to check the accurate value.
+
+::: tip Note
+Charts may have gaps. This means that no incidents or alerts were recorded during that day/time period.
+:::
+
+The following charts are available.
+
+* **Alerts total**
+
+Security incidents recorded within the selected time interval. Data includes all ModSecurity incidents, Imunify360 DOS plugin alerts, cPanel Login Failure Daemon (for cPanel only) and OSSEC alerts. This is a summary of all major alert sources.
+
+* **CAPTCHA events**
+
+Recorded requests coming from detected attackers or bad bots that show the CAPTCHA challenge within the selected interval.
+
+* **WAF alerts**
+
+Web attacks recorded by ModSecurity within the selected time interval. It may include CMS brute-force and login attempts, websites hacking attempts, attempts to access “sensitive” files or restricted areas, and other malicious requests.
+
+* **Web-based Brute-force Attacks**
+
+Web-based brute-force attacks against the CMS and hosting panel, and incidents recorded by ModSecurity.
+
+* **OSSEC: Network Level Attacks**
+
+Attacks against network services, e.g. FTP, SSH, POP, IMAP, etc., recorded by OSSEC IDS  within the selected time interval. It includes authentication failures, requests from blocked IPs, break-in attempts alerts and more.
+
+* **Denied Requests from Bad Bots**
+
+Attacks detected by the Imunify360 Bot-Detector heuristics-based plugin. Bot-Detector is a part of Imunify360’s “herd immunity” feature that collects and analyzes a massive amount of information on new attacks on a global scale which it uses to prevent attacks across multiple servers.
+
+:::tip Note
+Some charts may be hidden if no alerts of a particular type were recorded within the selected time interval.
+:::
 
 ## Incidents
 
@@ -1060,6 +1125,14 @@ Tick required checkboxes and click <span class="notranslate">_Save changes_</spa
 
 ![](/images/malwarescannersettings_zoom70.png)
 
+
+**Proactive Defense<sup> 4.0+</sup>**
+
+* <span class="notranslate">_Enable Blamer_</span> — tick to allow Imunify360 to find a root cause of how infection got injected into the server through PHP. Blamer pinpoints exact URL, PHP script & PHP execution path that allowed a hacker to inject malware onto the server.
+Imunify360 security team will use that information to prevent future infections from happening.
+
+![](/images/SettingsBlamer.png)
+
 Click <span class="notranslate">_Save changes_</span> button at the page bottom to apply all changes.
 
 <div class="notranslate">
@@ -1283,7 +1356,6 @@ Below, there is a table with all users and their domains and features for each u
   Move a slider in feature column to enable/disable that feature for a specific user. After that, the <span class="notranslate">Cleanup</span> button will be available in the Malicious files list in that user’s account.
 
 **Group Action**
-
 To perform a group action tick the users and move sliders for them.
 
 ![](/images/FeaturesManagementGroupAction.png)
@@ -1310,7 +1382,64 @@ To disable <span class="notranslate">Malware Cleanup</span> account-wide just mo
 
 You can perform all these actions via [CLI](/command_line_interface/).
 
+
 <div class="notranslate">
+
+### Native Features Management<sup> 4.0</sup>
+
+</div>
+
+<span class="notranslate">Native Features Management</span> allows a hoster to enable/disable different Imunify360 features for server users. Using this functionality, hosting companies may resell chosen Imunify360 features as a part of hosting packages to end users.
+
+
+### cPanel<sup> 4.0</sup>
+
+<span class="notranslate">Native Features Management</span> is now available under WHM's <span class="notranslate">Feature Management</span> as a <span class="notranslate">Package Extension</span> (PE).
+
+Using cPanel <span class="notranslate">Native Features Management</span> a hoster can enable/disable <span class="notranslate">Malware Scanner</span> and <span class="notranslate">Proactive Defense</span> for all users with the same package (service plan) instantly.
+
+::: tip Note
+When switched to <span class="notranslate">Native Features Management</span>, the same functionality will be disabled in the Imunify360 UI for cPanel. The previous Feature Management config becomes overridden by defaults.
+
+:::
+
+**How to switch to cPanel Native Features Managemet**
+
+Go to <span class="notranslate">Imunify360 → Settings → Features Management</span>. You will see the following.
+
+![](/images/NativeFeaturesManagement.png)
+
+Click <span class="notranslate">_Details_</span>. You will see the following pop-up.
+
+![](/images/SwitchToNativeFeaturesManagement.png)
+
+Click <span class="notranslate">_Agree and Switch_</span> to confirm the action or click <span class="notranslate">_Cancel_</span> to close the popup.
+
+When switched, you will see the following.
+
+![](/images/SwitchedFM.png)
+
+**How to configure Imunify360 Features using WHM/cPanel Package Extensions**
+
+Go to <span class="notranslate">WHM/cPanel → Add a Package → Package Extensions</span> and tick <span class="notranslate">Imunify360 Features</span>.
+
+![](/images/WHMPackageExtension.png)
+
+Choose an option for each feature.
+
+<span class="notranslate">**Malaware Scanner**</span>
+* <span class="notranslate">_View reports + Cleanup_</span> – a user can view scanning reports and cleanup found malware
+* <span class="notranslate">_View reports only_</span> – a user can view scanning reports but can't cleanup found malware
+* <span class="notranslate">_Not available_</span> – the <span class="notranslate">Malware Scanner</span> is not available for a user, and its tab is hidden on the Imunify360 main menu
+  
+<span class="notranslate">**Proactive Defense**</span>
+* <span class="notranslate">_Available_</span> – the <span class="notranslate">Proactive Defense</span> feature is available for a user
+* <span class="notranslate">_Not available_</span> – the <span class="notranslate">Proactive Defense</span> is deactivated for a user: the feature does not run and its UI is hidden from the Imunify360 main menu
+
+Click <span class="notranslate">_Add_</span> to apply changes.
+
+See also: [CLI](http://localhost:8080/command_line_interface/).
+
 
 ### Attributions
 

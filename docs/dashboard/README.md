@@ -27,11 +27,9 @@ It allows to access:
 
 * <span class="notranslate">[Imunify360 Settings](/dashboard/#settings)</span> – configuring and controlling Imunify360 options.
 
-<div class="notranslate">
 
 ## Support
 
-</div>
 
 This tab allows you to contact our support team directly from your Imunify360 User Interface. You can create a request and attach some files to it.
 
@@ -41,12 +39,8 @@ To contact our support team in Imunify360 User Interface, please click the _Call
 
 A support ticket will be created and an email will be sent to a specified email address. When a status of your request will change you receive a notification to your email address. You will be able to track your request via [https://cloudlinux.zendesk.com/hc/](https://cloudlinux.zendesk.com/hc/) and email.
 
-<div class="notranslate">
 
 ## Dashboard
-
-</div>
-
 
 :::tip Note
 Beta 4.0
@@ -59,13 +53,13 @@ Click <span class="notranslate">_Dashboard_</span> tab to display an overview of
 The following time periods are available:
 
 * Last 24 hours
-* Last7 days
+* Last 7 days
 * Last 30 days
 
-The following representation form is available:
+The following representation forms are available:
 
-* Heatmap visualizes the geographical distribution of incidents
-* Histogram represents the numerical distribution of incidents
+* **Heatmap** visualizes the geographical distribution of incidents
+* **Histogram** represents the numerical distribution of incidents
 
 ![](/images/DashboardGeo.png)
 
@@ -109,7 +103,6 @@ Some charts may be hidden if no alerts of a particular type were recorded within
 
 ## Incidents
 
-</div>
 
 Choose <span class="notranslate">_Incidents_</span> tab to view and manage the list of all the [incidents](/terminology/). The table displays a list of detected incidents with all the information about the incidents reasons.
 
@@ -152,7 +145,7 @@ Click an incident to expand the detailed information.
 
 ![](/images/expand.jpg)
 
-**Actions available for <span class="notranslate">Incidents</span>:**
+**Actions available for the Incidents:**
 
 * Disabling the rule of the incident and add it to the list of Disabled rules. Click _Ban_ icon in a proper incident row and confirm the action.
 
@@ -162,24 +155,17 @@ Click an incident to expand the detailed information.
 
 ![](/images/move_button_zoom94.png)
 
-<div class="notranslate">
-
 ## Firewall
 
-</div>
 
 <span class="notranslate">_Firewall_</span> tab allows viewing and managing the IP addresses in the lists:
 
 * <span class="notranslate">White List</span> – allows to always accept IPs from the list.
 * <span class="notranslate">Gray List</span> – an auto-generated list of all the IPs blocked by Imunify360, based on Sensors alerts and alerts from the central server.
 * <span class="notranslate">Black List</span> – allows to always block IPs from the list.
-* <span class="notranslate">Blocked ports</span> – allows to manage the list of blocked ports.
-
-<div class="notranslate">
+* Blocked ports – allows to manage the list of blocked ports.
 
 ### White List
-
-</div>
 
 Click <span class="notranslate">_Firewall_</span> in the main menu then choose <span class="notranslate">_White List_</span>.
 
@@ -228,7 +214,7 @@ In the proper IP row click plus sign (+) in the <span class="notranslate">_Comme
 
 To remove a comment just delete the text in the pop-up and click <span class="notranslate">_Save_</span>.
 
-#### How to move IP from the <span class="notranslate">White List</span> to the <span class="notranslate">Black List</span>
+#### How to move IP from the White List to the Black List
 
 To move several IPs from the <span class="notranslate">White List</span> to the <span class="notranslate">Black List</span> choose proper IPs (use checkboxes), click <span class="notranslate">_Move permanently_</span> at the top of the table and choose <span class="notranslate">_Black List_</span> in the drop-down.
 
@@ -241,7 +227,7 @@ You will see a notification if IP is moved successfully.
 
 ![](/images/success.jpg)
 
-#### How to remove IP address from the <span class="notranslate">White List</span>
+#### How to remove IP address from the White List
 
 To remove several IPs from the <span class="notranslate">White List</span>, choose proper IPs (use checkboxes) and click <span class="notranslate">_Delete permanently_</span>.
 
@@ -258,11 +244,7 @@ You will see a notification if the IP is deleted successfully:
 
 Imunify360 has a predefined whitelisted services. The actual list is always available on the [link](https://files.imunify360.com/static/whitelist/v2/).
 
-<div class="notranslate">
-
 ### Gray List
-
-</div>
 
 Choose <span class="notranslate">_Firewall_</span> tab in the main menu then click <span class="notranslate">_Gray List_</span>.
 
@@ -274,7 +256,7 @@ Use filters to show the exact list of IPs:
 
 In the <span class="notranslate">Gray List</span> you can only remove IPs from it.
 
-#### How to remove IP from the <span class="notranslate">Gray List</span>
+#### How to remove IP from the Gray list
 
 To remove several IPs from the <span class="notranslate">Gray List</span> choose IPs in the list (use checkboxes) and click <span class="notranslate">_Delete permanently_</span>.
 
@@ -286,11 +268,7 @@ You will see a notification if the IP is deleted successfully.
 
 ![](/images/success_01_zoom76.png)
 
-<div class="notranslate">
-
 ### Black List
-
-</div>
 
 Choose <span class="notranslate">_Firewall_</span> tab in the main menu then click <span class="notranslate">_Black List_</span>.
 
@@ -366,7 +344,7 @@ In a proper IP line click plus sign (+) in the Comment column, add a comment and
 
 To remove a comment just delete the text in the pop-up and click <span class="notranslate">_Save_</span>.
 
-#### How to move IPs from the <span class="notranslate">Black List</span> to the <span class="notranslate">White List</span>
+#### How to move IPs from the Black List to the White List
 
 To move IPs from the <span class="notranslate">Black List</span> to the <span class="notranslate">White List</span> choose proper IPs in the list (use checkboxes), click <span class="notranslate">_Move permanently_</span> at the top of the table and choose <span class="notranslate">White List</span> in the drop-down.
 
@@ -378,7 +356,7 @@ To move an exact IP just click on a _Cog_ icon in a proper IP row and choose <sp
 You will see a notification if an IP is moved to the <span class="notranslate">White List</span> successfully.
 
 ![](/images/success.jpg)
-#### How to remove IPs from the <span class="notranslate">Black List</span>
+#### How to remove IPs from the Black List
 
 To remove IPs from the Black List choose proper IPs in the table (use checkboxes) and click <span class="notranslate">_Delete permanently_</span>.
 
@@ -389,11 +367,7 @@ You will see a notification if an IP is successfully deleted.
 
 ![](/images/success_01_zoom75.png)
 
-<div class="notranslate">
-
 ### Blocked ports
-
-</div>
 
 This feature allows to block specific ports for TCP/UDP connection. It is also possible to add specific IPs or subnet as a whitelisted, so that the rule for the port will not work.
 
@@ -415,7 +389,7 @@ The following actions are available for the ports:
 * add port to the list of blocked ports
 * edit ports in the list of blocked ports
 
-#### Add a port to the list of <span class="notranslate">blocked ports</span>
+#### Add a port to the list of blocked ports
 
 On the <span class="notranslate">Firewall</span> page choose <span class="notranslate">_Blocked ports_</span> and click <span class="notranslate">_Add Port_</span>. In the pop-up specify the following:
 
@@ -428,7 +402,7 @@ Click <span class="notranslate">_Add Port_</span> to proceed or <span class="not
 
 ![](/images/add_port.jpg)
 
-#### Edit ports in the <span class="notranslate">blocked ports</span> list
+#### Edit ports in the blocked ports list
 
 To add an IP or a subnet to the <span class="notranslate">White List</span> for the port, click _+IP_ and in the <span class="notranslate">_Add IP/Subnet_</span> pop-up specify the following:
 
@@ -445,11 +419,8 @@ To delete port or separate IP/subnet, click _Bin_ icon in the row of the element
 
 ![](/images/add_port_02.jpg)
 
-<div class="notranslate">
 
 ## Malware Scanner
-
-</div>
 
 Click <span class="notranslate">_Malware Scanner_</span> in the main menu of Imunify360 user interface to get to the <span class="notranslate">Malware Scanner</span> page.
 
@@ -480,7 +451,7 @@ Malware scanning allows you to:
 * manage malicious and quarantined files
 * manage ignore list
 
-### Observing <span class="notranslate">Malware Scanner</span> activity
+### Observing Malware Scanner activity
 
 Go to <span class="notranslate">_Malware Scanner_</span> page and choose <span class="notranslate">_Dashboard_</span> tab. On this page, the file scanning activity from the beginning of the current day is displayed by default. It is possible to use a <span class="notranslate">_Timeframe_</span> filter to observe scanner activity within the particular time period.
 
@@ -580,7 +551,7 @@ To do mass action tick several checkboxes or one in the table header to perform 
 
 ![](/images/maliciousfilesdeletepermanentlygroupaction_zoom70.png)
 
-#### Add to <span class="notranslate">Ignore List</span>
+#### Add to ignore list
 
 <span class="notranslate">_Add to ignore list_</span> action is performed simultaneously with <span class="notranslate">_Restore from quarantine_</span> action. Please go to <span class="notranslate">[Restore from quarantine](/malware_scanner.htm#restorefromquarantine/)</span> section.
 Read more about [ignore list](/terminology/).
@@ -656,14 +627,13 @@ To delete the item click _Bin_ icon and confirm the action. The item(s) will be 
 
 To search file or folder in the <span class="notranslate">Ignore List</span> use <span class="notranslate">_Search_</span> input field above the table.
 
-<div class="notranslate">
 
 ## Proactive Defense
 
-</div>
 
 ### Overview
 
+ 
 <span class="notranslate">Proactive Defense</span> is a unique Imunify360 feature that can prevent malicious activity through PHP scripts. It is available as a PHP module for Apache and LiteSpeed web servers and analyzes script activity using known patterns like obfuscated command injection, malicious code planting, sending spam, SQL injection etc.
 
 ### User Interface
@@ -741,13 +711,13 @@ The file content will be displayed in a new pop-up.
 ![](/images/proactivedefensefilecontent_zoom70.png)
 The group action is not available for this action.
 
-**Move IP to the <span class="notranslate">Black List</span>**
+**Move IP to the Black List**
 
 Click _View details_ icon in the row of the desired event. Then, click <span class="notranslate">_Block IP_</span> button. To move the IP to the Black list click <span class="notranslate">_Yes, move to Black list_</span>. In the pop-up displayed click <span class="notranslate">_Yes, move to black list_</span> to complete the action or <span class="notranslate">_Cancel_</span> to return to the <span class="notranslate">_Details_</span> window. When a file is added to the <span class="notranslate">Black List</span>, you will see the confirmation pop-up.
 
 ![](/images/proactivedefenseblockip_zoom70.png)
 
-**Move file to <span class="notranslate">Ignore List</span> (ignore detected rule) <sup> 3.7.0+</sup>**
+**Move file to Ignore List (ignore detected rule) <sup> 3.7.0+</sup>**
 
 **The first way**
 Click _Cog_ icon in the row of the desired event and choose <span class="notranslate">_Ignore detected rule for the file_</span>. Click <span class="notranslate">_Yes, add to Ignore List_</span> in the confirmation pop-up or click <span class="notranslate">_Cancel_</span> to close pop-up. Now you can see this file on the <span class="notranslate">Ignore List</span> tab.
@@ -758,7 +728,7 @@ Click _View details_ icon and then in the file details pop-up click <span class=
 
 ![](/images/proactivedefenseignoredetectedruleforfile1_zoom70.png)
 
-**Move file to <span class="notranslate">Ignore List</span> (ignore all rules) <sup>3.7.0+</sup>**
+**Move file to Ignore List (ignore all rules) <sup>3.7.0+</sup>**
 
 **The first way**
 Click _Cog_ icon in the row of the desired event and choose <span class="notranslate">_Ignore all rules for the file_</span>. Click <span class="notranslate">_Yes, add to Ignore List_</span> in the confirmation pop-up or click <span class="notranslate">_Cancel_</span> to close pop-up. The file will be moved to <span class="notranslate">Ignore List</span> tab.
@@ -769,14 +739,14 @@ Click _View details_ icon and then in the file details pop-up click <span class=
 
 ![](/images/proactivedefenseignoreallrulesforfile1_zoom70.png)
 
-**Remove file from <span class="notranslate">Ignore List</span> <sup>3.7.0+</sup>**
+**Remove file from Ignore List <sup>3.7.0+</sup>**
 
 On the Ignore List tab click _Bin_ icon and confirm the action.
 ![](/images/proactivedefenseignorelistbin_zoom70.png)
 
 To perform bulk action, tick required checkboxes and click <span class="notranslate">_Remove from ignore list_</span> at the top of the table, then confirm the action in the pop-up.
 
-**<span class="notranslate">Ignore List</span> tab <sup>3.7.0+</sup>**
+**Ignore List tab <sup>3.7.0+</sup>**
 
 Here, there is a table with files with ignored rules. If file is added to <span class="notranslate">Ignore List, Proactive Defense</span> will not analyze scripts activity from this file for all or specified rule.
 ![](/images/proactivedefenseignorelist_zoom70.png)
@@ -788,7 +758,7 @@ The <span class="notranslate">_Ignore List_</span> table includes the following 
 * <span class="notranslate">Rules to ignore</span> — displays the pattern to be ignored.
 * <span class="notranslate">Actions</span> — allows to view details and perform actions on the file.
 
-**How to test <span class="notranslate">Proactive Defense</span>**
+**How to test Proactive Defense**
 
 1. Set <span class="notranslate">Proactive Defense</span> to <span class="notranslate">_Log only_</span> mode (requests will not be blocked) or to <span class="notranslate">_Kill mode_</span> to kill all requests.
 2. Create a file with the following content:
@@ -821,11 +791,7 @@ die();
 6. If <span class="notranslate">Proactive Defense</span> is enabled and <span class="notranslate">_Log only_</span> mode is set, you will see _Step 1_ and _Step 2_ strings after calling the script and a new event in the <span class="notranslate">_Detected Events_</span> table.
 7. If <span class="notranslate">Proactive Defense</span> is enabled and <span class="notranslate">_Kill mode_</span> is set, the test page returns an error.
 
-<div class="notranslate">
-
 ## Reputation Management
-
-</div>
 
 Choose <span class="notranslate">_Reputation Management_</span> in the main menu of the Imunify360 user interface to get to the <span class="notranslate">Reputation Management</span> page.
 
@@ -889,11 +855,8 @@ KernelCare tab can load slowly on highly loaded systems.
 
 Read more about KernelCare [on the link](https://www.kernelcare.com).
 
-<div class="notranslate">
-
 ## Settings
 
-</div>
 
 Choose <span class="notranslate">_Settings_</span> in the main menu to get to the Imunify360 settings page.
 The following tabs are available:
@@ -902,14 +865,9 @@ The following tabs are available:
 * <span class="notranslate">[Malware](/dashboard/#malware)</span>
 * <span class="notranslate">[Backups](/dashboard/#backups)</span>
 * <span class="notranslate">[Disables Rules](/dashboard/#disabled-rules)</span>
-* <span class="notranslate">[Features Management](/dashboard/#features-management)</span>
 * <span class="notranslate">[Attributions](/dashboard/#attributions)</span>
 
-<div class="notranslate">
-
 ### General
-
-</div>
 
 Go to <span class="notranslate">_Imunify360 → Settings → General_</span>. The following sections are available:
 
@@ -920,11 +878,7 @@ Go to <span class="notranslate">_Imunify360 → Settings → General_</span>. Th
 * <span class="notranslate">[WebShield](/dashboard/#webshield)</span>
 * <span class="notranslate">[Error Reporting](/dashboard/#error-reporting)</span>
 
-<div class="notranslate">
-
 #### Installation
-
-</div>
 
 Here you can install and uninstall the following components:
 * HardenedPHP
@@ -946,26 +900,26 @@ HardenedPHP is free on the servers with Imunify360 installed.
 ![](/images/kc_install_log_zoom91.png)
 
 
-**<span class="notranslate">Invisible Captcha</span>**
+**Invisible Captcha**
 
 **Overview**
 
 This feature allows to automatically determine if the user is a human. The system falls back to CAPTCHA solving if the algorithm determines that a user may not be a human.
 It is possible to enable Invisible CAPTCHA feature via Imunify360 user interface (UI) and via command line interface (CLI).
 
-**How to install <span class="notranslate">Invisible CAPTCHA</span>**
+**How to install Invisible CAPTCHA**
 
 Go to <span class="notranslate">Imunify360 → Settings → General → Installation → Invisible CAPTCHA</span> and click <span class="notranslate">_Install Invisible CAPTCHA_</span> button. Confirm the installation in the pop-up.
 
 ![](/images/invisiblecaptchainstall_zoom70.png)
 
-**How to check if <span class="notranslate">Invisible CAPTCHA</span> is currently installed**
+**How to check if Invisible CAPTCHA is currently installed**
 
 Go to <span class="notranslate">Imunify360 → Settings → General → Installation → Invisible CAPTCHA</span>. The red <span class="notranslate">_Remove Invisible CAPTCHA_</span> button means that Invisible CAPTCHA is enabled.
 
 ![](/images/invisiblecaptchaenabled_zoom70.png)
 
-**How to uninstall <span class="notranslate">Invisible CAPTCHA</span>**
+**How to uninstall Invisible CAPTCHA**
 
 Go to <span class="notranslate">Imunify360 → Settings → General → Installation → Invisible CAPTCHA</span> and click <span class="notranslate">_Remove Invisible CAPTCHA_</span> button. Confirm the action in the pop-up.
 
@@ -981,11 +935,7 @@ KernelCare is free on the servers with Imunify360 installed.
 :::
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
 
-<div class="notranslate">
-
 #### DoS Protection
-
-</div>
 
 <span class="notranslate">DoS Protection</span> section allows to enable or disable DoS protection. DoS protection works by counting connections from each remote IP address per local port separately.
 Tick checkbox <span class="notranslate">_Enable Dos Protection_</span>.
@@ -998,11 +948,7 @@ It is possible to configure how Imunify360 will behave:
 
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
 
-<div class="notranslate">
-
 #### Auto White List
-
-</div>
  
 <span class="notranslate">Auto White List</span> section allows to automatically add admin IP to the <span class="notranslate">White List</span> each time when he logs in to hosting panel and enters Imunify360 user interface.
 In <span class="notranslate">_Timeout_</span> field enter the number of minutes – the IP will be removed from the white list automatically after this time.
@@ -1015,11 +961,7 @@ In <span class="notranslate">_Timeout_</span> field enter the number of minutes 
 
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
 
-<div class="notranslate">
-
 #### Incidents Logging
-
-</div>
  
 In this section it is possible to control what kind of incidents will be shown on the [Incidents page](/dashboard/#incidents).
 Move the slider to change your preferences.
@@ -1055,11 +997,7 @@ Autocleanup configuration allows to keep the <span class="notranslate">Incidents
 	
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
 	
-<div class="notranslate">
-
 #### WebShield
-
-</div>
 
 Tick <span class="notranslate">_Detect IPs behind CDN_</span> checkbox to allow to recognize and block IPs with suspicious activity behind Cloudflare and MaxCDN.
 	
@@ -1067,11 +1005,7 @@ Tick <span class="notranslate">_Detect IPs behind CDN_</span> checkbox to allow 
 
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
 
-<div class="notranslate">
-
 #### Error Reporting
-
-</div>
  
 Tick <span class="notranslate">_Enable Sentry error reporting_</span> checkbox to send reports to Imunify360 error reports server.
 
@@ -1079,19 +1013,14 @@ Tick <span class="notranslate">_Enable Sentry error reporting_</span> checkbox t
 
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
 
-<div class="notranslate">
-
 ### Malware
-
-</div>
 
 Go to <span class="notranslate">Imunify360 → Settings → Malware</span>. Here you can configure General and <span class="notranslate">Malware Cleanup</span> Settings<sup>3.7.1+</sup>.
 
 ::: tip Note
 Read [CXS integration](/ids_integration/#cxs-integration) documentation carefully to make Malware Scanner work properly if you decided to use the former instead of Imunify360 anti-malware protection.
 :::
-
-**<span class="notranslate">General</span>**
+**General**
 
 ![](/images/SettingsMalware.png)
 
@@ -1118,7 +1047,7 @@ Read [CXS integration](/ids_integration/#cxs-integration) documentation carefull
 
 Tick required checkboxes and click <span class="notranslate">_Save changes_</span> button.
 
-**<span class="notranslate">Malware Cleanup</span><sup> 3.7.1+</sup>**
+**Cleanup<sup>3.7.1+</sup>**
 
 * <span class="notranslate">_Trim file instead of removal_</span> — do not remove infected file during cleanup but make the file zero-size (for malwares like web-shells);
 * <span class="notranslate">_Keep original files for … days_</span> — the original infected file is available for restore within the defined period. Default is 14 days.
@@ -1135,11 +1064,7 @@ Imunify360 security team will use that information to prevent future infections 
 
 Click <span class="notranslate">_Save changes_</span> button at the page bottom to apply all changes.
 
-<div class="notranslate">
-
 ### Backups
-
-</div>
 
 ::: tip Note
 Imunify360 2.7.0+
@@ -1169,7 +1094,7 @@ This section describes the following:
 * how to [schedule](/dashboard/#schedule-cloudlinux-backup) <span class="notranslate">CloudLinux Backup</span>
 * how to [restore](/dashboard/#how-to-restore-file) files
 
-#### How to enable <span class="notranslate">Backups</span>
+#### How to enable backups
 
 To enable backups log in to a hosting panel as administrator, go to Imunify360 plugin and do the following.
 * Go to <span class="notranslate">_Imunify360 → Settings → Backups_</span>. If the feature is not currently used the <span class="notranslate">_Backup and restore_</span> is <span class="notranslate">_Disabled_</span>.
@@ -1180,11 +1105,7 @@ To enable backups log in to a hosting panel as administrator, go to Imunify360 p
 
 ![](/images/settingsbackup.png)
 
-<div class="notranslate">
-
 #### CloudLinux Backup
-
-</div>
 
 <span class="notranslate">CloudLinux Backup</span> option provides a customer with the most integrated with Imunify360 backup feature. It is powered by the Acronis technology, but you do not need to have an active Acronis account (if you have an existing Acronis account and would like to continue using it, skip to the <span class="notranslate">Acronis Backup</span> section for choosing an <span class="notranslate">Acronis Backup</span> option).
 
@@ -1207,11 +1128,7 @@ To activate <span class="notranslate">CloudLinux Backup</span>, follow the next 
 
 ![](/images/backuprestorecloudlinux.png)
 
-<div class="notranslate">
-
-#### Acronis Backup
-
-</div>
+**Acronis Backup**
 
 Choose it if you have Acronis account. So that Imunify360 can use backups to restore malicious or suspicious files from the backup if a clean version exists.
 
@@ -1223,11 +1140,7 @@ Imunify360 checks if Acronis agent is already installed. If not, Imunify360 inst
 
 ![](/images/acronisbackup.png)
 
-<div class="notranslate">
-
-#### cPanel or Plesk Backup
-
-</div>
+**cPanel or Plesk Backup**
 
 * Choose cPanel/Plesk backup
 * Select <span class="notranslate">_cPanel/Plesk Backup_</span>
@@ -1237,7 +1150,7 @@ Imunify360 checks if Acronis agent is already installed. If not, Imunify360 inst
 
 After successful connection, Imunify360 will return an appropriate message.
 
-#### How to disable <span class="notranslate">Backups</span>
+#### How to disable backups
 
 To disable backups do the following:
 * Go to <span class="notranslate">_Imunify360 → Settings → Backups_</span>
@@ -1249,13 +1162,13 @@ To disable backups do the following:
   :::
   ![](/images/disablebackup.png)
 
-#### Manage <span class="notranslate">CloudLinux Backup</span>
+#### Manage CloudLinux Backup
 
 Click <span class="notranslate">_Manage Backups_</span> button. You will be redirected to the <span class="notranslate">_Backup Management Console_</span>. The console opens in a new tab in the browser. Please go to [documentation](https://www.acronis.com/en-us/support/documentation/BackupService/index.html#33836.html) to find out more information.
 
 ![](/images/managebackups.png)
 
-#### Change <span class="notranslate">CloudLinux Backup</span> storage size
+#### Change CloudLinux Backup storage size
 
 Click <span class="notranslate">_Resize_</span> link. You will be redirected to the <span class="notranslate">CloudLinux Network</span> where you can add or remove storage space.
 ![](/images/resize.png)
@@ -1264,7 +1177,7 @@ After successful payment, the backup storage size will be increased. Imunify360 
 On the <span class="notranslate">_Settings → Backups_</span> tab you can see the actual and used amount of backup storage in GB.
 If you get an error message, please follow the instructions in the message or [contact our support team](https://cloudlinux.zendesk.com/hc/requests/new) .
 
-#### Schedule <span class="notranslate">CloudLinux Backup</span>
+#### Schedule CloudLinux Backup
 
 Click <span class="notranslate">_Manage Backups_</span> button. You will be redirected to the <span class="notranslate">_Backup Management Console_</span> (read the documentation [here](https://www.acronis.com/en-us/support/documentation/BackupService/index.html#33507.html) ). When a schedule is set it is displayed on the <span class="notranslate">_Backups_</span> tab.
 
@@ -1278,11 +1191,8 @@ To restore a file do the following:
 
 You can configure the automatic restore. Please find more details [here](/dashboard/#malware).
 
-<div class="notranslate">
 
 ### Disabled Rules
-
-</div>
 
 Go to <span class="notranslate">_Settings_</span> page and choose <span class="notranslate">_Disabled rules_</span>. This page allows user to manage disabled rules which have already been added.
 
@@ -1323,15 +1233,11 @@ To remove the rule from disabled list click <span class="notranslate">_Enable_</
 
 ![](/images/disabledrulesenablepopup_zoom60.png)
 
-<div class="notranslate">
-
 ### Features Management
-
-</div>
 
 **Overview**
 
-<span class="notranslate">Features Management</span> allows hosters to enable/disable Imunify360 features for each customer. On <span class="notranslate">Feature Management</span> it is possible to manage <span class="notranslate">Proactive Defense</span> and <span class="notranslate">Malware Cleanup</span> for each customer account.
+<span class="notranslate">Features Management</span> allows hosters to enable/disable Imunify360 features for each customer. On <span class="notranslate">Features Management</span> it is possible to manage <span class="notranslate">Proactive Defense</span> and <span class="notranslate">Malware Cleanup</span> for each customer account.
 If a feature is enabled for the user in hoster’s account, the user will be able to see and use it in his account.
 
 ::: tip Note
@@ -1382,28 +1288,24 @@ To disable <span class="notranslate">Malware Cleanup</span> account-wide just mo
 
 You can perform all these actions via [CLI](/command_line_interface/).
 
-
 <div class="notranslate">
 
-### Native Features Management<sup> 4.0</sup>
+### Native Feature Management<sup> 4.0</sup>
 
 </div>
 
-<span class="notranslate">Native Features Management</span> allows a hoster to enable/disable different Imunify360 features for server users. Using this functionality, hosting companies may resell chosen Imunify360 features as a part of hosting packages to end users.
+<span class="notranslate">Feature Management</span> allows a hoster to enable/disable different Imunify360 features for server users. Using this functionality, hosting companies may resell chosen Imunify360 features as a part of hosting packages to end-users as well as make features available/unavailable for a group of end-users.
 
+### WHM/cPanel<sup> 4.0</sup>
 
-### cPanel<sup> 4.0</sup>
-
-<span class="notranslate">Native Features Management</span> is now available under WHM's <span class="notranslate">Feature Management</span> as a <span class="notranslate">Package Extension</span> (PE).
-
-Using cPanel <span class="notranslate">Native Features Management</span> a hoster can enable/disable <span class="notranslate">Malware Scanner</span> and <span class="notranslate">Proactive Defense</span> for all users with the same package (service plan) instantly.
+<span class="notranslate">WHM/cPanel Feature Management</span> is now available under <span class="notranslate">WHM/cPanel Package Manager</span> via <span class="notranslate">Package Extension (PE)</span>.
+Using <span class="notranslate">WHM/cPanel Native Feature Management</span> a hoster can enable/disable <span class="notranslate">Malware Scanner</span> and <span class="notranslate">Proactive Defense</span> for all users with the same package (service plan) instantly.
 
 ::: tip Note
-When switched to <span class="notranslate">Native Features Management</span>, the same functionality will be disabled in the Imunify360 UI for cPanel. The previous Feature Management config becomes overridden by defaults.
-
+When switched to <span class="notranslate">WHM/cPanel Feature Management</span>, the same functionality will be disabled in the Imunify360 UI. The previous Feature Management config becomes overridden by defaults.
 :::
 
-**How to switch to cPanel Native Features Managemet**
+**How to switch to WHM/cPanel Feature Management**
 
 Go to <span class="notranslate">Imunify360 → Settings → Features Management</span>. You will see the following.
 
@@ -1411,9 +1313,14 @@ Go to <span class="notranslate">Imunify360 → Settings → Features Management<
 
 Click <span class="notranslate">_Details_</span>. You will see the following pop-up.
 
+
 ![](/images/SwitchToNativeFeaturesManagement.png)
 
 Click <span class="notranslate">_Agree and Switch_</span> to confirm the action or click <span class="notranslate">_Cancel_</span> to close the popup.
+
+:::tip Note
+Note that current Imunify360 settings will be reset to default values after switching to <span class="notranslate">WHM/cPanel Feature Management</span> mode. You can switch back to in-app <span class="notranslate">Imunify360 Feature Management</span> mode at any time via CLI command. The end-user values will be reset to default values upon any mode switching.
+:::
 
 When switched, you will see the following.
 
@@ -1421,17 +1328,23 @@ When switched, you will see the following.
 
 **How to configure Imunify360 Features using WHM/cPanel Package Extensions**
 
-Go to <span class="notranslate">WHM/cPanel → Add a Package → Package Extensions</span> and tick <span class="notranslate">Imunify360 Features</span>.
+Go to <span class="notranslate">WHM/cPanel → Add a Package → Package Extensions</span> and tick <span class="notranslate">Imunify360 Features</span> (if it’s not selected).
 
 ![](/images/WHMPackageExtension.png)
 
 Choose an option for each feature.
 
-<span class="notranslate">**Malaware Scanner**</span>
+<span class="notranslate">**Malware Scanner**</span>
 * <span class="notranslate">_View reports + Cleanup_</span> – a user can view scanning reports and cleanup found malware
-* <span class="notranslate">_View reports only_</span> – a user can view scanning reports but can't cleanup found malware
+* <span class="notranslate">_View reports only_</span> – a user can view scanning reports but can't cleanup found malware (note that quarantine and file removal functionality is still available in this mode)
 * <span class="notranslate">_Not available_</span> – the <span class="notranslate">Malware Scanner</span> is not available for a user, and its tab is hidden on the Imunify360 main menu
-  
+:::tip Note
+The last option is available in the WHM/cPanel Package Manager only and is not available via Imunify360 UI or CLI.
+:::  
+:::warning Note
+When the **Malware Scanner is not available** for end-user, it doesn't exclude user folders from scanning, so his files will be scanned and the results will be listed in an admin UI as usual.
+:::
+
 <span class="notranslate">**Proactive Defense**</span>
 * <span class="notranslate">_Available_</span> – the <span class="notranslate">Proactive Defense</span> feature is available for a user
 * <span class="notranslate">_Not available_</span> – the <span class="notranslate">Proactive Defense</span> is deactivated for a user: the feature does not run and its UI is hidden from the Imunify360 main menu
@@ -1439,11 +1352,12 @@ Choose an option for each feature.
 Click <span class="notranslate">_Add_</span> to apply changes.
 
 See also: [CLI](http://localhost:8080/command_line_interface/).
-
+:::tip Note
+Imunify360 4.0 does not support _Not Available_ state for the Malware Scanner in the original in-app Features Management and via CLI. You can disable Malware Scanner for a particular package via WHM Package Manager only.
+:::
+ 
 
 ### Attributions
-
-</div>
 
 Click <span class="notranslate">_Settings_</span> and choose <span class="notranslate">_Attributions_</span> tab to observe a list of [IDS](/terminology/) install on the server.
 

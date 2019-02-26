@@ -128,6 +128,8 @@ to request CAPTCHA again</td></tr>
 <td># enable CDN support, treat IPs behind CDN as any other IPs</td></tr>
 <tr>
 <th colspan="2" align="left"><span class="notranslate">PROACTIVE_DEFENСE:</span></th></tr>
-<tr><td><span class="notranslate">blamer</span></td>
-<td># enable Blamer</td></tr>
+<tr><td><span class="notranslate">blamer: false</span></td>
+<td># enable (<span class="notranslate">true</span>) or disable (<span class="notranslate">false) Blamer</span></td></tr>
+<tr><td><span class="notranslate">mode: KILL</span></td>
+<td># available modes:<ul><li><span class="notranslate">KILL</span></li><li><span class="notranslate">DISABLED</span></li><li><span class="notranslate">LOG</span></li></ul></td></tr>
  </table>

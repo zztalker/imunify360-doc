@@ -157,7 +157,7 @@ Start the agent
 
 ### 8. Why does my cPanel with LiteSpeed and OWASP ModSecurity rule set trigger 500 error on all web pages after installing Imunify360?
 
-OWASP rule set may conflict with Imunify360 default rule set on a server running LiteSpeed Web Server. We recommend to turn off OWASP rule set prior to installing Imunify360.
+OWASP rule set may conflict with Imunify360 default rule set on a server running <span class="notranslate">LiteSpeed Web Server</span>. We recommend to turn off OWASP rule set prior to installing Imunify360.
 
 Please find more FAQs in our [Knowledge Base](https://cloudlinux.zendesk.com/hc/sections/115001538929-FAQ).
 

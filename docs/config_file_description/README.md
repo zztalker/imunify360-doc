@@ -1,4 +1,4 @@
-# Config File Description
+﻿# Config File Description
 
 
 Imunify360 config file is available on the following location after installation:
@@ -133,3 +133,22 @@ to request CAPTCHA again</td></tr>
 <tr><td><span class="notranslate">mode: KILL</span></td>
 <td># available modes:<ul><li><span class="notranslate">KILL</span></li><li><span class="notranslate">DISABLED</span></li><li><span class="notranslate">LOG</span></li></ul></td></tr>
  </table>
+
+::: tip Experimental - <span class="notranslate">Active Response</span> feature
+The following feature requires a special Imunify360 build - contact our tech support at <span class="notranslate">https://cloudlinux.zendesk.com (Imunify360</span> department) to enable it.
+:::
+
+<span class="notranslate">Active Response</span> is an ossec-driven (IDS) feature of Imunify360 which has been re-engineered to make it capable of blocking access to a specific server port being attacked.
+
+The purpose of the feature is significantly reducing false positive rate while increasing its capabilities to detect and block aggressive brute force requests.
+
+In order to activate <span class="notranslate">Active Response</span>, the following lines should be added into <span class="notranslate">_/etc/sysconfig/imunify360/imunify360.config_</span>:
+
+<div class="notranslate">
+```
+OSSEC:
+
+  active_response: true
+```
+</div>
+and then restart Imunify360 service.

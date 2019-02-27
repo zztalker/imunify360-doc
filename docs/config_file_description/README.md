@@ -152,7 +152,10 @@ OSSEC:
 
 </div>
 and then restart Imunify360 service:
+<div class="notranslate">
 
 ```
 systemctl restart imunify360
 ```
+
+</div>

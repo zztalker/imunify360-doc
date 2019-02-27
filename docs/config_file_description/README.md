@@ -142,13 +142,17 @@ The following feature requires a special Imunify360 build - contact our tech sup
 
 The purpose of the feature is significantly reducing false positive rate while increasing its capabilities to detect and block aggressive brute force requests.
 
-In order to activate <span class="notranslate">Active Response</span>, the following lines should be added into <span class="notranslate">_/etc/sysconfig/imunify360/imunify360.config_</span>:
-
+In order to activate <span class="notranslate">Active Response, </span>the following lines should be added into <span class="notranslate">_/etc/sysconfig/imunify360/imunify360.config_</span>:
 <div class="notranslate">
+
 ```
 OSSEC:
-
   active_response: true
 ```
+
 </div>
-and then restart Imunify360 service.
+and then restart Imunify360 service:
+
+```
+systemctl restart imunify360
+```

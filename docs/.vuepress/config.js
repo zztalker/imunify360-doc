@@ -1,6 +1,15 @@
 const urls = require("./urls-mapping.js");
+const sidebarUrls = require("./sidebar-urls");
+const _slugify = require('vuepress/lib/markdown/slugify');
 
 module.exports = {
+  configureWebpack: {
+    resolve: {
+      alias: {
+        'vue$': 'vue/dist/vue.esm.js'
+      }
+    }
+  },
   base: "/",
   locales: {
     // The key is the path for the locale to be nested under.
@@ -9,55 +18,58 @@ module.exports = {
       lang: "en-US", // this will be set as the lang attribute on <html>
       title: "Documentation",
       description: "Imunify360 documentation"
+    },
+    "/ru/": {
+      lang: "ru",
+      title: "Документация",
+      description: "Документация Imunify360"
     }
-    // TODO: temporary!
-    // "/ru/": {
-    //   lang: "ru",
-    //   title: "Документация",
-    //   description: "Документация Imunify360"
-    // }
   },
   theme: "cloudlinux",
   // theme: '/Users/prefer/src/cloudlinux-doc-theme', // local path
+  markdown: {
+      slugify: (s) => {
+        if (sidebarUrls[s]) {
+          return sidebarUrls[s];
+        }
+        return _slugify(s);
+      }
+  },
 
   themeConfig: {
-    repo: 'cloudlinux/imunify360-doc',
+    repo: "cloudlinux/imunify360-doc",
     editLinks: true,
-    docsBranch: 'dev',
-    docsDir: 'docs',
+    docsBranch: "dev",
+    docsDir: "docs",
 
+    translationSource: 'docs.imunify360.com',
     defaultURL: "/introduction/",
     redirectionMapping: urls,
     sidebarDepth: 2,
     logo: "/logo.svg",
     try_free: "https://www.imunify360.com/trial",
-    bottomLinks: [
-      { text: "How to", url: "https://cloudlinux.zendesk.com/hc/sections/115001344329-How-do-I" },
-      { text: "Getting started", url: "https://imunify360.com/getting-started" },
-      {
-        text: "Contact support",
-        url: "https://cloudlinux.zendesk.com/hc/en-us/requests/new"
-      },
-      { text: "Blog", url: "https://www.imunify360.com/blog" }
-    ],
     social: [
-      { url: "https://www.facebook.com/imunify360/", logo: "/fb.svg" },
-      { url: "https://twitter.com/imunify360/", logo: "/tw.svg" },
-      { url: "https://linkedin.com/company/cloudlinux", logo: "/in.svg" },
+      { url: "https://www.facebook.com/imunify360/", logo: "/fb.png" },
+      { url: "https://twitter.com/imunify360/", logo: "/tw.png" },
+      { url: "https://linkedin.com/company/cloudlinux", logo: "/in.png" },
       {
         url: "https://www.youtube.com/channel/UCcW6dDJjcy41c7Hl_5LdLZQ",
-        logo: "/ytube.svg"
+        logo: "/ytube.png"
       }
     ],
     cloudlinuxSite: "https://cloudlinux.com",
     locales: {
       "/": {
+        // text for the language dorpdown title
+        title: "Language",
         // text for the language dropdown
-        selectText: "Languages",
+        selectText: "En",
         // label for this locale in the language dropdown
         label: "English",
         // text for the edit-on-github link
         editLinkText: "Edit this page",
+        tryFree: "Try Free",
+        search: "Search",
         // config for Service Worker
         serviceWorker: {
           updatePopup: {
@@ -65,12 +77,26 @@ module.exports = {
             buttonText: "Refresh"
           }
         },
-        // algolia docsearch options for current locale
         algolia: {},
-
+        stayInTouch: "Stay in touch",
+        bottomLinks: [
+            {
+                text: "How to",
+                url: "https://cloudlinux.zendesk.com/hc/sections/115001344329-How-do-I"
+            },
+            {
+                text: "Getting started",
+                url: "https://imunify360.com/getting-started"
+            },
+            {
+                text: "Contact support",
+                url: "https://cloudlinux.zendesk.com/hc/en-us/requests/new"
+            },
+            { text: "Blog", url: "https://www.imunify360.com/blog" }
+        ],
         sidebar: [
           {
-            title: "Content",
+            title: "Contents",
             collapsable: false,
             children: [
               "/introduction/",
@@ -93,9 +119,12 @@ module.exports = {
         ]
       },
       "/ru/": {
-        selectText: "Выберите язык",
+        title: "Язык",
+        selectText: "Рус",
         label: "Русский",
         editLinkText: "Редактировать",
+        tryFree: "Попробовать бесплатно",
+        search: "Поиск",
         serviceWorker: {
           updatePopup: {
             message: "Новый контент доступен",
@@ -103,6 +132,22 @@ module.exports = {
           }
         },
         algolia: {},
+        stayInTouch: "Будем на связи",
+        bottomLinks: [
+            {
+                text: "Инструкции",
+                url: "https://cloudlinux.zendesk.com/hc/sections/115001344329-How-do-I"
+            },
+            {
+                text: "С чего начать",
+                url: "https://imunify360.com/getting-started"
+            },
+            {
+                text: "Техподдержка",
+                url: "https://cloudlinux.zendesk.com/hc/en-us/requests/new"
+            },
+            { text: "Блог", url: "https://www.imunify360.com/blog" }
+        ],
         sidebar: [
           {
             title: "Содержание",
@@ -129,4 +174,4 @@ module.exports = {
       }
     }
   }
-}
+};

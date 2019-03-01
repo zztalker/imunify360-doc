@@ -10,6 +10,8 @@ Log in to WHM as an admin and go to <span class="notranslate">Plugins</span>, ch
 
 It allows to access:
 * <span class="notranslate">[Support](/dashboard/#support)</span> – allows you to contact our support team directly from your Imunify360 User Interface
+  
+* <span class="notranslate">[Dashboard](/dashboard/#dashboard)</span> – allows you to see retrospective data in form of charts/heatmaps in your Imunify360 User Interface
 
 * <span class="notranslate">[Incidents](/dashboard/#incidents)</span> – the list of all suspicious activity on the server.
 
@@ -37,6 +39,67 @@ To contact our support team in Imunify360 User Interface, please click the _Call
 
 A support ticket will be created and an email will be sent to a specified email address. When a status of your request will change you receive a notification to your email address. You will be able to track your request via [https://cloudlinux.zendesk.com/hc/](https://cloudlinux.zendesk.com/hc/) and email.
 
+
+## Dashboard
+
+:::tip Note
+Beta 4.0
+:::
+
+Click <span class="notranslate">_Dashboard_</span> tab to display an overview of incidents recorded during the selected time interval, an estimate of the intensity of attacks, and correlate events across all sources.
+
+![](/images/DashboardGeneral.png)
+
+The following time periods are available:
+
+* Last 24 hours
+* Last 7 days
+* Last 30 days
+
+The following representation forms are available:
+
+* **Heatmap** visualizes the geographical distribution of incidents
+* **Histogram** represents the numerical distribution of incidents
+
+![](/images/DashboardGeo.png)
+
+![](/images/DashboardNum.png)
+
+Hover mouse over the particular bar to check the accurate value.
+
+::: tip Note
+Charts may have gaps. This means that no incidents or alerts were recorded during that day/time period.
+:::
+
+The following charts are available.
+
+* **Alerts total**
+
+Security incidents recorded within the selected time interval. Data includes all ModSecurity incidents, Imunify360 DOS plugin alerts, cPanel Login Failure Daemon (for cPanel only) and OSSEC alerts. This is a summary of all major alert sources.
+
+* **CAPTCHA events**
+
+Recorded requests coming from detected attackers or bad bots that show the CAPTCHA challenge within the selected interval.
+
+* **WAF alerts**
+
+Web attacks recorded by ModSecurity within the selected time interval. It may include CMS brute-force and login attempts, websites hacking attempts, attempts to access “sensitive” files or restricted areas, and other malicious requests.
+
+* **Web-based Brute-force Attacks**
+
+Web-based brute-force attacks against the CMS and hosting panel, and incidents recorded by ModSecurity.
+
+* **OSSEC: Network Level Attacks**
+
+Attacks against network services, e.g. FTP, SSH, POP, IMAP, etc., recorded by OSSEC IDS  within the selected time interval. It includes authentication failures, requests from blocked IPs, break-in attempts alerts and more.
+
+* **Denied Requests from Bad Bots**
+
+Attacks detected by the Imunify360 Bot-Detector heuristics-based plugin. Bot-Detector is a part of Imunify360’s “herd immunity” feature that collects and analyzes a massive amount of information on new attacks on a global scale which it uses to prevent attacks across multiple servers.
+
+:::tip Note
+Some charts may be hidden if no alerts of a particular type were recorded within the selected time interval.
+:::
 
 ## Incidents
 
@@ -163,6 +226,7 @@ To move one IP address, click _Cog_ icon in proper IP row and choose <span class
 You will see a notification if IP is moved successfully.
 
 ![](/images/success.jpg)
+
 #### How to remove IP address from the White List
 
 To remove several IPs from the <span class="notranslate">White List</span>, choose proper IPs (use checkboxes) and click <span class="notranslate">_Delete permanently_</span>.
@@ -983,12 +1047,20 @@ Read [CXS integration](/ids_integration/#cxs-integration) documentation carefull
 
 Tick required checkboxes and click <span class="notranslate">_Save changes_</span> button.
 
-**Malware Cleanup<sup>3.7.1+</sup>**
+**Cleanup<sup>3.7.1+</sup>**
 
 * <span class="notranslate">_Trim file instead of removal_</span> — do not remove infected file during cleanup but make the file zero-size (for malwares like web-shells);
 * <span class="notranslate">_Keep original files for … days_</span> — the original infected file is available for restore within the defined period. Default is 14 days.
 
 ![](/images/malwarescannersettings_zoom70.png)
+
+
+**Proactive Defense<sup> 4.0+</sup>**
+
+* <span class="notranslate">_Enable Blamer_</span> — tick to allow Imunify360 to find a root cause of how infection got injected into the server through PHP. Blamer pinpoints exact URL, PHP script & PHP execution path that allowed a hacker to inject malware onto the server.
+Imunify360 security team will use that information to prevent future infections from happening.
+
+![](/images/SettingsBlamer.png)
 
 Click <span class="notranslate">_Save changes_</span> button at the page bottom to apply all changes.
 
@@ -1160,6 +1232,130 @@ It is possible to specify domains only for ModSecurity rules. For OSSEC rules it
 To remove the rule from disabled list click <span class="notranslate">_Enable_</span> and confirm action in the pop-up.
 
 ![](/images/disabledrulesenablepopup_zoom60.png)
+
+### Features Management
+
+**Overview**
+
+<span class="notranslate">Features Management</span> allows hosters to enable/disable Imunify360 features for each customer. On <span class="notranslate">Features Management</span> it is possible to manage <span class="notranslate">Proactive Defense</span> and <span class="notranslate">Malware Cleanup</span> for each customer account.
+If a feature is enabled for the user in hoster’s account, the user will be able to see and use it in his account.
+
+::: tip Note
+Default settings in <span class="notranslate">Features Management</span> are inherited by newly created user accounts only.
+:::
+
+:::tip Note
+Features are enabled/disabled account-wide.
+:::
+
+![](/images/FeaturesManagementGeneral.png)
+
+Below, there is a table with all users and their domains and features for each user.
+
+![](/images/FeaturesManagementTable.png)
+
+* <span class="notranslate">**Name**</span> — username or path to a user;
+* <span class="notranslate">**Domains**</span> — a list of user’s domains; 
+* <span class="notranslate">**Proactive Defense**</span> — a slider to enable/disable the feature for a specific user.
+  Move a slider in feature column to enable/disable that feature for a specific user. After that, this specific feature tab will be displayed/hid in that user’s account.
+* <span class="notranslate">**Malware Cleanup**</span> — a slider to enable/disable the feature for a specific user.
+  Move a slider in feature column to enable/disable that feature for a specific user. After that, the <span class="notranslate">Cleanup</span> button will be available in the Malicious files list in that user’s account.
+
+**Group Action**
+To perform a group action tick the users and move sliders for them.
+
+![](/images/FeaturesManagementGroupAction.png)
+
+**How to enable/disable <span class="notranslate">Proactive Defense</span>**
+
+The <span class="notranslate">Proactive Defense</span> feature is enabled by default account-wide. So, all newly created user accounts will have <span class="notranslate">Proactive Defence</span> tab in their Imunify360 Section. 
+
+![](/images/FeaturesManagementProactiveDefense.png)
+
+To disable <span class="notranslate">Proactive Defense</span> account-wide just move the slider to <span class="notranslate">_Turned Off_</span>. And confirm the action in the popup by clicking <span class="notranslate">_Yes, disable Proactive Defense for new users_</span> or click <span class="notranslate">_Cancel_</span> to close the popup.
+
+![](/images/FeaturesManagementProactiveDefenseConfirmation.png)
+
+**How to enable/disable <span class="notranslate">Malware Cleanup</span>**
+
+The <span class="notranslate">Malware Cleanup</span> feature is enabled by default account-wide. So, all newly created user accounts will have <span class="notranslate">Malware Cleanup</span> feature in their Imunify360. 
+
+![](/images/FeaturesManagementMalwareCleanup.png)
+
+To disable <span class="notranslate">Malware Cleanup</span> account-wide just move the slider to <span class="notranslate">_Turned Off_</span>. And confirm the action in the popup by clicking <span class="notranslate">_Yes, disable Malware Cleanup for new users_</span> or click <span class="notranslate">_Cancel_</span> to close the popup.
+
+![](/images/FeaturesManagementMalwareCleanupConfirmation.png)
+
+You can perform all these actions via [CLI](/command_line_interface/).
+
+<div class="notranslate">
+
+### Native Feature Management<sup> 4.0</sup>
+
+</div>
+
+<span class="notranslate">Feature Management</span> allows a hoster to enable/disable different Imunify360 features for server users. Using this functionality, hosting companies may resell chosen Imunify360 features as a part of hosting packages to end-users as well as make features available/unavailable for a group of end-users.
+
+### WHM/cPanel<sup> 4.0</sup>
+
+<span class="notranslate">WHM/cPanel Feature Management</span> is now available under <span class="notranslate">WHM/cPanel Package Manager</span> via <span class="notranslate">Package Extension (PE)</span>.
+Using <span class="notranslate">WHM/cPanel Native Feature Management</span> a hoster can enable/disable <span class="notranslate">Malware Scanner</span> and <span class="notranslate">Proactive Defense</span> for all users with the same package (service plan) instantly.
+
+::: tip Note
+When switched to <span class="notranslate">WHM/cPanel Feature Management</span>, the same functionality will be disabled in the Imunify360 UI. The previous Feature Management config becomes overridden by defaults.
+:::
+
+**How to switch to WHM/cPanel Feature Management**
+
+Go to <span class="notranslate">Imunify360 → Settings → Features Management</span>. You will see the following.
+
+![](/images/NativeFeaturesManagement.png)
+
+Click <span class="notranslate">_Details_</span>. You will see the following pop-up.
+
+
+![](/images/SwitchToNativeFeaturesManagement.png)
+
+Click <span class="notranslate">_Agree and Switch_</span> to confirm the action or click <span class="notranslate">_Cancel_</span> to close the popup.
+
+:::tip Note
+Note that current Imunify360 settings will be reset to default values after switching to <span class="notranslate">WHM/cPanel Feature Management</span> mode. You can switch back to in-app <span class="notranslate">Imunify360 Feature Management</span> mode at any time via CLI command. The end-user values will be reset to default values upon any mode switching.
+:::
+
+When switched, you will see the following.
+
+![](/images/SwitchedFM.png)
+
+**How to configure Imunify360 Features using WHM/cPanel Package Extensions**
+
+Go to <span class="notranslate">WHM/cPanel → Add a Package → Package Extensions</span> and tick <span class="notranslate">Imunify360 Features</span> (if it’s not selected).
+
+![](/images/WHMPackageExtension.png)
+
+Choose an option for each feature.
+
+<span class="notranslate">**Malware Scanner**</span>
+* <span class="notranslate">_View reports + Cleanup_</span> – a user can view scanning reports and cleanup found malware
+* <span class="notranslate">_View reports only_</span> – a user can view scanning reports but can't cleanup found malware (note that quarantine and file removal functionality is still available in this mode)
+* <span class="notranslate">_Not available_</span> – the <span class="notranslate">Malware Scanner</span> is not available for a user, and its tab is hidden on the Imunify360 main menu
+:::tip Note
+The last option is available in the WHM/cPanel Package Manager only and is not available via Imunify360 UI or CLI.
+:::  
+:::warning Note
+When the **Malware Scanner is not available** for end-user, it doesn't exclude user folders from scanning, so his files will be scanned and the results will be listed in an admin UI as usual.
+:::
+
+<span class="notranslate">**Proactive Defense**</span>
+* <span class="notranslate">_Available_</span> – the <span class="notranslate">Proactive Defense</span> feature is available for a user
+* <span class="notranslate">_Not available_</span> – the <span class="notranslate">Proactive Defense</span> is deactivated for a user: the feature does not run and its UI is hidden from the Imunify360 main menu
+
+Click <span class="notranslate">_Add_</span> to apply changes.
+
+See also: [CLI](http://localhost:8080/command_line_interface/).
+:::tip Note
+Imunify360 4.0 does not support _Not Available_ state for the Malware Scanner in the original in-app Features Management and via CLI. You can disable Malware Scanner for a particular package via WHM Package Manager only.
+:::
+ 
 
 ### Attributions
 

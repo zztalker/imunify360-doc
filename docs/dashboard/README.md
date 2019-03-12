@@ -42,6 +42,9 @@ A support ticket will be created and an email will be sent to a specified email 
 
 ## Dashboard
 
+You can access the Imunify360 Dashboard from your control panel. It shows security events as charts and heat maps.
+It's a great way to analyze incidents that happened within the past day, week or month.
+
 :::tip Note
 Beta 4.0
 :::

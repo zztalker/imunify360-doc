@@ -3,7 +3,7 @@
 Imunify360 dashboard is available directly within your control panel. It displays all the security events and the latest incidents updated every 30 seconds. It allows filtering and selecting events based on various parameters, reviewing the details of the incidents, managing <span class="notranslate">White List, Gray List</span>, and <span class="notranslate">Black List</span>, Blocked ports and configuring settings.
 
 ::: tip Note
-cPanel, Plesk, and DirectAdmin are supported at the moment. Standalone version are coming soon.
+Available in the Imunify360 version 3.9 for cPanel, Plesk, and DirectAdmin control panels.
 :::
 
 Log in to WHM as an admin and go to <span class="notranslate">Plugins</span>, choose Imunify360 to get to the Imunify360 user interface.

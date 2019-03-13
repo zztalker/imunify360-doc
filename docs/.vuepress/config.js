@@ -77,7 +77,11 @@ module.exports = {
             buttonText: "Refresh"
           }
         },
-        algolia: {},
+        algolia: {
+          apiKey: '72b99b2f6b6a799a02a845854d728014',
+          indexName: 'imunify360',
+          appId: 'KMC9498739'
+        },
         stayInTouch: "Stay in touch",
         bottomLinks: [
             {
@@ -131,7 +135,11 @@ module.exports = {
             buttonText: "Обновить"
           }
         },
-        algolia: {},
+        algolia: {
+          apiKey: '72b99b2f6b6a799a02a845854d728014',
+          indexName: 'imunify360',
+          appId: 'KMC9498739'
+        },
         stayInTouch: "Будем на связи",
         bottomLinks: [
             {

@@ -1418,6 +1418,9 @@ Click <span class="notranslate">_Settings_</span> and choose <span class="notran
 
 ![](/images/pfattr.jpg)
 
+Country-based white or blacklisting includes GeoLite2 data created by MaxMind, available from
+[https://www.maxmind.com](https://www.maxmind.com).
+
 #### Hosting panels specific settings
 
 **cPanel**

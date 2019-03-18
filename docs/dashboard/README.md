@@ -1,12 +1,8 @@
 # Imunify360 User Interface
 
-Imunify360 dashboard is available directly within your control panel. It displays all the security events and the latest incidents updated every 30 seconds. It allows filtering and selecting events based on various parameters, reviewing the details of the incidents, managing <span class="notranslate">White List, Gray List</span>, and <span class="notranslate">Black List</span>, Blocked ports and configuring settings.
+Imunify360 is an all-in-one security solution with robust herd protection against the newest attacks, and it is available directly within your control panel (cPanel, Plesk, and DirectAdmin).
 
-::: tip Note
-Available in the Imunify360 version 3.9 for cPanel, Plesk, and DirectAdmin control panels.
-:::
-
-Log in to WHM as an admin and go to <span class="notranslate">Plugins</span>, choose Imunify360 to get to the Imunify360 user interface.
+Log in to your control panel as an admin and go to <span class="notranslate">Plugins</span>, choose Imunify360 to get to the Imunify360 user interface.
 
 It allows to access:
 * <span class="notranslate">[Support](/dashboard/#support)</span> – allows you to contact our support team directly from your Imunify360 User Interface
@@ -15,7 +11,7 @@ It allows to access:
 
 * <span class="notranslate">[Incidents](/dashboard/#incidents)</span> – the list of all suspicious activity on the server.
 
-* <span class="notranslate">[Firewall](/dashboard/#firewall)</span> – a dashboard of <span class="notranslate">Black List, White List</span> and <span class="notranslate">Gray List</span>, and Blocked ports with the ability to manage them.
+* <span class="notranslate">[Lists](/dashboard/#firewall)</span> – a dashboard of <span class="notranslate">Black List, White List</span> and <span class="notranslate">Gray List</span>, and <span class="notranslate">Blocked Ports</span> with the ability to manage them.
 
 * <span class="notranslate">[Malware Scanner](/dashboard/#malware-scanner)</span> – real-time file scanner.
 

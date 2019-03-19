@@ -47,6 +47,7 @@ Available commands:
 |<span class="notranslate">`migratedb`</span>|Check and repair database if it is corrupted|
 |<span class="notranslate">`plugins`</span>|Command for manipulating Imunify360 plugin|
 |<span class="notranslate">`register`</span>|Agent registration|
+|<span class="notranslate">`remote-proxy`</span>|Add support for HTTP/HTTPS proxy|
 |<span class="notranslate">`rstatus`</span>|Query the server to check if the license is valid|
 |<span class="notranslate">`rules`</span>|Allows user to manage disabled rules|
 |<span class="notranslate">`unregister`</span>|Unregistration the agent|
@@ -75,7 +76,7 @@ Optional arguments for the commands:
 |<span class="notranslate">`--manual-only`</span>|Show only IP’s that have been added manually.|
 |<span class="notranslate">`--no-manual-only`</span>|Show IP’s that have been added both automatically<br>and manually.|
 |<span class="notranslate">`--verbose, -v`</span>|Allows to return data in good-looking view if<br>option <span class="notranslate">`--json`</span> is used.|
- 
+
 <div class="notranslate">
 
 ## 3rdparty
@@ -912,7 +913,7 @@ Option can be:
 
 </div>
 
-Allows to unregister and disable Imunify360 on the server. 
+Allows to unregister and disable Imunify360 on the server.
 
 ::: tip Note
 To remove Imunify360 from the server it needs to be [uninstalled](/uninstall/).
@@ -1034,7 +1035,7 @@ Optional arguments:
  
 <div class="notranslate">
 
-## Whitelist 
+## Whitelist
 
 </div>
 
@@ -1197,15 +1198,15 @@ It means that <span class="notranslate">Proactive Defense</span> will not analyz
 ## Check modsec directives
 
 </div>
-	
+
 ::: tip Note
 Beta Imunify360 version 3.9.0+ cPanel only
 :::
-	
-Allows to check whether the global [ModSecurity directives](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual-%28v2.x%29#Configuration_Directives) have values recommended by Imunify360. 
-	
+
+Allows to check whether the global [ModSecurity directives](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual-%28v2.x%29#Configuration_Directives) have values recommended by Imunify360.
+
 Usage:
-	
+
 <div class="notranslate">
 
 ```
@@ -1213,36 +1214,36 @@ imunify360-agent check modsec directives [--optional arguments]
 ```
 
 </div>
-	
+
 Optional arguments:
-	
+
 | | |
 |-|-|
 |<span class="notranslate">`-h, --help`</span>|Show this help message.|
 |<span class="notranslate">`--json`</span>|Return data in JSON format.|
 |<span class="notranslate">`--verbose, -v`</span>|Allows to return data in good-looking view if option <span class="notranslate">`--json`</span> is used.|
-	
+
 <div class="notranslate">
 
 ## Fix modsec directives
 
 </div>
-	
+
 ::: tip Note
 Beta Imunify360 version 3.9.0+ cPanel only
 :::
-	
+
 Fixes the non-recommended values (sets them to ones recommended by Imunify360)
-	
+
 Usage:
-	
+
 <div class="notranslate">
 
 ```
 imunify360-agent fix modsec directives [--optional arguments]
 ```
-	
-</div>   
+
+</div>
 
 Optional arguments:
 
@@ -1329,7 +1330,7 @@ Once the command executed, the following default Imunify360 <span class="notrans
 * <span class="notranslate">Malware Scanner - View Reports Only</span>
 * <span class="notranslate">Proactive Defense - Available</span>
 
-Imunify360 <span class="notranslate">Package Extensions</span> will be auto-enabled for all packages disregarding the fact they have Imunify360 plugin enabled or not. 
+Imunify360 <span class="notranslate">Package Extensions</span> will be auto-enabled for all packages disregarding the fact they have Imunify360 plugin enabled or not.
 
 
 All existing <span class="notranslate">Features Management</span> settings will be overridden with the Imunify360 <span class="notranslate">Package Extensions</span> ones for all users.
@@ -1376,3 +1377,47 @@ Imunify360 will keep applying users <span class="notranslate">Features Managemen
 ::: warning Warning
 <span class="notranslate">`feature-management enable/disable --feature av`</span> and <span class="notranslate">`feature-management enable/disable --feature proactive`</span> commands will start functioning.
 :::
+
+<div class="notranslate">
+
+## remote-proxy
+
+</div>
+
+Allows to manage remote-proxy list, supported such proxies which use X-Forwarded-For HTTP header. All traffic coming from proxies redirected to Webshield, and it setting X-Real-Ip header for all packets.
+
+**Usage:**
+
+
+<div class="notranslate">
+
+```
+imunify360-agent remote-proxy [command] [name] [networks/source] [--optional argument]
+```
+
+</div>
+
+<span class="notranslate">`command`</span> is a first positional argument and can be:
+
+| | |
+|-|-|
+|<span class="notranslate">`add`</span>|Add proxy.|
+|<span class="notranslate">`delete`</span>|Remove proxy.|
+|<span class="notranslate">`list`</span>|a list of remote proxy networks.|
+|<span class="notranslate">`group enable`</span>|Enable group of proxies.|
+|<span class="notranslate">`group disable`</span>|Disable group of proxies.|
+
+<span class="notranslate">`name`</span> simple name of proxy.
+
+<span class="notranslate">`networks`</span> ip networks which may be source of trusted packets.
+
+<span class="notranslate">`source`</span>.
+
+<span class="notranslate">`option`</span> can be one or few of the optional arguments from the table above and one more:
+
+| | |
+|-|-|
+|<span class="notranslate">`--by_group`</span>|Allows to filer list by group.|
+|<span class="notranslate">`--by_source`</span>|Allows to filer list by source.|
+
+**Examples:**

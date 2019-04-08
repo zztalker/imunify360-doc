@@ -60,7 +60,7 @@ module.exports = {
     cloudlinuxSite: "https://cloudlinux.com",
     locales: {
       "/": {
-        // text for the language dorpdown title
+        // text for the language dropdown title
         title: "Language",
         // text for the language dropdown
         selectText: "En",

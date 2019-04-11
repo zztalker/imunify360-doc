@@ -51,7 +51,11 @@ In this case, Imunify360 will block IPs only by <span class="notranslate">mod_se
 
 3. <span class="notranslate">_Automatically scan any file uploaded using ftp_</span>
 
-   Imunify360 supports only <span class="notranslate">[Pure-FTPd](https://www.pureftpd.org)</span>. For <span class="notranslate">Pure-FTPd CXS</span> launches pure-uploadscript for the scan. Any pure-uploadscript used by <span class="notranslate">CXS</span> must be disabled.
+   Imunify360 supports only <span class="notranslate">[Pure-FTPd](https://www.pureftpd.org)</span>. For <span class="notranslate">Pure-FTPd CXS</span> launches pure-uploadscript for the scan. Any pure-uploadscript used by <span class="notranslate">CXS</span> must be disabled. You can use the following steps to do that:
+   
+  * <span class="notranslate">systemctl stop pure-uploadscript.service stop</span>
+  * <span class="notranslate">systemctl disable pure-uploadscript.service</span>
+  * <span class="notranslate">systemctl restart imunify360</span>
 
 4. <span class="notranslate">_On-Demand scanning_</span>
 

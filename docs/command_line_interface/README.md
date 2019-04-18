@@ -1265,7 +1265,7 @@ Allows to manage Imunify360 features available for users.
 <div class="notranslate">
 
 ```
-iimunify360-agent feature-management [command] [--optional argument]...
+imunify360-agent feature-management [command] [--optional argument]...
 ```
 
 </div>

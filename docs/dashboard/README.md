@@ -2,6 +2,18 @@
 
 Imunify360 is an all-in-one security solution with robust herd protection against the newest attacks, and it is available directly within your control panel (cPanel, Plesk, and DirectAdmin).
 
+When you log in to your control panel, Imunify360 asks you to enter your email address.
+
+![](/images/admin_notify1.png)
+
+By entering your email address you agree to receive email reports about critical issues, security alerts or system misconfigurations detected on your servers.
+
+::: tip Note
+This email address is used ONLY for receiving server reports.
+:::
+
+Or you can do it later in the <span class="notranslate">[Settings | General | Contact Details](/dashboard/#contact-details)</span>.
+
 Log in to your control panel as an admin and go to <span class="notranslate">Plugins</span>, choose Imunify360 to get to the Imunify360 user interface.
 
 It allows to access:
@@ -35,8 +47,11 @@ To contact our support team in Imunify360 User Interface, please click the _Call
 
 A support ticket will be created and an email will be sent to a specified email address. When a status of your request will change you receive a notification to your email address. You will be able to track your request via [https://cloudlinux.zendesk.com/hc/](https://cloudlinux.zendesk.com/hc/) and email.
 
+<div class="notranslate">
 
 ## Dashboard
+
+</div>
 
 You can access the Imunify360 Dashboard from your control panel. It shows security events as charts and heat maps.
 It's a great way to analyze incidents that happened within the past day, week or month.
@@ -47,7 +62,70 @@ Beta 4.0
 
 Click <span class="notranslate">_Dashboard_</span> tab to display an overview of incidents recorded during the selected time interval, an estimate of the intensity of attacks, and correlate events across all sources.
 
-![](/images/DashboardGeneral.png)
+![](/images/DashboardGeneral1.png)
+
+<div class="notranslate">
+
+### Multi-server Dashboard 
+
+</div>
+
+:::tip Note
+Beta 4.1
+:::
+
+Starting from Imunify360 version 4.1, the <span class="notranslate">Dashboard</span> can display Imunify360 performance data for a number of specified servers. 
+* You can add a specified server using its server key – a unique server id that identifies an installed Imunify360 instance.
+
+    :::tip Note
+   **Server key is NOT a license key**.
+    :::
+* You can easily remove a server from the Dashboard.
+* You can use <span class="notranslate">_Server_</span> drop-down to show a list of all servers added into the Dashboard.
+
+![](/images/dashboard_servers1.png)
+
+
+#### **How to get a server key**
+
+There are two ways to get a server key.
+
+1. Click the key symbol ![](/images/copy_key.png) to copy server key of the selected server to the clipboard.
+
+2. Go to the <span class="notranslate">`/var/imunify360/license.json`</span> file and find `id` field. Your server id looks like an alphanumeric string `SghjhgFESDh65CFLfvz`.
+   
+   
+  ![](/images/id_from_license.png)
+
+#### **How to add a server**
+
+If you'd like to display performance data for the server **A** on the <span class="notranslate">Dashboard</span> of the server **B**, please do the following:
+
+   * Go to the server **A** <span class="notranslate">Dashboard</span> and copy its server key (see [How to get a server key](/dashboard/#how-to-get-a-server-key))
+   * Go to the server **B** <span class="notranslate">Dashboard</span> and click the <span class="notranslate">_Add Server_</span> button ![](/images/add_server.png)
+   * The <span class="notranslate">_Add server key_</span> pop-up opens
+
+  ![](/images/add_server_key.png)
+
+   * Paste the server key belonging to the server **A** to the <span class="notranslate">_Server key_</span> field
+   * Click <span class="notranslate">_Confirm_</span> to add the server **A** to the <span class="notranslate">Dashboard</span> of the server **B**. To stop adding the server and close the pop-up, click <span class="notranslate">_Cancel_</span>.
+  
+Go to the <span class="notranslate">_Server_</span> drop-down to check all added servers – it contains a list of hostnames of all added servers and/or a list of IPs (if a hostname is not found).
+
+#### **How to remove a server**
+
+To remove a server, click the <span class="notranslate">_Trash Can_</span> symbol ![](/images/remove_server.png). The <span class="notranslate">_Remove Server_</span> pop-up opens.
+||
+|--|
+|![](/images/remove_server_popup.png)|
+
+Click <span class="notranslate">_Confirm_</span> to remove the server. To stop removing the server and close the pop-up, click <span class="notranslate">_Cancel_</span>.
+
+::: tip Note
+You cannot remove a server from its <span class="notranslate">Imunify360 Dashboard</span>.
+:::
+
+### Charts and heat maps
 
 The following time periods are available:
 
@@ -952,6 +1030,7 @@ Go to <span class="notranslate">_Imunify360 → Settings → General_</span>. Th
 * <span class="notranslate">[Incidents Logging](/dashboard/#incidents-logging)</span>
 * <span class="notranslate">[WebShield](/dashboard/#webshield)</span>
 * <span class="notranslate">[Error Reporting](/dashboard/#error-reporting)</span>
+* <span class="notranslate">[Contact Details](/dashboard/#contact-details)</span>
 
 #### Installation
 
@@ -1088,9 +1167,32 @@ Tick <span class="notranslate">_Enable Sentry error reporting_</span> checkbox t
 
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
 
+#### **Contact Details**
+
+:::tip Note
+Imunify360 version 4.1 Beta
+:::
+ 
+Type your email into the <span class="notranslate">_Email_</span> field to receive email reports about critical issues, security alerts or system misconfigurations detected on your servers.
+
+::: tip Note
+This email address is used ONLY for receiving server reports.
+:::
+
+![](/images/contact_details.png)
+
+Click <span class="notranslate">_Save changes_</span> button at the bottom of the section to save changes.
+
 ### Malware
 
-Go to <span class="notranslate">Imunify360 → Settings → Malware</span>. Here you can configure General and <span class="notranslate">Malware Cleanup</span> Settings<sup>3.7.1+</sup>.
+Go to <span class="notranslate">Imunify360 | Settings | Malware</span>. 
+
+Here you can configure the following:
+* <span class="notranslate">General</span>
+* <span class="notranslate">Background Scanning</span><sup> Beta 4.1+</sup>
+* <span class="notranslate">Malware Cleanup</span><sup> 3.7.1+</sup>
+* <span class="notranslate">Proactive Defense</span><sup> 4.0+</sup>
+
 
 ::: tip Note
 Read [CXS integration](/ids_integration/#cxs-integration) documentation carefully to make Malware Scanner work properly if you decided to use the former instead of Imunify360 anti-malware protection.
@@ -1121,6 +1223,29 @@ Read [CXS integration](/ids_integration/#cxs-integration) documentation carefull
   * <span class="notranslate">Just display in dashboard</span>
 
 Tick required checkboxes and click <span class="notranslate">_Save changes_</span> button.
+
+#### **Background Scanning<sup> Beta 4.1</sup>**
+
+Allows to set up automatic, scheduled, background scanning of user accounts.
+
+* <span class="notranslate">_Run scanning_</span> — select the desired period:
+  * <span class="notranslate">Never</span>
+  * <span class="notranslate">Daily</span>
+  * <span class="notranslate">Weekly</span>
+  * <span class="notranslate">Monthly</span>
+
+![](/images/background_scanning1.png)
+
+Depending on the selected period, precise settings.
+
+* If <span class="notranslate">_Run scanning_</span> is set to <span class="notranslate">_Daily_</span>, choose the exact time at the <span class="notranslate">_Run at_</span> dropdown.
+
+* If <span class="notranslate">_Run scanning_</span> is set to <span class="notranslate">_Weekly_</span>, choose the day of the week at the <span class="notranslate">_Run on_</span> dropdown and exact time at the <span class="notranslate">_Run at_</span> dropdown.
+
+* If <span class="notranslate">_Run scanning_</span> is set to <span class="notranslate">_Monthly_</span>, choose the day of the month at the <span class="notranslate">_Day of month to run_</span> dropdown and exact time at the <span class="notranslate">_Run at_</span> dropdown.
+
+You can track the scanning activity at the <span class="notranslate">[Malware Scanner](#malware-scanner)</span> tab.
+
 
 **Cleanup<sup>3.7.1+</sup>**
 

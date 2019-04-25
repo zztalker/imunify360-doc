@@ -164,7 +164,7 @@ Please find more FAQs in our [Knowledge Base](https://cloudlinux.zendesk.com/hc/
 ### 9. Disabling WAF rules for certain countries.
 
 It is possible to disable some WAF rules for IPs that are resolved to be from some country (or other geographical entity)
-To implement this, customer should create their own modsecurity configuration file, and include it into default modsecurity configuration. In case of cPanel, this can be done by creating <span class="notranslate"> /etc/apache2/conf.d/includes/ccwafrules.conf </span> and adding it as an include to <span class="notranslate"> /etc/apache2/conf.d/modsec/modsec2.cpanel.conf </span>
+To implement this, customer should create their own modsecurity configuration file, and include it into default modsecurity configuration. In case of cPanel, this can be done by creating <span class="notranslate"> _/etc/apache2/conf.d/includes/ccwafrules.conf_ </span> and adding it as an include to <span class="notranslate"> _/etc/apache2/conf.d/modsec/modsec2.cpanel.conf_ </span>
 (Otherwise configuration files might be rewritten by Imunify360 rules update)
 Here are the sample contents of such config file:
 
@@ -191,18 +191,18 @@ ctl:ruleRemoveById=942101"
 
 Make sure that you replaced <span class="notranslate"> _/path/to/GeoLiteCity.dat_ </span> by the real path to GeoLiteCity.dat file installed in your system.
 
-Variable GEO is a collection populated by result of the last @geoLookup operator. The collection can be used to match geographical fields looked from an IP address or hostname.
-Available since ModSecurity 2.5.0.
-Fields:
-COUNTRY_CODE: Two character country code. EX: US, GB, etc.
-COUNTRY_CODE3: Up to three character country code.
-COUNTRY_NAME: The full country name.
-COUNTRY_CONTINENT: The two character continent that the country is located. EX: EU
-REGION: The two character region. For US, this is state. For Canada, providence, etc.
-CITY: The city name if supported by the database.
-POSTAL_CODE: The postal code if supported by the database.
-LATITUDE: The latitude if supported by the database.
-LONGITUDE: The longitude if supported by the database.
-DMA_CODE: The metropolitan area code if supported by the database. (US only)
-AREA_CODE: The phone system area code. (US only)
+Variable GEO is a collection populated by result of the last @geoLookup operator. The collection can be used to match geographical fields looked from an IP address or hostname.  
+Available since ModSecurity 2.5.0.  
+Fields:  
+COUNTRY_CODE: Two character country code. EX: US, GB, etc.  
+COUNTRY_CODE3: Up to three character country code.  
+COUNTRY_NAME: The full country name.  
+COUNTRY_CONTINENT: The two character continent that the country is located. EX: EU  
+REGION: The two character region. For US, this is state. For Canada, providence, etc.  
+CITY: The city name if supported by the database.  
+POSTAL_CODE: The postal code if supported by the database.  
+LATITUDE: The latitude if supported by the database.  
+LONGITUDE: The longitude if supported by the database.  
+DMA_CODE: The metropolitan area code if supported by the database. (US only)  
+AREA_CODE: The phone system area code. (US only)  
 

@@ -161,4 +161,48 @@ OWASP rule set may conflict with Imunify360 default rule set on a server running
 
 Please find more FAQs in our [Knowledge Base](https://cloudlinux.zendesk.com/hc/sections/115001538929-FAQ).
 
+### 9. Disabling WAF rules for certain countries.
+
+It is possible to disable some WAF rules for IPs that are resolved to be from some country (or other geographical entity)
+To implement this, customer should create their own modsecurity configuration file, and include it into default modsecurity configuration. In case of cPanel, this can be done by creating <span class="notranslate"> /etc/apache2/conf.d/includes/ccwafrules.conf </span> and adding it as an include to <span class="notranslate"> /etc/apache2/conf.d/modsec/modsec2.cpanel.conf </span>
+(Otherwise configuration files might be rewritten by Imunify360 rules update)
+Here are the sample contents of such config file:
+
+<div class="notranslate">
+
+```
+SecGeoLookupDb /path/to/GeoLiteCity.dat 
+# ModSecurity relies on the free geolocation databases (GeoLite City and GeoLite Country) that can be obtained from MaxMind http://www.maxmind.com. Currently ModSecurity only supports the legacy GeoIP format. Maxmind's newer GeoIP2 format is not yet currently supported.
+So a customer need to download this IP database and locate somewhere.
+
+# Lookup IP address 
+SecRule REMOTE_ADDR "@geoLookup" "phase:1,id:155,nolog,pass"
+
+# Optionally block IP address for which geolocation failed
+# SecRule &GEO "@eq 0" "phase:1,id:156,deny,msg:'Failed to lookup IP'"
+
+# Skip rules 942100 and 942101 for GB country as example
+
+SecRule GEO:COUNTRY_CODE "@streq GB" "phase:2,auditlog,id:157,pass,severity:2,\
+ctl:ruleRemoveById=942100,\
+ctl:ruleRemoveById=942101"
+```
+</div>
+
+Make sure that you replaced <span class="notranslate"> _/path/to/GeoLiteCity.dat_ </span> by the real path to GeoLiteCity.dat file installed in your system.
+
+Variable GEO is a collection populated by result of the last @geoLookup operator. The collection can be used to match geographical fields looked from an IP address or hostname.
+Available since ModSecurity 2.5.0.
+Fields:
+COUNTRY_CODE: Two character country code. EX: US, GB, etc.
+COUNTRY_CODE3: Up to three character country code.
+COUNTRY_NAME: The full country name.
+COUNTRY_CONTINENT: The two character continent that the country is located. EX: EU
+REGION: The two character region. For US, this is state. For Canada, providence, etc.
+CITY: The city name if supported by the database.
+POSTAL_CODE: The postal code if supported by the database.
+LATITUDE: The latitude if supported by the database.
+LONGITUDE: The longitude if supported by the database.
+DMA_CODE: The metropolitan area code if supported by the database. (US only)
+AREA_CODE: The phone system area code. (US only)
 

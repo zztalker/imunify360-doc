@@ -68,6 +68,8 @@ If there is no Imunify360 ruleset installed, run <span class="notranslate">` imu
 
 ![](/images/whmmodsecurityvendors_zoom70.png)
 
+* It is possible to block ModSecurity rules only for IPs that belong to some country. More info can be found in [FAQ](/faq_and_known_issues/#_9-disabling-waf-rules-for-certain-countries)
+
 ## Plesk
 
 It is not recommended to use firewalld and Plesk Firewall simultaneously, because Plesk does not fully support such configuration. We recommend to disable firewalld by running the command on the server:

@@ -164,7 +164,7 @@ Please find more FAQs in our [Knowledge Base](https://cloudlinux.zendesk.com/hc/
 ### 9. Disabling WAF rules for certain countries.
 
 It is possible to disable some WAF rules for IPs that are resolved to be from some country (or other geographical entity)
-To implement this, customer should create their own modsecurity configuration file, and include it into default modsecurity configuration. In case of cPanel, this can be done by creating <span class="notranslate"> _/etc/apache2/conf.d/includes/ccwafrules.conf_ </span> and adding it as an include to <span class="notranslate"> _/etc/apache2/conf.d/modsec/modsec2.cpanel.conf_ </span>
+To implement this, customer should create their own modsecurity configuration file, and include it into default modsecurity configuration. In case of cPanel, this can be done by creating <span class="notranslate"> _/etc/apache2/conf.d/includes/countrywafrules.conf_ </span> and adding it as an include to <span class="notranslate"> _/etc/apache2/conf.d/modsec/modsec2.cpanel.conf_ </span>
 (Otherwise configuration files might be rewritten by Imunify360 rules update)
 Here are the sample contents of such config file:
 

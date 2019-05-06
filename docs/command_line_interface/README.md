@@ -611,7 +611,6 @@ Available commands:
 
 | | |
 |-|-|
-|<span class="notranslate">`dashboard indicators`</span>| show indicators for dashboard|
 |<span class="notranslate">`ignore`</span>| malware Ignore List operations|
 |<span class="notranslate">`malicious`</span>| malware Malicious List operations|
 |<span class="notranslate">`on-demand`</span>| on-demand Scanner operations|

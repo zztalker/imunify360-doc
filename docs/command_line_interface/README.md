@@ -602,7 +602,7 @@ Usage:
 <div class="notranslate">
 
 ```
-imunify360-agent malware [-h] [--optional arguments]
+imunify360-agent malware [command] [--optional arguments]
 ```
 
 </div>
@@ -611,12 +611,13 @@ Available commands:
 
 | | |
 |-|-|
-|<span class="notranslate">`dashboard indicators`</span>|Show indicators for dashboard.|
-|<span class="notranslate">`ignore`</span>|Allows to add, delete or show files which will not be scanned.|
-|<span class="notranslate">`malicious`</span>|Allows to manage malicious files.|
-|<span class="notranslate">`on-demand`</span>|Allows to manage on-demand scanner.|
-|<span class="notranslate">`read`</span>|Allows to read malware files.|
-|<span class="notranslate">`suspicious`</span>|Allows to manage suspicious files.|
+|<span class="notranslate">`ignore`</span>| malware Ignore List operations|
+|<span class="notranslate">`malicious`</span>| malware Malicious List operations|
+|<span class="notranslate">`on-demand`</span>| on-demand Scanner operations|
+|<span class="notranslate">`suspicious`</span>| malware Suspicious List operations|
+|<span class="notranslate">`cleanup status`</span>| show the status of the cleanup process|
+|<span class="notranslate">`hash`</span>| file hash white/blacklist related operations|
+|<span class="notranslate">`history list`</span>| lists the complete history of all malware-related incidents/actions (optional arguments available)|
  
 Optional arguments:
 
@@ -624,49 +625,108 @@ Optional arguments:
 |-|-|
 |<span class="notranslate">`-h, --help`</span>|Show this help message.|
 |<span class="notranslate">`--json`</span>|Returns data in JSON format.|
-|<span class="notranslate">`--limit`</span>|Limits the output with the specified number of domains.<br>Must be a number greater than zero. By default, equals 100.|
-|<span class="notranslate">`--offset`</span>|Offset for pagination. By default, equals 0.|
+|<span class="notranslate">`--limit LIMIT`</span>|Limits the output with the specified number of domains.<br>Must be a number greater than zero. By default, equals 100.|
+|<span class="notranslate">`--offset OFFSET`</span>|Offset for pagination. By default, equals 0.|
 |<span class="notranslate">`--verbose, -v`</span>|Allows to return data in a good-looking view if option <span class="notranslate">`--json`</span> is used.|
 |<span class="notranslate">`--since SINCE`</span>|Start date.|
 |<span class="notranslate">`--to TO`</span>|End date.|
 |<span class="notranslate">`--user USER`</span>|Returns results for a chosen user.|
+|<span class="notranslate">`--order-by [ORDER_BY [ORDER_BY ...]]`</span>|Sorting order.|
+|<span class="notranslate">`--by-status [BY_STATUS [BY_STATUS ...]]`</span>|Return items with selected status.|
+|<span class="notranslate">`--by-scan-id BY_SCAN_ID`</span>|Return items with selected ID.|
+|<span class="notranslate">`--items ITEMS`</span>|Return selected items.|
+|<span class="notranslate">`--search SEARCH`</span>|Search query.|
 
-<span class="notranslate">`command`</span> is a second positional argument for <span class="notranslate">`ignore`</span> and can be:
 
-| | |
-|-|-|
-|<span class="notranslate">`add`</span>|Add a file or files divided by space to the <span class="notranslate">Ignore List</span>.|
-|<span class="notranslate">`delete`</span>|Delete an ignored file or files divided by space from the list.|
-|<span class="notranslate">`list`</span>|Show a list of ignored files.|
- 
-<span class="notranslate">`command`</span> is a second positional argument for <span class="notranslate">`malicious`</span> and can be:
+<span class="notranslate">`action`</span> is the second positional argument for <span class="notranslate">`hash`</span> and can be one of the following:
 
 | | |
 |-|-|
-|<span class="notranslate">`delete`</span>|Delete malicious file or files divided by space.|
-|<span class="notranslate">`list`</span>|Show a list of malicious files.|
-|<span class="notranslate">`move-to-ignore`</span>|Move a file or files divided by space to the <span class="notranslate">Ignore List</span>.|
-|<span class="notranslate">`quarantine-malicious`</span>|Allows to add malicious files to quarantine.|
-|<span class="notranslate">`restore-from-backup`</span>|Restore source files from backup.|
-|<span class="notranslate">`restore-from-quarantine`</span>|Restore files from quarantine.|
+|<span class="notranslate">`list`</span>|list <span class="notranslate">White/Black</span>-listed file hashes (optional arguments apply)|
+|<span class="notranslate">`add`</span>|add file hash(es) of the specified type|
+|<span class="notranslate">`remove`</span>| remove file hash(es) of the specified type|
 
-<span class="notranslate">`command`</span> is a second positional argument for <span class="notranslate">`on-demand`</span> and can be:
+Positional arguments for <span class="notranslate">`add/remove`</span> are the list of SHA256 hashes calculated from the file contents
 
-| | |
-|-|-|
-|<span class="notranslate">`start`</span>|Start on-demand scanner for the path specified after the <span class="notranslate">`start`</span> command.<br>For example: <span class="notranslate">`imunify360-agent malware on-demand start --path /home/<username>/public_html/`</span>|
-|<span class="notranslate">`list`</span>|Returns a list of all on-demand scanner session results.|
-|<span class="notranslate">`status`</span>|Show current status for on-demand scanner.|
-|<span class="notranslate">`stop`</span>|Stop current scanning.|
+The argument that specifies which kind of hashes to add/remove:
 
-<span class="notranslate">`command`</span> is a second positional argument for <span class="notranslate">`suspicious`</span> and can be:
+<span class="notranslate">`--type`</span> - hash(es) type: <span class="notranslate">Black</span> or <span class="notranslate">White</span>
+
+
+<span class="notranslate">`action`</span> is the second positional argument for <span class="notranslate">`ignore`</span> and can be one of the following:
 
 | | |
 |-|-|
-|<span class="notranslate">`delete`</span>|Delete suspicious file or files divided by space.|
-|<span class="notranslate">`list`</span>|Show a list of suspicious files.|
-|<span class="notranslate">`move-to-ignore`</span>|Move suspicious files divided by space to the <span class="notranslate">Ignore List</span>.|
-|<span class="notranslate">`move-to-quarantine`</span>|Move suspicious files divided by space to the quarantine|
+|<span class="notranslate">`add`</span>|add a file PATH to the <span class="notranslate">Ignore List</span>|
+|<span class="notranslate">`delete`</span>|delete a file PATH from the <span class="notranslate">Ignore List</span>|
+|<span class="notranslate">`list`</span>|shows <span class="notranslate">Ignore List</span> entries (optional arguments apply)|
+
+<span class="notranslate">`command2`</span> is the second positional argument for the <span class="notranslate">`malicious`</span> command and can be one of the following:
+
+| | |
+|-|-|
+|<span class="notranslate">`cleanup`</span>|clean up infected ITEMS for a USER|
+|<span class="notranslate">`cleanup-all`</span>|clean up all files that have been detected as infected for all users|
+|<span class="notranslate">`restore-original`</span>|restore the original (malicious/infected) file to its original location|
+|<span class="notranslate">`delete`</span>|delete malicious/infected files|
+|<span class="notranslate">`list`</span>|list malicious/infected files|
+|<span class="notranslate">`move-to-ignore`</span>|move a <span class="notranslate">Malicious List</span> entry to the (malware) <span class="notranslate">Ignore List</span>|
+|<span class="notranslate">`quarantine-malicious`</span>|add malicious/infected files to the quarantine|
+|<span class="notranslate">`remove-from-list`</span>|remove malicious/infected files from the <span class="notranslate">Malicious List</span>|
+|<span class="notranslate">`restore-from-backup`</span>|restore a clean version of infected file from backup|
+|<span class="notranslate">`restore-from-quarantine`</span>|restore a quarantined file. The file will be automatically re-scanned|
+
+
+<span class="notranslate">`action`</span> is the second positional argument for <span class="notranslate">`on-demand`</span> and can be one of the following:
+
+| | |
+|-|-|
+|<span class="notranslate">`list`</span>|list all on-demand scans performed|
+|<span class="notranslate">`start --path PATH`</span>|starts an on-demand scan for a specified PATH|
+|<span class="notranslate">`status`</span>|show the on-demand malware scanner status|
+|<span class="notranslate">`stop`</span>|stop on-demand malware scanner process|
+
+The optional arguments for <span class="notranslate">`on-demand start`</span> are:
+
+| |
+|-|
+|<span class="notranslate">`--ignore-mask IGNORE_MASK`</span>|
+|<span class="notranslate">`--follow-symlinks`</span>|
+|<span class="notranslate">`--no-follow-symlinks`</span>|
+|<span class="notranslate">`--file-mask FILE_MASK`</span>|
+|<span class="notranslate">`--hash-filter`</span>|
+|<span class="notranslate">`--no-hash-filter`</span>|
+|<span class="notranslate">`--intensity {low,moderate,high}`</span>|
+
+<span class="notranslate">`action`</span> is the second positional argument for <span class="notranslate">`suspicious`</span> and can be one of:
+
+| | |
+|-|-|
+|<span class="notranslate">`delete`</span>|delete a <span class="notranslate">Suspicious List</span> entry|
+|<span class="notranslate">`list`</span>|obtain the list of <span class="notranslate">Suspicious List</span> entries|
+|<span class="notranslate">`move-to-ignore`</span>|move a <span class="notranslate">Suspicious List</span> entry to the (malware) <span class="notranslate">Ignore List</span>|
+|<span class="notranslate">`move-to-quarantine`</span>|move a <span class="notranslate">Suspicious List</span> entry to the quarantine|
+
+**Examples**
+
+1. The following command adds a hash to the malware <span class="notranslate">Black List</span>:
+
+<div class="notranslate">
+
+```
+imunify360-agent malware hash add --type black ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad
+```
+</div>
+
+2. The following command starts on-demand scanner for the path specified after the <span class="notranslate">`start`</span> command:
+
+<div class="notranslate">
+
+```
+imunify360-agent malware on-demand start --path /home/<username>/public_html/
+```
+</div>
+
  
 <div class="notranslate">
 

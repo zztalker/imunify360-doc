@@ -211,3 +211,6 @@ Fields:
 * <span class="notranslate">`DMA_CODE`</span>: metropolitan area code if supported by the database. (US only)  
 * <span class="notranslate">`AREA_CODE`</span>: phone system area code. (US only)  
 
+### 10. How to clone Imnify360 configuration on another system?
+
+The solution is available in [FAQ section](https://cloudlinux.zendesk.com/hc/en-us/articles/360022689394-How-to-Clone-Imunify360-Installation)

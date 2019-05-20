@@ -130,7 +130,7 @@ module.exports = {
         search: "Поиск",
         serviceWorker: {
           updatePopup: {
-            message: "Новый контент доступен",
+            message: "Доступен новый контент",
             buttonText: "Обновить"
           }
         },

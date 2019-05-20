@@ -69,12 +69,13 @@ Optional arguments for the commands:
 |<span class="notranslate">`--by-country-code [country_code]`</span>|Filters output by country code.<br>Requires valid country code as argument.<br> Find valid country codes [here](https://www.nationsonline.org/oneworld/country_code_list.htm) in column ISO ALPHA-2 CODE.|
 |<span class="notranslate">`--by-ip [ip_address]`</span>|Filters output by abuser's IP or by subnet in [CIDR notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks).<br>Example: <span class="notranslate">`--by-ip 1.2.3.0/24`</span>.|
 |<span class="notranslate">`--by-list`</span>|Can be:<br><ul><li><span class="notranslate">any</span></li><li><span class="notranslate">gray (Gray List)</span></li><li><span class="notranslate">white (White List)</span></li><li><span class="notranslate">black (Black List)</span></li></ul>Filters output based on the list type.<br>Example: <span class="notranslate">`--by-list black`</span>.|
+|<span class="notranslate">`--by-comment`</span>|Filters output by comment.|
 |<span class="notranslate">`--limit`</span>|limits the output with specified number of incidents.<br>Must be a number greater than zero. By default, equals 100.|
 |<span class="notranslate">`--offset`</span>|Offset for pagination. By default, equals 0.|
 |<span class="notranslate">`--to`</span>|Allows to set the end of the period for filter.<br>Format is a timestamp.|
-|<span class="notranslate">`--manual-only`</span>|Show only IP’s that have been added manually.|
-|<span class="notranslate">`--no-manual-only`</span>|Show IP’s that have been added both automatically<br>and manually.|
+|<span class="notranslate">`--manual`</span>|Show only items that have been added manually.|
 |<span class="notranslate">`--verbose, -v`</span>|Allows to return data in good-looking view if<br>option <span class="notranslate">`--json`</span> is used.|
+|<span class="notranslate">`--order-by`</span>|List of fields to sort the results by.|
  
 <div class="notranslate">
 
@@ -162,7 +163,8 @@ where 12.34.56.78 is that specific IP address.
 
 | | |
 |-|-|
-|<span class="notranslate">`--comment`</span>| allows to add comment to the item|
+|<span class="notranslate">`--comment`</span>|allows to add comment to the item|
+|<span class="notranslate">`--expiration`</span>|allows to specify TTL for the blacklisted IP (in seconds since epoch)|
 
 **Examples:**
 
@@ -351,9 +353,9 @@ Optional arguments:
 
 Allows to enable or disable additional CloudLinux software included in Imunify360 for free. The following software is available:
 
-* [KernelCare](https://www.kernelcare.com)
-* <span class="notranslate">[HardenedPHP](https://www.cloudlinux.com/hardenedphp)</span>
-* <span class="notranslate">Invisible Captcha</span>
+* [KernelCare](https://www.kernelcare.com) – use `kernelcare` feature name
+* <span class="notranslate">[HardenedPHP](https://www.cloudlinux.com/hardenedphp)</span> – use <span class="notranslate">`hardened-php`</span> feature name
+* <span class="notranslate">Invisible Captcha</span> – use <span class="notranslate">`invisible-captcha`</span> feature name
 
 Usage:
 
@@ -438,6 +440,7 @@ Option can be one or few of the optional arguments listed above and one more.
 |<span class="notranslate">`--since [timestamp]`</span>|allows to set start time to filter the list of incidents by period|
 |<span class="notranslate">`--to [timestamp]`</span>|allows to set finish time to filter the list of incidents by period|
 |<span class="notranslate">`--severity`</span>|allows to set severity to filter the list of incidents|
+|<span class="notranslate">`--search`</span>|string to search incidents by|
 
 _Example:_
 
@@ -906,8 +909,9 @@ Option can be:
 | | |
 |-|-|
 |<span class="notranslate">`--id`</span>|ID number of the rule provided by the firewall plugin.|
-|<span class="notranslate">`--plugin`</span>|Firewall plugin name. Can be one of the following:<ul><li><span class="notranslate">`modsec`</span> for ModSecurity</li><li><span class="notranslate">`ossec`</span> for OSSEC</li></ul>|
+|<span class="notranslate">`--plugin`</span>|Firewall plugin name. Can be one of the following:<ul><li><span class="notranslate">`modsec`</span> for ModSecurity</li><li><span class="notranslate">`ossec`</span> for OSSEC</li><li><span class="notranslate">`lfd`</span> Login Failure Daemon (can be used in CSF integration mode)</li></ul>|
 |<span class="notranslate">`--name`</span>|Name of the added rule or details of the rule from <span class="notranslate">ModSecurity</span> or OSSEC.|
+|<span class="notranslate">`--domains`</span>|List of domains to disable a rule for. Can only be used with `modsec` type.|
 
 **Examples**
 1. The following command adds a rule with id 42 and name <span class="notranslate">‘Rule name’</span> for the <span class="notranslate">ModSecurity</span> rules to the disabled rules list:
@@ -1126,6 +1130,7 @@ imunify360-agent whitelist [subject] [command] <value> [--option]
 |<span class="notranslate">`move`</span>|Move item(-s) to the <span class="notranslate">White List</span>.|
 |<span class="notranslate">`edit`</span>|Edit comment on the item in the <span class="notranslate">White List</span>.|
 |<span class="notranslate">`list`</span>|List items(-s) in the <span class="notranslate">White List</span>.|
+|<span class="notranslate">`reset-to`</span>|Replace whitelisted domains list with a new list.|
 
 Please note that by default <span class="notranslate">`list`</span> command outputs only first 100 items in the list as if it was run as <span class="notranslate">`whitelist ip list --limit 100`</span>.
 To check whether specific IP address is in the list, you can run the following command:
@@ -1149,6 +1154,7 @@ where `12.34.56.78` is that specific IP address.
 |<span class="notranslate">`--comment`</span>|Allows to add a comment to the item.|
 |<span class="notranslate">`--full-access`</span>|Only for <span class="notranslate">`move`</span> and <span class="notranslate">`edit`</span> commands.<br>Allows to grant full access to the IP or subnet ignoring the rules in Blocked ports.|
 |<span class="notranslate">`--no-full-access`</span>|Only for <span class="notranslate">`move`</span> and <span class="notranslate">`edit`</span> commands.<br>Allows to remove full access of the IP or subnet.|
+|<span class="notranslate">`--expiration`</span>|Allows to specify TTL for the blacklisted IP (in seconds since epoch).|
 
 **Examples:**
 
@@ -1229,6 +1235,10 @@ Available commands:
 |<span class="notranslate">`--id`</span>|for <span class="notranslate">`details`</span>, <span class="notranslate">`ignore delete rule`</span> commands.<br>Allows to specify rule id.|
 |<span class="notranslate">`--rule-id`</span>|only for <span class="notranslate">`ignore add`</span> command.<br>Allows to specify rule id.|
 |<span class="notranslate">`--rule-name`</span>|only for <span class="notranslate">`ignore add`</span> command.<br>Allows to specify rule name.|
+|<span class="notranslate">`--since [timestamp]`</span>|allows to set start time to filter the list of incidents by period.|
+|<span class="notranslate">`--to [timestamp]`</span>|allows to set finish time to filter the list of incidents by period.|
+|<span class="notranslate">`--user`</span>|show events for a specific user.|
+|<span class="notranslate">`--search`</span>|string to search Proactive events by.|
 
 **Examples:**
 

@@ -1067,7 +1067,7 @@ Optional arguments:
 
 </div>
 
-To submit file as false positive (if Imunify360 considers file as a malicious but it actually doesn’t) you can use the following command:
+To submit file as false positive (if Imunify360 considers file as a malicious but it actually isn’t) you can use the following command:
 
 <div class="notranslate">
 
@@ -1077,7 +1077,7 @@ imunify360-agent submit false-positive <file>
 
 </div>
 
-To submit file as false negative (if Imunify360 considers file as a non-malicious but it actually does) you can use the following command:
+To submit file as false negative (if Imunify360 considers file as a non-malicious but it actually is) you can use the following command:
 
 <div class="notranslate">
 

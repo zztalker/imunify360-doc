@@ -11,6 +11,9 @@ module.exports = {
     }
   },
   base: "/",
+  head: [
+    ["link", { rel: "icon", href: "/favicon.ico" }],
+  ],
   locales: {
     // The key is the path for the locale to be nested under.
     // As a special case, the default locale can use '/' as its path.

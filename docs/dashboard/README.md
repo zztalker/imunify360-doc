@@ -921,28 +921,26 @@ The <span class="notranslate">_Ignore List_</span> table includes the following 
 ``` PHP
 <?php
 /* Imunify360 Proactive Defence test script */
-
 echo "<pre>";
 echo "Step 1<br>";
-
 // Decode string with domain: 37kddsserrt.xyz
 $url=base64_decode("MzdrZGRzc2VycnQueHl6");
+
+// Try to access a malicious domain
+include($url);
 
 echo "Step 2<br>";
 echo "</pre>";
 
-// Try to access a malicious domain
-include($url);
-die();
 ?>
 ```
 </div>
 
-3. Place this file on the server.
-4. Call a test page with the script from the point 2.
-5. If <span class="notranslate">Proactive Defense</span> is disabled, you will see _Step 1_ and _Step 2_ strings after calling the script.
-6. If <span class="notranslate">Proactive Defense</span> is enabled and <span class="notranslate">_Log only_</span> mode is set, you will see _Step 1_ and _Step 2_ strings after calling the script and a new event in the <span class="notranslate">_Detected Events_</span> table.
-7. If <span class="notranslate">Proactive Defense</span> is enabled and <span class="notranslate">_Kill mode_</span> is set, the test page returns an error.
+1. Place this file on the server.
+2. Call a test page with the script from the point 2.
+3. If <span class="notranslate">Proactive Defense</span> is disabled, you will see _Step 1_ and _Step 2_ strings after calling the script.
+4. If <span class="notranslate">Proactive Defense</span> is enabled and <span class="notranslate">_Log only_</span> mode is set, you will see _Step 1_ and _Step 2_ strings after calling the script and a new event in the <span class="notranslate">_Detected Events_</span> table.
+5. If <span class="notranslate">Proactive Defense</span> is enabled and <span class="notranslate">_Kill mode_</span> is set, the test page returns an error.
 
 ## Reputation Management
 

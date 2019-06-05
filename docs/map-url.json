@@ -265,5 +265,8 @@
   "/index.html?common_problems.htm": "/whmcs_plugin/#common-problems",
   "/downloading_documentation.htm/": "/downloading_documentation/",
   "/downloading_documentation.htm": "/downloading_documentation/",
-  "/index.html?downloading_documentation.htm": "/downloading_documentation/"
+  "/index.html?downloading_documentation.htm": "/downloading_documentation/",
+  "/hooks.htm/": "/hooks/",
+  "/hooks.htm": "/hooks/",
+  "/index.html?hooks.htm": "/hooks/"
 }

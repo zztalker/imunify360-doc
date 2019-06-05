@@ -32,7 +32,179 @@ imunify360-agent hook add --event <event name> --path </path/to/hook_script>
 
 ## Available events and their parameters
 
-To be added
+* **agent**
+  * subtype ( started | misconfig )
+    * started - the event is generated each time the Imunify agent is started/restarted
+      * params[]
+        * version / string / version of agent
+    * misconfig - the event is generated when the agent detects agent misconfiguration / broken settings / etc.
+      * params[]
+        * error / string / error message where / what type of misconfiguration was detected and some details
+
+* **malware-scanning**
+  * subtype ( started | finished )
+    * started - the event is generated when the malware scanning process is started (for on-demand and background scans only, yet not the ftp / waf / inotify)
+      * params[]
+        * scan_id / string / identifier of running scan
+        * path / string / path that’s scanning
+        * type / string / type of scanning (“on-demand”, “background”, “ftp”)
+        * scan_params[]  / initial scanning params
+          * file_mask / string / file mask to scan
+          * follow_symlinks / boolean / shall scanner follow symlinks
+          * ignore_mask / string / file mask to ignore
+          * intensity / string / intensity type selected (“low”, “moderate”,  “high”)
+
+<div class="notranslate">
+
+```
+{
+"scan_id":"dc3c6061c572410a83be19d153809df1",
+"home":"/home/a/abdhf/",
+"user":"abdhf",
+"type":"background",
+"scan_params": {"file_mask":"*", "follow_symlinks":"true", "ignore_mask":"", "intensity":"low"}
+}
+```
+</div>		  
+
+*
+  *
+    * finished - the event is generated when the malware scanning process is finished (for on-demand and background scans only, yet not the ftp / waf / inotify)
+      * params[]
+	    * scan_id / string / identifier of running scan
+		* path / string / path that’s scanned
+		* users[] / string array/ user that’s scanned
+		* started / int / unixtime when scan started
+		* total_files / int / total number of files that were scanned
+		* total_malicious / int / number of detected malicious files
+		* errors[] / string / error message if any occurred during scanning
+		* status / string / status of scan (“ok”, “has_errors”, “failed”)
+		* scan_params[] / initial scanning params
+		  * file_mask / string / file mask to scan
+		  * follow_symlinks / boolean / shall scanner follow symlinks
+		  * ignore_mask / string / file mask to ignore
+		  * intensity / string / intensity type selected (“low”, “moderate”,  “high”)
+
+<div class="notranslate">
+
+```
+{
+"scan_id":"dc3c6061c572410a83be19d153809df1",
+"home":"/home/a/abdhf/",
+"user":"abdhf",
+"started":1587365282,
+"total_files":873535,
+"total_malicious":345,
+"errors":[],
+"status":"ok",
+"type":"background",
+"scan_params": {"file_mask":"*", "follow_symlinks":"true", "ignore_mask":"", "intensity":"low"}
+}
+```
+</div>
+
+* **malware-detected**
+  * subtype ( critical )
+    * critical
+	  * params[]
+	    * scan_id / string / unique id of the scan
+		* errors[] / string / error strings that happened during the last scan
+		* started / int / unixtime when the scan was started
+		* path / string / path that was scanned
+		* users[] / string array / users that have been scanned (if any)
+		* total_files / int / number of files checked within the last scanning
+		* total_malicious / int / number of detected malicious files
+		* tmp_filename / string / path to a temporary file with a list of detected threads. The list of threads is in the format of the following command: <span class="notranslate"> `imunify360-agent malware malicious list --by-scan-id=... --json` </span>
+
+<div class="notranslate">
+
+```
+{
+
+"scan_id":"dc3c6061c572410a83be19d153809df1",
+"path":"/home/a/abdhf/",
+"username":["imunify"],
+"started":1587365282,
+"total_files":873535,
+"total_malicious":345,
+"errors":[],
+"files":[
+{
+  "username":"imunify",
+  "hash":"17c1dd3659578126a32701bb5eaccecc2a6d8307d8e392f5381b7273bfb8a89d",
+  "size":"182",
+  "cleaned_at":1553762878.6882641,
+  "extra_data":{
+
+
+  },
+  "malicious":true,
+  "id":32,
+  "status":"cleanup_removed",
+  "file":"/home/imunify/public_html/01102018_2.php",
+  "type":"SMW-INJ-04174-bkdr",
+  "scan_type":"on-demand",
+  "Created":1553002672
+},
+{
+  "username":"imunify",
+  "hash":"04425f71ae6c3cd04f8a7f156aee57096dd658ce6321c92619a07e122d33bd32",
+  "size":"12523",
+  "cleaned_at":1553762878.6882641,
+  "extra_data":{
+
+
+  },
+  "malicious":true,
+  "id":33,
+  "status":"cleanup_done",
+  "file":"/home/imunify/public_html/22.js",
+  "type":"SMW-INJ-04346-js.inj",
+  "scan_type":"on-demand",
+  "Created":1553002672
+},
+...
+
+}
+```
+</div>
+
+::: tip Note
+All results can be saved in a temporary file before handler invocation and then remove the file after the event is being processed
+:::
+
+* **malware-cleanup**
+  * subtype ( started | finished )
+    * started - the event is generated when the malware cleanup process is started (for on-demand and background cleanup only, background auto-cleanup will be implemented later)
+	  * params[]
+	    * cleanup_id / string / unique id of the cleanup
+		* started / int / unixtime when the cleanup was started
+		* tmp_filename / string / path to a temporary file with a scanning report. The list is in the format of the following command: <span class="notranslate"> `imunify360-agent malware malicious list --by-scan-id=... --json` </span> . See malware-detected hook section for details.
+        * total_files / int / number of files that were sent for cleanup
+	* finished - the event is generated when the malware scanning process is finished (for on-demand and background cleanup only, background auto-cleanup will be implemented later)
+	  * params[]
+	    * cleanup_id / string / identifier of running cleanup
+		* started / int / unixtime when cleanup started
+		* total_files / int / number of files that were sent for cleanup
+		* total_cleaned / int / number of files that were successfully cleaned
+		* tmp_filename / string / path to a temporary file with a list of results.
+		* errors[] / string / error messages if any occurred during cleanup
+		* errors[] / string / error messages if any occurred during cleanup
+		
+<div class="notranslate">
+
+```
+{
+"scan_id":"dc3c6061c572410a83be19d153809df1",
+"started":1587365282,
+"total_files":873535,
+"total_cleaned":872835,
+"tmp_filename":”/var/imunify/tmp/hooks/tmp_02q648234692834698456728439587245.json”,
+"errors":[],
+"status":"ok"
+}
+```
+</div>
 
 ## CLI
 

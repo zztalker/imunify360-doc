@@ -1,4 +1,4 @@
-const urls = require("./urls-mapping.js");
+﻿const urls = require("./urls-mapping.js");
 const sidebarUrls = require("./sidebar-urls");
 const _slugify = require('vuepress/lib/markdown/slugify');
 
@@ -116,6 +116,7 @@ module.exports = {
               "/dashboard/",
               "/hosting_panels_specific_settin/",
               "/config_file_description/",
+              "/hooks/",
               "/command_line_interface/",
               "/uninstall/",
               "/faq_and_known_issues/",
@@ -173,6 +174,7 @@ module.exports = {
               "/ru/dashboard/",
               "/ru/hosting_panels_specific_settin/",
               "/ru/config_file_description/",
+              "/ru/hooks/",
               "/ru/command_line_interface/",
               "/ru/uninstall/",
               "/ru/faq_and_known_issues/",

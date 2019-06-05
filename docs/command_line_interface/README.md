@@ -594,6 +594,10 @@ Optional arguments for <span class="notranslate">`list`</span>:
  
 <div class="notranslate">
 
+## Hooks
+
+Hooks-related command description is available [here](/hooks/#cli)
+
 ## Malware
 
 </div>

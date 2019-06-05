@@ -59,7 +59,6 @@ Available commands:
 |<span class="notranslate">`feature-management`</span>| manage Imunify360 features available for users|
 |<span class="notranslate">`feature-management native enable`<sup> Beta 4.0+ cPanel</sup></span>|activate the Native Features Management using WHM/cPanel package extensions.|
 |<span class="notranslate">`feature-management native disable`<sup> Beta 4.0+ cPanel</sup></span>|deactivate the Native Features Management using WHM/cPanel package extensions and return the original Imunify360 Features Management back.|
-|<span class="notranslate">`eula accept`</span>|Accept EULA automatically.|
 
 Optional arguments for the commands:
 
@@ -1067,7 +1066,7 @@ Optional arguments:
 
 </div>
 
-To submit file as false positive (if Imunify360 considers file as a malicious but it actually isn’t) you can use the following command:
+To submit file as false positive (if Imunify360 considers file as a malicious but it actually doesn’t) you can use the following command:
 
 <div class="notranslate">
 
@@ -1077,7 +1076,7 @@ imunify360-agent submit false-positive <file>
 
 </div>
 
-To submit file as false negative (if Imunify360 considers file as a non-malicious but it actually is) you can use the following command:
+To submit file as false negative (if Imunify360 considers file as a non-malicious but it actually does) you can use the following command:
 
 <div class="notranslate">
 
@@ -1447,21 +1446,3 @@ Imunify360 will keep applying users <span class="notranslate">Features Managemen
 ::: warning Warning
 <span class="notranslate">`feature-management enable/disable --feature av`</span> and <span class="notranslate">`feature-management enable/disable --feature proactive`</span> commands will start functioning.
 :::
-
-
-<div class="notranslate">
-
-## eula accept
-
-</div>
-
-Command for accept EULA automatically.
-
-Usage:
-
-<div class="notranslate">
-
-```
-imunify360-agent eula accept
-```
-</div>

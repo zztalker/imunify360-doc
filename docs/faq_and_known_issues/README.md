@@ -161,4 +161,78 @@ OWASP rule set may conflict with Imunify360 default rule set on a server running
 
 Please find more FAQs in our [Knowledge Base](https://cloudlinux.zendesk.com/hc/sections/115001538929-FAQ).
 
+### 9. Disabling WAF rules for certain countries.
 
+It is possible to disable some WAF rules for IPs that are resolved to be from some country (or other geographical entity).
+To implement this, a customer should create his own modsecurity configuration file, and include it into the default modsecurity configuration. In case of cPanel, this can be done by creating <span class="notranslate">`/etc/apache2/conf.d/includes/countrywafrules.conf`</span> and adding it as an include to the <span class="notranslate">`/etc/apache2/conf.d/modsec/modsec2.cpanel.conf`</span>. Otherwise configuration files might be rewritten by Imunify360 rules update.
+
+Example of contents of such config file:
+
+<div class="notranslate">
+
+```
+SecGeoLookupDb /path/to/GeoLiteCity.dat 
+# ModSecurity relies on the free geolocation databases (GeoLite City and GeoLite Country) that can be obtained from MaxMind http://www.maxmind.com. Currently ModSecurity only supports the legacy GeoIP format. Maxmind's newer GeoIP2 format is not yet currently supported.
+So a customer need to download this IP database and locate somewhere.
+
+# Lookup IP address 
+SecRule REMOTE_ADDR "@geoLookup" "phase:1,id:155,nolog,pass"
+
+# Optionally block IP address for which geolocation failed
+# SecRule &GEO "@eq 0" "phase:1,id:156,deny,msg:'Failed to lookup IP'"
+
+# Skip rules 942100 and 942101 for GB country as example
+
+SecRule GEO:COUNTRY_CODE "@streq GB" "phase:2,auditlog,id:157,pass,severity:2,\
+ctl:ruleRemoveById=942100,\
+ctl:ruleRemoveById=942101"
+```
+</div>
+
+Make sure that you have replaced <span class="notranslate">`/path/to/GeoLiteCity.dat`</span> with the real path to the GeoLiteCity.dat file installed in your system.
+
+Variable <span class="notranslate">`GEO`</span> is a collection populated by result of the last <span class="notranslate">`@geoLookup`</span> operator. The collection can be used to match geographical fields looked from an IP address or hostname.
+
+:::tip Note
+Available since ModSecurity 2.5.0.
+:::
+
+Fields:
+
+* <span class="notranslate">`COUNTRY_CODE`</span>: two character country code. Example: `US`, `GB`, etc.  
+* <span class="notranslate">`COUNTRY_CODE3`</span>: up to three character country code.  
+* <span class="notranslate">`COUNTRY_NAME`</span>: full country name.  
+* <span class="notranslate">`COUNTRY_CONTINENT`</span>: two character continent that the country is located. Example: `EU`. 
+* <span class="notranslate">`REGION`</span>: two character region. For US, this is state. For Canada, providence, etc.  
+* <span class="notranslate">`CITY`</span>: city name if supported by the database.  
+* <span class="notranslate">`POSTAL_CODE`</span>: postal code if supported by the database.  
+* <span class="notranslate">`LATITUDE`</span>: latitude if supported by the database.  
+* <span class="notranslate">`LONGITUDE`</span>: longitude if supported by the database.  
+* <span class="notranslate">`DMA_CODE`</span>: metropolitan area code if supported by the database. (US only)  
+* <span class="notranslate">`AREA_CODE`</span>: phone system area code. (US only)  
+
+### 10. How to clone Imnify360 configuration on another system?
+
+The solution is available in [FAQ section](https://cloudlinux.zendesk.com/hc/en-us/articles/360022689394-How-to-Clone-Imunify360-Installation)
+
+### 11. How to disable Support icon in the Imunify360 UI?
+
+1. Go to <span class="notranslate">`/etc/sysconfig/imunify360/imunify360.config`</span>.
+2. And set <span class="notranslate">`PERMISSIONS.support_form:`</span> option to <span class="notranslate">`false`</span>.
+
+OR, **better**, run the following command:
+
+```
+imunify360-agent config update '{"PERMISSIONS": {"support_form": false}}'
+```
+
+### 12. How to hide the Ignore List tab for end users in the Imunify360 UI?
+
+1. Go to <span class="notranslate">`/etc/sysconfig/imunify360/imunify360.config`</span>.
+2. And set <span class="notranslate">`PERMISSIONS.user_ignore_list:`</span> option to <span class="notranslate">`false`</span>.
+
+OR, **better**, run the following command:
+
+```
+imunify360-agent config update '{"PERMISSIONS": {"user_ignore_list": false}}'
+```

@@ -2,6 +2,18 @@
 
 Imunify360 is an all-in-one security solution with robust herd protection against the newest attacks, and it is available directly within your control panel (cPanel, Plesk, and DirectAdmin).
 
+When you log in to your control panel, Imunify360 asks you to enter your email address.
+
+![](/images/admin_notify1.png)
+
+By entering your email address you agree to receive email reports about critical issues, security alerts or system misconfigurations detected on your servers.
+
+::: tip Note
+This email address is used ONLY for receiving server reports.
+:::
+
+Or you can do it later in the <span class="notranslate">[Settings | General | Contact Details](/dashboard/#contact-details)</span>.
+
 Log in to your control panel as an admin and go to <span class="notranslate">Plugins</span>, choose Imunify360 to get to the Imunify360 user interface.
 
 It allows to access:
@@ -35,19 +47,87 @@ To contact our support team in Imunify360 User Interface, please click the _Call
 
 A support ticket will be created and an email will be sent to a specified email address. When a status of your request will change you receive a notification to your email address. You will be able to track your request via [https://cloudlinux.zendesk.com/hc/](https://cloudlinux.zendesk.com/hc/) and email.
 
+<div class="notranslate">
 
 ## Dashboard
+
+</div>
 
 You can access the Imunify360 Dashboard from your control panel. It shows security events as charts and heat maps.
 It's a great way to analyze incidents that happened within the past day, week or month.
 
 :::tip Note
-Beta 4.0
+Beta 4.0 and later
 :::
 
 Click <span class="notranslate">_Dashboard_</span> tab to display an overview of incidents recorded during the selected time interval, an estimate of the intensity of attacks, and correlate events across all sources.
 
-![](/images/DashboardGeneral.png)
+![](/images/DashboardGeneral2.png)
+
+Here you can see notifications about server security and Imunify360 configuration, along with recommendations for making server security effective and proactive.
+
+<div class="notranslate">
+
+### Multi-server Dashboard 
+
+</div>
+
+:::tip Note
+Beta 4.1 and later
+:::
+
+Starting from Imunify360 version 4.1, the <span class="notranslate">Dashboard</span> can display Imunify360 performance data for a number of specified servers. 
+* You can add a specified server using its server key – a unique server id that identifies an installed Imunify360 instance.
+
+    :::tip Note
+   **Server key is NOT a license key**.
+    :::
+* You can easily remove a server from the Dashboard.
+* You can use <span class="notranslate">_Server_</span> drop-down to show a list of all servers added into the Dashboard.
+
+![](/images/dashboard_servers2.png)
+
+
+#### **How to get a server key**
+
+There are two ways to get a server key.
+
+1. Click the key symbol ![](/images/copy_key.png) to copy server key of the selected server to the clipboard.
+
+2. Go to the <span class="notranslate">`/var/imunify360/license.json`</span> file and find `id` field. Your server id looks like an alphanumeric string `SghjhgFESDh65CFLfvz`.
+   
+   
+  ![](/images/id_from_license.png)
+
+#### **How to add a server**
+
+If you'd like to display performance data for the server **A** on the <span class="notranslate">Dashboard</span> of the server **B**, please do the following:
+
+   * Go to the server **A** <span class="notranslate">Dashboard</span> and copy its server key (see [How to get a server key](/dashboard/#how-to-get-a-server-key))
+   * Go to the server **B** <span class="notranslate">Dashboard</span> and click the <span class="notranslate">_Add Server_</span> button ![](/images/add_server.png)
+   * The <span class="notranslate">_Add server key_</span> pop-up opens
+
+  ![](/images/add_server_key.png)
+
+   * Paste the server key belonging to the server **A** to the <span class="notranslate">_Server key_</span> field
+   * Click <span class="notranslate">_Confirm_</span> to add the server **A** to the <span class="notranslate">Dashboard</span> of the server **B**. To stop adding the server and close the pop-up, click <span class="notranslate">_Cancel_</span>.
+  
+Go to the <span class="notranslate">_Server_</span> drop-down to check all added servers – it contains a list of hostnames of all added servers and/or a list of IPs (if a hostname is not found).
+
+#### **How to remove a server**
+
+To remove a server, click the <span class="notranslate">_Trash Can_</span> symbol ![](/images/remove_server.png). The <span class="notranslate">_Remove Server_</span> pop-up opens.
+||
+|--|
+|![](/images/remove_server_popup.png)|
+
+Click <span class="notranslate">_Confirm_</span> to remove the server. To stop removing the server and close the pop-up, click <span class="notranslate">_Cancel_</span>.
+
+::: tip Note
+You cannot remove a server from its <span class="notranslate">Imunify360 Dashboard</span>.
+:::
+
+### Charts and heat maps
 
 The following time periods are available:
 
@@ -132,7 +212,7 @@ There is a color indication for IP address.
 * <span class="notranslate">_Country_ </span>– country origin of the abuser IP address.
 * <span class="notranslate">_# of Times_</span> – the number of times the abuser tried to repeat the action.
 * <span class="notranslate">_Event_</span> – description of the event or suspicious activity (as it is described by OSSEC and Mod_Security sensors).
-* <span class="notranslate">_Severity_</span> – severity level of the incidents (as it is estimated in [OSSEC severity levels](http://ossec-docs.readthedocs.io/en/latest/manual/rules-decoders/rule-levels.html) and [Mod_Security severity levels](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual#severity)). The color of severity means:
+* <span class="notranslate">_Severity_</span> – severity level of the incidents (as it is estimated in [OSSEC severity levels](http://ossec-docs.readthedocs.io/en/latest/manual/rules-decoders/rule-levels.html) and [Mod_Security severity levels](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual-%28v2.x%29#severity)). The color of severity means:
 
   * Green – Mod_Security levels 7-5, OSSEC levels 00-03
   * Orange – Mod_Security level 4, OSSEC levels 04-10
@@ -154,7 +234,7 @@ Click an incident to expand the detailed information.
 
 ![](/images/move_button_zoom94.png)
 
-## Lists
+## Firewall
 
 
 <span class="notranslate">_Lists_</span> tab allows viewing and managing the IP addresses in the lists:
@@ -169,7 +249,7 @@ Click an incident to expand the detailed information.
 Click <span class="notranslate">_Lists_</span> in the main menu then choose <span class="notranslate">_White List_</span>.
 
 
-![](/images/WhiteList.png)
+![](/images/WhiteList1.png)
 
 Use filters to show the exact list of the IPs:
 
@@ -248,7 +328,7 @@ Imunify360 has predefined whitelisted services. The actual list is always availa
 
 Choose <span class="notranslate">_Lists_</span> tab in the main menu then click <span class="notranslate">_Gray List_</span>.
 
-![](/images/Gray_List.png)
+![](/images/Gray_List1.png)
 
 Use filters to show the exact list of the IPs:
 
@@ -310,7 +390,7 @@ You will see a notification if the IP is removed successfully.
 
 Choose <span class="notranslate">_Lists_</span> tab in the main menu then click <span class="notranslate">_Black List_</span>.
 
-![](/images/Black_List.png)
+![](/images/Black_List1.png)
 
 Use filters to show the exact list of the IPs:
 
@@ -410,7 +490,7 @@ This feature allows to block specific ports for TCP/UDP connection. It is also p
 
 Click <span class="notranslate">_Lists_</span> and choose <span class="notranslate">_Blocked Ports_</span>.
 
-![](/images/Blocked_Ports.png)
+![](/images/Blocked_Ports1.png)
 
 ::: tip Note
 If CSF integration enabled, then <span class="notranslate">Blocked Ports</span> will be disabled. Imunify360 imports Closed ports and their whitelisted IPs from CSF.
@@ -468,10 +548,8 @@ To delete a port or separate IP/subnet, click _Bin_ icon in the row of the eleme
 
 ## Malware Scanner
 
-Click <span class="notranslate">_Malware Scanner_</span> in the main menu of Imunify360 user interface to get to the <span class="notranslate">Malware Scanner</span> page.
-
 ::: tip Note
- The functionality described on this page depends on <span class="notranslate">[Malware Scanner settings](/dashboard/#malware)</span>.
+ The functionality described here depends on <span class="notranslate">[Malware Scanner settings](/dashboard/#malware)</span>.
 :::
 
 Imunify360 <span class="notranslate">Malware Scanner</span> can scan file systems for malware injection and quarantine infected files.
@@ -495,26 +573,105 @@ Malware scanning allows you to:
 * observe scanner activity
 * start on-demand file scanner
 * manage malicious and quarantined files
-* manage ignore list
+* manage Ignore List
 
-### Observing Malware Scanner activity
+Click <span class="notranslate">_Malware Scanner_</span> in the main menu of the Imunify360 user interface.
 
-Go to <span class="notranslate">_Malware Scanner_</span> page and choose <span class="notranslate">_Dashboard_</span> tab. On this page, the file scanning activity from the beginning of the current day is displayed by default. It is possible to use a <span class="notranslate">_Timeframe_</span> filter to observe scanner activity within the particular time period.
+![](/images/malwarescanner_general.png)
 
-![](/images/malwarescannerdashboard_zoom70.png)
+The following tabs are available:
 
-The scanner activity is filtered by:
-* <span class="notranslate">_Malicious_</span> – the number of files where Malware Scanner has detected a malicious activity. It is possible to configure the action to be applied to the files:
-  * Delete permanently
-  * Move to quarantine
-  * Try to restore from backup
-  * Display in dashboard
-Please find more details in the <span class="notranslate">[Malware Scanner Settings](/dashboard/#malware)</span> section.
-* <span class="notranslate">_Quarantined_</span> – the number of quarantined files that are not available for the user.
-* <span class="notranslate">_Restored from quarantine_</span> – the list of the files restored from the quarantine manually.
+* <span class="notranslate">[Users](/dashboard/#users)</span>
+* <span class="notranslate">[Files](/dashboard/#files)</span>
+* <span class="notranslate">[Scan](/dashboard/#scan)</span>
+* <span class="notranslate">[History](/dashboard/#history)</span>
+* <span class="notranslate">[Ignore List](/dashboard/#ignore-list)</span>
 
+<div class="notranslate">
 
-### On-demand file scanner
+### Users
+
+</div>
+
+Go to <span class="notranslate">Imunify360 → Malware Scanner → Users</span> tab. Here, there is a table with a list of users on the server, except users with root privileges.
+
+![](/images/malwarescanner_users.png)
+
+The table has the following columns:
+
+* <span class="notranslate">**User name**</span> — displays the user name.
+* <span class="notranslate">**Home directory**</span> — the path to the user home directory starting from the root.
+* <span class="notranslate">**Infection status**</span> —  the current status depending on the last action made:
+  * <span class="notranslate">**On-Demand scanning**</span> — scanning was initiated/made by an administrator;
+  * <span class="notranslate">**Scanning queued**</span> — user's files are queued for scanning;
+  * <span class="notranslate">**Background scanning**</span> — scheduled scanning is in progress;
+  * <span class="notranslate">**Scanning scheduled**</span> — user's files scanning is scheduled;
+  * <span class="notranslate">**Cleaning up**</span> — user's files are now cleaning up;
+  * <span class="notranslate">**Not yet scanned**</span> — user's files have not  been scanned yet;
+  * <span class="notranslate">**No malware found**</span> — no malware was found during scanning.
+* <span class="notranslate">**Actions**</span>:
+  * <span class="notranslate">**Scan for malware**</span> — click <span class="notranslate">_Scan_</span> ![](/images/scan_symbol.png) to start scanning files for a particular user.
+  * <span class="notranslate">**View report**</span> — click <span class="notranslate">_View Report_</span> ![](/images/view_report_symbol.png) to go to the <span class="notranslate">_Files_</span> tab and display the results of the last scan.
+  * <span class="notranslate">**Cleanup**</span> — click <span class="notranslate">_Cleanup_</span> ![](/images/cleanup_symbol.png) to start cleaning up infected files for the user.
+  * <span class="notranslate">**Restore original**</span> — click <span class="notranslate">_Restore original_</span> ![](/images/restore_original_symbol.png) to restore original file after cleaning up if backup is available. To perform a bulk action, tick required users and click the corresponding button above the table.
+
+To clean up all files of all users and scan all files, click <span class="notranslate">_Scan all_</span> or <span class="notranslate">_Cleanup all_</span> button above the table.
+
+The following filters are available:
+
+* <span class="notranslate">**Items per page displayed**</span> — click the number at the table bottom.
+
+The table can be sorted by <span class="notranslate">_User name_</span> and <span class="notranslate">_Infection status_</span> (by the date of the last action).
+
+### Files
+
+Go to <span class="notranslate">Imunify360 → Malware Scanner → Files</span> tab. Here, there is a table with a list of infected files within all domains and user accounts.
+
+![](/images/malwarescanner_files.png)
+
+The table has the following columns:
+
+* <span class="notranslate">**Detected**</span> — displays the exact time when a file was detected as malicious.
+* <span class="notranslate">**User name**</span> — displays file owner name.
+* <span class="notranslate">**File**</span> — the path where the file is located starting with root
+* <span class="notranslate">**Reason**</span> — describes the signature which was detected during the scanning process. Names in this column depend on the signature vendor.
+* <span class="notranslate">**Status**</span> — displays the file status:
+  * <span class="notranslate">**Infected**</span> — threat was detected after scanning. If a file was not cleaned after cleanup, the info icon is displayed. Hover mouse over info icon to display the reason;
+  * <span class="notranslate">**Cleaned**</span> —  infected file is cleaned up.
+  * <span class="notranslate">**Quarantined**</span> – a file was moved to the quarantine.
+  * <span class="notranslate">**Content removed**</span> — a file content was removed after cleanup.
+  * <span class="notranslate">**Cleanup in progress**</span> — infected file cleanup is in progress now.
+* <span class="notranslate">**Actions**</span>:
+  * <span class="notranslate">**Add to Ignore List**</span> — add file to the <span class="notranslate">Ignore List</span> and remove it from the <span class="notranslate">Malicious files</span> list. Note that if a file is added to the <span class="notranslate">Ignore List</span>, Imunify360 will no longer scan this file. Click the <span class="notranslate">_Gear_</span> symbol ![](/images/gear.png) and select <span class="notranslate">_Add to Ignore List_</span>.
+  * <span class="notranslate">**Delete permanently**</span> — remove the file from the server and from the list of <span class="notranslate">Malicious</span> files. Click the <span class="notranslate">_Gear_ symbol</span> ![](/images/gear.png) and select <span class="notranslate">_Delete permanently_</span>.
+  * <span class="notranslate">**View file**</span> — click <span class="notranslate">_View file_</span> symbol ![](/images/view_file_symbol.png) in the file line and the file content will be displayed in the pop-up. Only the first 100Kb of the file content will be shown in case if a file has bigger size.
+  * <span class="notranslate">**Move to quarantine**</span> — move the file to the quarantine. Click <span class="notranslate">_Move to quarantine_</span> symbol ![](/images/movetoquarantine_symbol.png) and confirm the action in the pop-up.
+  * <span class="notranslate">**Cleanup file**</span> — click <span class="notranslate">_Clean up_</span> symbol ![](/images/cleanup_symbol.png) to clean up all infected files within the account.
+  * <span class="notranslate">**Restore from quarantine**</span> — click <span class="notranslate">_Restore from quarantine_</span> symbol ![](/images/restore_fromquarantine_symbol.png) to restore the fle from the quarantine.
+  * <span class="notranslate">**Restore original file (before cleanup)**</span> — click <span class="notranslate">_Restore original_</span> symbol ![](/images/restore_original_symbol.png) to restore the original content removed as infected.
+  * <span class="notranslate">**Restore from backup**</span> — click the <span class="notranslate">_Gear_</span> symbol ![](/images/gear.png) and select <span class="notranslate">_Try to restore from backup_</span> to restore the original file before it got infected if it exists.
+
+To perform a bulk action, tick required files and click the corresponding button above the table.
+
+Click the desired string to display scan type.
+
+![](/images/malwarescanner_scan_type.png)
+
+To clean up all files of all users, click <span class="notranslate">_Clean up all_</span> button above the table.
+
+The following filters are available:
+
+* <span class="notranslate">**Timeframe**</span> — displays the results filtered by chosen period or date.
+* <span class="notranslate">**Status**</span> — displays the results filtered by chosen status.
+* <span class="notranslate">**Items per page displayed**</span> — click the number at the table bottom.
+
+The table can be sorted by detection date (detected), user name, file path (file), reason, and status.
+
+<div class="notranslate">
+
+### Scan
+
+</div>
 
 It is possible to scan a specific directory for malware. Go to <span class="notranslate">_Malware Scanner_</span> page and choose <span class="notranslate">_Scan_</span> tab. Then proceed the following steps:
 
@@ -524,15 +681,15 @@ It is possible to scan a specific directory for malware. Go to <span class="notr
 
    * <span class="notranslate">_Filename mask_</span>. It allows to set file type for scanning (for example, `*.php` – all the files with extension php). Default setting is `*` which means all files without restriction.
    * <span class="notranslate">_Ignore mask_</span>. It allows to set file type to ignore (for example, `*.html` – will ignore all file with extension html).
-   * <span class="notranslate">_Intensity_</span>. Defines the priority and resources consumption for scanning without decreasing efficiency:
-	     * <span class="notranslate">Low</span> – low priority and resources consumption
-	     * <span class="notranslate">Moderate</span> – moderate priority and resources consumption
-	     * <span class="notranslate">High</span> – high priority and resources consumption
+   * <span class="notranslate">_CPU consumption_</span>. Defines the CPU consumption for scanning without decreasing efficiency:
+	     * from <span class="notranslate">Low</span> to <span class="notranslate">High</span>.
+   * <span class="notranslate">_I/O consumption_</span>. Defines the I/O consumption for scanning without decreasing efficiency:
+	     * from <span class="notranslate">Low</span> to <span class="notranslate">High</span>.
 	* <span class="notranslate">_Follow symlinks<sup> 3.9.0+</sup>_</span>. Follow all symlinks within the folder to scan. 
 
-![](/images/malwarescannerondemandscan_zoom70.png)
+![](/images/malware_scanner.png)
 
-2. Click <span class="notranslate">_Start_</span>.
+1. Click <span class="notranslate">_Start_</span>.
 
 At the top right corner Malware Scanner progress and status are displayed:
 * <span class="notranslate">Scanner is stopped</span> – means that there is no scanning process running.
@@ -550,126 +707,78 @@ After <span class="notranslate">Malware Scanner</span> stops on-demand scanning 
 
 ![](/images/malwarescannerondemand_zoom70.png)
 
-To review and manage malicious files go to <span class="notranslate">_Malicious Files_</span> tab described below.
+To review and manage malicious files go to the <span class="notranslate">_Files_</span> tab described below.
 
-### Managing files detected as malicious
+<div class="notranslate">
 
-Go to <span class="notranslate">_Malware Scanner_ → _Dashboard_ → _Malicious Files_</span>. This page has a table with malicious and quarantined files.
+### History
 
-![](/images/malwarescannerdashboardgeneral_zoom70.png)
+</div>
 
-Use filters to show a list of files in a table:
+<span class="notranslate">_History_</span> tab contains data of all actions for all files. Go to the <span class="notranslate">Imunify360 → History</span> tab. Here, there is a table with a list of files within all domains.
 
-* <span class="notranslate">_Timeframe_</span> – allows to filter files for different time period of detection.
-* <span class="notranslate">_Page size_</span> – allows to set the number of files to be shown on a page.
-* <span class="notranslate">_Search field_</span> – allows to search files by filename.
+![](/images/malwarescanner_history.png)
 
-### Malicious Files Table
+The table has the following columns:
 
-The following information is available in the table:
+* <span class="notranslate">**Date**</span> — action timestamp.
+* <span class="notranslate">**Path to File**</span> — path to the file starting from the root.
+* <span class="notranslate">**Cause**</span> — displays the way malicious file was found:
+  * <span class="notranslate">**Manual**</span> — scanning or cleaning was manually processed by a user.
+  * <span class="notranslate">**On-demand**</span> — scanning or cleaning was initiated/made by a user;
+  * <span class="notranslate">**Real time**</span> — scanning or cleaning was automatically processed by the system.
+* <span class="notranslate">**Owner**</span> — displays a  user name of file owner.
+* <span class="notranslate">**Initiator**</span> — displays the name of a user who was initiated the action. For system actions the name is <span class="notranslate">_System_</span>.
+* <span class="notranslate">**Event**</span> — displays the action with the file:
+  * <span class="notranslate">**Detected as malicious**</span> — after scanning the file was detected as infected.
+  * <span class="notranslate">**Cleaned**</span> — the file is cleaned up.
+  * <span class="notranslate">**Failed to clean up**</span> — there was a problem during cleanup. Hover mouse over the info icon to read more.
+  * <span class="notranslate">**Added to Ignore List**</span> — the file was added to the <span class="notranslate">Ignore List</span>. Imunify360 will not scan it but the file is not quarantined.
+  * <span class="notranslate">**Restored original**</span> — file content was restored as not malicious.
+  * <span class="notranslate">**Cleanup removed content**</span> — file contend was removed after cleanup.
+  * <span class="notranslate">**Deleted from Ignore List**</span> — the file was removed from the <span class="notranslate">Ignore List</span>. Imunify360 will scan it.
+  * <span class="notranslate">**Deleted permanently**</span> — the file was deleted.
+  * <span class="notranslate">**Submitted for analysis**</span> — the file was submitted to Imunify360 team for analysis.
+  * <span class="notranslate">**Quarantined**</span> — the file was added to quarantine. It is no longer executable.
+  * <span class="notranslate">**Restored from quarantine**</span> — for now, the file is executable.
+  * <span class="notranslate">**Failed to delete**</span> — there was a problem during removal. Hover mouse over the info icon to read more.
+  * <span class="notranslate">**Failed to ignore**</span> — there was a problem during adding to the <span class="notranslate">Ignore List</span>. Hover mouse over the info icon to read more.
+  * <span class="notranslate">**Failed to delete from ignore**</span> — there was a problem during removal from the <span class="notranslate">Ignore List</span>. Hover mouse over the info icon to read more.
+  
+The table can be sorted by <span class="notranslate">Date, Path to File, Cause</span>, and <span class="notranslate">Owner</span>.
 
-* <span class="notranslate">Date/time of detection</span> – hover mouse over clock icon to show the exact time when file was detected as malicious.
-* <span class="notranslate">Username</span> – file owner name.
-* <span class="notranslate">File</span> – the path where the file is located.
-* <span class="notranslate">Scan type</span> – shows which way was used to detect the malicious activity. Can be one of the following:
-  * <span class="notranslate">On-demand</span>, which means that the file was found during manual scanning;
-  * <span class="notranslate">Real-time</span>, which means that the file was detected during real-time scanning process.
-* <span class="notranslate">Reason</span> – describes the signature which was detected during the scanning process. Names in this column depend on the signature vendor.
-* <span class="notranslate">Quarantined</span> – displays whether a file is put on quarantine or not.
-* <span class="notranslate">Actions</span> – displays the possible actions with a file.
+<div class="notranslate">
 
-It is possible to manage suspicious files in the table:
+### Ignore List
 
-* Delete files permanently
-* Add to Ignore List
-* View file content
-* Restore from quarantine
-* Restore from backup
-* Cleanup files from malicious code
+</div>
 
-#### Delete files permanently
+<span class="notranslate">Ignore List</span> tab contains the list of files that are excluded from <span class="notranslate">Malware Scanner</span> scanning. Go to the <span class="notranslate">Imunify360 → Malware Scanner → Ignore List</span> tab. Here, there is a table with a list of files within all domains.
 
-Click _Cog_ icon in the file line and choose <span class="notranslate">_Delete permanently_</span> in the drop-down.
+![](/images/malwarescanner_ignorelist.png)
 
-![](/images/maliciousfilesdeletepermanently_zoom70.png)
+The table has the following columns:
 
-To do mass action tick several checkboxes or one in the table header to perform action on all files and click _Cog_ icon or <span class="notranslate">_Group Actions_</span> link above the table. Choose <span class="notranslate">_Delete permanently_</span> in the drop-down.
-
-![](/images/maliciousfilesdeletepermanentlygroupaction_zoom70.png)
-
-#### Add to ignore list
-
-<span class="notranslate">_Add to ignore list_</span> action is performed simultaneously with <span class="notranslate">_Restore from quarantine_</span> action. Please go to <span class="notranslate">[Restore from quarantine](/malware_scanner.htm#restorefromquarantine/)</span> section.
-Read more about [ignore list](/terminology/).
-
+* <span class="notranslate">**Added**</span> — the date when the file was added to Ignore List.
+* <span class="notranslate">**Path**</span> — path to the file starting from the root.
+* <span class="notranslate">**Actions**</span>:
+  * <span class="notranslate">**Remove from Ignore List**</span> — click <span class="notranslate">_Bin_</span> symbol ![](/images/bin_symbol.png) to remove the file from the Ignore List and start scanning.
+  * <span class="notranslate">**Add new file or directory**</span> — click <span class="notranslate">_Plus_</span> symbol ![](/images/plus_symbol.png) to add a new file or directory to the <span class="notranslate">Ignore List</span>. In the opened pop-up enter the path to be added and click <span class="notranslate">_Add_</span>.
+   
 ::: tip Note
-If a file is added to <span class="notranslate">Ignore List, Malware Scanner</span> will no longer scan this file.
-:::
-
-#### View file content
-
-Click _Eye_ icon in the file line and the file content will be displayed in the pop-up. Only the first 100Kb of the file content will be shown in case if a file has bigger size.
-
-#### Restore from quarantine
-
-Click _Fish_ icon in the file line and approve the action in the pop-up. It is possible to send a file to Imunify360 team for analysis and add file to the <span class="notranslate">Ignore List</span>. To do so, tick <span class="notranslate">_Submit to the Imunify360 team for analysis_</span> checkbox and/or <span class="notranslate">_Add to ignore list_</span> checkbox and confirm by clicking <span class="notranslate">_Yes, Restore_</span>.
-
-![](/images/malwarescannerrestorefromquarantine_zoom70.png)
-
-To do mass action tick several checkboxes or one in the table header to perform action on all files and click <span class="notranslate">_Not malware. Restore from quarantine_</span> above the table. Confirm the action in the pop-up.
-
-![](/images/malwarescannerrestorefromquarantinemass_zoom70.png)
-
-#### Restore from backup
-
-Click _Cog_ icon in the file line and choose <span class="notranslate">_Try to restore clean version from backup_</span> in the drop-down. Confirm the action in the pop-up bу clicking <span class="notranslate">_Yes, restore from backup_</span>.
-
-![](/images/malwarescannerrestorefrombackup_zoom70.png)
-To do mass action tick several checkboxes or one in the table header to perform action on all files and click _Cog_ icon or <span class="notranslate">_Group actions_</span> link above the table. Then choose <span class="notranslate">_Try to restore clean version from backup_</span> in the drop-down.
-
-![](/images/malwarescannerrestorefrombackupmass_zoom70.png)
-
-#### Cleanup files from malicious code<sup> 3.7.1+</sup>
-
-This feature allows users to cleanup infected files from malicious code or to remove malicious files.
-Click _Cleanup_ icon in the file line. Cleanup confirmation pop-up opens.
-
-![](/images/malwarecleanupclickicon_zoom70.png)
-
-Click _Yes, cleanup_ to confirm the action or _Cancel_ to close the pop-up.
-![](/images/cleanupconfirmationpopup_zoom80.png)
-
-File status will change to <span class="notranslate">_Cleanup in progress_</span>. When cleanup will be finished the status changes to <span class="notranslate">_Cleaned_</span>.
-To do mass action tick several checkboxes or one in the table header to perform action on all files and click _Cleanup_ icon or <span class="notranslate">_Cleanup files_</span> above the table. Confirm the action in the confirmation pop-up or click <span class="notranslate">_Cancel_</span> to close the pop-up.
-
-![](/images/cleanupmassaction_zoom70.png)
-
-To cleanup all files, click <span class="notranslate">_Cleanup all_</span> button and confirm the action in the confirmation pop-up or click <span class="notranslate">_Cancel_</span> to close the pop-up.
-
-![](/images/cleanupall_zoom70.png)
-
-A user can restore original file cleaned or removed by <span class="notranslate">Malware Cleanup</span> before the infected file expiration date. The keeping period is set in <span class="notranslate">[Malware Scanner Settings](/malware.htm#malwarecleanup/)</span> section.
-
-### Managing Ignore List
-
-Go to <span class="notranslate">Malware Scanner</span> page and choose <span class="notranslate">_Ignore List_</span> tab. The table on the page shows all items (files and folders) added to ignore list and date and time when they have been added.
-
-To add a new file or a new path to the <span class="notranslate">Ignore List</span> do the following:
-
-* click <span class="notranslate">_Add new file_</span> or directory
-* in the pop-up enter the path to be added
-* click <span class="notranslate">_Add_</span>
-
-![](/images/addnewfileordirectory_zoom70.png)
-
-::: tip Note
-Wildcards are not supported when adding paths to Ignore List. For example, the following paths are not supported:
+Wildcards are not supported when adding paths to the <span class="notranslate">Ignore List</span>. For example, the following paths are not supported:
 * <span class="notranslate">`/home/*/mail/`</span>
 * <span class="notranslate">`/home/user/*.html`</span>
 * <span class="notranslate">`/home/*`</span>
 :::
 
-To delete the item click _Bin_ icon and confirm the action. The item(s) will be rechecked by <span class="notranslate">Malware Scanner</span> after removal.
+To perform a bulk action, tick required files and click the corresponding button above the table.
+The following filters are available:
+
+* <span class="notranslate">**Timeframe**</span> — displays the results filtered by chosen period or date.
+* <span class="notranslate">**Items per page**</span> — click the number at the table bottom.
+
+The table can be sorted by <span class="notranslate">_Added_</span> and <span class="notranslate">_Path_</span>. By default, it is sorted from newest to oldest.
 
 To search file or folder in the <span class="notranslate">Ignore List</span> use <span class="notranslate">_Search_</span> input field above the table.
 
@@ -919,10 +1028,13 @@ Go to <span class="notranslate">_Imunify360 → Settings → General_</span>. Th
 
 * <span class="notranslate">[Installation](/dashboard/#installation)</span>
 * <span class="notranslate">[DoS Protection](/dashboard/#dos-protection)</span>
+* <span class="notranslate">[3-rd Party Integration](/dashboard/#_3-rd-party-integration)</span>
 * <span class="notranslate">[Auto White List](/dashboard/#auto-white-list)</span>
 * <span class="notranslate">[Incidents Logging](/dashboard/#incidents-logging)</span>
 * <span class="notranslate">[WebShield](/dashboard/#webshield)</span>
+* <span class="notranslate">[OSSEC](/dashboard/#ossec)</span>
 * <span class="notranslate">[Error Reporting](/dashboard/#error-reporting)</span>
+* <span class="notranslate">[Contact Details](/dashboard/#contact-details)</span>
 
 #### Installation
 
@@ -994,6 +1106,12 @@ It is possible to configure how Imunify360 will behave:
 
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
 
+#### 3-rd Party Integration
+
+Tick the <span class="notranslate">_Manage CSF Events and Lists_</span> checkbox to enable/disable the integration between CSF and Imunify360.
+	
+![](/images/3rd_party_protection.png)
+
 #### Auto White List
  
 <span class="notranslate">Auto White List</span> section allows to automatically add admin IP to the <span class="notranslate">White List</span> each time when he logs in to hosting panel and enters Imunify360 user interface.
@@ -1051,6 +1169,15 @@ Tick <span class="notranslate">_Detect IPs behind CDN_</span> checkbox to allow 
 
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
 
+#### OSSEC
+
+Tick the <span class="notranslate">_Active response_</span> checkbox to block access to a specific server port being attacked. 
+The purpose of the feature is significantly reducing false positive rate while increasing its capabilities to detect and block aggressive brute force requests.
+	
+![](/images/ossec_tick.png)
+
+Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
+
 #### Error Reporting
  
 Tick <span class="notranslate">_Enable Sentry error reporting_</span> checkbox to send reports to Imunify360 error reports server.
@@ -1059,9 +1186,32 @@ Tick <span class="notranslate">_Enable Sentry error reporting_</span> checkbox t
 
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
 
+#### **Contact Details**
+
+:::tip Note
+Imunify360 version 4.1 Beta
+:::
+ 
+Type your email into the <span class="notranslate">_Email_</span> field to receive email reports about critical issues, security alerts or system misconfigurations detected on your servers.
+
+::: tip Note
+This email address is used ONLY for receiving server reports.
+:::
+
+![](/images/contact_details.png)
+
+Click <span class="notranslate">_Save changes_</span> button at the bottom of the section to save changes.
+
 ### Malware
 
-Go to <span class="notranslate">Imunify360 → Settings → Malware</span>. Here you can configure General and <span class="notranslate">Malware Cleanup</span> Settings<sup>3.7.1+</sup>.
+Go to <span class="notranslate">Imunify360 | Settings | Malware</span>. 
+
+Here you can configure the following:
+* <span class="notranslate">General</span>
+* <span class="notranslate">Background Scanning</span><sup> Beta 4.1+</sup>
+* <span class="notranslate">Malware Cleanup</span><sup> 3.7.1+</sup>
+* <span class="notranslate">Proactive Defense</span><sup> 4.0+</sup>
+
 
 ::: tip Note
 Read [CXS integration](/ids_integration/#cxs-integration) documentation carefully to make Malware Scanner work properly if you decided to use the former instead of Imunify360 anti-malware protection.
@@ -1092,6 +1242,29 @@ Read [CXS integration](/ids_integration/#cxs-integration) documentation carefull
   * <span class="notranslate">Just display in dashboard</span>
 
 Tick required checkboxes and click <span class="notranslate">_Save changes_</span> button.
+
+#### **Background Scanning<sup> Beta 4.1</sup>**
+
+Allows to set up automatic, scheduled, background scanning of user accounts.
+
+* <span class="notranslate">_Run scanning_</span> — select the desired period:
+  * <span class="notranslate">Never</span>
+  * <span class="notranslate">Daily</span>
+  * <span class="notranslate">Weekly</span>
+  * <span class="notranslate">Monthly</span>
+
+![](/images/background_scanning1.png)
+
+Depending on the selected period, precise settings.
+
+* If <span class="notranslate">_Run scanning_</span> is set to <span class="notranslate">_Daily_</span>, choose the exact time at the <span class="notranslate">_Run at_</span> dropdown.
+
+* If <span class="notranslate">_Run scanning_</span> is set to <span class="notranslate">_Weekly_</span>, choose the day of the week at the <span class="notranslate">_Run on_</span> dropdown and exact time at the <span class="notranslate">_Run at_</span> dropdown.
+
+* If <span class="notranslate">_Run scanning_</span> is set to <span class="notranslate">_Monthly_</span>, choose the day of the month at the <span class="notranslate">_Day of month to run_</span> dropdown and exact time at the <span class="notranslate">_Run at_</span> dropdown.
+
+You can track the scanning activity at the <span class="notranslate">[Malware Scanner](#malware-scanner)</span> tab.
+
 
 **Cleanup<sup>3.7.1+</sup>**
 

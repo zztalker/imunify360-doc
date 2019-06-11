@@ -1,4 +1,4 @@
-const urls = require("./urls-mapping.js");
+﻿const urls = require("./urls-mapping.js");
 const sidebarUrls = require("./sidebar-urls");
 const _slugify = require('vuepress/lib/markdown/slugify');
 
@@ -11,6 +11,9 @@ module.exports = {
     }
   },
   base: "/",
+  head: [
+    ["link", { rel: "icon", href: "/favicon.ico" }],
+  ],
   locales: {
     // The key is the path for the locale to be nested under.
     // As a special case, the default locale can use '/' as its path.
@@ -60,7 +63,7 @@ module.exports = {
     cloudlinuxSite: "https://cloudlinux.com",
     locales: {
       "/": {
-        // text for the language dorpdown title
+        // text for the language dropdown title
         title: "Language",
         // text for the language dropdown
         selectText: "En",
@@ -78,9 +81,8 @@ module.exports = {
           }
         },
         algolia: {
-          apiKey: '72b99b2f6b6a799a02a845854d728014',
-          indexName: 'imunify360',
-          appId: 'KMC9498739'
+          apiKey: 'c2e14586074e24bec163f37da724fe7c',
+          indexName: 'imunify360'
         },
         stayInTouch: "Stay in touch",
         bottomLinks: [
@@ -114,6 +116,7 @@ module.exports = {
               "/dashboard/",
               "/hosting_panels_specific_settin/",
               "/config_file_description/",
+              "/hooks/",
               "/command_line_interface/",
               "/uninstall/",
               "/faq_and_known_issues/",
@@ -131,14 +134,13 @@ module.exports = {
         search: "Поиск",
         serviceWorker: {
           updatePopup: {
-            message: "Новый контент доступен",
+            message: "Доступен новый контент",
             buttonText: "Обновить"
           }
         },
         algolia: {
-          apiKey: '72b99b2f6b6a799a02a845854d728014',
-          indexName: 'imunify360',
-          appId: 'KMC9498739'
+          apiKey: 'c2e14586074e24bec163f37da724fe7c',
+          indexName: 'imunify360'
         },
         stayInTouch: "Будем на связи",
         bottomLinks: [
@@ -172,6 +174,7 @@ module.exports = {
               "/ru/dashboard/",
               "/ru/hosting_panels_specific_settin/",
               "/ru/config_file_description/",
+              "/ru/hooks/",
               "/ru/command_line_interface/",
               "/ru/uninstall/",
               "/ru/faq_and_known_issues/",

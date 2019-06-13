@@ -75,7 +75,7 @@ Available options:
 <td>#  enable (<span class="notranslate">true</span>) or disable (<span class="notranslate">false</span>) real-time scanning of all the files
 that were uploaded via http/https. Note that it requires <a href="https://modsecurity.org" target="_blank">ModSecurity</a> to be installed</td></tr>
 <tr><td><span class="notranslate">clamav_binary: null</span></td>
-<td># any valid string or null (or empty)</td></tr>
+<td># it specifies a path to the ClamAV or ClamScan binary. The value might be any valid string or null (or empty). Will not run if not specified</td></tr>
 <tr>
 <th colspan="2" align="left"><span class="notranslate">CAPTCHA:</span></th></tr>
 <tr><td><span class="notranslate">cert_refresh_timeout: 3600</span></td>
@@ -135,21 +135,19 @@ to request CAPTCHA again</td></tr>
 <tr>
 <th colspan="2" align="left"><span class="notranslate">MALWARE_SCAN_INTENSITY:</span></th></tr>
 <tr><td><span class="notranslate">cpu: 6</span></td>
-<td># from 1 to 7, default is 6</td></tr>
+<td># intensity level for CPU consumption. Can be set from 1 to 7, default is 6</td></tr>
 <tr><td><span class="notranslate">io: 6</span></td>
-<td># from 1 to 7, default is 6</td></tr>
-<tr><td><span class="notranslate">ram: 2048</span></td>
-<td># min 1024, max – no limit. For now, this value is hardcoded to '2G' (2048).</td></tr>
+<td># intensity level for file operations. Can be set from 1 to 7, default is 6</td></tr>
 <tr>
 <th colspan="2" align="left"><span class="notranslate">MALWARE_SCAN_SCHEDULE:</span></th></tr>
 <tr><td><span class="notranslate">day_of_month: 4</span></td>
-<td># from 1 to 31, the default value is the next day after the installation</td></tr>
+<td># when the background scan shall start, day of the month. Can be from 1 to 31, the default value is the next day after the installation</td></tr>
 <tr><td><span class="notranslate">day_of_week: 0</span></td>
-<td># from 0 to 7 (0 for Sunday, 1 for Monday..., 7 for Sunday (again)), the default value is 0</td></tr>
+<td># when the background scan shall start, day of the week. Can be from 0 to 7 (0 for Sunday, 1 for Monday..., 7 for Sunday (again)), the default value is 0</td></tr>
 <tr><td><span class="notranslate">hour: 3</span></td>
-<td># from 0 to 23, the default value is 3</td></tr>
+<td># when the background scan shall start, hour. Can be from 0 to 23, the default value is 3</td></tr>
 <tr><td><span class="notranslate">interval: none</span></td>
-<td># strings <span class="notranslate">`none`</span>, <span class="notranslate">`day`</span>, <span class="notranslate">`week`</span>, <span class="notranslate">`month`</span>, the default value is <span class="notranslate">`none`</span></td></tr>
+<td># interval of scan. Supported values: strings <span class="notranslate">`none`</span>, <span class="notranslate">`day`</span>, <span class="notranslate">`week`</span>, <span class="notranslate">`month`</span>, the default value is <span class="notranslate">`none`</span> (no scan)</td></tr>
 </table>
 
 ::: tip Experimental - <span class="notranslate">Active Response</span> feature

@@ -74,6 +74,8 @@ Available options:
 <tr><td><span class="notranslate">enable_scan_modsec: true</span></td>
 <td>#  enable (<span class="notranslate">true</span>) or disable (<span class="notranslate">false</span>) real-time scanning of all the files
 that were uploaded via http/https. Note that it requires <a href="https://modsecurity.org" target="_blank">ModSecurity</a> to be installed</td></tr>
+<tr><td><span class="notranslate">clamav_binary: null</span></td>
+<td># any valid string or null (or empty)</td></tr>
 <tr>
 <th colspan="2" align="left"><span class="notranslate">CAPTCHA:</span></th></tr>
 <tr><td><span class="notranslate">cert_refresh_timeout: 3600</span></td>
@@ -130,7 +132,25 @@ to request CAPTCHA again</td></tr>
 <td># enable (<span class="notranslate">true</span>) or disable (<span class="notranslate">false) Blamer</span></td></tr>
 <tr><td><span class="notranslate">mode: KILL</span></td>
 <td># available modes:<ul><li><span class="notranslate">KILL</span></li><li><span class="notranslate">DISABLED</span></li><li><span class="notranslate">LOG</span></li></ul></td></tr>
- </table>
+<tr>
+<th colspan="2" align="left"><span class="notranslate">MALWARE_SCAN_INTENSITY:</span></th></tr>
+<tr><td><span class="notranslate">cpu: 6</span></td>
+<td># from 1 to 7, default is 6</td></tr>
+<tr><td><span class="notranslate">io: 6</span></td>
+<td># from 1 to 7, default is 6</td></tr>
+<tr><td><span class="notranslate">ram: 2048</span></td>
+<td># min 1024, max – no limit. For now, this value is hardcoded to '2G' (2048).</td></tr>
+<tr>
+<th colspan="2" align="left"><span class="notranslate">MALWARE_SCAN_SCHEDULE:</span></th></tr>
+<tr><td><span class="notranslate">day_of_month: 4</span></td>
+<td># from 1 to 31, the default value is the next day after the installation</td></tr>
+<tr><td><span class="notranslate">day_of_week: 0</span></td>
+<td># from 0 to 7 (0 for Sunday, 1 for Monday..., 7 for Sunday (again)), the default value is 0</td></tr>
+<tr><td><span class="notranslate">hour: 3</span></td>
+<td># from 0 to 23, the default value is 3</td></tr>
+<tr><td><span class="notranslate">interval: none</span></td>
+<td># strings <span class="notranslate">`none`</span>, <span class="notranslate">`day`</span>, <span class="notranslate">`week`</span>, <span class="notranslate">`month`</span>, the default value is <span class="notranslate">`none`</span></td></tr>
+</table>
 
 ::: tip Experimental - <span class="notranslate">Active Response</span> feature
 The following feature requires a special Imunify360 build - contact our tech support at <span class="notranslate">https://cloudlinux.zendesk.com (Imunify360</span> department) to enable it.

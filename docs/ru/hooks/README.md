@@ -2,5 +2,5 @@
 title: Хуки
 ---
 <gtranslate-io>
-# Hooks
+# Хуки
 </gtranslate-io>

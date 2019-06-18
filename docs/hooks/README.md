@@ -1,4 +1,9 @@
+
+<div class="notranslate">
+
 # Hooks
+
+</div>
 
 ## Overview
 

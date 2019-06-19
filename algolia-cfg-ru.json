@@ -1,22 +1,7 @@
 {
   "index_name": "imunify360-ru",
   "start_urls": [
-    "https://docs.imunify360.com/ru/introduction/",
-    "https://docs.imunify360.com/ru/terminology/",
-    "https://docs.imunify360.com/ru/billing/",
-    "https://docs.imunify360.com/ru/installation/",
-    "https://docs.imunify360.com/ru/ids_integration/",
-    "https://docs.imunify360.com/ru/webshield/",
-    "https://docs.imunify360.com/ru/backup_providers_integration/",
-    "https://docs.imunify360.com/ru/localization/",
-    "https://docs.imunify360.com/ru/dashboard/",
-    "https://docs.imunify360.com/ru/hosting_panels_specific_settin/",
-    "https://docs.imunify360.com/ru/config_file_description/",
-    "https://docs.imunify360.com/ru/hooks/",
-    "https://docs.imunify360.com/ru/command_line_interface/",
-    "https://docs.imunify360.com/ru/uninstall/",
-    "https://docs.imunify360.com/ru/faq_and_known_issues/",
-    "https://docs.imunify360.com/ru/whmcs_plugin/"
+    "https://docs.imunify360.com/ru/"
   ],
   "stop_urls": [
     "/#"

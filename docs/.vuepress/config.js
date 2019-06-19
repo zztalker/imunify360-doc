@@ -140,7 +140,9 @@ module.exports = {
           }
         },
         algolia: {
-          
+          apiKey: '29339fdc91169afd5a7dd2a0a9bba6d2',
+          indexName: 'imunify360-ru',
+          appId: 'C6CXTFLPAJ'
         },
         stayInTouch: "Будем на связи",
         bottomLinks: [

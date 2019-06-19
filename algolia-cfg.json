@@ -4,7 +4,8 @@
     "https://docs.imunify360.com/"
   ],
   "stop_urls": [
-    "/#"
+    "/#",
+    "https://docs.imunify360.com/ru/"
   ],
   "selectors": {
     "lvl0": ".content h1",
@@ -29,7 +30,7 @@
   "selectors_exclude": [
     ".table-of-contents"
   ],
-  
   "js_wait": 1,
-  "scrap_start_urls": false
+  "scrap_start_urls": false,
+  "nb_hits": 1748
 }

@@ -81,8 +81,9 @@ module.exports = {
           }
         },
         algolia: {
-          apiKey: 'c2e14586074e24bec163f37da724fe7c',
-          indexName: 'imunify360'
+          apiKey: '29339fdc91169afd5a7dd2a0a9bba6d2',
+          indexName: 'imunify360',
+          appId: 'C6CXTFLPAJ'
         },
         stayInTouch: "Stay in touch",
         bottomLinks: [
@@ -139,8 +140,7 @@ module.exports = {
           }
         },
         algolia: {
-          apiKey: 'c2e14586074e24bec163f37da724fe7c',
-          indexName: 'imunify360'
+          
         },
         stayInTouch: "Будем на связи",
         bottomLinks: [

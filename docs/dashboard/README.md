@@ -1292,9 +1292,6 @@ in <span class="notranslate"> _/usr/share/i360-php-opts/module.ini_ </span>
 
 ### Backups
 
-::: tip Note
-Imunify360 2.7.0+
-:::
 #### Overview
 
 Imunify360 provides customers with an ability to integrate with backup providers and automatically or manually restore files from their backup if they have become infected. Only administrator can choose backup provider but end user has an ability to backup and restore files within this selected backup provider.

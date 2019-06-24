@@ -766,40 +766,6 @@ Optional arguments:
 
 <div class="notranslate">
 
-## Plugins
-
-</div>
-
-Command for manipulating Imunify360 plugins.
-
-Usage:
-
-<div class="notranslate">
-
-```
-imunify360-agent [command]
-```
-
-</div>
-
-<span class="notranslate">`command`</span> is a positional argument and can be:
-
-| | |
-|-|-|
-|<span class="notranslate">`enable-plugin`</span>|Enable Imunify360 plugin.|
-|<span class="notranslate">`disable-plugin`</span>|Disable Imunify360 plugin.|
-
-Optional arguments:
-
-| | |
-|-|-|
-|<span class="notranslate">`-h, --help`</span>|Show this help message.|
-|<span class="notranslate">`--json`</span>|Return data in JSON format.|
-|<span class="notranslate">`--verbose, -v`</span>|Return data in good-looking view if option <span class="notranslate">`--json`</span> is used.|
-
- 
-<div class="notranslate">
-
 ## Register
 
 </div>

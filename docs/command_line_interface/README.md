@@ -45,7 +45,6 @@ Available commands:
 |<span class="notranslate">`infected-domains`</span>|Returns infected domain list|
 |<span class="notranslate">`malware`</span>|Allows to manage malware options|
 |<span class="notranslate">`migratedb`</span>|Check and repair database if it is corrupted|
-|<span class="notranslate">`plugins`</span>|Command for manipulating Imunify360 plugin|
 |<span class="notranslate">`register`</span>|Agent registration|
 |<span class="notranslate">`rstatus`</span>|Query the server to check if the license is valid|
 |<span class="notranslate">`rules`</span>|Allows user to manage disabled rules|

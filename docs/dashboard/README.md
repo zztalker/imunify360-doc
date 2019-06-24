@@ -1278,7 +1278,7 @@ You can track the scanning activity at the <span class="notranslate">[Malware Sc
 ![](/images/malwarescannersettings_zoom70.png)
 
 
-**Proactive Defense<sup> 4.0+</sup>**
+**Proactive Defense<sup> 4.2+</sup>**
 
 * <span class="notranslate">_Enable Blamer_</span> — tick to allow Imunify360 to find a root cause of how infection got injected into the server through PHP. Blamer pinpoints exact URL, PHP script & PHP execution path that allowed a hacker to inject malware onto the server.
 Imunify360 security team will use that information to prevent future infections from happening.
@@ -1286,6 +1286,9 @@ Imunify360 security team will use that information to prevent future infections 
 ![](/images/SettingsBlamer.png)
 
 Click <span class="notranslate">_Save changes_</span> button at the page bottom to apply all changes.
+
+To reduce the number of blamer events, similar events are combined by default into a single one. In order to disable it, specify <span class="notranslate"> `filter_messages=off` </span>
+in <span class="notranslate"> _/usr/share/i360-php-opts/module.ini_ </span>
 
 ### Backups
 

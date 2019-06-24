@@ -196,6 +196,10 @@ where 12.34.56.78 is that specific IP address.
 
 This command allows to view or edit ports, IPs, and protocols in the list of blocked ports.
 
+:::tip Note
+Imunify360 can block particular ports using <span class="notranslate"> `blocked-port` </span> command, yet it doesn't support a paradigm to "block everything but the selected ports". That could be achieved via legacy linux iptables.
+:::
+
 Usage:
 
 <div class="notranslate">

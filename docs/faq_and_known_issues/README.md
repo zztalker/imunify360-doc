@@ -236,3 +236,85 @@ OR, **better**, run the following command:
 ```
 imunify360-agent config update '{"PERMISSIONS": {"user_ignore_list": false}}'
 ```
+
+### 13. How to delete malware scan results from Imunify360’s database?
+
+Sometimes, you may need to delete all users’ scan results from the server. This should not be common practice, and we do not recommend doing it on a regular basis. But, if you do need to erase the results of all Imunify360 scans, you can find the instructions below.
+
+1. First, you need to stop the agent:
+
+<div class="notranslate">
+
+```
+systemctl stop imunify360
+```
+</div>
+
+(on CentOS 7)
+<div class="notranslate">
+
+```
+service imunify360 stop
+```
+</div>
+
+(on CentOS 6, Ubuntu)
+
+2. Connect to the Imunify360 database by running this command:
+
+<div class="notranslate">
+
+```
+sqlite3 /var/imunify360/imunify360.db
+```
+</div>
+
+3. Execute the following SQL commands:
+
+:::danger IMPORTANT
+This will remove all scan results from Imunify360!
+:::
+
+<div class="notranslate">
+
+```
+DELETE FROM malware_history;
+DELETE FROM malware_hits;
+DELETE FROM malware_scans;
+DELETE FROM malware_user_infected;
+```
+</div>
+
+4. Start the Imunify360 service:
+
+<div class="notranslate">
+
+```
+systemctl start imunify360
+```
+</div>
+
+(on CentOS 7)
+<div class="notranslate">
+
+```
+service imunify360 start
+```
+</div>
+
+(on CentOS 6, Ubuntu)
+
+We don’t recommend cleaning the scan results for specific users, as it may cause inconsistencies in the <span class="notranslate"> `malware_scans` </span> table. But, in emergencies, you can do it with these SQL commands:
+
+<div class="notranslate">
+
+```
+DELETE FROM malware_history WHERE file_onwer = <user>;
+DELETE FROM malware_hits WHERE user = <user>;
+DELETE FROM malware_user_infected WHERE user = <user>;
+```
+</div>
+
+Unfortunately, there’s no easy way to delete records in the <span class="notranslate"> `malware_scans` </span> table for a specific user, so the table should be either truncated with the other tables shown in step 2 above, or the records should just be ignored.
+
+If you need any more information on this or anything else related to Imunify360 administration, please [get in touch](mailto:feedback@imunify360.com) .

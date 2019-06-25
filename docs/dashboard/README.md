@@ -488,6 +488,10 @@ You will see a notification if an IP is successfully removed.
 
 This feature allows to block specific ports for TCP/UDP connection. It is also possible to add specific IPs or subnet as a whitelisted so that the rule for the port will not work.
 
+:::tip Note
+Imunify360 can block particular ports using this feature, yet it doesn't support a paradigm to "block everything but the selected ports". That could be achieved via legacy linux iptables.
+:::
+
 Click <span class="notranslate">_Lists_</span> and choose <span class="notranslate">_Blocked Ports_</span>.
 
 ![](/images/Blocked_Ports1.png)
@@ -1274,7 +1278,7 @@ You can track the scanning activity at the <span class="notranslate">[Malware Sc
 ![](/images/malwarescannersettings_zoom70.png)
 
 
-**Proactive Defense<sup> 4.0+</sup>**
+**Proactive Defense<sup> 4.2+</sup>**
 
 * <span class="notranslate">_Enable Blamer_</span> — tick to allow Imunify360 to find a root cause of how infection got injected into the server through PHP. Blamer pinpoints exact URL, PHP script & PHP execution path that allowed a hacker to inject malware onto the server.
 Imunify360 security team will use that information to prevent future infections from happening.
@@ -1283,11 +1287,11 @@ Imunify360 security team will use that information to prevent future infections 
 
 Click <span class="notranslate">_Save changes_</span> button at the page bottom to apply all changes.
 
+To reduce the number of blamer events, similar events are combined by default into a single one. In order to disable it, specify <span class="notranslate"> `filter_messages=off` </span>
+in <span class="notranslate"> _/usr/share/i360-php-opts/module.ini_ </span>
+
 ### Backups
 
-::: tip Note
-Imunify360 2.7.0+
-:::
 #### Overview
 
 Imunify360 provides customers with an ability to integrate with backup providers and automatically or manually restore files from their backup if they have become infected. Only administrator can choose backup provider but end user has an ability to backup and restore files within this selected backup provider.

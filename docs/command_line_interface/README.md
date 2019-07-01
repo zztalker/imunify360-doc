@@ -1,7 +1,7 @@
-# Command-line Interface
+# Command-line Interface (CLI)
 
 
-For access to Imunify360 agent features from command-line interface, use the following command:
+For access to Imunify360 agent features from command-line interface (CLI), use the following command:
 
 <div class="notranslate">
 

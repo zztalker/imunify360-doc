@@ -640,13 +640,12 @@ The table has the following columns:
 * <span class="notranslate">**File**</span> — the path where the file is located starting with root
 * <span class="notranslate">**Reason**</span> — describes the signature which was detected during the scanning process. Names in this column depend on the signature vendor. You can derive some information from the signature ID itself.
 SMW-SA-05155-wshll
-In this Signature ID, 
-1.The first section can be either SMW or CMW - SMW Stands for Server Malware and CMW stands for Client Malware.
-2.The second section of ID Can be either INJ or SA - INJ stands for Injection(means Malware is Injected to some legitiamte file) and SA stands for StandAlone(means File is Completely Malicious)
-3.The third section is 05155 simply identification number for the signature.
-4.The fourth section wshll/mlw.wp/etc explains the category and class of malware identified, here wshll stands for web shell (mlw stands for malware).
-5.The fifth section is 0, which provides the version number of the signature.
-
+In this Signature ID:
+	* The first section can be either `SMW` or `CMW`. `SMW` stands for Server Malware and `CMW` stands for Client Malware
+	* The second section of ID can be either `INJ` or `SA`. `INJ` stands for Injection (means Malware is Injected to some legitimate file) and `SA` stands for StandAlone (means File is Completely Malicious)
+	* The third section is `05155`. This is simply an identification number for the signature.
+	* The fourth section `wshll/mlw.wp/etc` explains the category and class of malware identified. Here, `wshll` stands for web shell (`mlw` stands for malware).
+	* The fifth section is `0`, which provides the version number of the signature.
 * <span class="notranslate">**Status**</span> — displays the file status:
   * <span class="notranslate">**Infected**</span> — threat was detected after scanning. If a file was not cleaned after cleanup, the info icon is displayed. Hover mouse over info icon to display the reason;
   * <span class="notranslate">**Cleaned**</span> —  infected file is cleaned up.

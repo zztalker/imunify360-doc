@@ -741,7 +741,16 @@ imunify360-agent malware on-demand start --path /home/<username>/public_html/
 ```
 </div>
 
- 
+3. The following command shows the example of the <span class="notranslate">`ignore-mask`</span> usage when you have to scan all `d*` folders except for the <span class="notranslate">`dixon77w.com`</span> and <span class="notranslate">`dunnrrr.com`</span>:
+
+<div class="notranslate">
+
+```
+imunify360-agent malware on-demand start --path='/var/www/vhosts/d*' --ignore-mask='/var/www/vhosts/dixon77w.com/*,/var/www/vhosts/dunnrrr.com/*'
+```
+</div>
+
+
 <div class="notranslate">
 
 ## Migratedb

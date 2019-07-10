@@ -710,11 +710,11 @@ After <span class="notranslate">Malware Scanner</span> stops on-demand scanning 
 
 * <span class="notranslate">_Date_</span> – the date when the scanning process was started.
 * <span class="notranslate">_Path_</span> – the name of the folder that was scanned.
-* <span class="notranslate">_Total_</span> – the total number of files scanned.
-* <span class="notranslate">_Malicious_</span> – the number of malicious files found during the scanning.
-* <span class="notranslate">_Action_</span> – click icon in this column to perform particular actions.
+* <span class="notranslate">_Total files_</span> – the total number of files scanned.
+* <span class="notranslate">_Result_</span> – the result of scanning.
+* <span class="notranslate">_Actions_</span> – click icon in this column to perform particular action.
 
-![](/images/malwarescannerondemand_zoom70.png)
+![](/images/MalwareScannerResults.png)
 
 To review and manage malicious files go to the <span class="notranslate">_Files_</span> tab described below.
 
@@ -1242,7 +1242,6 @@ Read [CXS integration](/ids_integration/#cxs-integration) documentation carefull
   It requires [Pure-FTPd](https://www.pureftpd.org/project/pure-ftpd) to be used as FTP service.
   :::
 * <span class="notranslate">_Automatically send suspicious and malicious files for analysis_</span> – malicious and suspicious files will be sent to the Imunify360 Team for analysis automatically.
-* <span class="notranslate">_Show ClamAV scanning results_</span> – show ClamAV scanning results in <span class="notranslate">_Users/Files_</span> tab.
 * <span class="notranslate">_Try to restore from backup first_</span> – allows to restore file as soon as it was detected as malicious from backup if a clean copy exists. If a clean copy does not exist or it is outdated, default action will be applied. See also <span class="notranslate">[CloudLinux Backup](/dashboard/#backups)</span>.
 * <span class="notranslate">_Use backups not older than (days)_</span> – allows to set the a maximum age of a clean file.
 * <span class="notranslate">_Default action on detect_</span> – configure Malware Scanner actions when detecting malicious activity:

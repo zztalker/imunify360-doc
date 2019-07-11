@@ -1,7 +1,7 @@
-# Command-line Interface
+# Command-line Interface (CLI)
 
 
-For access to Imunify360 agent features from command-line interface, use the following command:
+For access to Imunify360 agent features from command-line interface (CLI), use the following command:
 
 <div class="notranslate">
 
@@ -45,7 +45,6 @@ Available commands:
 |<span class="notranslate">`infected-domains`</span>|Returns infected domain list|
 |<span class="notranslate">`malware`</span>|Allows to manage malware options|
 |<span class="notranslate">`migratedb`</span>|Check and repair database if it is corrupted|
-|<span class="notranslate">`plugins`</span>|Command for manipulating Imunify360 plugin|
 |<span class="notranslate">`register`</span>|Agent registration|
 |<span class="notranslate">`rstatus`</span>|Query the server to check if the license is valid|
 |<span class="notranslate">`rules`</span>|Allows user to manage disabled rules|
@@ -195,6 +194,10 @@ where 12.34.56.78 is that specific IP address.
 </div>
 
 This command allows to view or edit ports, IPs, and protocols in the list of blocked ports.
+
+:::tip Note
+Imunify360 can block particular ports using <span class="notranslate"> `blocked-port` </span> command, yet it doesn't support a paradigm to "block everything but the selected ports". That could be achieved via legacy linux iptables.
+:::
 
 Usage:
 
@@ -356,6 +359,10 @@ Allows to enable or disable additional CloudLinux software included in Imunify36
 * [KernelCare](https://www.kernelcare.com) – use `kernelcare` feature name
 * <span class="notranslate">[HardenedPHP](https://www.cloudlinux.com/hardenedphp)</span> – use <span class="notranslate">`hardened-php`</span> feature name
 * <span class="notranslate">Invisible Captcha</span> – use <span class="notranslate">`invisible-captcha`</span> feature name
+
+:::tip Note
+You cannot install arbitrary 3rd party components or anything besides the features listed above. Please, use legacy linux package installation process for that
+:::
 
 Usage:
 
@@ -734,7 +741,16 @@ imunify360-agent malware on-demand start --path /home/<username>/public_html/
 ```
 </div>
 
- 
+3. The following command shows the example of the <span class="notranslate">`ignore-mask`</span> usage when you have to scan all `d*` folders except for the <span class="notranslate">`dixon77w.com`</span> and <span class="notranslate">`dunnrrr.com`</span>:
+
+<div class="notranslate">
+
+```
+imunify360-agent malware on-demand start --path='/var/www/vhosts/d*' --ignore-mask='/var/www/vhosts/dixon77w.com/*,/var/www/vhosts/dunnrrr.com/*'
+```
+</div>
+
+
 <div class="notranslate">
 
 ## Migratedb
@@ -764,40 +780,6 @@ Optional arguments:
 |<span class="notranslate">`--help, -h`</span>|show this help message|
 
 
-<div class="notranslate">
-
-## Plugins
-
-</div>
-
-Command for manipulating Imunify360 plugins.
-
-Usage:
-
-<div class="notranslate">
-
-```
-imunify360-agent [command]
-```
-
-</div>
-
-<span class="notranslate">`command`</span> is a positional argument and can be:
-
-| | |
-|-|-|
-|<span class="notranslate">`enable-plugin`</span>|Enable Imunify360 plugin.|
-|<span class="notranslate">`disable-plugin`</span>|Disable Imunify360 plugin.|
-
-Optional arguments:
-
-| | |
-|-|-|
-|<span class="notranslate">`-h, --help`</span>|Show this help message.|
-|<span class="notranslate">`--json`</span>|Return data in JSON format.|
-|<span class="notranslate">`--verbose, -v`</span>|Return data in good-looking view if option <span class="notranslate">`--json`</span> is used.|
-
- 
 <div class="notranslate">
 
 ## Register

@@ -150,10 +150,6 @@ to request CAPTCHA again</td></tr>
 <td># interval of scan. Supported values: strings <span class="notranslate">`none`</span>, <span class="notranslate">`day`</span>, <span class="notranslate">`week`</span>, <span class="notranslate">`month`</span>, the default value is <span class="notranslate">`none`</span> (no scan)</td></tr>
 </table>
 
-::: tip Experimental - <span class="notranslate">Active Response</span> feature
-The following feature requires a special Imunify360 build - contact our tech support at <span class="notranslate">https://cloudlinux.zendesk.com (Imunify360</span> department) to enable it.
-:::
-
 <span class="notranslate">Active Response</span> is an ossec-driven (IDS) feature of Imunify360 which has been re-engineered to make it capable of blocking access to a specific server port being attacked.
 
 The purpose of the feature is significantly reducing false positive rate while increasing its capabilities to detect and block aggressive brute force requests.

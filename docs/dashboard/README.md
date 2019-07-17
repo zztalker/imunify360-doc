@@ -959,7 +959,13 @@ die();
 
 Choose <span class="notranslate">_Reputation Management_</span> in the main menu of the Imunify360 user interface to get to the <span class="notranslate">Reputation Management</span> page.
 
-Based on the [Google Safe Browsing](https://safebrowsing.google.com/), the <span class="notranslate">Reputation Management</span> allows to check if a domain registered on your server is safe or not.
+<span class="notranslate">Reputation Management</span> allows to check if a domain registered on your server is safe or not based on the following reputation engines:
+
+* [Google Safe Browsing](https://safebrowsing.google.com/)
+* [Yandex Safe Browsing](https://tech.yandex.com/safebrowsing/)
+* [Spamhaus](https://www.spamhaus.org/)
+* [PhishTank](https://www.phishtank.com/)
+* [OpenPhish](https://openphish.com/).
 
 How does it work:
 
@@ -968,7 +974,7 @@ How does it work:
 * Get results from it
 * Add bad domains to the list of <span class="notranslate">Reputation Management</span>
 
-If a domain or an IP is blocked, then this information will be available in the table below. Imunify360 uses [Google Safe Browsing](https://safebrowsing.google.com/) technology. If a user’s website appears in this table, then it would be useful to send [this link](https://developers.google.com/webmasters/hacked/) to the user. This instruction can help to solve problems with the domain.
+If a domain or an IP is blocked, then this information will be available in the table below. If a user’s website appears in this table, then it would be useful to send [this link](https://developers.google.com/webmasters/hacked/) to the user. This instruction can help to solve problems with the domain.
 
 At the top of the page (also in the main menu near <span class="notranslate">Reputation Management</span> item), Imunify360 shows the number of affected domains. This number is a quantity of affected domains that exist on the server.
 

@@ -1178,7 +1178,16 @@ Click <span class="notranslate">_Save changes_</span> button on the bottom of th
 	
 #### WebShield
 
-Tick <span class="notranslate">_Detect IPs behind CDN_</span> checkbox to allow to recognize and block IPs with suspicious activity behind Cloudflare and MaxCDN.
+Tick <span class="notranslate">_Detect IPs behind CDN_</span> checkbox to allow to recognize and block IPs with suspicious activity behind supported CDN providers.
+
+Supported CDN providers:
+
+* Cloudflare
+* MaxCDN
+* StackPath CDN
+* KeyCDN
+* Dartspeed.com
+* QUIC.cloud CDN
 	
 ![](/images/webshield.png)
 

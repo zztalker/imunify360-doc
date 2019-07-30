@@ -74,8 +74,6 @@ Available options:
 <tr><td><span class="notranslate">enable_scan_modsec: true</span></td>
 <td>#  enable (<span class="notranslate">true</span>) or disable (<span class="notranslate">false</span>) real-time scanning of all the files
 that were uploaded via http/https. Note that it requires <a href="https://modsecurity.org" target="_blank">ModSecurity</a> to be installed</td></tr>
-<tr><td><span class="notranslate">clamav_binary: null</span></td>
-<td># it specifies a path to the ClamAV or ClamScan binary. The value might be any valid string or null (or empty). Will not run if not specified. Default is <span class="notranslate">`/usr/bin/clamscan`</span></td></tr>
 <tr>
 <th colspan="2" align="left"><span class="notranslate">CAPTCHA:</span></th></tr>
 <tr><td><span class="notranslate">cert_refresh_timeout: 3600</span></td>

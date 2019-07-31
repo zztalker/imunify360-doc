@@ -1240,9 +1240,10 @@ Here you can configure the following:
 ::: tip Note
 Read [CXS integration](/ids_integration/#cxs-integration) documentation carefully to make Malware Scanner work properly if you decided to use the former instead of Imunify360 anti-malware protection.
 :::
+
 **General**
 
-![](/images/SettingsMalware.png)
+![](/images/SettingsMalware1.png)
 
 * <span class="notranslate">_Automatically scan all modified files_</span> – enables real-time scanning for modified files using [inotify](https://en.wikipedia.org/wiki/Inotify) library. The Scanner searches for modified files in user’s DocumentRoot directories.
   ::: tip Note
@@ -1261,7 +1262,7 @@ Read [CXS integration](/ids_integration/#cxs-integration) documentation carefull
 * <span class="notranslate">_Use backups not older than (days)_</span> – allows to set the a maximum age of a clean file.
 * <span class="notranslate">_Default action on detect_</span> – configure Malware Scanner actions when detecting malicious activity:
   * <span class="notranslate">Delete permanently</span>
-  * <span class="notranslate">Quarantine file in place</span>
+  * <span class="notranslate">Quarantine file</span>
   * <span class="notranslate">Just display in dashboard</span>
 
 Tick required checkboxes and click <span class="notranslate">_Save changes_</span> button.

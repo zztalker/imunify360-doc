@@ -710,7 +710,8 @@ The optional arguments for <span class="notranslate">`on-demand start`</span> ar
 |<span class="notranslate">`--file-mask FILE_MASK`</span>|
 |<span class="notranslate">`--hash-filter`</span>|
 |<span class="notranslate">`--no-hash-filter`</span>|
-|<span class="notranslate">`--intensity {low,moderate,high}`</span>|
+|<span class="notranslate">`--intensity-cpu {1 to 7}`</span> 1 means the lowest intensity, 7 means the highest intensity|
+|<span class="notranslate">`--intensity-io {1 to 7}`</span> 1 means the lowest intensity, 7 means the highest intensity|
 
 <span class="notranslate">`action`</span> is the second positional argument for <span class="notranslate">`suspicious`</span> and can be one of:
 

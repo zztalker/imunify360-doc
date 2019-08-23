@@ -209,3 +209,18 @@ apt-get update
 ```
 
 </div>
+
+
+### Gradual roll-out 
+
+New stable Imunify360 versions are scheduled for the gradual roll-out from our production repository and are available for all customers in about two weeks or less from the release.
+
+If you do not want to wait for the gradual roll-out, you can update Imunify360 to the latest version by running the following commands:
+
+<div class="notranslate">
+
+```
+wget https://repo.imunify360.cloudlinux.com/defence360/imunify-force-update.sh
+bash imunify-force-update.sh
+```
+</div>

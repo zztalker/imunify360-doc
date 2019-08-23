@@ -62,7 +62,7 @@ Beta 4.0 and later
 
 Click <span class="notranslate">_Dashboard_</span> tab to display an overview of incidents recorded during the selected time interval, an estimate of the intensity of attacks, and correlate events across all sources.
 
-![](/images/DashboardGeneral2.png)
+![](/images/DashboardGeneral3.png)
 
 Here you can see notifications about server security and Imunify360 configuration, along with recommendations for making server security effective and proactive.
 

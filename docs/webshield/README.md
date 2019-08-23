@@ -148,6 +148,15 @@ For cPanel/EasyApache 4, Plesk, DirectAdmin and LiteSpeed _mod_remoteip_ will be
 * Dartspeed.com
 * QUIC.cloud CDN
 
+### SplashScreen for Chinese customers
+
+Imunify360 Captcha isn't available in some countries due to certain restrictions, for example, in China. To alleviate this, Chinese customers can use Imunify360 SplashScreen as Captcha.
+
+To enable SplashScreen as Captcha, set `wscheck_splashscreen_as_captcha` WebShield directive to `on` in `/etc/imunify360-webshield/webshield-http.conf.d/wscheck.conf` config file and reload the WebSheild with command `service imunify360-websheld reload` / `systemctl reload imunify360-webshield`.
+
+The graylisted visitors will see such screen for 5 seconds before redirecting to their initial destination.
+
+![](/images/splash_as_captcha.png)
 
 
 

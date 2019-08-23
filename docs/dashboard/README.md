@@ -493,7 +493,7 @@ To use external files with the list of <span class="notranslate">Black/White IPs
 <div class="notranslate">
 
 ```
-CUSTOM_WHITELIST_MASK = '/etc/imunify360/whitelist/*.txt'
+/etc/imunify360/whitelist/*.txt
 ```
 </div>
 
@@ -502,7 +502,7 @@ CUSTOM_WHITELIST_MASK = '/etc/imunify360/whitelist/*.txt'
 <div class="notranslate">
 
 ```
-CUSTOM_BLACKLIST_MASK = '/etc/imunify360/blacklist/*.txt'
+/etc/imunify360/blacklist/*.txt
 ```
 </div>
 

@@ -22,7 +22,9 @@ To use external files with the list of <span class="notranslate">Black/White IPs
 ```
 </div>
 
-Then run the following command:
+The files may have IP addresses or subnet in [CIDR notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
+
+In order to apply the IP lists, run the following command:
 
 <div class="notranslate">
 

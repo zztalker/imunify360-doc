@@ -630,7 +630,6 @@ Available commands:
 |<span class="notranslate">`on-demand`</span>| on-demand Scanner operations|
 |<span class="notranslate">`suspicious`</span>| malware Suspicious List operations|
 |<span class="notranslate">`cleanup status`</span>| show the status of the cleanup process|
-|<span class="notranslate">`hash`</span>| file hash white/blacklist related operations|
 |<span class="notranslate">`history list`</span>| lists the complete history of all malware-related incidents/actions (optional arguments available)|
  
 Optional arguments:
@@ -650,21 +649,6 @@ Optional arguments:
 |<span class="notranslate">`--by-scan-id BY_SCAN_ID`</span>|Return items with selected ID.|
 |<span class="notranslate">`--items ITEMS`</span>|Return selected items.|
 |<span class="notranslate">`--search SEARCH`</span>|Search query.|
-
-
-<span class="notranslate">`action`</span> is the second positional argument for <span class="notranslate">`hash`</span> and can be one of the following:
-
-| | |
-|-|-|
-|<span class="notranslate">`list`</span>|list <span class="notranslate">White/Black</span>-listed file hashes (optional arguments apply)|
-|<span class="notranslate">`add`</span>|add file hash(es) of the specified type|
-|<span class="notranslate">`remove`</span>| remove file hash(es) of the specified type|
-
-Positional arguments for <span class="notranslate">`add/remove`</span> are the list of SHA256 hashes calculated from the file contents
-
-The argument that specifies which kind of hashes to add/remove:
-
-<span class="notranslate">`--type`</span> - hash(es) type: <span class="notranslate">Black</span> or <span class="notranslate">White</span>
 
 
 <span class="notranslate">`action`</span> is the second positional argument for <span class="notranslate">`ignore`</span> and can be one of the following:
@@ -708,8 +692,6 @@ The optional arguments for <span class="notranslate">`on-demand start`</span> ar
 |<span class="notranslate">`--follow-symlinks`</span>|
 |<span class="notranslate">`--no-follow-symlinks`</span>|
 |<span class="notranslate">`--file-mask FILE_MASK`</span>|
-|<span class="notranslate">`--hash-filter`</span>|
-|<span class="notranslate">`--no-hash-filter`</span>|
 |<span class="notranslate">`--intensity-cpu {1 to 7}`</span> 1 means the lowest intensity, 7 means the highest intensity|
 |<span class="notranslate">`--intensity-io {1 to 7}`</span> 1 means the lowest intensity, 7 means the highest intensity|
 
@@ -724,16 +706,7 @@ The optional arguments for <span class="notranslate">`on-demand start`</span> ar
 
 **Examples**
 
-1. The following command adds a hash to the malware <span class="notranslate">Black List</span>:
-
-<div class="notranslate">
-
-```
-imunify360-agent malware hash add --type black ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad
-```
-</div>
-
-2. The following command starts on-demand scanner for the path specified after the <span class="notranslate">`start`</span> command:
+1. The following command starts on-demand scanner for the path specified after the <span class="notranslate">`start`</span> command:
 
 <div class="notranslate">
 
@@ -742,7 +715,7 @@ imunify360-agent malware on-demand start --path /home/<username>/public_html/
 ```
 </div>
 
-3. The following command shows the example of the <span class="notranslate">`ignore-mask`</span> usage when you have to scan all `d*` folders except for the <span class="notranslate">`dixon77w.com`</span> and <span class="notranslate">`dunnrrr.com`</span>:
+2. The following command shows the example of the <span class="notranslate">`ignore-mask`</span> usage when you have to scan all `d*` folders except for the <span class="notranslate">`dixon77w.com`</span> and <span class="notranslate">`dunnrrr.com`</span>:
 
 <div class="notranslate">
 

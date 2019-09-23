@@ -58,6 +58,7 @@ Available commands:
 |<span class="notranslate">`feature-management`</span>| manage Imunify360 features available for users|
 |<span class="notranslate">`feature-management native enable`<sup> Beta 4.0+ cPanel</sup></span>|activate the Native Features Management using WHM/cPanel package extensions.|
 |<span class="notranslate">`feature-management native disable`<sup> Beta 4.0+ cPanel</sup></span>|deactivate the Native Features Management using WHM/cPanel package extensions and return the original Imunify360 Features Management back.|
+|<span class="notranslate">`backup-systems`</span>|allows to manage CloudLinux Backup|
 
 Optional arguments for the commands:
 
@@ -1406,3 +1407,101 @@ Imunify360 will keep applying users <span class="notranslate">Features Managemen
 ::: warning Warning
 <span class="notranslate">`feature-management enable/disable --feature av`</span> and <span class="notranslate">`feature-management enable/disable --feature proactive`</span> commands will start functioning.
 :::
+
+
+## Backup systems
+
+Allows to manage backup systems integrated to Imunify360.
+
+**Usage:**
+
+<div class="notranslate">
+
+```
+imunify360-agent backup-systems [command] <value>
+```
+</div>
+
+<span class="notranslate">`command`</span> is a positional argument and can be:
+| | |
+|-|-|
+|<span class="notranslate">`list`</span>|List of all available backup systems.|
+|<span class="notranslate">`status`</span>|Returns backup system status including a current backup system and enabling status.|
+|<span class="notranslate">`extended-status`</span>|Returns extended status including log file path, error on executing, current backup system, enabling status, current state, and current backup progress bar.|
+|<span class="notranslate">`init`</span>|<span class="notranslate">`<value>`</span> must be in the list of available backup systems. Initializes <span class="notranslate">`<value>`</span> backup system.|
+|<span class="notranslate">`disable`</span>|Disables backup system.|
+|<span class="notranslate">`check`</span>|Returns licenses info.|
+
+The <span class="notranslate">`status`</span> command returns <span class="notranslate">`{'<key>': <value>}`</span> (<span class="notranslate">JSON</span> formatted):
+
+|Key|Value|
+|-|-|
+|<span class="notranslate">`backup_system`</span>|<span class="notranslate">Str</span> with the name of the currently enabled backup system.|
+|<span class="notranslate">`enabled`</span>|If backups are enabled — <span class="notranslate">`True`</span>, else — <span class="notranslate">`False`</span>.|
+
+The <span class="notranslate">`extended-status`</span> command returns <span class="notranslate">`{'<key>': <value>}`</span> (<span class="notranslate">JSON</span> formatted):
+
+|Key|Value|
+|-|-|
+|<span class="notranslate">`log_path`</span>|<span class="notranslate">Str</span> with the path to the log file.|
+|<span class="notranslate">`error`</span>|<span class="notranslate">Str</span> with a human-friendly error message.|
+|<span class="notranslate">`backup_system`</span>|<span class="notranslate">Str</span> with the name of the currently enabled backup system.|
+|<span class="notranslate">`enabled`</span>|If backups are enabled — <span class="notranslate">`True`</span>, else — <span class="notranslate">`False`</span>.|
+|<span class="notranslate">`state`</span>|<span class="notranslate">Str</span> with the current running condition. Statuses: <span class="notranslate">`not_running`, `init`, `backup`, `done`, `unpaid`</span>.|
+|<span class="notranslate">`progress`</span>|This key is optional. It represents the progress of backup if it is running.|
+
+The <span class="notranslate">`check`</span> command returns <span class="notranslate">`{'<key>': <value>}`</span> (<span class="notranslate">JSON</span> formatted):
+
+|Key|Value|
+|-|-|
+|<span class="notranslate">`status`</span>|<span class="notranslate">Str</span> with the license status. Statuses: <span class="notranslate">`paid`, `unpaid`</span>.|
+|<span class="notranslate">`size`</span>|<span class="notranslate">Int</span>, which represents a paid size of backups in GB. E.g. <span class="notranslate">`'size': 10`</span> means that you paid for 10GB.|
+
+
+**Examples:**
+
+1. The following command prints a list of all available backup systems:
+   
+<div class="notranslate">
+
+   ```
+   $ imunify360-agent backup-systems list
+   acronis 
+   r1soft 
+   cloudlinux
+   ```
+</div>
+
+2. The following command initializes CloudLinux backup system:
+
+<div class="notranslate">
+
+   ```
+   $ imunify360-agent backup-systems init cloudlinux
+   Backup initialization process is in progress
+   ```
+</div>
+
+3. The following command checks if the CloudLinux backup system is connected:
+
+<div class="notranslate">
+
+   ```
+   $ imunify360-agent backup-systems check cloudlinux
+   {'url': 'https://cln.cloudlinux.com/clweb/cb/buy.html?id=YourServerIdHere', 'status': 'unpaid'}
+   ```
+</div>
+
+At first, it shows that it isn't, so you should open the URL from the JSON response in the browser to activate the backup. Once this is done, it shows in the CLN.
+
+Run the check again and now it returns the size and that the backup has been paid for.
+
+<div class="notranslate">
+
+   ```
+   $ imunify360-agent backup-systems check cloudlinux
+   {'size': 10, 'status': 'paid'}
+   ```
+</div>
+
+The above commands create a new cloudlinuxbackup.com account and link that account to this server after following the link and confirming the payment of $0.00 for free 10GB.

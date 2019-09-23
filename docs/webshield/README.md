@@ -187,6 +187,33 @@ The graylisted visitors will see such screen for 5 seconds before redirecting to
 ![](/images/splash_as_captcha.png)
 
 
+### How to block attacks from a particular country in WebShield
 
+:::tip Note
+Imunify360 4.3+
+:::
+
+By default, country traffic blocking is not applied to the requests that come via a legitimate proxy such as Cloudflare. Even if the country is blocked in settings. Starting from Imunify360 version 4.3, we introduce a new way of country traffic blocking.
+
+1. Add those countries to the <span class="notranslate">`/etc/imunify360-webshield/blocked_country_codes.conf`</span> file.
+For example:
+
+<div class="notranalate">
+
+```
+CH 1;
+RU 1;
+```
+</div>
+2. Then reload WebShield with the following command:
+
+<div class="notranslate">
+
+```
+systemctl reload imunify360-webshield
+```
+</div>
+
+It will block traffic from those countries no matter if it goes via known proxies or directly.
 
 

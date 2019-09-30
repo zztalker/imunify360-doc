@@ -1288,7 +1288,7 @@ Read [CXS integration](/ids_integration/#cxs-integration) documentation carefull
 Those options may be hidden for end-user if Cleanup is disabled in Features Management.
 :::
 
-* <span class="notranslate">_Rapid scan_</span> – dramatically speeds up repeated scans based on smart re-scan approach, local result caching and cloud-assisted scan.
+* <span class="notranslate">_RapidScan_</span> – dramatically speeds up repeated scans based on smart re-scan approach, local result caching and cloud-assisted scan. When you first enable the RapidScan feature, the first scan will run as before. But subsequent scans will see a dramatic speed improvement, anywhere between 5 to 20 times faster. You can find details [here](/features/#rapidscan).
 
 Tick required checkboxes and click <span class="notranslate">_Save changes_</span> button.
 

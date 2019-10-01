@@ -97,6 +97,41 @@ service imunify360-webshield restart
 </div>
 6. Block yourself (remove your IP from <span class="notranslate">Imunify360 White List</span> and try to log in to the server via ssh with wrong password until it blocks you). Then go to website and log in. Captcha should appear. Set Polish language and assert that new text is displayed.
 
+### Changing the default keys to Google reCAPTCHA keys
+
+If a server owner has his own Google reCAPTCHA keys (both private and public), he may use them instead of the default CloudLinux keys.
+
+To set Google reCAPTCHA keys, do the following:
+
+1. In the <span class="notranslate">`/etc/imunify360-webshield/virtserver.conf`</span> file find the <span class="notranslate">`set $captcha_key`</span> line 
+2. Replace the provided key with your own public key, for example:
+
+    <div class="notranslate">
+
+    ```
+    location @to_captcha {
+    ...
+    set $captcha_key YOUR_OWN_PUBLIC_KEY;
+    content_by_lua_file lua/captcha.lua;
+    }
+    ```
+    </div>
+
+    :::warning Note
+    Pay attention to semicolon at the end of the line.
+    :::
+3. Then go to the <span class="notranslate">`/etc/imunify360-webshield/webshield.conf`</span> file and uncomment the <span class="notranslate">`captcha_custom_secret_key`</span> directive
+4. Place your private key into it, for example:
+
+    <div class="notranslate">
+
+    ```
+    # Uncomment the following line if you have your own google recaptcha key and want to use it
+    captcha_custom_secret_key YOUR_SECRET_KEY;
+    ```
+    </div>
+5. Reload WebShield
+
 ## CDN Support <sup>3.8+</sup>
 	
 Starting from version 3.8 Imunify360 correctly graylists and blocks IPs behind Cloudflare and other CDNs (see [here](/webshield/#supported-cdn-providers) for the full list).

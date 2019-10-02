@@ -74,11 +74,11 @@ Available options:
 <tr><td><span class="notranslate">enable_scan_modsec: true</span></td>
 <td>#  enable (<span class="notranslate">true</span>) or disable (<span class="notranslate">false</span>) real-time scanning of all the files
 that were uploaded via http/https. Note that it requires <a href="https://modsecurity.org" target="_blank">ModSecurity</a> to be installed</td></tr>
-<tr><td><span class="notranslate">max_signature_size_to_scan: {'type': 'integer','coerce': int,'default': 1048576}</span></td>
+<tr><td><span class="notranslate">max_signature_size_to_scan: 1048576</span></td>
 <td># max file size to scan in the standard mode; the default value is set in bytes</td></tr>
-<tr><td><span class="notranslate">max_cloudscan_size_to_scan: {'type': 'integer','default': 10485760}</span></td>
+<tr><td><span class="notranslate">max_cloudscan_size_to_scan: 10485760</span></td>
 <td># max file size to scan in the cloud-assisted (by hashes) mode; the default value is set in bytes</td></tr>
-<tr><td><span class="notranslate">max_mrs_upload_file: {'type': 'integer','coerce': int,'default': 10485760}</span></td>
+<tr><td><span class="notranslate">max_mrs_upload_file: 10485760</span></td>
 <td># max file size to upload to CloudLinux malware research service; the default value is set in bytes</td></tr>
 <tr>
 <th colspan="2" align="left"><span class="notranslate">CAPTCHA:</span></th></tr>

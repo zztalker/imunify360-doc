@@ -66,7 +66,9 @@ otherwise <span class="notranslate"><em>default_action</em></span> is applied</t
 Available options:
 <ul><li><span class="notranslate">quarantine</span> – do not delete and move to quarantine</li>
 <li><span class="notranslate">notify</span> – do not delete and send email notification</li>
-<li><span class="notranslate">delete</span> – delete malicious file</li></ul></td></tr>
+<li><span class="notranslate">delete</span> – delete malicious file</li>
+<li><span class="notranslate">cleanup</span> – cleanup malicious file</li>
+<li><span class="notranslate">cleanup_or_quarantine</span> – choose what to do with a malicious file</li></ul></td></tr>
 <tr><td><span class="notranslate">enable_scan_inotify: false</span></td>
 <td># enable (<span class="notranslate">true</span>) or disable (<span class="notranslate">false</span>) real-time scanning for modified files using <a href="https://en.wikipedia.org/wiki/Inotify" target="_blank">inotify</a> library</td></tr>
 <tr><td><span class="notranslate">enable_scan_pure_ftpd: true</span></td>

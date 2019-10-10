@@ -52,18 +52,6 @@ defence360agent.plugins.protector.lazy_init: IP 10.101.1.18 is UNBLOCKED
 
 Adding and removing IPs from the <span class="notranslate">White List</span> is only possible manually, no IPs will be added automatically.
 
-### 4. Comodo WAF has a lot false positive and trigger the CSF blocking, will Imunify360 improve it?
-
-CSF only blocks IPs by <span class="notranslate">mod_security</span> if <span class="notranslate">mod_security</span> configured with <span class="notranslate">`SecRuleEngine On`</span>. Imunify360 works a bit differently: it uses <span class="notranslate">`SecRuleEngine DetectionOnly`</span> in <span class="notranslate">mod_security</span> configuration and only blocks by <span class="notranslate">mod_security</span> events with high severity, thus decreasing false positives rate.
-
-In some cases <span class="notranslate">mod_security</span> needs to be configured not to cause blocks by csf/lfd.
-
-Possible solutions are:
-
-* Set <span class="notranslate">`SecRuleEngine`</span> to <span class="notranslate">`DetectionOnly`</span> – this way CSF will not block IPs by <span class="notranslate">mod_security</span> events and Imunify360 will still block by <span class="notranslate">mod_security</span> events with high severity (preferable way).
-
-* In <span class="notranslate">`/etc/csf/csf.conf`</span> set <span class="notranslate">`LF_MODSEC`</span> to `0` so that CSF will ignore <span class="notranslate">mod_security</span> events and Imunify360 will still block IPs as described above. But note that in this case requests causing <span class="notranslate">mod_security</span> events will still be blocked by <span class="notranslate">mod_security</span> itself.
-
 ### 5. To start using Imunify360 we need to know which information is sent to your servers. Could you please give us some more information?
 
 The following info is sent to our server:

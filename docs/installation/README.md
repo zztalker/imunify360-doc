@@ -1,7 +1,7 @@
 # Installation Guide
 ## Requirements
 **Operating system**
-* <span class="notranslate">CentOS</span>
+* <span class="notranslate">CentOS 6 and 7</span>
 * <span class="notranslate">RHEL</span>
 * <span class="notranslate">CloudLinux OS</span> 6 and 7
 * <span class="notranslate">Ubuntu 16.04 LTS</span> only <sup>3.6+</sup>
@@ -13,7 +13,7 @@
 
 **Hardware**
 
-* <span class="notranslate">RAM: 512Mb</span>
+* <span class="notranslate">RAM: 1Gb</span>
 * <span class="notranslate">HDD: 20Gb</span> available disk space
 
 **Supported hosting panels**

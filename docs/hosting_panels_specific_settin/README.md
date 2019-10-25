@@ -69,6 +69,28 @@ If there is no Imunify360 ruleset installed, run <span class="notranslate">` imu
 ![](/images/whmmodsecurityvendors_zoom70.png)
 
 * It is possible to block ModSecurity rules only for IPs that belong to some country. More info can be found in [FAQ](/faq_and_known_issues/#_9-disabling-waf-rules-for-certain-countries)
+  
+* Enable rules auto-update. Otherwise, you won't get important updates of ModSecurity ruleset in time
+    * For Apache run the following command:
+    
+        <div class="notranslate">
+ 
+        ```
+        /usr/local/cpanel/scripts/modsec_vendor enable-updates imunify360_full_apache
+        ```
+        </div>
+    * For LiteSpeed run the following command:
+    
+        <div class="notranslate">
+ 
+        ```
+        /usr/local/cpanel/scripts/modsec_vendor enable-updates imunify360_full_litespeed 
+        ```
+        </div>
+
+See details [here](https://documentation.cpanel.net/display/82Docs/ModSecurity+Vendors#ModSecurityVendors-Enableordisableupdates).
+
+Or you can use [WHMAPI1](https://documentation.cpanel.net/display/DD/WHM+API+1+Functions+-+modsec_enable_vendor_updates) to enable vendor auto-updates.
 
 ## Plesk
 

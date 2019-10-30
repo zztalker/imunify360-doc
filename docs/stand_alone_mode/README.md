@@ -120,6 +120,38 @@ domain, then you could open ImunifyAV with the following URL:
 certificate configured for the domain) or
 * `http://imunify360.hosting.example.com/` 
 
+#### Extended `integration.conf` example for reference
+
+`integration.conf` - a config in which all integration points should
+be defined. It contains 2 kinds of fields:
+* A simple variable, for example, `[WEB_SERVER].SERVER_TYPE`
+* A path to a script that will return the data we need, for example,
+  `[INTEGRATION_SCRIPTS].DOMAINS`.
+
+``` ini
+[INTEGRATION_SCRIPTS]
+# same as in CloudLinux
+PANEL_INFO = /opt/cpvendor/bin/panel_info
+USERS = /opt/cpvendor/bin/users
+DOMAINS = /opt/cpvendor/bin/vendor_integration_script domains
+ADMINS = /opt/cpvendor/bin/vendor_integration_script admins
+
+[PATHS]
+UI_PATH = /var/www/vhosts/im360/im360.example-hosting.com/html
+
+[WEB_SERVER]
+SERVER_TYPE = apache
+GRACEFUL_RESTART_SCRIPT =
+/path/to/a/script/that/restarts/web-server/properly
+MODSEC_AUDIT_LOG = /var/log/httpd/modsec_audit.log
+MODSEC_AUDIT_LOGDIR = /var/log/modsec_audit
+
+[MALWARE]
+BASEDIR = /home
+PATTERN_TO_WATCH = ^/home/.+?/(public_html|public_ftp|private_html)(/.*)?$
+```
+
+CloudLinux OS has a similar interface <https://docs.cloudlinux.com/control_panel_integration/>
 
 ##### Further steps
 

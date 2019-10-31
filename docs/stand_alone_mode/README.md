@@ -74,8 +74,7 @@ option in `/etc/sysconfig/imunify360/integration.conf`:
 ADMINS = /path/to/get-admins-script.sh
 
 ```
-It should point to an executable file that generates a json file with
-the following schema:
+It should point to an executable file that generates a json file similar to:
 
 <!-- identical to CloudLinux "admins" script
  https://docs.cloudlinux.com/control_panel_integration/#admins
@@ -115,14 +114,18 @@ If you want to see a specific list of users (note, that all of them
 must be real linux users accessible via PAM), you can specify the
 `USERS` option in `/etc/sysconfig/imunify360/integration.conf`:
 
+<!--
+XXX USERS name differs from USER_LIST_SCRIPT for AV
+https://docs.imunifyav.com/stand_alone_mode/#how-to-provide-imunifyav-with-an-actual-list-of-users-optional
+-->
+
 ``` ini
 [INTEGRATION_SCRIPTS]
 USERS = /path/to/get-users-script.sh
 ```
 
 
-It should point to an executable file that generates a json file with
-the following schema (domains are optional):
+It should point to an executable file that generates a json file similar to (domains are optional):
 
 <!--
 XXX data format is incompatible with CL "users" script 
@@ -130,13 +133,53 @@ https://docs.cloudlinux.com/control_panel_integration/#users
 -->
 
 ``` json
-{"version": 1, "users": [{"name": "user1", "domains": ["user1.com"]}, {"name": "user2"},..]}
+{"version": 1, "users": [{"name": "user1", "domains": ["example.com"]}, {"name": "user2"},..]}
 ```
 
 ::: tip Note
 Any type of executable file is acceptable. For example,
 you can use a Python or PHP script.
 :::
+
+
+#### How to provide information about domains
+
+Specify `DOMAINS` option in `/etc/sysconfig/imunify360/integration.conf`:
+
+``` ini
+[INTEGRATION_SCRIPTS]
+DOMAINS = /path/to/get-domains-script.sh
+```
+
+It should point to an executable file that generates a json file similar to:
+
+<!-- it extends Cloudlinux OS `domains` script output
+https://docs.cloudlinux.com/control_panel_integration/#domains
+-->
+
+``` json
+{
+  "data": {
+    "example.com": {
+      "document_root": "/home/username/public_html/",
+      "is_main": true
+      "owner": "username",
+      "web_server_config_path": "/path/to/example.com/specific/config/to/include",
+    },
+    "subdomain.example.com": {
+      "document_root": "/home/username/public_html/subdomain/",
+      "is_main": false
+      "owner": "username",
+      "web_server_config_path": "/path/to/subdomain.example.com/specific/config/to/include",
+    }
+  },
+  "metadata": {
+    "result": "ok"
+  }
+}
+```
+
+`web_server_config_path` should point to a path that is added as `IncludeOptional` in this domain's virtual host e.g., `/path/to/example.com/specific/config/to/include` path should be added for the `example.com` domain.
 
 #### How to provide information about the control panel
 
@@ -147,8 +190,7 @@ Specify `PANEL_INFO` option in `/etc/sysconfig/imunify360/integration.conf`:
 PANEL_INFO = /path/to/get-panel-info-script.sh
 ```
 
-It should point to an executable file that generates a json file with
-the following schema:
+It should point to an executable file that generates a json file similar to:
 
 <!-- identical to Cloudlinux OS `panel_info` output
 https://docs.cloudlinux.com/control_panel_integration/#the-list-of-the-integration-scripts
@@ -181,6 +223,8 @@ cPanel/Plesk/DirectAdmin version, and can be found in the technical
 documentation:
 <https://docs.imunify360.com/installation/> 
 
+#### How to configure ModSecurity integration
+#### How to configure malware scanner integration
 
 
 #### How  to open Imunify360 UI Once Imunify360 is installed

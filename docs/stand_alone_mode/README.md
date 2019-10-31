@@ -18,9 +18,14 @@ stand-alone mode (without panel), or within any hosting panel.
 There are some basic steps to run Imunify360
  as a stand-alone application. They are:
 
-1.  Define a way to serve web-based UI
-2.  Provide Imunify360 with an actual list of users in the system
-3.  Configure a user authentication process
+1. Define a way to serve web-based UI
+2. Configure a user authentication process
+3. Implement integration scripts that provide Imunify360 with
+   a necessary information suchs as list of users, domains hosted on
+   the server, panel administrators, general panel info
+4. Install prerequisites such as ModSecurity, remoteip web server modules
+5. Configure ModSecurity integration
+6. Configure malware scanner integration
 
 
 #### How to configure the Imunify360 UI
@@ -43,35 +48,6 @@ or files under `UI_PATH`, as they might be overridden by the Imunify360
 installation.
 :::
 
-#### How to provide Imunify360 with an actual list of users (optional)
-
-By default, Imunify360 will use Linux system users, limited
-by `UID_MIN` and `UID_MAX` from `/etc/login.defs`
-
-If you want to see a specific list of users (note, that all of them
-must be real linux users accessible via PAM), you can specify the
-`USER_LIST_SCRIPT` option in
-`/etc/sysconfig/imunify360/integration.conf`:
-
-``` ini
-[PATHS]
-UI_PATH = …
-USER_LIST_SCRIPT = /path/to/get-users-script.sh
-```
-
-
-It should point to an executable file that generates a json file with
-the following schema (domains are optional):
-
-``` json
-{"version": 1, "users": [{"name": "user1", "domains": ["user1.com"]}, {"name": "user2"},..]}
-```
-
-::: tip Note
-Any type of executable file is acceptable. For example,
-you can use a Python or PHP script.
-:::
-
 
 #### How to configure authentication for Imunify360 (optional)
 
@@ -88,11 +64,115 @@ SERVICE_NAME = system-auth
 
 If it is not specified, the “`system-auth`” service is used.
 
-By default, “`root`” is considered to be the only “`admin`” user.
-To add more administrators, list them in the `/etc/sysconfig/imunify360/auth.admin` file.
+By default, “`root`” is considered to be the only “`admin`” user.  To
+add more administrators, list them in the
+`/etc/sysconfig/imunify360/auth.admin` file or specify the `ADMINS`
+option in `/etc/sysconfig/imunify360/integration.conf`:
 
+``` ini
+[INTEGRATION_SCRIPTS]
+ADMINS = /path/to/get-admins-script.sh
+
+```
+It should point to an executable file that generates a json file with
+the following schema:
+
+<!-- identical to CloudLinux "admins" script
+ https://docs.cloudlinux.com/control_panel_integration/#admins
+-->
+
+``` json
+{
+  "data": [
+    {
+      "name": "admin1",
+      "unix_user": "admin",
+      "locale_code": "EN_us",
+      "email": "admin1@domain.zone",
+      "is_main": true
+    },
+	{
+      "name": "admin2",
+      "unix_user": "admin",
+      "locale_code": "Ru_ru",
+      "email": "admin2@domain.zone",
+      "is_main": false
+    },
+  ],
+  "metadata": {
+    "result": "ok"
+  }
+}
+```
+
+
+#### How to provide Imunify360 with an actual list of users (optional)
+
+By default, Imunify360 will use Linux system users, limited
+by `UID_MIN` and `UID_MAX` from `/etc/login.defs`
+
+If you want to see a specific list of users (note, that all of them
+must be real linux users accessible via PAM), you can specify the
+`USERS` option in `/etc/sysconfig/imunify360/integration.conf`:
+
+``` ini
+[INTEGRATION_SCRIPTS]
+USERS = /path/to/get-users-script.sh
+```
+
+
+It should point to an executable file that generates a json file with
+the following schema (domains are optional):
+
+<!--
+XXX data format is incompatible with CL "users" script 
+https://docs.cloudlinux.com/control_panel_integration/#users
+-->
+
+``` json
+{"version": 1, "users": [{"name": "user1", "domains": ["user1.com"]}, {"name": "user2"},..]}
+```
+
+::: tip Note
+Any type of executable file is acceptable. For example,
+you can use a Python or PHP script.
+:::
+
+#### How to provide information about the control panel
+
+Specify `PANEL_INFO` option in `/etc/sysconfig/imunify360/integration.conf`:
+
+``` ini
+[INTEGRATION_SCRIPTS]
+PANEL_INFO = /path/to/get-panel-info-script.sh
+```
+
+It should point to an executable file that generates a json file with
+the following schema:
+
+<!-- identical to Cloudlinux OS `panel_info` output
+https://docs.cloudlinux.com/control_panel_integration/#the-list-of-the-integration-scripts
+-->
+
+``` json
+{
+	"data": {
+		"name": "SomeCoolWebPanel",
+		"version": "1.0.1",
+		"user_login_url": "https://{domain}:1111/"
+	},
+	"metadata": {
+		"result": "ok"
+	}
+}
+```
 
 #### How to install Imunify360
+
+##### Prerequisites
+
+-   [ModSecurity 2.9.x](https://modsecurity.org/)
+-   [Apache Module mod<sub>remoteip</sub>](http://httpd.apache.org/docs/2.4/mod/mod_remoteip.html)
 
 Now everything is ready to install Imunify360.
 
@@ -101,10 +181,6 @@ cPanel/Plesk/DirectAdmin version, and can be found in the technical
 documentation:
 <https://docs.imunify360.com/installation/> 
 
-##### Prerequisites
-
--   [ModSecurity 2.9.x](https://modsecurity.org/)
--   [Apache Module mod<sub>remoteip</sub>](http://httpd.apache.org/docs/2.4/mod/mod_remoteip.html)
 
 
 #### How  to open Imunify360 UI Once Imunify360 is installed
@@ -125,7 +201,7 @@ certificate configured for the domain) or
 `integration.conf` - a config in which all integration points should
 be defined. It contains 2 kinds of fields:
 * A simple variable, for example, `[WEB_SERVER].SERVER_TYPE`
-* A path to a script that will return the data we need, for example,
+* A path to a script that will return the data for Imunify360, for example,
   `[INTEGRATION_SCRIPTS].DOMAINS`.
 
 ``` ini
@@ -161,5 +237,5 @@ technical documentation: <https://docs.imunify360.com/>
 
 If you have questions, or experience any issues regarding the
 product, submit a ticket to our technical support team. For feature
-requests, just drop us an email to feedback@imunify360.com.
+requests, just drop us an email to <feedback@imunify360.com>.
 

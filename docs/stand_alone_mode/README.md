@@ -224,7 +224,14 @@ documentation:
 <https://docs.imunify360.com/installation/> 
 
 #### How to configure ModSecurity integration
+
+
 #### How to configure malware scanner integration
+
+To scan files uploaded via FTP, configure
+[PureFTPd](https://www.pureftpd.org/project/pure-ftpd/). Write in `pure-ftp.conf`:
+
+    CallUploadScript             yes
 
 
 #### How  to open Imunify360 UI Once Imunify360 is installed

@@ -223,21 +223,41 @@ cPanel/Plesk/DirectAdmin version, and can be found in the technical
 documentation:
 <https://docs.imunify360.com/installation/> 
 
+
 #### How to configure ModSecurity integration
 
-Admin has to have mod_sec properly configured with mode XXX (so that it blocks)
-Admin should add IncludeOptional (or Include for nginx) /hardcoded/path/for/our/rules/that.conf)
-we will update
-We should recommend admin to touch that conf file so that their webserver doesn't crash until
-imunify is installed
-[WEB_SERVER].SERVER_TYPE​ - use it to decide which ruleset to use and how
-[WEB_SERVER].GRACEFUL_RESTART_SCRIPT​ - call this script after any changes in
-web-server config or rules.
-[WEB_SERVER].MODSEC_AUDIT_LOG​ - path to ModSecurity audit log file
-[WEB_SERVER].MODSEC_AUDIT_LOGDIR​ - path to ModSecurity audit log dir for concurrent
-mode
-Alternative|Investigate → we can require Admin to either place audit logs in specific directory
-under specific names, or create symlinks that do that.
+Configure [ModSecurity configuration
+directives](https://github.com/SpiderLabs/ModSecurity/wiki/Reference-Manual-%28v2.x%29#Configuration_Directives)
+(so that it can block):
+
+``` apacheconf
+SecAuditEngine = "RelevantOnly"
+SecConnEngine = "Off"
+SecRuleEngine = "On"
+```
+
+Update your your web server config: add `IncludeOptional` that points to
+`/etc/sysconfig/imunify360/generic/modsec.conf` file. Create the file
+if it doesn't exist, otherwise the web server might not start until
+imunify360 is installed (which creates the file).
+
+Set in `integration.conf`:
+
+- `[WEB_SERVER].SERVER_TYPE`​ -- `apache`/`litespeed`
+- `[WEB_SERVER].GRACEFUL_RESTART_SCRIPT​` -- a script that restarts the
+   web server to be called after any changes in web-server config or modsec rules. 
+- `[WEB_SERVER].MODSEC_AUDIT_LOG`​ -- path to ModSecurity audit log file
+- `[WEB_SERVER].MODSEC_AUDIT_LOGDIR​` -- path to ModSecurity audit log dir 
+
+Example:
+
+``` ini
+[WEB_SERVER]
+SERVER_TYPE = apache
+GRACEFUL_RESTART_SCRIPT = /path/to/a/script/that/restarts/web-server/properly
+MODSEC_AUDIT_LOG = /var/log/httpd/modsec_audit.log
+MODSEC_AUDIT_LOGDIR = /var/log/modsec_audit
+```
 
 
 #### How to configure malware scanner integration

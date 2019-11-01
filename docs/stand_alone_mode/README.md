@@ -225,6 +225,20 @@ documentation:
 
 #### How to configure ModSecurity integration
 
+Admin has to have mod_sec properly configured with mode XXX (so that it blocks)
+Admin should add IncludeOptional (or Include for nginx) /hardcoded/path/for/our/rules/that.conf)
+we will update
+We should recommend admin to touch that conf file so that their webserver doesn't crash until
+imunify is installed
+[WEB_SERVER].SERVER_TYPE​ - use it to decide which ruleset to use and how
+[WEB_SERVER].GRACEFUL_RESTART_SCRIPT​ - call this script after any changes in
+web-server config or rules.
+[WEB_SERVER].MODSEC_AUDIT_LOG​ - path to ModSecurity audit log file
+[WEB_SERVER].MODSEC_AUDIT_LOGDIR​ - path to ModSecurity audit log dir for concurrent
+mode
+Alternative|Investigate → we can require Admin to either place audit logs in specific directory
+under specific names, or create symlinks that do that.
+
 
 #### How to configure malware scanner integration
 
@@ -232,6 +246,37 @@ To scan files uploaded via FTP, configure
 [PureFTPd](https://www.pureftpd.org/project/pure-ftpd/). Write in `pure-ftp.conf`:
 
     CallUploadScript             yes
+
+To scan files for changes (to detect malware) using inotify, configure
+which directories to watch and which to ignore in the
+`integration.conf` file:
+
+- configure `[MALWARE].BASEDIR` -- a root directory to watch (recursively)
+- configure `[MALWARE].PATTERN_TO_WATCH` -- only directories that match this
+  ([Python](https://docs.python.org/3/howto/regex.html#regex-howto))
+  regex in the `BASEDIR` are actually going to be watched
+
+
+Examples for already supported panels:
+
+- cPanel
+
+``` ini
+BASEDIR = /home
+PATTERN_TO_WATCH = ^/home/.+?/(public_html|public_ftp|private_html)(/.*)?$
+```
+- DirectAdmin
+
+``` ini
+BASEDIR = /home
+PATTERN_TO_WATCH = ^/home/(.+?|.+?/domains/.+?)/(public_html|public_ftp|private_html)(/.*)?$
+```
+-  Plesk
+
+``` ini
+BASEDIR = /var/www/vhosts/
+PATTERN_TO_WATCH = ^/var/www/vhosts/.+?(?<!/.skel|/chroot|/default|/system)(/.+?(?<!/logs|/bin|/chroot|/other-from-VHOST_IGNORE)(/.*)?)?$
+```
 
 
 #### How  to open Imunify360 UI Once Imunify360 is installed

@@ -379,7 +379,11 @@ BASEDIR = /home
 PATTERN_TO_WATCH = ^/home/.+?/(public_html|public_ftp|private_html)(/.*)?$
 ```
 
-CloudLinux OS has a similar interface <https://docs.cloudlinux.com/control_panel_integration/>
+Unless otherwise stated, the expected output/error handling for the
+integrations scripts follows
+<https://docs.cloudlinux.com/control_panel_integration/#expected-structure-of-replies>
+interface.
+
 
 ##### Further steps
 

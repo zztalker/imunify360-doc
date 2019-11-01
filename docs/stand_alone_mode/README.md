@@ -54,7 +54,7 @@ installation.
 Imunify360 can use PAM to authenticate users.
 Once the UI is opened, the user sees a sign-in form. The credentials are checked via PAM.
 
-You can specify which PAM service Imunify360 should use with the SERVICE<sub>NAME</sub> option:
+You can specify which PAM service Imunify360 should use with the `SERVICE_NAME` option:
 
 ``` ini
 [PAM]
@@ -133,7 +133,7 @@ https://docs.cloudlinux.com/control_panel_integration/#users
 -->
 
 ``` json
-{"version": 1, "users": [{"name": "user1", "domains": ["example.com"]}, {"name": "user2"},..]}
+{"version": 1, "users": [{"name": "user1", "domains": ["example.com"]}, {"name": "user2"}]}
 ```
 
 ::: tip Note

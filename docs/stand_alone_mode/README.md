@@ -260,6 +260,42 @@ MODSEC_AUDIT_LOGDIR = /var/log/modsec_audit
 ```
 
 
+##### How to configure ModSecurity domain level integration
+
+To enable domain-specific ModSecurity configuration, specify
+`MODSEC_DOMAIN_CONFIG_SCRIPT` in `integration.conf`:
+
+``` ini
+[WEB_SERVER]
+MODSEC_DOMAIN_CONFIG_SCRIPT=/path/to/inject/domain/specific/config/script.sh
+```
+
+It should point to an executable file that accepts as an input a list
+of domain-specific web server settings and injects them into the
+server config. The standard input (stdin) is given in the
+[jsonlines](http://jsonlines.org/) format similar to:
+
+``` json
+{"user": "username", "domain": "example.com", "config": "modsec config text"}
+{"user": "another", "domain": "another.example.com", "config": "..."}
+```
+
+Each line contains config for a single domain e.g., it may contain
+rule tags excluded for the domain.
+
+The script should also restart the web server to apply the
+configuration. This should be done so that the script could implement
+the check that webserver comes up after config change, and reset
+configuration if it doesn't.
+
+If configuration change failed, script should return `1`, and in the
+standard error stream (stderr) it should return the reason for
+failure. On success, script should return `0`.
+
+In a single run of the script we might update single domain/user, as
+well as multiple users (all users) on the system.
+
+
 #### How to configure malware scanner integration
 
 To scan files uploaded via FTP, configure

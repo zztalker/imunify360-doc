@@ -162,13 +162,13 @@ https://docs.cloudlinux.com/control_panel_integration/#domains
   "data": {
     "example.com": {
       "document_root": "/home/username/public_html/",
-      "is_main": true
+      "is_main": true,
       "owner": "username",
       "web_server_config_path": "/path/to/example.com/specific/config/to/include",
     },
     "subdomain.example.com": {
       "document_root": "/home/username/public_html/subdomain/",
-      "is_main": false
+      "is_main": false,
       "owner": "username",
       "web_server_config_path": "/path/to/subdomain.example.com/specific/config/to/include",
     }
@@ -214,7 +214,7 @@ https://docs.cloudlinux.com/control_panel_integration/#the-list-of-the-integrati
 ##### Prerequisites
 
 -   [ModSecurity 2.9.x](https://modsecurity.org/)
--   [Apache Module mod<sub>remoteip</sub>](http://httpd.apache.org/docs/2.4/mod/mod_remoteip.html)
+-   [Apache Module mod_remoteip](http://httpd.apache.org/docs/2.4/mod/mod_remoteip.html)
 
 Now everything is ready to install Imunify360.
 

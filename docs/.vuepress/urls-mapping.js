@@ -131,5 +131,6 @@ module.exports = {
   "/downloading_documentation.htm/": "/downloading_documentation/",
   "/index.html?downloading_documentation.htm": "/downloading_documentation/",
   "/hooks.htm/": "/hooks/",
-  "/index.html?hooks.htm": "/hooks/"
+  "/index.html?hooks.htm": "/hooks/",
+  "/dashboard/#background-scanning-beta-4-1": "/dashboard/#background-scanning"
 };

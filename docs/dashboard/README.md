@@ -1292,7 +1292,7 @@ Those options may be hidden for end-user if Cleanup is disabled in Features Mana
 
 Tick required checkboxes and click <span class="notranslate">_Save changes_</span> button.
 
-#### **Background Scanning<sup> Beta 4.1</sup>**
+#### **Background Scanning**
 
 Allows to set up automatic, scheduled, background scanning of user accounts.
 
@@ -1313,6 +1313,8 @@ Depending on the selected period, precise settings.
 * If <span class="notranslate">_Run scanning_</span> is set to <span class="notranslate">_Monthly_</span>, choose the day of the month at the <span class="notranslate">_Day of month to run_</span> dropdown and exact time at the <span class="notranslate">_Run at_</span> dropdown.
 
 You can track the scanning activity at the <span class="notranslate">[Malware Scanner](#malware-scanner)</span> tab.
+
+See also: [Proactive Defense](/dashboard/#proactive-defense).
 
 
 **Cleanup<sup>3.7.1+</sup>**

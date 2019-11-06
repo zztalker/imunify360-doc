@@ -1044,6 +1044,7 @@ The following tabs are available:
 Go to <span class="notranslate">_Imunify360 → Settings → General_</span>. The following sections are available:
 
 * <span class="notranslate">[Installation](/dashboard/#installation)</span>
+* <span class="notranslate">[WAF Settings](/dashboard/#waf-settings)</span>
 * <span class="notranslate">[DoS Protection](/dashboard/#dos-protection)</span>
 * <span class="notranslate">[3-rd Party Integration](/dashboard/#_3-rd-party-integration)</span>
 * <span class="notranslate">[Auto White List](/dashboard/#auto-white-list)</span>
@@ -1108,6 +1109,16 @@ To install or uninstall KernelCare click on a button related. Please find additi
 ::: tip Note
 KernelCare is free on the servers with Imunify360 installed.
 :::
+Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
+
+#### WAF Settings
+
+<span class="notranslate">WAF Settings</span> section allows to disable Imunify WAF rules with a high memory footprint, yet leaves critical ruleset enabled. We recommend to disable <span class="notranslate">WAF Settings</span> for the servers with a small amount of RAM.
+
+Tick the <span class="notranslate">_Minimized ModSec Ruleset_</span> checkbox.
+
+![](/images/waf_settings.png)
+
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
 
 #### DoS Protection
@@ -1314,10 +1325,8 @@ Depending on the selected period, precise settings.
 
 You can track the scanning activity at the <span class="notranslate">[Malware Scanner](#malware-scanner)</span> tab.
 
-See also: [Proactive Defense](/dashboard/#proactive-defense).
 
-
-**Cleanup<sup>3.7.1+</sup>**
+#### Cleanup <sup><Badge text="3.7.1+" type="tip"/></sup>
 
 * <span class="notranslate">_Trim file instead of removal_</span> — do not remove infected file during cleanup but make the file zero-size (for malwares like web-shells);
 * <span class="notranslate">_Keep original files for … days_</span> — the original infected file is available for restore within the defined period. Default is 14 days.
@@ -1325,7 +1334,7 @@ See also: [Proactive Defense](/dashboard/#proactive-defense).
 ![](/images/malwarescannersettings_zoom70.png)
 
 
-**Proactive Defense<sup> 4.2+</sup>**
+#### Proactive Defense <sup><Badge text="4.2+" type="tip"/></sup>
 
 * <span class="notranslate">_Enable Blamer_</span> — tick to allow Imunify360 to find a root cause of how infection got injected into the server through PHP. Blamer pinpoints exact URL, PHP script & PHP execution path that allowed a hacker to inject malware onto the server.
 Imunify360 security team will use that information to prevent future infections from happening.

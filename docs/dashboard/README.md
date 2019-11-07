@@ -1046,7 +1046,6 @@ Go to <span class="notranslate">_Imunify360 → Settings → General_</span>. Th
 * <span class="notranslate">[Installation](/dashboard/#installation)</span>
 * <span class="notranslate">[WAF Settings](/dashboard/#waf-settings)</span>
 * <span class="notranslate">[DoS Protection](/dashboard/#dos-protection)</span>
-* <span class="notranslate">[SMTP Blocking](/dashboard/#smtp-blocking)</span>
 * <span class="notranslate">[3-rd Party Integration](/dashboard/#_3-rd-party-integration)</span>
 * <span class="notranslate">[Auto White List](/dashboard/#auto-white-list)</span>
 * <span class="notranslate">[Incidents Logging](/dashboard/#incidents-logging)</span>
@@ -1165,19 +1164,6 @@ It is possible to configure how Imunify360 will behave:
 ![](/images/DosProtection.png)
 
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
-
-#### SMTP Blocking
-
-It allows to block all outgoing mail traffic coming through the user-defined SMTP ports. 
-
-![](/images/smtp_blocking.png)
-
-* Tick <span class="notranslate">_Block SMTP Traffic_</span> to enable/disable <span class="notranslate">SMTP Blocking</span> feature.
-* List comma-separated ports in the <span class="notranslate">_SMTP Ports to handle_</span> text area.
-* List comma-separated unix users which will never be blocked in the <span class="notranslate">_Users to ignore_</span> text area.
-* List comma-separated unix groups will never be blocked in the <span class="notranslate">_Groups to ignore_</span> text area.
-* Tick <span class="notranslate">_Allow Local SMTP Only_</span> to allow  users to send outgoing mail traffic through the local ports.
-* Tick <span class="notranslate">_Redirect SMTP Traffic_</span> to enable outgoing mail traffic forwarding to the local ports automatically.
 
 #### 3-rd Party Integration
 

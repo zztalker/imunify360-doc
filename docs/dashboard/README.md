@@ -1136,9 +1136,10 @@ Click <span class="notranslate">_Save changes_</span> button on the bottom of th
 
 #### WAF Settings
 
-<span class="notranslate">WAF Settings</span> section allows to disable Imunify WAF rules with a high memory footprint, yet leaves critical ruleset enabled. We recommend to disable <span class="notranslate">WAF Settings</span> for the servers with a small amount of RAM.
+When the <span class="notranslate">_Minimized ModSec Ruleset_</span> option is on, it disables Imunify WAF rules with a high memory footprint, yet leaves critical ruleset enabled. It is recommended for the servers with a small amount of RAM. It is enabled by default for the installations with low RAM.
 
-Tick the <span class="notranslate">_Minimized ModSec Ruleset_</span> checkbox.
+You can switch back to the normal mode by enabling WebShield or unchecking <span class="notranslate">_Minimized ModSec Ruleset_</span> in Settings | General | WAF Settings
+
 
 ![](/images/waf_settings.png)
 

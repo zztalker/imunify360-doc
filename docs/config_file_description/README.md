@@ -39,6 +39,12 @@ In the config file it is possible to set up Imunify360 configuration. The follow
 <tr><td><span class="notranslate">limit: 100000</span></td><td># how many incidents should be stored in Imunify360 log file</td></tr>
 <tr><td><span class="notranslate">ui_autorefresh_timeout: 10</span></td><td># set auto refresh time for incidents in user interface</td></tr>
 <tr>
+<th align="left"><span class="notranslate">MOD_SEC:</span></th>
+<th align="left"><span class="notranslate"># defines ModSecurity settings</span></th>
+</tr>
+<tr>
+<td width="250px;"><span class="notranslate">ruleset: FULL</span></td><td># defines what ruleset to use: <span class="notranslate">FULL</span> (default value) or <span class="notranslate">MINIMAL</span>. If the amount of RAM on the server is less than 2.1GB, the ruleset value is automatically set to <span class="notranslate">MINIMAL</span>.</td></tr>
+<tr>
 <th colspan="2" align="left"><span class="notranslate">MOD_SEC_BLOCK_BY_SEVERITY:</span></th></tr>
  <tr><td><span class="notranslate">enable: true</span></td><td># allows to enable or disable option that moves IPs to <span class="notranslate">Gray List</span> if the ModSecurity rule is triggered</td></tr>
 <tr><td><span class="notranslate">max_incidents: 2</span></td><td># set a number of repeats of the ModSecurity incident from the same IP for adding it to <span class="notranslate">Gray List</span></td></tr>
@@ -82,6 +88,8 @@ that were uploaded via http/https. Note that it requires <a href="https://modsec
 <td># max file size to scan in the cloud-assisted (by hashes) mode; value is set in bytes</td></tr>
 <tr><td><span class="notranslate">max_mrs_upload_file: 10485760</span></td>
 <td># max file size to upload to CloudLinux malware research service; value is set in bytes</td></tr>
+<tr><td><span class="notranslate">detect_elf: false</span></td>
+<td>#  enable (<span class="notranslate">true</span>) or disable (<span class="notranslate">false</span>) (default value) binary (ELF) malware detection</td></tr>
 <tr>
 <th colspan="2" align="left"><span class="notranslate">CAPTCHA:</span></th></tr>
 <tr><td><span class="notranslate">cert_refresh_timeout: 3600</span></td>
@@ -132,6 +140,8 @@ to request CAPTCHA again</td></tr>
 <th colspan="2" align="left"><span class="notranslate">WEBSHIELD:</span></th></tr>
 <tr><td><span class="notranslate">known_proxies_support: true</span></td>
 <td># enable CDN support, treat IPs behind CDN as any other IPs</td></tr>
+<tr><td><span class="notranslate">enable: true</span></td>
+<td># enable (true) (default value) or disable (false) WebShield</td></tr>
 <tr>
 <th colspan="2" align="left"><span class="notranslate">PROACTIVE_DEFENСE:</span></th></tr>
 <tr><td><span class="notranslate">blamer: false</span></td>
@@ -154,6 +164,16 @@ to request CAPTCHA again</td></tr>
 <td># when the background scan shall start, hour. Can be from 0 to 23, the default value is 3</td></tr>
 <tr><td><span class="notranslate">interval: none</span></td>
 <td># interval of scan. Supported values: strings <span class="notranslate">`none`</span>, <span class="notranslate">`day`</span>, <span class="notranslate">`week`</span>, <span class="notranslate">`month`</span>, the default value is <span class="notranslate">`none`</span> (no scan)</td></tr>
+<tr>
+<th align="left"><span class="notranslate">PAM:</span></th>
+<th align="left"># effective way to prevent brute-force attacks against FTP/SSH</th></tr>
+<tr><td><span class="notranslate">enable: false</span></td>
+<td># enable (<span class="notranslate">true</span>) or disable (<span class="notranslate">false</span>) (default value) PAM brute-force attack protection</td></tr>
+<tr>
+<th align="left"><span class="notranslate">KERNELCARE:</span></th>
+<th align="left"># KernelCare extension for Imunify360 which allows tracing malicious invocations to detect privilege escalation attempts</th></tr>
+<tr><td><span class="notranslate">edf: false</span></td>
+<td># enable (<span class="notranslate">true</span>) or disable (<span class="notranslate">false</span>) (default value) exploit detection framework</td></tr>
 </table>
 
 <span class="notranslate">Active Response</span> is an ossec-driven (IDS) feature of Imunify360 which has been re-engineered to make it capable of blocking access to a specific server port being attacked.

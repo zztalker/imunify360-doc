@@ -250,7 +250,7 @@ imunify360-agent blocked-port add 5555:tcp --comment “Some comment”
 Allows to send domains list to check on Imunify360 central server. This command requires cPanel. After domains checked, the results is available via command <span class="notranslate">`infected-domains`</span>.
 
 ::: tip Note
-The server requires some time for checking and the results may not be ready immediately.
+<span class="notranslate">`check-domains`</span> command may take a few minutes to complete.
 :::
 Usage:
 

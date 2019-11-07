@@ -1046,11 +1046,13 @@ Go to <span class="notranslate">_Imunify360 → Settings → General_</span>. Th
 * <span class="notranslate">[Installation](/dashboard/#installation)</span>
 * <span class="notranslate">[WAF Settings](/dashboard/#waf-settings)</span>
 * <span class="notranslate">[DoS Protection](/dashboard/#dos-protection)</span>
+* <span class="notranslate">[SMTP Blocking](/dashboard/#smtp-blocking)</span>
 * <span class="notranslate">[3-rd Party Integration](/dashboard/#_3-rd-party-integration)</span>
 * <span class="notranslate">[Auto White List](/dashboard/#auto-white-list)</span>
 * <span class="notranslate">[Incidents Logging](/dashboard/#incidents-logging)</span>
 * <span class="notranslate">[WebShield](/dashboard/#webshield)</span>
 * <span class="notranslate">[OSSEC](/dashboard/#ossec)</span>
+* <span class="notranslate">[PAM](/dashboard/#pam)</span>
 * <span class="notranslate">[Error Reporting](/dashboard/#error-reporting)</span>
 * <span class="notranslate">[Contact Details](/dashboard/#contact-details)</span>
 
@@ -1109,6 +1111,27 @@ To install or uninstall KernelCare click on a button related. Please find additi
 ::: tip Note
 KernelCare is free on the servers with Imunify360 installed.
 :::
+
+#### Privilege escalation detection & protection <sup><Badge text="beta" type="warn"/> <Badge text="4.4+"/></sup>
+
+The KernelCare extension for Imunify360 allows tracing malicious invocations to detect privilege escalation attempts.
+
+Starting from Imunify360 version 4.4, you can find these attempts on the [Incidents tab](/dashboard/#incidents) (as part of the OSSEC log). The incidents can be seen by filtering events with the `EDF` label. 
+
+To enable the feature, tick the <span class="notranslate">_Privilege escalation detection & protection_</span> checkbox.
+
+![](/images/pep_kernelcare.png)
+
+Or you can enable it via CLI using the following command:
+
+<div class="notranslate">
+
+```
+imunify360-agent config update '{"KERNELCARE": {"edf": true}}'
+```
+</div>
+
+
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
 
 #### WAF Settings
@@ -1123,8 +1146,16 @@ Click <span class="notranslate">_Save changes_</span> button on the bottom of th
 
 #### DoS Protection
 
-<span class="notranslate">DoS Protection</span> section allows to enable or disable DoS protection. DoS protection works by counting connections from each remote IP address per local port separately.
-Tick checkbox <span class="notranslate">_Enable Dos Protection_</span>.
+<span class="notranslate">DoS Protection</span> section allows to enable or disable DoS protection. DoS protection works by counting connections from each remote IP address per local port separately. Starting from Imunify360 4.4 beta it is enabled by default for all new installations.
+To enable/disable it, tick the <span class="notranslate">_Enable Dos Protection_</span> checkbox. Or you can enable it using the following CLI command:
+
+<div class="notranslate">
+
+```
+imunify360-agent config update '{"DOS": {"enabled": true}}'
+```
+</div>
+
 It is possible to configure how Imunify360 will behave:
 
 * <span class="notranslate">_Max Connections_</span>– allows to setup the number of simultaneous connections allowed before IP will be blocked. Cannot be set lower than 100.
@@ -1133,6 +1164,19 @@ It is possible to configure how Imunify360 will behave:
 ![](/images/DosProtection.png)
 
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
+
+#### SMTP Blocking
+
+It allows to block all outgoing mail traffic coming through the user-defined SMTP ports. 
+
+![](/images/smtp_blocking.png)
+
+* Tick <span class="notranslate">_Block SMTP Traffic_</span> to enable/disable <span class="notranslate">SMTP Blocking</span> feature.
+* List comma-separated ports in the <span class="notranslate">_SMTP Ports to handle_</span> text area.
+* List comma-separated unix users which will never be blocked in the <span class="notranslate">_Users to ignore_</span> text area.
+* List comma-separated unix groups will never be blocked in the <span class="notranslate">_Groups to ignore_</span> text area.
+* Tick <span class="notranslate">_Allow Local SMTP Only_</span> to allow  users to send outgoing mail traffic through the local ports.
+* Tick <span class="notranslate">_Redirect SMTP Traffic_</span> to enable outgoing mail traffic forwarding to the local ports automatically.
 
 #### 3-rd Party Integration
 
@@ -1191,7 +1235,22 @@ Click <span class="notranslate">_Save changes_</span> button on the bottom of th
 	
 #### WebShield
 
-Tick <span class="notranslate">_Detect IPs behind CDN_</span> checkbox to allow to recognize and block IPs with suspicious activity behind supported CDN providers.
+<span class="notranslate">_Detect IPs behind CDN_</span> feature allows to recognize and block IPs with suspicious activity behind supported CDN providers.
+
+Starting from Imunify360 4.4 beta it is enabled by default for all new installations.
+
+To enable/disable it, tick the <span class="notranslate">_Detect IPs behind CDN_</span> checkbox.
+
+![](/images/webshield.png)
+
+Or you can enable it using the following CLI command:
+
+<div class="notranslate">
+
+```
+imunify360-agent config update '{"WEBSHIELD": {"known_proxies_support": true}}'
+```
+</div>
 
 Supported CDN providers:
 
@@ -1201,8 +1260,6 @@ Supported CDN providers:
 * KeyCDN
 * Dartspeed.com
 * QUIC.cloud CDN
-	
-![](/images/webshield.png)
 
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
 
@@ -1215,6 +1272,23 @@ The purpose of the feature is significantly reducing false positive rate while i
 
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
 
+#### PAM <sup><Badge text="beta" type="warn"/> <Badge text="4.4+"/></sup>
+
+Tick the <span class="notranslate">_PAM brute-force attack protection_</span> checkbox to enable an advanced brute-force protection technique based on the combination of PAM module authorization, RBL check and IP blacklisting. 
+	
+![](/images/pam_module.png)
+
+Or you can enable it via CLI with the following command:
+
+<div class="notranslate">
+
+```
+imunify360-agent config update '{"PAM": {"enabled": true}}'
+```
+</div>
+
+Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
+
 #### Error Reporting
  
 Tick <span class="notranslate">_Enable Sentry error reporting_</span> checkbox to send reports to Imunify360 error reports server.
@@ -1223,11 +1297,7 @@ Tick <span class="notranslate">_Enable Sentry error reporting_</span> checkbox t
 
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
 
-#### **Contact Details**
-
-:::tip Note
-Imunify360 version 4.1 Beta
-:::
+#### Contact Details <sup><Badge text="4.1+"/></sup>
  
 Type your email into the <span class="notranslate">_Email_</span> field to receive email reports about critical issues, security alerts or system misconfigurations detected on your servers.
 
@@ -1300,10 +1370,11 @@ Those options may be hidden for end-user if Cleanup is disabled in Features Mana
 :::
 
 * <span class="notranslate">_RapidScan_</span> – dramatically speeds up repeated scans based on smart re-scan approach, local result caching and cloud-assisted scan. When you first enable the RapidScan feature, the first scan will run as before. But subsequent scans will see a dramatic speed improvement, anywhere between 5 to 20 times faster. You can find details [here](/features/#rapidscan).
+* <span class="notranslate">_Binary (ELF) malware detection_</span> <sup>Beta</sup> <sup>4.4+</sup> – this option allows to scans user home directories for malware. It’s disabled in Imunify360 version 4.4 by default.
 
 Tick required checkboxes and click <span class="notranslate">_Save changes_</span> button.
 
-#### **Background Scanning**
+#### Background Scanning
 
 Allows to set up automatic, scheduled, background scanning of user accounts.
 

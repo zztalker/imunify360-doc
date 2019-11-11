@@ -20,9 +20,9 @@ To take advantage of these new improvements, go to your Imunify control panel an
 
 This is a special operation mode where Imunify360 consumes less CPU and RAM. It is intended for servers with limited resources.
 
-This mode disables WebShield switching off WebShield, GrayList and Captcha. 
+This mode disables <span class="notranslate">[WebShield](/webshield/)</span> switching off GrayList and Captcha. 
 
-<span class="notranslate">_Low Resource Usage_</span> mode also enables the <span class="notranslate">_Minimized Modsec Ruleset_</span> option that disables Imunify WAF rules with a high memory footprint, leaving critical rulesets enabled. 
+<span class="notranslate">_Low Resource Usage_</span> mode also enables the <span class="notranslate">_[Minimized Modsec Ruleset](/dashboard/#waf-settings)_</span> option that disables Imunify WAF rules with a high memory footprint, leaving critical rulesets enabled. 
 
 When the <span class="notranslate">_Low Resource Usage_</span> mode is activated it is reflected on the UI: an Imunify main menu changes color to light green, and an appropriate label appears on the top right.
 

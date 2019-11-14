@@ -49,16 +49,12 @@ A support ticket will be created and an email will be sent to a specified email 
 
 <div class="notranslate">
 
-## Dashboard
+## Dashboard <Badge text="4.0+"/>
 
 </div>
 
 You can access the Imunify360 Dashboard from your control panel. It shows security events as charts and heat maps.
 It's a great way to analyze incidents that happened within the past day, week or month.
-
-:::tip Note
-Beta 4.0 and later
-:::
 
 Click <span class="notranslate">_Dashboard_</span> tab to display an overview of incidents recorded during the selected time interval, an estimate of the intensity of attacks, and correlate events across all sources.
 
@@ -68,13 +64,10 @@ Here you can see notifications about server security and Imunify360 configuratio
 
 <div class="notranslate">
 
-### Multi-server Dashboard 
+### Multi-server Dashboard <Badge text="4.1+"/>
 
 </div>
 
-:::tip Note
-Beta 4.1 and later
-:::
 
 Starting from Imunify360 version 4.1, the <span class="notranslate">Dashboard</span> can display Imunify360 performance data for a number of specified servers. 
 * You can add a specified server using its server key – a unique server id that identifies an installed Imunify360 instance.
@@ -84,6 +77,7 @@ Starting from Imunify360 version 4.1, the <span class="notranslate">Dashboard</s
     :::
 * You can easily remove a server from the Dashboard.
 * You can use <span class="notranslate">_Server_</span> drop-down to show a list of all servers added into the Dashboard.
+* You can choose in the multi-server drop-down for which server the Dashboard would represent its data: a current server (where the Imunify360 is installed) or a remote one (it is indicated on the Dashboard).
 
 ![](/images/dashboard_servers2.png)
 

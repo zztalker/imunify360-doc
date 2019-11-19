@@ -81,8 +81,9 @@ module.exports = {
           }
         },
         algolia: {
-          apiKey: 'c2e14586074e24bec163f37da724fe7c',
-          indexName: 'imunify360'
+          apiKey: '29339fdc91169afd5a7dd2a0a9bba6d2',
+          indexName: 'imunify360',
+          appId: 'C6CXTFLPAJ'
         },
         stayInTouch: "Stay in touch",
         bottomLinks: [
@@ -112,10 +113,12 @@ module.exports = {
               "/ids_integration/",
               "/webshield/",
               "/backup_providers_integration/",
+              "/firewall_config/",
               "/localization/",
               "/dashboard/",
               "/hosting_panels_specific_settin/",
               "/config_file_description/",
+              "/features/",
               "/hooks/",
               "/command_line_interface/",
               "/uninstall/",
@@ -139,8 +142,9 @@ module.exports = {
           }
         },
         algolia: {
-          apiKey: 'c2e14586074e24bec163f37da724fe7c',
-          indexName: 'imunify360'
+          apiKey: '29339fdc91169afd5a7dd2a0a9bba6d2',
+          indexName: 'imunify360-ru',
+          appId: 'C6CXTFLPAJ'
         },
         stayInTouch: "Будем на связи",
         bottomLinks: [
@@ -170,10 +174,12 @@ module.exports = {
               "/ru/ids_integration/",
               "/ru/webshield/",
               "/ru/backup_providers_integration/",
+              "/ru/firewall_config/",
               "/ru/localization/",
               "/ru/dashboard/",
               "/ru/hosting_panels_specific_settin/",
               "/ru/config_file_description/",
+              "/ru/features/",
               "/ru/hooks/",
               "/ru/command_line_interface/",
               "/ru/uninstall/",

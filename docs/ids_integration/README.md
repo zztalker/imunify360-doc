@@ -56,7 +56,7 @@ In this case, Imunify360 will block IPs only by <span class="notranslate">mod_se
   <div class="notranslate">
 
   ```
-  systemctl stop pure-uploadscript.service stop
+  systemctl stop pure-uploadscript.service
   ```
   </div>
 

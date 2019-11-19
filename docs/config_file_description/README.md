@@ -39,6 +39,12 @@ In the config file it is possible to set up Imunify360 configuration. The follow
 <tr><td><span class="notranslate">limit: 100000</span></td><td># how many incidents should be stored in Imunify360 log file</td></tr>
 <tr><td><span class="notranslate">ui_autorefresh_timeout: 10</span></td><td># set auto refresh time for incidents in user interface</td></tr>
 <tr>
+<th align="left"><span class="notranslate">MOD_SEC:</span></th>
+<th align="left"><span class="notranslate"># defines ModSecurity settings</span></th>
+</tr>
+<tr>
+<td width="250px;"><span class="notranslate">ruleset: FULL</span></td><td># defines what ruleset to use: <span class="notranslate">FULL</span> (default value) or <span class="notranslate">MINIMAL</span>. If the amount of RAM on the server is less than 2.1GB, the ruleset value is automatically set to <span class="notranslate">MINIMAL</span>.</td></tr>
+<tr>
 <th colspan="2" align="left"><span class="notranslate">MOD_SEC_BLOCK_BY_SEVERITY:</span></th></tr>
  <tr><td><span class="notranslate">enable: true</span></td><td># allows to enable or disable option that moves IPs to <span class="notranslate">Gray List</span> if the ModSecurity rule is triggered</td></tr>
 <tr><td><span class="notranslate">max_incidents: 2</span></td><td># set a number of repeats of the ModSecurity incident from the same IP for adding it to <span class="notranslate">Gray List</span></td></tr>
@@ -66,7 +72,9 @@ otherwise <span class="notranslate"><em>default_action</em></span> is applied</t
 Available options:
 <ul><li><span class="notranslate">quarantine</span> – do not delete and move to quarantine</li>
 <li><span class="notranslate">notify</span> – do not delete and send email notification</li>
-<li><span class="notranslate">delete</span> – delete malicious file</li></ul></td></tr>
+<li><span class="notranslate">delete</span> – delete malicious file</li>
+<li><span class="notranslate">cleanup</span> – cleanup malicious file</li>
+<li><span class="notranslate">cleanup_or_quarantine</span> – choose what to do with a malicious file</li></ul></td></tr>
 <tr><td><span class="notranslate">enable_scan_inotify: false</span></td>
 <td># enable (<span class="notranslate">true</span>) or disable (<span class="notranslate">false</span>) real-time scanning for modified files using <a href="https://en.wikipedia.org/wiki/Inotify" target="_blank">inotify</a> library</td></tr>
 <tr><td><span class="notranslate">enable_scan_pure_ftpd: true</span></td>
@@ -74,6 +82,14 @@ Available options:
 <tr><td><span class="notranslate">enable_scan_modsec: true</span></td>
 <td>#  enable (<span class="notranslate">true</span>) or disable (<span class="notranslate">false</span>) real-time scanning of all the files
 that were uploaded via http/https. Note that it requires <a href="https://modsecurity.org" target="_blank">ModSecurity</a> to be installed</td></tr>
+<tr><td><span class="notranslate">max_signature_size_to_scan: 1048576</span></td>
+<td># max file size to scan in the standard mode; value is set in bytes</td></tr>
+<tr><td><span class="notranslate">max_cloudscan_size_to_scan: 10485760</span></td>
+<td># max file size to scan in the cloud-assisted (by hashes) mode; value is set in bytes</td></tr>
+<tr><td><span class="notranslate">max_mrs_upload_file: 10485760</span></td>
+<td># max file size to upload to CloudLinux malware research service; value is set in bytes</td></tr>
+<tr><td><span class="notranslate">detect_elf: false</span></td>
+<td>#  enable (<span class="notranslate">true</span>) or disable (<span class="notranslate">false</span>) (default value) binary (ELF) malware detection</td></tr>
 <tr>
 <th colspan="2" align="left"><span class="notranslate">CAPTCHA:</span></th></tr>
 <tr><td><span class="notranslate">cert_refresh_timeout: 3600</span></td>
@@ -124,17 +140,41 @@ to request CAPTCHA again</td></tr>
 <th colspan="2" align="left"><span class="notranslate">WEBSHIELD:</span></th></tr>
 <tr><td><span class="notranslate">known_proxies_support: true</span></td>
 <td># enable CDN support, treat IPs behind CDN as any other IPs</td></tr>
+<tr><td><span class="notranslate">enable: true</span></td>
+<td># enable (true) (default value) or disable (false) WebShield</td></tr>
 <tr>
 <th colspan="2" align="left"><span class="notranslate">PROACTIVE_DEFENСE:</span></th></tr>
 <tr><td><span class="notranslate">blamer: false</span></td>
 <td># enable (<span class="notranslate">true</span>) or disable (<span class="notranslate">false) Blamer</span></td></tr>
 <tr><td><span class="notranslate">mode: KILL</span></td>
 <td># available modes:<ul><li><span class="notranslate">KILL</span></li><li><span class="notranslate">DISABLED</span></li><li><span class="notranslate">LOG</span></li></ul></td></tr>
- </table>
-
-::: tip Experimental - <span class="notranslate">Active Response</span> feature
-The following feature requires a special Imunify360 build - contact our tech support at <span class="notranslate">https://cloudlinux.zendesk.com (Imunify360</span> department) to enable it.
-:::
+<tr>
+<th colspan="2" align="left"><span class="notranslate">MALWARE_SCAN_INTENSITY:</span></th></tr>
+<tr><td><span class="notranslate">cpu: 6</span></td>
+<td># intensity level for CPU consumption. Can be set from 1 to 7, default is 6</td></tr>
+<tr><td><span class="notranslate">io: 6</span></td>
+<td># intensity level for file operations. Can be set from 1 to 7, default is 6</td></tr>
+<tr>
+<th colspan="2" align="left"><span class="notranslate">MALWARE_SCAN_SCHEDULE:</span></th></tr>
+<tr><td><span class="notranslate">day_of_month: 4</span></td>
+<td># when the background scan shall start, day of the month. Can be from 1 to 31, the default value is the next day after the installation</td></tr>
+<tr><td><span class="notranslate">day_of_week: 0</span></td>
+<td># when the background scan shall start, day of the week. Can be from 0 to 7 (0 for Sunday, 1 for Monday..., 7 for Sunday (again)), the default value is 0</td></tr>
+<tr><td><span class="notranslate">hour: 3</span></td>
+<td># when the background scan shall start, hour. Can be from 0 to 23, the default value is 3</td></tr>
+<tr><td><span class="notranslate">interval: none</span></td>
+<td># interval of scan. Supported values: strings <span class="notranslate">`none`</span>, <span class="notranslate">`day`</span>, <span class="notranslate">`week`</span>, <span class="notranslate">`month`</span>, the default value is <span class="notranslate">`none`</span> (no scan)</td></tr>
+<tr>
+<th align="left"><span class="notranslate">PAM:</span></th>
+<th align="left"># effective way to prevent brute-force attacks against FTP/SSH</th></tr>
+<tr><td><span class="notranslate">enable: false</span></td>
+<td># enable (<span class="notranslate">true</span>) or disable (<span class="notranslate">false</span>) (default value) PAM brute-force attack protection</td></tr>
+<tr>
+<th align="left"><span class="notranslate">KERNELCARE:</span></th>
+<th align="left"># KernelCare extension for Imunify360 which allows tracing malicious invocations to detect privilege escalation attempts</th></tr>
+<tr><td><span class="notranslate">edf: false</span></td>
+<td># enable (<span class="notranslate">true</span>) or disable (<span class="notranslate">false</span>) (default value) exploit detection framework</td></tr>
+</table>
 
 <span class="notranslate">Active Response</span> is an ossec-driven (IDS) feature of Imunify360 which has been re-engineered to make it capable of blocking access to a specific server port being attacked.
 

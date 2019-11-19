@@ -1,7 +1,7 @@
-# Command-line Interface
+# Command-line Interface (CLI)
 
 
-For access to Imunify360 agent features from command-line interface, use the following command:
+For access to Imunify360 agent features from command-line interface (CLI), use the following command:
 
 <div class="notranslate">
 
@@ -45,7 +45,6 @@ Available commands:
 |<span class="notranslate">`infected-domains`</span>|Returns infected domain list|
 |<span class="notranslate">`malware`</span>|Allows to manage malware options|
 |<span class="notranslate">`migratedb`</span>|Check and repair database if it is corrupted|
-|<span class="notranslate">`plugins`</span>|Command for manipulating Imunify360 plugin|
 |<span class="notranslate">`register`</span>|Agent registration|
 |<span class="notranslate">`rstatus`</span>|Query the server to check if the license is valid|
 |<span class="notranslate">`rules`</span>|Allows user to manage disabled rules|
@@ -59,6 +58,7 @@ Available commands:
 |<span class="notranslate">`feature-management`</span>| manage Imunify360 features available for users|
 |<span class="notranslate">`feature-management native enable`<sup> Beta 4.0+ cPanel</sup></span>|activate the Native Features Management using WHM/cPanel package extensions.|
 |<span class="notranslate">`feature-management native disable`<sup> Beta 4.0+ cPanel</sup></span>|deactivate the Native Features Management using WHM/cPanel package extensions and return the original Imunify360 Features Management back.|
+|<span class="notranslate">`backup-systems`</span>|allows to manage CloudLinux Backup|
 
 Optional arguments for the commands:
 
@@ -196,6 +196,10 @@ where 12.34.56.78 is that specific IP address.
 
 This command allows to view or edit ports, IPs, and protocols in the list of blocked ports.
 
+:::tip Note
+Imunify360 can block particular ports using <span class="notranslate"> `blocked-port` </span> command, yet it doesn't support a paradigm to "block everything but the selected ports". That could be achieved via legacy linux iptables.
+:::
+
 Usage:
 
 <div class="notranslate">
@@ -246,7 +250,7 @@ imunify360-agent blocked-port add 5555:tcp --comment “Some comment”
 Allows to send domains list to check on Imunify360 central server. This command requires cPanel. After domains checked, the results is available via command <span class="notranslate">`infected-domains`</span>.
 
 ::: tip Note
-The server requires some time for checking and the results may not be ready immediately.
+<span class="notranslate">`check-domains`</span> command may take a few minutes to complete.
 :::
 Usage:
 
@@ -356,6 +360,10 @@ Allows to enable or disable additional CloudLinux software included in Imunify36
 * [KernelCare](https://www.kernelcare.com) – use `kernelcare` feature name
 * <span class="notranslate">[HardenedPHP](https://www.cloudlinux.com/hardenedphp)</span> – use <span class="notranslate">`hardened-php`</span> feature name
 * <span class="notranslate">Invisible Captcha</span> – use <span class="notranslate">`invisible-captcha`</span> feature name
+
+:::tip Note
+You cannot install arbitrary 3rd party components or anything besides the features listed above. Please, use legacy linux package installation process for that
+:::
 
 Usage:
 
@@ -623,7 +631,6 @@ Available commands:
 |<span class="notranslate">`on-demand`</span>| on-demand Scanner operations|
 |<span class="notranslate">`suspicious`</span>| malware Suspicious List operations|
 |<span class="notranslate">`cleanup status`</span>| show the status of the cleanup process|
-|<span class="notranslate">`hash`</span>| file hash white/blacklist related operations|
 |<span class="notranslate">`history list`</span>| lists the complete history of all malware-related incidents/actions (optional arguments available)|
  
 Optional arguments:
@@ -643,21 +650,6 @@ Optional arguments:
 |<span class="notranslate">`--by-scan-id BY_SCAN_ID`</span>|Return items with selected ID.|
 |<span class="notranslate">`--items ITEMS`</span>|Return selected items.|
 |<span class="notranslate">`--search SEARCH`</span>|Search query.|
-
-
-<span class="notranslate">`action`</span> is the second positional argument for <span class="notranslate">`hash`</span> and can be one of the following:
-
-| | |
-|-|-|
-|<span class="notranslate">`list`</span>|list <span class="notranslate">White/Black</span>-listed file hashes (optional arguments apply)|
-|<span class="notranslate">`add`</span>|add file hash(es) of the specified type|
-|<span class="notranslate">`remove`</span>| remove file hash(es) of the specified type|
-
-Positional arguments for <span class="notranslate">`add/remove`</span> are the list of SHA256 hashes calculated from the file contents
-
-The argument that specifies which kind of hashes to add/remove:
-
-<span class="notranslate">`--type`</span> - hash(es) type: <span class="notranslate">Black</span> or <span class="notranslate">White</span>
 
 
 <span class="notranslate">`action`</span> is the second positional argument for <span class="notranslate">`ignore`</span> and can be one of the following:
@@ -701,9 +693,8 @@ The optional arguments for <span class="notranslate">`on-demand start`</span> ar
 |<span class="notranslate">`--follow-symlinks`</span>|
 |<span class="notranslate">`--no-follow-symlinks`</span>|
 |<span class="notranslate">`--file-mask FILE_MASK`</span>|
-|<span class="notranslate">`--hash-filter`</span>|
-|<span class="notranslate">`--no-hash-filter`</span>|
-|<span class="notranslate">`--intensity {low,moderate,high}`</span>|
+|<span class="notranslate">`--intensity-cpu {1 to 7}`</span> 1 means the lowest intensity, 7 means the highest intensity|
+|<span class="notranslate">`--intensity-io {1 to 7}`</span> 1 means the lowest intensity, 7 means the highest intensity|
 
 <span class="notranslate">`action`</span> is the second positional argument for <span class="notranslate">`suspicious`</span> and can be one of:
 
@@ -716,16 +707,7 @@ The optional arguments for <span class="notranslate">`on-demand start`</span> ar
 
 **Examples**
 
-1. The following command adds a hash to the malware <span class="notranslate">Black List</span>:
-
-<div class="notranslate">
-
-```
-imunify360-agent malware hash add --type black ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad
-```
-</div>
-
-2. The following command starts on-demand scanner for the path specified after the <span class="notranslate">`start`</span> command:
+1. The following command starts on-demand scanner for the path specified after the <span class="notranslate">`start`</span> command:
 
 <div class="notranslate">
 
@@ -734,7 +716,16 @@ imunify360-agent malware on-demand start --path /home/<username>/public_html/
 ```
 </div>
 
- 
+2. The following command shows the example of the <span class="notranslate">`ignore-mask`</span> usage when you have to scan all `d*` folders except for the <span class="notranslate">`dixon77w.com`</span> and <span class="notranslate">`dunnrrr.com`</span>:
+
+<div class="notranslate">
+
+```
+imunify360-agent malware on-demand start --path='/var/www/vhosts/d*' --ignore-mask='/var/www/vhosts/dixon77w.com/*,/var/www/vhosts/dunnrrr.com/*'
+```
+</div>
+
+
 <div class="notranslate">
 
 ## Migratedb
@@ -764,40 +755,6 @@ Optional arguments:
 |<span class="notranslate">`--help, -h`</span>|show this help message|
 
 
-<div class="notranslate">
-
-## Plugins
-
-</div>
-
-Command for manipulating Imunify360 plugins.
-
-Usage:
-
-<div class="notranslate">
-
-```
-imunify360-agent [command]
-```
-
-</div>
-
-<span class="notranslate">`command`</span> is a positional argument and can be:
-
-| | |
-|-|-|
-|<span class="notranslate">`enable-plugin`</span>|Enable Imunify360 plugin.|
-|<span class="notranslate">`disable-plugin`</span>|Disable Imunify360 plugin.|
-
-Optional arguments:
-
-| | |
-|-|-|
-|<span class="notranslate">`-h, --help`</span>|Show this help message.|
-|<span class="notranslate">`--json`</span>|Return data in JSON format.|
-|<span class="notranslate">`--verbose, -v`</span>|Return data in good-looking view if option <span class="notranslate">`--json`</span> is used.|
-
- 
 <div class="notranslate">
 
 ## Register
@@ -1450,3 +1407,101 @@ Imunify360 will keep applying users <span class="notranslate">Features Managemen
 ::: warning Warning
 <span class="notranslate">`feature-management enable/disable --feature av`</span> and <span class="notranslate">`feature-management enable/disable --feature proactive`</span> commands will start functioning.
 :::
+
+
+## Backup systems
+
+Allows to manage backup systems integrated to Imunify360.
+
+**Usage:**
+
+<div class="notranslate">
+
+```
+imunify360-agent backup-systems [command] <value>
+```
+</div>
+
+<span class="notranslate">`command`</span> is a positional argument and can be:
+| | |
+|-|-|
+|<span class="notranslate">`list`</span>|List of all available backup systems.|
+|<span class="notranslate">`status`</span>|Returns backup system status including a current backup system and enabling status.|
+|<span class="notranslate">`extended-status`</span>|Returns extended status including log file path, error on executing, current backup system, enabling status, current state, and current backup progress bar.|
+|<span class="notranslate">`init`</span>|<span class="notranslate">`<value>`</span> must be in the list of available backup systems. Initializes <span class="notranslate">`<value>`</span> backup system.|
+|<span class="notranslate">`disable`</span>|Disables backup system.|
+|<span class="notranslate">`check`</span>|Returns licenses info.|
+
+The <span class="notranslate">`status`</span> command returns <span class="notranslate">`{'<key>': <value>}`</span> (<span class="notranslate">JSON</span> formatted):
+
+|Key|Value|
+|-|-|
+|<span class="notranslate">`backup_system`</span>|<span class="notranslate">Str</span> with the name of the currently enabled backup system.|
+|<span class="notranslate">`enabled`</span>|If backups are enabled — <span class="notranslate">`True`</span>, else — <span class="notranslate">`False`</span>.|
+
+The <span class="notranslate">`extended-status`</span> command returns <span class="notranslate">`{'<key>': <value>}`</span> (<span class="notranslate">JSON</span> formatted):
+
+|Key|Value|
+|-|-|
+|<span class="notranslate">`log_path`</span>|<span class="notranslate">Str</span> with the path to the log file.|
+|<span class="notranslate">`error`</span>|<span class="notranslate">Str</span> with a human-friendly error message.|
+|<span class="notranslate">`backup_system`</span>|<span class="notranslate">Str</span> with the name of the currently enabled backup system.|
+|<span class="notranslate">`enabled`</span>|If backups are enabled — <span class="notranslate">`True`</span>, else — <span class="notranslate">`False`</span>.|
+|<span class="notranslate">`state`</span>|<span class="notranslate">Str</span> with the current running condition. Statuses: <span class="notranslate">`not_running`, `init`, `backup`, `done`, `unpaid`</span>.|
+|<span class="notranslate">`progress`</span>|This key is optional. It represents the progress of backup if it is running.|
+
+The <span class="notranslate">`check`</span> command returns <span class="notranslate">`{'<key>': <value>}`</span> (<span class="notranslate">JSON</span> formatted):
+
+|Key|Value|
+|-|-|
+|<span class="notranslate">`status`</span>|<span class="notranslate">Str</span> with the license status. Statuses: <span class="notranslate">`paid`, `unpaid`</span>.|
+|<span class="notranslate">`size`</span>|<span class="notranslate">Int</span>, which represents a paid size of backups in GB. E.g. <span class="notranslate">`'size': 10`</span> means that you paid for 10GB.|
+
+
+**Examples:**
+
+1. The following command prints a list of all available backup systems:
+   
+<div class="notranslate">
+
+   ```
+   $ imunify360-agent backup-systems list
+   acronis 
+   r1soft 
+   cloudlinux
+   ```
+</div>
+
+2. The following command initializes CloudLinux backup system:
+
+<div class="notranslate">
+
+   ```
+   $ imunify360-agent backup-systems init cloudlinux
+   Backup initialization process is in progress
+   ```
+</div>
+
+3. The following command checks if the CloudLinux backup system is connected:
+
+<div class="notranslate">
+
+   ```
+   $ imunify360-agent backup-systems check cloudlinux
+   {'url': 'https://cln.cloudlinux.com/clweb/cb/buy.html?id=YourServerIdHere', 'status': 'unpaid'}
+   ```
+</div>
+
+At first, it shows that it isn't, so you should open the URL from the JSON response in the browser to activate the backup. Once this is done, it shows in the CLN.
+
+Run the check again and now it returns the size and that the backup has been paid for.
+
+<div class="notranslate">
+
+   ```
+   $ imunify360-agent backup-systems check cloudlinux
+   {'size': 10, 'status': 'paid'}
+   ```
+</div>
+
+The above commands create a new cloudlinuxbackup.com account and link that account to this server after following the link and confirming the payment of $0.00 for free 10GB.

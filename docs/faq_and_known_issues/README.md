@@ -52,18 +52,6 @@ defence360agent.plugins.protector.lazy_init: IP 10.101.1.18 is UNBLOCKED
 
 Adding and removing IPs from the <span class="notranslate">White List</span> is only possible manually, no IPs will be added automatically.
 
-### 4. Comodo WAF has a lot false positive and trigger the CSF blocking, will Imunify360 improve it?
-
-CSF only blocks IPs by <span class="notranslate">mod_security</span> if <span class="notranslate">mod_security</span> configured with <span class="notranslate">`SecRuleEngine On`</span>. Imunify360 works a bit differently: it uses <span class="notranslate">`SecRuleEngine DetectionOnly`</span> in <span class="notranslate">mod_security</span> configuration and only blocks by <span class="notranslate">mod_security</span> events with high severity, thus decreasing false positives rate.
-
-In some cases <span class="notranslate">mod_security</span> needs to be configured not to cause blocks by csf/lfd.
-
-Possible solutions are:
-
-* Set <span class="notranslate">`SecRuleEngine`</span> to <span class="notranslate">`DetectionOnly`</span> – this way CSF will not block IPs by <span class="notranslate">mod_security</span> events and Imunify360 will still block by <span class="notranslate">mod_security</span> events with high severity (preferable way).
-
-* In <span class="notranslate">`/etc/csf/csf.conf`</span> set <span class="notranslate">`LF_MODSEC`</span> to `0` so that CSF will ignore <span class="notranslate">mod_security</span> events and Imunify360 will still block IPs as described above. But note that in this case requests causing <span class="notranslate">mod_security</span> events will still be blocked by <span class="notranslate">mod_security</span> itself.
-
 ### 5. To start using Imunify360 we need to know which information is sent to your servers. Could you please give us some more information?
 
 The following info is sent to our server:
@@ -236,3 +224,85 @@ OR, **better**, run the following command:
 ```
 imunify360-agent config update '{"PERMISSIONS": {"user_ignore_list": false}}'
 ```
+
+### 13. How to delete malware scan results from Imunify360’s database?
+
+Sometimes, you may need to delete all users’ scan results from the server. This should not be common practice, and we do not recommend doing it on a regular basis. But, if you do need to erase the results of all Imunify360 scans, you can find the instructions below.
+
+1. First, you need to stop the agent:
+
+<div class="notranslate">
+
+```
+systemctl stop imunify360
+```
+</div>
+
+(on CentOS 7)
+<div class="notranslate">
+
+```
+service imunify360 stop
+```
+</div>
+
+(on CentOS 6, Ubuntu)
+
+2. Connect to the Imunify360 database by running this command:
+
+<div class="notranslate">
+
+```
+sqlite3 /var/imunify360/imunify360.db
+```
+</div>
+
+3. Execute the following SQL commands:
+
+:::danger IMPORTANT
+This will remove all scan results from Imunify360!
+:::
+
+<div class="notranslate">
+
+```
+DELETE FROM malware_history;
+DELETE FROM malware_hits;
+DELETE FROM malware_scans;
+DELETE FROM malware_user_infected;
+```
+</div>
+
+4. Start the Imunify360 service:
+
+<div class="notranslate">
+
+```
+systemctl start imunify360
+```
+</div>
+
+(on CentOS 7)
+<div class="notranslate">
+
+```
+service imunify360 start
+```
+</div>
+
+(on CentOS 6, Ubuntu)
+
+We don’t recommend cleaning the scan results for specific users, as it may cause inconsistencies in the <span class="notranslate"> `malware_scans` </span> table. But, in emergencies, you can do it with these SQL commands:
+
+<div class="notranslate">
+
+```
+DELETE FROM malware_history WHERE file_onwer = <user>;
+DELETE FROM malware_hits WHERE user = <user>;
+DELETE FROM malware_user_infected WHERE user = <user>;
+```
+</div>
+
+Unfortunately, there’s no easy way to delete records in the <span class="notranslate"> `malware_scans` </span> table for a specific user, so the table should be either truncated with the other tables shown in step 2 above, or the records should just be ignored.
+
+If you need any more information on this or anything else related to Imunify360 administration, please [get in touch](mailto:feedback@imunify360.com) .

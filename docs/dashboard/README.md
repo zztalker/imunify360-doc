@@ -49,32 +49,25 @@ A support ticket will be created and an email will be sent to a specified email 
 
 <div class="notranslate">
 
-## Dashboard
+## Dashboard <Badge text="4.0+"/>
 
 </div>
 
 You can access the Imunify360 Dashboard from your control panel. It shows security events as charts and heat maps.
 It's a great way to analyze incidents that happened within the past day, week or month.
 
-:::tip Note
-Beta 4.0 and later
-:::
-
 Click <span class="notranslate">_Dashboard_</span> tab to display an overview of incidents recorded during the selected time interval, an estimate of the intensity of attacks, and correlate events across all sources.
 
-![](/images/DashboardGeneral2.png)
+![](/images/DashboardGeneral3.png)
 
 Here you can see notifications about server security and Imunify360 configuration, along with recommendations for making server security effective and proactive.
 
 <div class="notranslate">
 
-### Multi-server Dashboard 
+### Multi-server Dashboard <Badge text="4.1+"/>
 
 </div>
 
-:::tip Note
-Beta 4.1 and later
-:::
 
 Starting from Imunify360 version 4.1, the <span class="notranslate">Dashboard</span> can display Imunify360 performance data for a number of specified servers. 
 * You can add a specified server using its server key – a unique server id that identifies an installed Imunify360 instance.
@@ -84,6 +77,7 @@ Starting from Imunify360 version 4.1, the <span class="notranslate">Dashboard</s
     :::
 * You can easily remove a server from the Dashboard.
 * You can use <span class="notranslate">_Server_</span> drop-down to show a list of all servers added into the Dashboard.
+* You can choose in the multi-server drop-down for which server the Dashboard would represent its data: a current server (where the Imunify360 is installed) or a remote one (it is indicated on the Dashboard).
 
 ![](/images/dashboard_servers2.png)
 
@@ -484,9 +478,15 @@ You will see a notification if an IP is successfully removed.
 
 ![](/images/success_01_zoom75.png)
 
+See also: [How to use external files with the list of Black/White IPs](/firewall_config/#external-black-whitelist-management)
+
 ### Blocked Ports
 
 This feature allows to block specific ports for TCP/UDP connection. It is also possible to add specific IPs or subnet as a whitelisted so that the rule for the port will not work.
+
+:::tip Note
+Imunify360 can block particular ports using this feature, yet it doesn't support a paradigm to "block everything but the selected ports". That could be achieved via legacy linux iptables.
+:::
 
 Click <span class="notranslate">_Lists_</span> and choose <span class="notranslate">_Blocked Ports_</span>.
 
@@ -634,7 +634,12 @@ The table has the following columns:
 * <span class="notranslate">**Detected**</span> — displays the exact time when a file was detected as malicious.
 * <span class="notranslate">**User name**</span> — displays file owner name.
 * <span class="notranslate">**File**</span> — the path where the file is located starting with root
-* <span class="notranslate">**Reason**</span> — describes the signature which was detected during the scanning process. Names in this column depend on the signature vendor.
+* <span class="notranslate">**Reason**</span> — describes the signature which was detected during the scanning process. Names in this column depend on the signature vendor. You can derive some information from the signature ID itself. `SMW-SA-05155-wshll` – in this Signature ID:
+	* The first section can be either `SMW` or `CMW`. `SMW` stands for Server Malware and `CMW` stands for Client Malware
+	* The second section of ID can be either `INJ` or `SA`. `INJ` stands for Injection (means Malware is Injected to some legitimate file) and `SA` stands for StandAlone (means File is Completely Malicious)
+	* The third section is `05155`. This is simply an identification number for the signature.
+	* The fourth section `wshll/mlw.wp/etc` explains the category and class of malware identified. Here, `wshll` stands for web shell (`mlw` stands for malware).
+	* The fifth section is `0`, which provides the version number of the signature.
 * <span class="notranslate">**Status**</span> — displays the file status:
   * <span class="notranslate">**Infected**</span> — threat was detected after scanning. If a file was not cleaned after cleanup, the info icon is displayed. Hover mouse over info icon to display the reason;
   * <span class="notranslate">**Cleaned**</span> —  infected file is cleaned up.
@@ -701,11 +706,11 @@ After <span class="notranslate">Malware Scanner</span> stops on-demand scanning 
 
 * <span class="notranslate">_Date_</span> – the date when the scanning process was started.
 * <span class="notranslate">_Path_</span> – the name of the folder that was scanned.
-* <span class="notranslate">_Total_</span> – the total number of files scanned.
-* <span class="notranslate">_Malicious_</span> – the number of malicious files found during the scanning.
-* <span class="notranslate">_Action_</span> – click icon in this column to perform particular actions.
+* <span class="notranslate">_Total files_</span> – the total number of files scanned.
+* <span class="notranslate">_Result_</span> – the result of scanning.
+* <span class="notranslate">_Actions_</span> – click icon in this column to perform particular action.
 
-![](/images/malwarescannerondemand_zoom70.png)
+![](/images/MalwareScannerResults.png)
 
 To review and manage malicious files go to the <span class="notranslate">_Files_</span> tab described below.
 
@@ -950,7 +955,13 @@ die();
 
 Choose <span class="notranslate">_Reputation Management_</span> in the main menu of the Imunify360 user interface to get to the <span class="notranslate">Reputation Management</span> page.
 
-Based on the [Google Safe Browsing](https://safebrowsing.google.com/), the <span class="notranslate">Reputation Management</span> allows to check if a domain registered on your server is safe or not.
+<span class="notranslate">Reputation Management</span> allows to check if a domain registered on your server is safe or not based on the following reputation engines:
+
+* [Google Safe Browsing](https://safebrowsing.google.com/)
+* [Yandex Safe Browsing](https://tech.yandex.com/safebrowsing/)
+* [Spamhaus](https://www.spamhaus.org/)
+* [PhishTank](https://www.phishtank.com/)
+* [OpenPhish](https://openphish.com/).
 
 How does it work:
 
@@ -959,7 +970,7 @@ How does it work:
 * Get results from it
 * Add bad domains to the list of <span class="notranslate">Reputation Management</span>
 
-If a domain or an IP is blocked, then this information will be available in the table below. Imunify360 uses [Google Safe Browsing](https://safebrowsing.google.com/) technology. If a user’s website appears in this table, then it would be useful to send [this link](https://developers.google.com/webmasters/hacked/) to the user. This instruction can help to solve problems with the domain.
+If a domain or an IP is blocked, then this information will be available in the table below. If a user’s website appears in this table, then it would be useful to send [this link](https://developers.google.com/webmasters/hacked/) to the user. This instruction can help to solve problems with the domain.
 
 At the top of the page (also in the main menu near <span class="notranslate">Reputation Management</span> item), Imunify360 shows the number of affected domains. This number is a quantity of affected domains that exist on the server.
 
@@ -1027,12 +1038,14 @@ The following tabs are available:
 Go to <span class="notranslate">_Imunify360 → Settings → General_</span>. The following sections are available:
 
 * <span class="notranslate">[Installation](/dashboard/#installation)</span>
+* <span class="notranslate">[WAF Settings](/dashboard/#waf-settings)</span>
 * <span class="notranslate">[DoS Protection](/dashboard/#dos-protection)</span>
 * <span class="notranslate">[3-rd Party Integration](/dashboard/#_3-rd-party-integration)</span>
 * <span class="notranslate">[Auto White List](/dashboard/#auto-white-list)</span>
 * <span class="notranslate">[Incidents Logging](/dashboard/#incidents-logging)</span>
 * <span class="notranslate">[WebShield](/dashboard/#webshield)</span>
 * <span class="notranslate">[OSSEC](/dashboard/#ossec)</span>
+* <span class="notranslate">[PAM](/dashboard/#pam)</span>
 * <span class="notranslate">[Error Reporting](/dashboard/#error-reporting)</span>
 * <span class="notranslate">[Contact Details](/dashboard/#contact-details)</span>
 
@@ -1091,12 +1104,52 @@ To install or uninstall KernelCare click on a button related. Please find additi
 ::: tip Note
 KernelCare is free on the servers with Imunify360 installed.
 :::
+
+#### Privilege escalation detection & protection <sup><Badge text="beta" type="warn"/> <Badge text="4.4+"/></sup>
+
+The KernelCare extension for Imunify360 allows tracing malicious invocations to detect privilege escalation attempts.
+
+Starting from Imunify360 version 4.4, you can find these attempts on the [Incidents tab](/dashboard/#incidents) (as part of the OSSEC log). The incidents can be seen by filtering events with the `EDF` label. 
+
+To enable the feature, tick the <span class="notranslate">_Privilege escalation detection & protection_</span> checkbox.
+
+![](/images/pep_kernelcare.png)
+
+Or you can enable it via CLI using the following command:
+
+<div class="notranslate">
+
+```
+imunify360-agent config update '{"KERNELCARE": {"edf": true}}'
+```
+</div>
+
+
+Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
+
+#### WAF Settings
+
+When the <span class="notranslate">_Minimized ModSec Ruleset_</span> option is on, it disables Imunify WAF rules with a high memory footprint, yet leaves critical ruleset enabled. It is recommended for the servers with a small amount of RAM. It is enabled by default for the installations with low RAM.
+
+You can switch back to the normal mode by enabling WebShield or unchecking <span class="notranslate">_Minimized ModSec Ruleset_</span> in Settings | General | WAF Settings
+
+
+![](/images/waf_settings.png)
+
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
 
 #### DoS Protection
 
-<span class="notranslate">DoS Protection</span> section allows to enable or disable DoS protection. DoS protection works by counting connections from each remote IP address per local port separately.
-Tick checkbox <span class="notranslate">_Enable Dos Protection_</span>.
+<span class="notranslate">DoS Protection</span> section allows to enable or disable DoS protection. DoS protection works by counting connections from each remote IP address per local port separately. Starting from Imunify360 4.4 beta it is enabled by default for all new installations.
+To enable/disable it, tick the <span class="notranslate">_Enable Dos Protection_</span> checkbox. Or you can enable it using the following CLI command:
+
+<div class="notranslate">
+
+```
+imunify360-agent config update '{"DOS": {"enabled": true}}'
+```
+</div>
+
 It is possible to configure how Imunify360 will behave:
 
 * <span class="notranslate">_Max Connections_</span>– allows to setup the number of simultaneous connections allowed before IP will be blocked. Cannot be set lower than 100.
@@ -1163,9 +1216,31 @@ Click <span class="notranslate">_Save changes_</span> button on the bottom of th
 	
 #### WebShield
 
-Tick <span class="notranslate">_Detect IPs behind CDN_</span> checkbox to allow to recognize and block IPs with suspicious activity behind Cloudflare and MaxCDN.
-	
+<span class="notranslate">_Detect IPs behind CDN_</span> feature allows to recognize and block IPs with suspicious activity behind supported CDN providers.
+
+Starting from Imunify360 4.4 beta it is enabled by default for all new installations.
+
+To enable/disable it, tick the <span class="notranslate">_Detect IPs behind CDN_</span> checkbox.
+
 ![](/images/webshield.png)
+
+Or you can enable it using the following CLI command:
+
+<div class="notranslate">
+
+```
+imunify360-agent config update '{"WEBSHIELD": {"known_proxies_support": true}}'
+```
+</div>
+
+Supported CDN providers:
+
+* Cloudflare
+* MaxCDN
+* StackPath CDN
+* KeyCDN
+* Dartspeed.com
+* QUIC.cloud CDN
 
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
 
@@ -1178,6 +1253,23 @@ The purpose of the feature is significantly reducing false positive rate while i
 
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
 
+#### PAM <sup><Badge text="beta" type="warn"/> <Badge text="4.4+"/></sup>
+
+Tick the <span class="notranslate">_PAM brute-force attack protection_</span> checkbox to enable an advanced brute-force protection technique based on the combination of PAM module authorization, RBL check and IP blacklisting. 
+	
+![](/images/pam_module.png)
+
+Or you can enable it via CLI with the following command:
+
+<div class="notranslate">
+
+```
+imunify360-agent config update '{"PAM": {"enabled": true}}'
+```
+</div>
+
+Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
+
 #### Error Reporting
  
 Tick <span class="notranslate">_Enable Sentry error reporting_</span> checkbox to send reports to Imunify360 error reports server.
@@ -1186,11 +1278,7 @@ Tick <span class="notranslate">_Enable Sentry error reporting_</span> checkbox t
 
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
 
-#### **Contact Details**
-
-:::tip Note
-Imunify360 version 4.1 Beta
-:::
+#### Contact Details <sup><Badge text="4.1+"/></sup>
  
 Type your email into the <span class="notranslate">_Email_</span> field to receive email reports about critical issues, security alerts or system misconfigurations detected on your servers.
 
@@ -1204,9 +1292,8 @@ Click <span class="notranslate">_Save changes_</span> button at the bottom of th
 
 ### Malware
 
-Go to <span class="notranslate">Imunify360 | Settings | Malware</span>. 
-
 Here you can configure the following:
+* <span class="notranslate">Resource consumption</span>
 * <span class="notranslate">General</span>
 * <span class="notranslate">Background Scanning</span><sup> Beta 4.1+</sup>
 * <span class="notranslate">Malware Cleanup</span><sup> 3.7.1+</sup>
@@ -1216,9 +1303,25 @@ Here you can configure the following:
 ::: tip Note
 Read [CXS integration](/ids_integration/#cxs-integration) documentation carefully to make Malware Scanner work properly if you decided to use the former instead of Imunify360 anti-malware protection.
 :::
+
+
+**Resource consumption**
+
+![](/images/SettingsMalwareResourceConsumption.png)
+
+* <span class="notranslate">_CPU consumption_</span> – enables to set a level of CPU usage by Malware Scanner.
+    ::: tip Note
+    Low CPU usage means low scanning speed
+    :::
+* <span class="notranslate">_I/O consumption_</span> – enables to set a level of I/O usage by Malware Scanner.
+    :::tip Note
+    Low I/O usage means low scanning speed
+    :::
+
+
 **General**
 
-![](/images/SettingsMalware.png)
+![](/images/SettingsMalware2.png)
 
 * <span class="notranslate">_Automatically scan all modified files_</span> – enables real-time scanning for modified files using [inotify](https://en.wikipedia.org/wiki/Inotify) library. The Scanner searches for modified files in user’s DocumentRoot directories.
   ::: tip Note
@@ -1233,17 +1336,26 @@ Read [CXS integration](/ids_integration/#cxs-integration) documentation carefull
   It requires [Pure-FTPd](https://www.pureftpd.org/project/pure-ftpd) to be used as FTP service.
   :::
 * <span class="notranslate">_Automatically send suspicious and malicious files for analysis_</span> – malicious and suspicious files will be sent to the Imunify360 Team for analysis automatically.
-* <span class="notranslate">_Show ClamAV scanning results_</span> – show ClamAV scanning results in <span class="notranslate">_Users/Files_</span> tab.
 * <span class="notranslate">_Try to restore from backup first_</span> – allows to restore file as soon as it was detected as malicious from backup if a clean copy exists. If a clean copy does not exist or it is outdated, default action will be applied. See also <span class="notranslate">[CloudLinux Backup](/dashboard/#backups)</span>.
 * <span class="notranslate">_Use backups not older than (days)_</span> – allows to set the a maximum age of a clean file.
 * <span class="notranslate">_Default action on detect_</span> – configure Malware Scanner actions when detecting malicious activity:
   * <span class="notranslate">Delete permanently</span>
-  * <span class="notranslate">Quarantine file in place</span>
+  * <span class="notranslate">Quarantine file</span>
   * <span class="notranslate">Just display in dashboard</span>
+  * <span class="notranslate">Cleanup</span>
+  * <span class="notranslate">Cleanup, Quarantine as a fallback</span>
+
+
+:::tip Note
+Those options may be hidden for end-user if Cleanup is disabled in Features Management.
+:::
+
+* <span class="notranslate">_RapidScan_</span> – dramatically speeds up repeated scans based on smart re-scan approach, local result caching and cloud-assisted scan. When you first enable the RapidScan feature, the first scan will run as before. But subsequent scans will see a dramatic speed improvement, anywhere between 5 to 20 times faster. You can find details [here](/features/#rapidscan).
+* <span class="notranslate">_Binary (ELF) malware detection_</span> <sup>Beta</sup> <sup>4.4+</sup> – this option allows to scans user home directories for malware. It’s disabled in Imunify360 version 4.4 by default.
 
 Tick required checkboxes and click <span class="notranslate">_Save changes_</span> button.
 
-#### **Background Scanning<sup> Beta 4.1</sup>**
+#### Background Scanning
 
 Allows to set up automatic, scheduled, background scanning of user accounts.
 
@@ -1266,7 +1378,7 @@ Depending on the selected period, precise settings.
 You can track the scanning activity at the <span class="notranslate">[Malware Scanner](#malware-scanner)</span> tab.
 
 
-**Cleanup<sup>3.7.1+</sup>**
+#### Cleanup <sup><Badge text="3.7.1+" type="tip"/></sup>
 
 * <span class="notranslate">_Trim file instead of removal_</span> — do not remove infected file during cleanup but make the file zero-size (for malwares like web-shells);
 * <span class="notranslate">_Keep original files for … days_</span> — the original infected file is available for restore within the defined period. Default is 14 days.
@@ -1274,7 +1386,7 @@ You can track the scanning activity at the <span class="notranslate">[Malware Sc
 ![](/images/malwarescannersettings_zoom70.png)
 
 
-**Proactive Defense<sup> 4.0+</sup>**
+#### Proactive Defense <sup><Badge text="4.2+" type="tip"/></sup>
 
 * <span class="notranslate">_Enable Blamer_</span> — tick to allow Imunify360 to find a root cause of how infection got injected into the server through PHP. Blamer pinpoints exact URL, PHP script & PHP execution path that allowed a hacker to inject malware onto the server.
 Imunify360 security team will use that information to prevent future infections from happening.
@@ -1283,11 +1395,11 @@ Imunify360 security team will use that information to prevent future infections 
 
 Click <span class="notranslate">_Save changes_</span> button at the page bottom to apply all changes.
 
+To reduce the number of blamer events, similar events are combined by default into a single one. In order to disable it, specify <span class="notranslate"> `filter_messages=off` </span>
+in <span class="notranslate"> _/usr/share/i360-php-opts/module.ini_ </span>
+
 ### Backups
 
-::: tip Note
-Imunify360 2.7.0+
-:::
 #### Overview
 
 Imunify360 provides customers with an ability to integrate with backup providers and automatically or manually restore files from their backup if they have become infected. Only administrator can choose backup provider but end user has an ability to backup and restore files within this selected backup provider.

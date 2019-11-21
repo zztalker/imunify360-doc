@@ -31,12 +31,12 @@ There are some basic steps to run Imunify360
 #### How to configure the Imunify360 UI
 
 Create the file `/etc/sysconfig/imunify360/integration.conf` with a
-`UI_PATH` option defining the path that will serve web-based UI. For
+`ui_path` option defining the path that will serve web-based UI. For
 example:
 
 ``` ini
-[PATHS]
-UI_PATH = /var/www/vhosts/imunify360/imunify360.hosting.example.com/html/im360
+[paths]
+ui_path = /var/www/vhosts/imunify360/imunify360.hosting.example.com/html/im360
 ```
 
 Imunify360 will automatically copy UI files there during installation/upgrade.
@@ -44,7 +44,7 @@ Imunify360 will automatically copy UI files there during installation/upgrade.
 ::: tip Note
 Ensure that the domain you are going to use for the Imunify360
 web-based UI refers to this path, and that there are no other scripts
-or files under `UI_PATH`, as they might be overridden by the Imunify360
+or files under `ui_path`, as they might be overridden by the Imunify360
 installation.
 :::
 
@@ -199,7 +199,7 @@ domains = /path/to/get-domains-script.sh
 
 It should point to an executable file that generates a json file similar to:
 
-<!-- it extends Cloudlinux OS `domains` script output
+<!-- it identical to Cloudlinux OS `domains` script output
 https://docs.cloudlinux.com/control_panel_integration/#domains
 -->
 
@@ -210,13 +210,11 @@ https://docs.cloudlinux.com/control_panel_integration/#domains
       "document_root": "/home/username/public_html/",
       "is_main": true,
       "owner": "username",
-      "web_server_config_path": "/path/to/example.com/specific/config/to/include",
     },
     "subdomain.example.com": {
       "document_root": "/home/username/public_html/subdomain/",
       "is_main": false,
       "owner": "username",
-      "web_server_config_path": "/path/to/subdomain.example.com/specific/config/to/include",
     }
   },
   "metadata": {
@@ -289,31 +287,31 @@ imunify360 is installed (which creates the file).
 
 Set in `integration.conf`:
 
-- `[WEB_SERVER].SERVER_TYPE`​ -- `apache`/`litespeed`
-- `[WEB_SERVER].GRACEFUL_RESTART_SCRIPT​` -- a script that restarts the
+- `[web_server].server_type`​ -- `apache`/`litespeed`
+- `[web_server].graceful_restart_script​` -- a script that restarts the
    web server to be called after any changes in web-server config or modsec rules.
-- `[WEB_SERVER].MODSEC_AUDIT_LOG`​ -- path to ModSecurity audit log file
-- `[WEB_SERVER].MODSEC_AUDIT_LOGDIR​` -- path to ModSecurity audit log dir
+- `[web_server].modsec_audit_log`​ -- path to ModSecurity audit log file
+- `[web_server].modsec_audit_logdir​` -- path to ModSecurity audit log dir
 
 Example:
 
 ``` ini
-[WEB_SERVER]
-SERVER_TYPE = apache
-GRACEFUL_RESTART_SCRIPT = /path/to/a/script/that/restarts/web-server/properly
-MODSEC_AUDIT_LOG = /var/log/httpd/modsec_audit.log
-MODSEC_AUDIT_LOGDIR = /var/log/modsec_audit
+[web_server]
+server_type = apache
+graceful_restart_script = /path/to/a/script/that/restarts/web-server/properly
+modsec_audit_log = /var/log/httpd/modsec_audit.log
+modsec_audit_logdir = /var/log/modsec_audit
 ```
 
 
 ##### How to configure ModSecurity domain level integration
 
 To enable domain-specific ModSecurity configuration, specify
-`MODSEC_DOMAIN_CONFIG_SCRIPT` in `integration.conf`:
+`modsec_domain_config_script` in `integration.conf`:
 
 ``` ini
-[WEB_SERVER]
-MODSEC_DOMAIN_CONFIG_SCRIPT=/path/to/inject/domain/specific/config/script.sh
+[web_server]
+modsec_domain_config_script = /path/to/inject/domain/specific/config/script.sh
 ```
 
 It should point to an executable file that accepts as an input a list
@@ -353,10 +351,10 @@ To scan files for changes (to detect malware) using inotify, configure
 which directories to watch and which to ignore in the
 `integration.conf` file:
 
-- configure `[MALWARE].BASEDIR` -- a root directory to watch (recursively)
-- configure `[MALWARE].PATTERN_TO_WATCH` -- only directories that match this
+- configure `[malware].basedir` -- a root directory to watch (recursively)
+- configure `[malware].pattern_to_watch` -- only directories that match this
   ([Python](https://docs.python.org/3/howto/regex.html#regex-howto))
-  regex in the `BASEDIR` are actually going to be watched
+  regex in the `basedir` are actually going to be watched
 
 
 Examples for already supported panels:
@@ -364,26 +362,26 @@ Examples for already supported panels:
 - cPanel
 
 ``` ini
-BASEDIR = /home
-PATTERN_TO_WATCH = ^/home/.+?/(public_html|public_ftp|private_html)(/.*)?$
+basedir = /home
+pattern_to_watch = ^/home/.+?/(public_html|public_ftp|private_html)(/.*)?$
 ```
 - DirectAdmin
 
 ``` ini
-BASEDIR = /home
-PATTERN_TO_WATCH = ^/home/(.+?|.+?/domains/.+?)/(public_html|public_ftp|private_html)(/.*)?$
+basedir = /home
+pattern_to_watch = ^/home/(.+?|.+?/domains/.+?)/(public_html|public_ftp|private_html)(/.*)?$
 ```
 -  Plesk
 
 ``` ini
-BASEDIR = /var/www/vhosts/
-PATTERN_TO_WATCH = ^/var/www/vhosts/.+?(?<!/.skel|/chroot|/default|/system)(/.+?(?<!/logs|/bin|/chroot|/other-from-VHOST_IGNORE)(/.*)?)?$
+basedir = /var/www/vhosts/
+pattern_to_watch = ^/var/www/vhosts/.+?(?<!/.skel|/chroot|/default|/system)(/.+?(?<!/logs|/bin|/chroot|/other-from-VHOST_IGNORE)(/.*)?)?$
 ```
 
 
 #### How  to open Imunify360 UI Once Imunify360 is installed
 
-The web-based UI is available via the domain configured in `UI_PATH`.
+The web-based UI is available via the domain configured in `ui_path`.
 
 For example, if
 `/var/www/vhosts/imunify360/imunify360.hosting.example.com/html/im360`
@@ -398,7 +396,7 @@ certificate configured for the domain) or
 
 `integration.conf` - a config in which all integration points should
 be defined. It contains 2 kinds of fields:
-* A simple variable, for example, `[WEB_SERVER].SERVER_TYPE`
+* A simple variable, for example, `[web_server].server_type`
 * A path to a script that will return the data for Imunify360, for example,
   `[integration_scripts].DOMAINS`.
 
@@ -410,19 +408,19 @@ users = /opt/cpvendor/bin/users
 domains = /opt/cpvendor/bin/vendor_integration_script domains
 admins = /opt/cpvendor/bin/vendor_integration_script admins
 
-[PATHS]
-UI_PATH = /var/www/vhosts/im360/im360.example-hosting.com/html
+[paths]
+ui_path = /var/www/vhosts/im360/im360.example-hosting.com/html
 
-[WEB_SERVER]
-SERVER_TYPE = apache
+[web_server]
+server_type = apache
 GRACEFUL_RESTART_SCRIPT =
 /path/to/a/script/that/restarts/web-server/properly
-MODSEC_AUDIT_LOG = /var/log/httpd/modsec_audit.log
-MODSEC_AUDIT_LOGDIR = /var/log/modsec_audit
+modsec_audit_log = /var/log/httpd/modsec_audit.log
+modsec_audit_logdir = /var/log/modsec_audit
 
-[MALWARE]
-BASEDIR = /home
-PATTERN_TO_WATCH = ^/home/.+?/(public_html|public_ftp|private_html)(/.*)?$
+[malware]
+basedir = /home
+pattern_to_watch = ^/home/.+?/(public_html|public_ftp|private_html)(/.*)?$
 ```
 
 Unless otherwise stated, the expected output/error handling for the

@@ -413,8 +413,7 @@ ui_path = /var/www/vhosts/im360/im360.example-hosting.com/html
 
 [web_server]
 server_type = apache
-GRACEFUL_RESTART_SCRIPT =
-/path/to/a/script/that/restarts/web-server/properly
+graceful_restart_script = /path/to/a/script/that/restarts/web-server/properly
 modsec_audit_log = /var/log/httpd/modsec_audit.log
 modsec_audit_logdir = /var/log/modsec_audit
 

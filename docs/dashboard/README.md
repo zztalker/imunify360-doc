@@ -1115,6 +1115,10 @@ To enable the feature, tick the <span class="notranslate">_Privilege escalation 
 
 ![](/images/pep_kernelcare.png)
 
+:::warning Note
+The _Privilege escalation detection & protection_ feature is implemented for CentOS 7 only.
+:::
+
 Or you can enable it via CLI using the following command:
 
 <div class="notranslate">

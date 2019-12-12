@@ -52,7 +52,7 @@ imunify360-agent hook add --event <event name> --path </path/to/hook_script>
       * params[]
         * scan_id / string / identifier of running scan
         * path / string / path that’s scanning
-        * type / string / type of scanning (“on-demand”, “background”, “ftp”)
+        * type / string / type of scanning (“on-demand”, “background”, “ftp”, “rescan“)
         * scan_params[]  / initial scanning params
           * file_mask / string / file mask to scan
           * follow_symlinks / boolean / shall scanner follow symlinks

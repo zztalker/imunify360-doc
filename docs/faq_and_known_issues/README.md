@@ -337,7 +337,7 @@ shared_storage /opt/imunify360-webshield/shared_data/shdict.dat 21m;
 
 </div>
 
-2. Modify the <span class="notranslate">`data_size`</span> directive of the <span class="notranslate">`/etc/imunify360-webshield/webshield-shdict.conf`</span> config file to `22020096` (21 MB in bytes: 1024*1024*21):
+2. Modify the <span class="notranslate">`data_size`</span> directive of the <span class="notranslate">`/etc/imunify360-webshield/webshield-shdict.conf`</span> config file to `22020096` (21 MB in bytes: 1024 * 1024 * 21):
 
 3. Restart <span class="notranslate">`imunify360-webshield`</span>:
 

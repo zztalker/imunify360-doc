@@ -72,8 +72,6 @@ imunify360-agent hook add --event <event name> --path </path/to/hook_script>
 ```
 </div>		  
 
-*
-  *
     * finished - the event is generated when the malware scanning process is finished (for on-demand and background scans only, yet not the ftp / waf / inotify)
       * params[]
 	    * scan_id / string / identifier of running scan

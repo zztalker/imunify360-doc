@@ -307,10 +307,11 @@ Unfortunately, there’s no easy way to delete records in the <span class="notra
 
 If you need any more information on this or anything else related to Imunify360 administration, please [get in touch](mailto:feedback@imunify360.com) .
 
-### 14. Imunify360 Webshield ‘Could not allocate memory’ problem. How to fix?
-**Symptoms:** It can have pretty different symptoms (increased IO, CPU and memory usage), but the main one is that webshield blacklisting (through CDNs) does not work.
+### 14. Imunify360 WebShield ‘Could not allocate memory’ problem. How to fix?
 
-**How to check:** just browse wsshdict log (/var/log/wsshdict/wsshdict.log). If you face the issue, the log has entries like:
+**Symptoms:** It can have pretty different symptoms (increased IO, CPU and memory usage), but the main one is that WebShield blacklisting (through CDN) does not work.
+
+**How to check:** Just browse wsshdict log (<span class="notranslate">`/var/log/wsshdict/wsshdict.log`</span>). If you face the issue, the log will have entries like:
 
 <div class="notranslate">
 
@@ -322,11 +323,11 @@ If you need any more information on this or anything else related to Imunify360 
 </div>
 
 This means that the shared memory is full and no new address is allowed to be added.
-Currently the shared memory has fixed size (it’s set in configuration files) and cannot change it dynamically. Currently the size of shared memory is **20 MB**, and it can take up to 89k IPv4 addresses. However, some of our clients have more blacklisted addresses, and when im360 agent tries to place all that IP addresses into shared memory, the aforementioned error occurs.
+Shared memory has a fixed size (it’s set in configuration files) and cannot change it dynamically. Currently, the size of shared memory is **20 MB**, and it can take up to 89k IPv4 addresses. However, some of our clients have more blacklisted addresses, and when Imunify360 agent tries to place all these IP addresses into shared memory, the aforementioned error occurs.
 
 **How to fix:** We want to increase the shared memory size.
 
-1. Modify the second parameter of the shared_storage directive of the <span class="notranslate">`/etc/imunify360-webshield/webshield.conf`</span> config file, to make it look like
+1. Modify the second parameter of the <span class="notranslate">`shared_storage`</span> directive of the <span class="notranslate">`/etc/imunify360-webshield/webshield.conf`</span> config file, to make it look like:
 
 <div class="notranslate">
 
@@ -336,22 +337,30 @@ shared_storage /opt/imunify360-webshield/shared_data/shdict.dat 21m;
 
 </div>
 
-2. Modify data_size directive of the <span class="notranslate">`/etc/imunify360-webshield/webshield-shdict.conf`</span> config file to 22020096 (21 MB in bytes: 1024*1024*21)
+2. Modify the <span class="notranslate">`data_size`</span> directive of the <span class="notranslate">`/etc/imunify360-webshield/webshield-shdict.conf`</span> config file to `22020096` (21 MB in bytes: 1024*1024*21):
 
-3. Restart imunify360-webshield:
+3. Restart <span class="notranslate">`imunify360-webshield`</span>:
 
 <div class="notranslate">
 
 ```
-   systemctl restart imunify360-webshield 
-   or
+   systemctl restart imunify360-webshield
+```
+</div>
+
+Or
+
+<div class="notranslate">
+ 
+```
    service imunify360-webshield reload
 ```
- (the wsshdict daemon is expected to be restarted automatically)
  
  </div>
  
-4. Make sure the shared memory size is actually changed. Run ipcs -m command. It’s expected to have the output like this:
+ The wsshdict daemon is expected to be restarted automatically.
+ 
+4. Make sure the shared memory size is actually changed. Run <span class="notranslate">`ipcs -m`</span> command. It’s expected to have the output like this:
 
 <div class="notranslate">
  
@@ -365,4 +374,4 @@ key      shmid   owner    perms   bytes nattch status
  
 </div>
 
-   First column must not have zeros (like in the second row, third column (owner) is expected to be ‘imunify360-webshield’, and size must correspond to values set in the config files (22020096 in our case)
+The first column must not have zeros (like in the second row), the third column (owner) is expected to be ‘imunify360-webshield’, and size must correspond to values set in the config files (22020096 in our case).

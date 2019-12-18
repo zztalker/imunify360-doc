@@ -1413,6 +1413,10 @@ The following integrated with Imunify360 backup providers are available:
 * Hosting panel Backup (cPanel or Plesk)
 * <span class="notranslate">Acronis Backup</span>
 
+:::tip Note
+Imunify360 is integrated with the JetBackup server backup application. Anyone using JetBackup with WHM or cPanel can elect to use Imunify360. You can find more details [here](https://blog.imunify360.com/imunify360-now-integrated-with-jetbackup).
+:::
+
 **Requirements**
 
 * Imunify360 version 2.7.0 and later

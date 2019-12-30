@@ -377,9 +377,9 @@ key      shmid   owner    perms   bytes nattch status
 The first column must not have zeros (like in the second row), the third column (owner) is expected to be ‘imunify360-webshield’, and size must correspond to values set in the config files (22020096 in our case).
 
 
-### 15.How to check "modsec scan works"?
+### 15. How to check "ModSecurity scan" works?
 
-1. To verify, if modsec scan works, you can use following command:
+1. To verify, if ModSecurity scan works, you can use the following command:
 
 <div class="notranslate">
 
@@ -389,9 +389,10 @@ curl -v -s -o /dev/null -F 'data=@<path-to-malware-sample>' http://<domain>/
 
 </div>
 
-You can get a malware sample file on the eicar.org - http://www.eicar.org/download/
+You can get a malware sample file on the eicar.org: [eicar.org](http://www.eicar.org/).
 
 For instance:
+
 <div class="notranslate">
 
 ```
@@ -400,9 +401,9 @@ curl -v -s -o /dev/null -F 'data=@/tmp/eicar.com.txt' http://mycoolwebsite.net/
 ```
 </div>
 
-Results of this attempt you will see in the "Incidents" tab 
+You can find the results of this attempt in the <span class="notranslate">_Incidents_</span> tab 
 
-2. Also, you can performthe following request that trigger a test rule
+1. Also, you can perform the following request which triggers a test rule
 
 <div class="notranslate">
 
@@ -411,7 +412,7 @@ curl -v http://mycoolwebsite.net//?i360test=88ff0adf94a190b9d1311c8b50fe2891c85a
 ```
 </div>
 
-And check the Imunify360 console.log
+And check the Imunify360 console log
 
 <div class="notranslate">
 
@@ -420,13 +421,13 @@ grep 'Testing the work of the i360 ModSecurity rules' /var/log/imunify360/consol
 ```
 </div>
 
-### 16.How to check "automatically scan all modified files works"?
+### 16. How to check "automatically scan all modified files" works?
 
-To check "automatically scan all modified files" (i.e check inotify scanner), upload malware sample to some account's webroot by ssh and check if it will appear in malicious tab shortly
+To check "automatically scan all modified files" (i.e inotify scanner), upload a malware sample to some account's webroot via SSH and check if it will appear in the <span class="notranslate">_Malicious_</span> tab shortly.
 
-You can get a malware sample file on the eicar.org - http://www.eicar.org/download/
+You can get a malware sample file on the [eicar.org](http://www.eicar.org/).
 
-Please, make sure [the option is enabled](https://docs.imunify360.com/dashboard/#malware) 
+Make sure [the option is enabled](/dashboard/#malware).
 
 <div class="notranslate">
 
@@ -437,6 +438,6 @@ scp /tmp/eicar.com.txt  mycooluser@X.Y.Z.A:/var/www/mycooluser/mycoolwebsite_doc
 
 </div>
 
-where <span class="notranslate">`X.Y.Z.A`</span> -  your server IP address
+where <span class="notranslate">`X.Y.Z.A`</span> - your server IP address
 
-Results you can find in the "Malware scanner" > "Files" tab
+You can find the results in the <span class="notranslate">_Malware scanner > Files_</span> tab.

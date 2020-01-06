@@ -27,3 +27,42 @@ This mode disables <span class="notranslate">[WebShield](/webshield/)</span> swi
 When the <span class="notranslate">_Low Resource Usage_</span> mode is activated it is reflected on the UI: an Imunify main menu changes color to light green, and an appropriate label appears on the top right.
 
 ![](/images/LowResourceUsage.png)
+
+## Exim+Dovecot brute-force attack protection <sup><Badge text="4.5+"/> <Badge text="beta" type="warn"/></sup>
+
+Exim+Dovecot brute-force attack protection is an advanced protection against Dovecot brute-force attacks. PAM module protects against IMAP/POP3 brute-force attack and prevents mail account from being compromised via brute-forcing.
+
+**How to enable Dovecot**
+
+<div class="notranslate">
+
+```
+imunify360-pam enable-dovecot
+```
+</div>
+
+**How to disable Dovecot**
+
+<div class="notranslate">
+
+```
+imunify360-pam disable-dovecot
+```
+</div>
+
+The options of the `pam_imunufy` are placed in the file: <span class="notranslate">`/etc/pam_imunify/i360.ini`</span>
+
+**Values**
+
+| | |
+|-|-|
+|<span class="notranslate">`USER_LOCK_TIMEOUT=5`</span>|timeout to lock a user in minutes|
+|<span class="notranslate">`USER_LOCK_ATTEMPTS=10`</span>|number of attempts after which a user should be locked|
+|<span class="notranslate">`USER_LOCK_MINUTES=5`</span>|a period during which attempts should be accounted for|
+|<span class="notranslate">`USER_IP_LOCK_TIMEOUT=5`</span>|timeout to lock a user/IP should in minutes|
+|<span class="notranslate">`USER_IP_LOCK_ATTEMPTS=10`</span>|number of attempts after which a user/IP should be locked|
+|<span class="notranslate">`USER_IP_LOCK_MINUTES=5`</span>|a period during which attempts should be accounted for|
+|<span class="notranslate">`IP_LOCK_TIMEOUT=5`</span>|timeout to lock an IP in minutes|
+|<span class="notranslate">`IP_LOCK_ATTEMPTS=10`</span>|number of attempts after which an IP should be locked|
+|<span class="notranslate">`IP_LOCK_MINUTES=5`</span>|period during which attempts should be accounted for|
+

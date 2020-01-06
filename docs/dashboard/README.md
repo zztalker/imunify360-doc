@@ -275,6 +275,7 @@ In the pop-up choose <span class="notranslate">_IP_</span> tab and fill out:
   ::: tip Note
   You can grant or remove full access afterwards in the table, just click _Cog_ icon and choose <span class="notranslate">_Grant Full Access_</span> to grant or <span class="notranslate">_Remove Full Access_</span> to remove it.
   :::
+* If <span class="notranslate">[global Black | White list management](/dashboard/#global-black-white-list-ip-management)</span> is enabled, choose <span class="notranslate">_Scope: Local_</span> (IP will be added to White list on a current server) or <span class="notranslate">_Group_</span> (IP will be added to a group of servers and from this moment can be managed globally).
 
 When done, click <span class="notranslate">_Add IP_</span> to confirm your action or <span class="notranslate">_Cancel_</span> to hide pop-up.
 
@@ -411,6 +412,7 @@ In the pop-up choose <span class="notranslate">_IP_</span> tab and fill out:
 * <span class="notranslate">_Enter a comment_</span> – type a comment to the IP or subnet (optional)
 * <span class="notranslate">_Enter TTL_</span> in days or hours – time to live – for how long the IP will be in the Black List.
 * Choose <span class="notranslate">_Black List_</span> radio button
+* If <span class="notranslate">[global Black | White list management](/dashboard/#global-black-white-list-ip-management)</span> is enabled, choose <span class="notranslate">_Scope: Local_</span> (IP will be added to Black list on a current server) or <span class="notranslate">_Group_</span> (IP will be added to a group of servers and from this moment can be managed globally).
 
 When done, click <span class="notranslate">_Add IP_</span> to confirm your action or <span class="notranslate">_Cancel_</span> to close the pop-up.
 
@@ -419,10 +421,6 @@ When done, click <span class="notranslate">_Add IP_</span> to confirm your actio
 You will see a notification if the IP is added successfully.
 
 ![](/images/added_zoom92.png)
-
-::: tip Note
-Required Imunify360 Beta version 2.7.4 or later
-:::
 
 If <span class="notranslate">_Show only manually added_</span> switcher is disabled (default setting) than IPs automatically blocked by Imunify360 without access to CAPTCHA are displayed in the <span class="notranslate">Black List</span> along with manually added IPs. They have _**Imunify360**_ in the <span class="notranslate">**Source**</span> column and <span class="notranslate">_**Automatically blocked due to distributed attack**_</span> in <span class="notranslate">**Comment**</span> column.
 
@@ -479,6 +477,17 @@ You will see a notification if an IP is successfully removed.
 ![](/images/success_01_zoom75.png)
 
 See also: [How to use external files with the list of Black/White IPs](/firewall_config/#external-black-whitelist-management)
+
+### Global Black/White list IP management <sup><Badge text="4.5+"/> <Badge text="beta" type="warn"/></sup>
+
+Starting from Imunify360 version 4.5 an administrator can manage IPs globally, this means that you can blacklist or whitelist an IP not only on one server but on a group of servers. 
+
+Prior to manage IPs globally, you should create a group and add servers into it. This can be done via [CLN UI](https://cln.cloudlinux.com/). You can find the complete documentation on how to create and manage servers’ groups [here](https://docs.cln.cloudlinux.com/dashboard/#cloudlinux-backup).
+
+When you have created a group in CLN and added IPs into this group, go to _Imunify360 > Firewall > White list_ or _Black list_.
+You will see the _Scope_ column and controls (on clicking the _Add_ button) to manage IP locally (on a current server) or globally (on a group of servers).
+
+![](/images/global_IP_management.png)
 
 ### Blocked Ports
 
@@ -1257,13 +1266,15 @@ The purpose of the feature is significantly reducing false positive rate while i
 
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
 
-#### PAM <sup><Badge text="beta" type="warn"/> <Badge text="4.4+"/></sup>
+#### PAM <sup><Badge text="4.4+"/></sup>
 
-Tick the <span class="notranslate">_PAM brute-force attack protection_</span> checkbox to enable an advanced brute-force protection technique based on the combination of PAM module authorization, RBL check and IP blacklisting. 
+#### PAM brute-force attack protection
+
+Tick the <span class="notranslate">_PAM brute-force attack protection_</span> checkbox to enable an advanced brute-force protection technique based on the combination of PAM module authorization, RBL check, and IP blacklisting. 
 	
 ![](/images/pam_module.png)
 
-Or you can enable it via CLI with the following command:
+You can also enable it via CLI with the following command:
 
 <div class="notranslate">
 
@@ -1273,6 +1284,25 @@ imunify360-agent config update '{"PAM": {"enabled": true}}'
 </div>
 
 Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
+
+#### Exim+Dovecot brute-force attack protection <sup><Badge text="4.5+"/> <Badge text="Beta" type="warn"/></sup>
+
+Tick the <span class="notranslate">_Exim+Dovecot brute-force attack protection_</span> checkbox to enable advanced protection against Dovecot brute-force attacks. PAM module protects against IMAP/POP3 brute-force attack and prevents mail account from being compromised via brute-forcing.
+
+![](/images/dovecot.png)
+
+You can also enable it via CLI with the following command: 
+
+<div class="notranslate">
+
+```
+imunify360-agent config update '{"PAM.exim_dovecot_protection": {"enabled": true}}'
+```
+</div>
+
+Click <span class="notranslate">_Save changes_</span> button on the bottom of the section to save changes.
+
+
 
 #### Error Reporting
  

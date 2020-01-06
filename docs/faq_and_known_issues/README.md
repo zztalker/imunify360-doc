@@ -306,3 +306,138 @@ DELETE FROM malware_user_infected WHERE user = <user>;
 Unfortunately, there’s no easy way to delete records in the <span class="notranslate"> `malware_scans` </span> table for a specific user, so the table should be either truncated with the other tables shown in step 2 above, or the records should just be ignored.
 
 If you need any more information on this or anything else related to Imunify360 administration, please [get in touch](mailto:feedback@imunify360.com) .
+
+### 14. Imunify360 WebShield ‘Could not allocate memory’ problem. How to fix?
+
+**Symptoms:** It can have pretty different symptoms (increased IO, CPU and memory usage), but the main one is that WebShield blacklisting (through CDN) does not work.
+
+**How to check:** Just browse wsshdict log (<span class="notranslate">`/var/log/wsshdict/wsshdict.log`</span>). If you face the issue, the log will have entries like:
+
+<div class="notranslate">
+
+```
+2019-07-09 16:50:06 [WARN]: Could not allocate memory for 192.126.123.115/32 in rbtree
+2019-07-09 16:52:23 [WARN]: Could not allocate memory for 179.108.244.125/32 in lpctrie
+```
+
+</div>
+
+This means that the shared memory is full and no new address is allowed to be added.
+Shared memory has a fixed size (it’s set in configuration files) and cannot change it dynamically. Currently, the size of shared memory is **20 MB**, and it can take up to 89k IPv4 addresses. However, some of our clients have more blacklisted addresses, and when Imunify360 agent tries to place all these IP addresses into shared memory, the aforementioned error occurs.
+
+**How to fix:** We want to increase the shared memory size.
+
+1. Modify the second parameter of the <span class="notranslate">`shared_storage`</span> directive of the <span class="notranslate">`/etc/imunify360-webshield/webshield.conf`</span> config file, to make it look like:
+
+<div class="notranslate">
+
+```
+shared_storage /opt/imunify360-webshield/shared_data/shdict.dat 21m;
+```
+
+</div>
+
+2. Modify the <span class="notranslate">`data_size`</span> directive of the <span class="notranslate">`/etc/imunify360-webshield/webshield-shdict.conf`</span> config file to `22020096` (21 MB in bytes: 1024 * 1024 * 21):
+
+3. Restart <span class="notranslate">`imunify360-webshield`</span>:
+
+<div class="notranslate">
+
+```
+   systemctl restart imunify360-webshield
+```
+</div>
+
+Or
+
+<div class="notranslate">
+ 
+```
+   service imunify360-webshield reload
+```
+ 
+ </div>
+ 
+ The wsshdict daemon is expected to be restarted automatically.
+ 
+4. Make sure the shared memory size is actually changed. Run <span class="notranslate">`ipcs -m`</span> command. It’s expected to have the output like this:
+
+<div class="notranslate">
+ 
+``` 
+# ipcs -m
+------ Shared Memory Segments --------
+key      shmid   owner    perms   bytes nattch status  
+0x620035c1 4554752  imunify360 600    22020096   4                       
+0x00000000 32769    root       644    80         2
+``` 
+ 
+</div>
+
+The first column must not have zeros (like in the second row), the third column (owner) is expected to be ‘imunify360-webshield’, and size must correspond to values set in the config files (22020096 in our case).
+
+
+### 15. How to check "ModSecurity scan" works?
+
+1. To verify, if ModSecurity scan works, you can use the following command:
+
+<div class="notranslate">
+
+```
+curl -v -s -o /dev/null -F 'data=@<path-to-malware-sample>' http://<domain>/
+```
+
+</div>
+
+You can get a malware sample file on the eicar.org: [eicar.org](http://www.eicar.org/).
+
+For instance:
+
+<div class="notranslate">
+
+```
+wget http://www.eicar.org/download/eicar.com.txt -O /tmp/eicar.com.txt
+curl -v -s -o /dev/null -F 'data=@/tmp/eicar.com.txt' http://mycoolwebsite.net/
+```
+</div>
+
+You can find the results of this attempt in the <span class="notranslate">_Incidents_</span> tab 
+
+1. Also, you can perform the following request which triggers a test rule
+
+<div class="notranslate">
+
+```
+curl -v http://mycoolwebsite.net//?i360test=88ff0adf94a190b9d1311c8b50fe2891c85af732 
+```
+</div>
+
+And check the Imunify360 console log
+
+<div class="notranslate">
+
+```
+grep 'Testing the work of the i360 ModSecurity rules' /var/log/imunify360/console.log
+```
+</div>
+
+### 16. How to check "automatically scan all modified files" works?
+
+To check "automatically scan all modified files" (i.e inotify scanner), upload a malware sample to some account's webroot via SSH and check if it will appear in the <span class="notranslate">_Malicious_</span> tab shortly.
+
+You can get a malware sample file on the [eicar.org](http://www.eicar.org/).
+
+Make sure [the option is enabled](/dashboard/#malware).
+
+<div class="notranslate">
+
+```
+wget http://www.eicar.org/download/eicar.com.txt -O /tmp/eicar.com.txt
+scp /tmp/eicar.com.txt  mycooluser@X.Y.Z.A:/var/www/mycooluser/mycoolwebsite_docroot
+```
+
+</div>
+
+where <span class="notranslate">`X.Y.Z.A`</span> - your server IP address
+
+You can find the results in the <span class="notranslate">_Malware scanner > Files_</span> tab.

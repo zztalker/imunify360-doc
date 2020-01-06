@@ -21,7 +21,7 @@ There are some basic steps to run Imunify360
 1. Define a way to serve web-based UI
 2. Configure a user authentication process
 3. Implement integration scripts that provide Imunify360 with
-   a necessary information such as list of users, domains hosted on
+   a necessary information suchs as list of users, domains hosted on
    the server, panel administrators, general panel info
 4. Install prerequisites such as ModSecurity, remoteip web server modules
 5. Configure ModSecurity integration
@@ -65,14 +65,13 @@ SERVICE_NAME = system-auth
 If it is not specified, the “`system-auth`” service is used.
 
 By default, “`root`” is considered to be the only “`admin`” user.  To
-add more administrators, list them in the
-`/etc/sysconfig/imunify360/auth.admin` file or specify the `admins`
+add more administrators, list them in the `/etc/sysconfig/imunify360/auth.admin` file or specify the `admins`
 option in `/etc/sysconfig/imunify360/integration.conf`:
 
-``` ini
+```
+ini
 [integration_scripts]
 admins = /path/to/get-admins-script.sh
-
 ```
 It should point to an executable file that generates a json file similar to:
 
@@ -268,6 +267,7 @@ documentation:
 <https://docs.imunify360.com/installation/>
 
 
+
 #### How to configure ModSecurity integration
 
 Configure [ModSecurity configuration
@@ -312,6 +312,7 @@ To enable domain-specific ModSecurity configuration, specify
 ``` ini
 [web_server]
 modsec_domain_config_script = /path/to/inject/domain/specific/config/script.sh
+
 ```
 
 It should point to an executable file that accepts as an input a list
@@ -381,6 +382,7 @@ pattern_to_watch = ^/var/www/vhosts/.+?(?<!/.skel|/chroot|/default|/system)(/.+?
 
 #### How  to open Imunify360 UI Once Imunify360 is installed
 
+
 The web-based UI is available via the domain configured in `ui_path`.
 
 For example, if
@@ -392,10 +394,12 @@ domain, then you could open ImunifyAV with the following URL:
 certificate configured for the domain) or
 * `http://imunify360.hosting.example.com/`
 
+
 #### Extended `integration.conf` example for reference
 
 `integration.conf` - a config in which all integration points should
 be defined. It contains 2 kinds of fields:
+
 * A simple variable, for example, `[web_server].server_type`
 * A path to a script that will return the data for Imunify360, for example,
   `[integration_scripts].DOMAINS`.

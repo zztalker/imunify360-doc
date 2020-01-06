@@ -444,11 +444,18 @@ Option can be one or few of the optional arguments listed above and one more.
 
 | | |
 |-|-|
+|<span class="notranslate">`--order-by [ORDER_BY [ORDER_BY ...]]`</span>|Sorting order.|
+|<span class="notranslate">`--limit`</span>|Limits the output with specified number of IPs.<br>Must be a number greater than zero. By default, equals 50.|
+|<span class="notranslate">`--by-country-code [country_code]`</span>|Filters output by country code.<br>Requires valid country code as argument.<br>Find valid country codes<br>in [CIDR notation](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing#IPv4_CIDR_blocks) in column ISO ALPHA-2 CODE.|
 |<span class="notranslate">`--period [period]`</span>|Timeframe.<br>Allows to specify the amount of time starting from the current day.<br>Should be greater than (or equal to) 1 minute.<br>Can be specified in format:<ul><li><span class="notranslate">`<int>m`</span> – minutes, example <span class="notranslate">` --period 30m`</span></li><li><span class="notranslate">`<int>h`</span> – hours, example <span class="notranslate">`--period 4h`</span></li><li><span class="notranslate">`<int>d`</span> – days, example <span class="notranslate">`--period 7d`</span></li><li><span class="notranslate">`today`</span> – for today, example <span class="notranslate">`--period today`</span></li><li><span class="notranslate">`yesterday`</span> – for yesterday, example <span class="notranslate">`--period yesterday`</span></li></ul>For example, <span class="notranslate">` --period 5d`</span> will return a list of incidents for 5 days. |
 |<span class="notranslate">`--since [timestamp]`</span>|allows to set start time to filter the list of incidents by period|
 |<span class="notranslate">`--to [timestamp]`</span>|allows to set finish time to filter the list of incidents by period|
 |<span class="notranslate">`--severity`</span>|allows to set severity to filter the list of incidents|
+|<span class="notranslate">`--offset OFFSET`</span>|offset for pagination. By default, equals 0|
+|<span class="notranslate">`--by-abuser-ip [BY_ABUSER_IP]`</span>| selection based on abuser IP address|
+|<span class="notranslate">`--json`</span>| return data in JSON format |
 |<span class="notranslate">`--search`</span>|string to search incidents by|
+|<span class="notranslate">`--by-list`</span>|Can be:<br><ul><li>any</li><li>gray (Gray List)</li><li>white (White List)</li><li>black (Black List)</li></ul>Filters output based on the list type.<br>Example: <span class="notranslate">`--by-list black`</span>.|
 
 _Example:_
 
@@ -1027,17 +1034,17 @@ Optional arguments:
 
 </div>
 
-To submit file as false positive (if Imunify360 considers file as a malicious but it actually doesn’t) you can use the following command:
+To submit file as false positive (if Imunify360 considers file as a malicious but it actually doesn’t) you can use the following command (please make sure to specify the file name along with full path):
 
 <div class="notranslate">
 
 ```
-imunify360-agent submit false-positive <file>
+imunify360-agent submit false-positive --reason <reason> --scanner ai-bolit <file>
 ```
 
 </div>
 
-To submit file as false negative (if Imunify360 considers file as a non-malicious but it actually does) you can use the following command:
+To submit file as false negative (if Imunify360 considers file as a non-malicious but it actually does) you can use the following command (please make sure to specify the file name along with full path):
 
 <div class="notranslate">
 
